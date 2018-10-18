@@ -24,7 +24,13 @@ window.web3neo.callback = (message: Message) => {
   };
 }
 
-export function sendMessage(command: string, data: any, timeout?: number): Promise<any> {
+interface SendMessageArgs {
+  command: string;
+  data?: any;
+  timeout?: number;
+}
+
+export function sendMessage({command, data, timeout}: SendMessageArgs): Promise<any> {
   const messageId = Date.now() + Math.random();
   const message = {
     messageId,
