@@ -1,1 +1,1 @@
-# web3-neo
+# web3 interface for NEO
