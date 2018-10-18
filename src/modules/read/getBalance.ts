@@ -1,6 +1,5 @@
-import { sendMessage } from '../messaging';
-import { MSG_COMMANDS } from '../constants';
-const { GET_BALANCE } = MSG_COMMANDS;
+import { sendMessage } from '../../messaging';
+import { GET_BALANCE } from '../../constants/commands';
 
 interface BalanceRequest {
   address: string; // Address to check balance(s)

@@ -1,6 +1,5 @@
-import { sendMessage } from '../messaging';
-import { MSG_COMMANDS } from '../constants';
-const { GET_PROVIDER } = MSG_COMMANDS;
+import { sendMessage } from '../../messaging';
+import { GET_PROVIDER } from '../../constants/commands';
 
 interface Provider {
   name: string;

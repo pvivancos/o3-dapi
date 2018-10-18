@@ -1,0 +1,9 @@
+export const IS_READY = 'isReady';
+export const GET_PROVIDER = 'getProvider';
+export const GET_NETWORK = 'getNetwork';
+export const GET_ACCOUNT = 'getAccount';
+export const GET_BALANCE = 'getBalance';
+export const GET_STORAGE = 'getStorage';
+export const INVOKE_READ = 'invokeRead';
+export const SEND = 'send';
+export const INVOKE = 'invoke';

@@ -1,6 +1,5 @@
-import { sendMessage } from '../messaging';
-import { MSG_COMMANDS } from '../constants';
-const { GET_ACCOUNT } = MSG_COMMANDS;
+import { sendMessage } from '../../messaging';
+import { GET_ACCOUNT } from '../../constants/commands';
 
 interface Account {
   address: string;

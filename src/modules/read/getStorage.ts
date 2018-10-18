@@ -1,6 +1,5 @@
-import { sendMessage } from '../messaging';
-import { MSG_COMMANDS } from '../constants';
-const { GET_STORAGE } = MSG_COMMANDS;
+import { sendMessage } from '../../messaging';
+import { GET_STORAGE } from '../../constants/commands';
 
 interface GetStorageArgs {
   scriptHash: string;

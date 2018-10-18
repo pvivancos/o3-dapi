@@ -1,6 +1,5 @@
-import { sendMessage } from '../messaging';
-import { MSG_COMMANDS } from '../constants';
-const { GET_NETWORK } = MSG_COMMANDS;
+import { sendMessage } from '../../messaging';
+import { GET_NETWORK } from '../../constants/commands';
 
 enum Network {
   MainNet = 'MainNet',
