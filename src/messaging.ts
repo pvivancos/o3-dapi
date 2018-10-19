@@ -1,27 +1,43 @@
 declare const web3neoAndroidInterface: any;
 declare const webkit: any;
-declare const window: any;
+import { PLATFORM } from './constants/common';
+import { EVENT } from './constants/commands';
+import { onEvent, EventName } from './modules/eventListener';
 
 const messageQueue = {};
 
 interface Message {
+  platform: string;
   messageId: string;
   command: string;
+  eventName?: EventName;
   data: any;
   error: string;
 }
 
-window.web3neo.callback = (message: Message) => {
-  if (typeof message === 'string') {
-    message = JSON.parse(message);
-  }
-  const { messageId, command, data, error } = message;
-  const messageResolver = messageQueue[messageId + command];
-  if (messageResolver) {
-    const { resolve, timeout, reject } = messageResolver;
-    timeout && clearTimeout(timeout);
-    error ? reject(error) : resolve(data);
-  };
+export const receiveMessage = (message: Message) => {
+  try {
+    if (typeof message === 'string') {
+      message = JSON.parse(message);
+    }
+    const { platform, messageId, command, data, error, eventName } = message;
+
+    if (platform !== PLATFORM) {
+      return;
+    }
+
+    if (command === EVENT) {
+      onEvent(eventName, data);
+      return;
+    }
+
+    const messageResolver = messageQueue[messageId + command];
+    if (messageResolver) {
+      const { resolve, timeout, reject } = messageResolver;
+      timeout && clearTimeout(timeout);
+      error ? reject(error) : resolve(data);
+    };
+  } catch (err) {}
 }
 
 interface SendMessageArgs {
@@ -30,9 +46,10 @@ interface SendMessageArgs {
   timeout?: number;
 }
 
-export function sendMessage({command, data, timeout}: SendMessageArgs): Promise<any> {
+export const sendMessage = ({command, data, timeout}: SendMessageArgs): Promise<any> => {
   const messageId = Date.now() + Math.random();
   const message = {
+    platform: PLATFORM,
     messageId,
     command,
     data,

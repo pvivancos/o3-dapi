@@ -1,7 +1,7 @@
 import { sendMessage } from '../../messaging';
 import { GET_NETWORK } from '../../constants/commands';
 
-enum Network {
+export enum Network {
   MainNet = 'MainNet',
   TestNet = 'TestNet',
   PrivateNet = 'PrivateNet',

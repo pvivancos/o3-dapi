@@ -7,3 +7,4 @@ export const GET_STORAGE = 'getStorage';
 export const INVOKE_READ = 'invokeRead';
 export const SEND = 'send';
 export const INVOKE = 'invoke';
+export const EVENT = 'event';

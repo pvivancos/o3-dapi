@@ -1,5 +1,6 @@
 import { sendMessage } from '../../messaging';
 import { INVOKE_READ } from '../../constants/commands';
+import { ArgumentDataType } from '../../constants/common';
 
 interface InvokeReadArgs {
   scriptHash: string;
@@ -8,11 +9,9 @@ interface InvokeReadArgs {
 }
 
 interface Argument {
-  type: ArgumentType;
+  type: ArgumentDataType;
   value: any;
 }
-
-type ArgumentType = `string`|`boolean`|`hash160`|`integer`|`bytearray`|`array`;
 
 export function invokeRead(data: InvokeReadArgs): Promise<any> {
   return sendMessage({
