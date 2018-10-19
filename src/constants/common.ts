@@ -7,4 +7,4 @@ export enum ArgumentDataType {
   INTEGER = 'integer',
   BYTEARRAY = 'bytearray',
   ARRAY = 'array',
-};
+}

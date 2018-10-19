@@ -1,0 +1,1 @@
+{"version":3,"file":"send.d.ts","sourceRoot":"","sources":["../../../src/modules/write/send.ts"],"names":[],"mappings":"AAGA,UAAU,QAAQ;IAChB,EAAE,EAAE,MAAM,CAAC;IACX,KAAK,EAAE,MAAM,CAAC;IACd,MAAM,EAAE,MAAM,CAAC;IACf,MAAM,CAAC,EAAE,MAAM,CAAC;IAChB,GAAG,CAAC,EAAE,MAAM,CAAC;CACd;AAED,wBAAgB,IAAI,CAAC,IAAI,EAAE,QAAQ,GAAG,OAAO,CAAC,MAAM,CAAC,CAKpD"}

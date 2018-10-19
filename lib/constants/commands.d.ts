@@ -1,0 +1,11 @@
+export declare const IS_READY = "isReady";
+export declare const GET_PROVIDER = "getProvider";
+export declare const GET_NETWORK = "getNetwork";
+export declare const GET_ACCOUNT = "getAccount";
+export declare const GET_BALANCE = "getBalance";
+export declare const GET_STORAGE = "getStorage";
+export declare const INVOKE_READ = "invokeRead";
+export declare const SEND = "send";
+export declare const INVOKE = "invoke";
+export declare const EVENT = "event";
+//# sourceMappingURL=commands.d.ts.map

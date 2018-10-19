@@ -16,7 +16,7 @@ interface Argument {
 }
 
 interface AttachedAssets {
-  [asset: string]: string,
+  [asset: string]: string;
 }
 
 export function invoke(data: InvokeArgs): Promise<string> {

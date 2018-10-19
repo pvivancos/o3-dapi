@@ -1,4 +1,4 @@
-declare const web3neoAndroidInterface: any;
+declare const _web3neo: any;
 declare const webkit: any;
 import { PLATFORM } from './constants/common';
 import { EVENT } from './constants/commands';
@@ -15,7 +15,7 @@ interface Message {
   error: string;
 }
 
-export const receiveMessage = (message: Message) => {
+_web3neo.receiveMessage = (message: Message) => {
   try {
     if (typeof message === 'string') {
       message = JSON.parse(message);
@@ -36,9 +36,9 @@ export const receiveMessage = (message: Message) => {
       const { resolve, timeout, reject } = messageResolver;
       timeout && clearTimeout(timeout);
       error ? reject(error) : resolve(data);
-    };
+    }
   } catch (err) {}
-}
+};
 
 interface SendMessageArgs {
   command: string;
@@ -46,7 +46,7 @@ interface SendMessageArgs {
   timeout?: number;
 }
 
-export const sendMessage = ({command, data, timeout}: SendMessageArgs): Promise<any> => {
+export function sendMessage({command, data, timeout}: SendMessageArgs): Promise<any> {
   const messageId = Date.now() + Math.random();
   const message = {
     platform: PLATFORM,
@@ -56,12 +56,12 @@ export const sendMessage = ({command, data, timeout}: SendMessageArgs): Promise<
   };
 
   return new Promise((resolve, reject) => {
-    if (web3neoAndroidInterface !== undefined){
-      web3neoAndroidInterface.messageHandler(JSON.stringify(message))
+    if (_web3neo !== undefined) {
+      _web3neo.messageHandler(JSON.stringify(message));
     } else {
       try {
         webkit.messageHandlers.sendMessageHandler.postMessage(message);
-      } catch(err) {
+      } catch (err) {
         reject(`Messaging service error: ${JSON.stringify(err)}`);
       }
     }
@@ -70,8 +70,8 @@ export const sendMessage = ({command, data, timeout}: SendMessageArgs): Promise<
       reject,
       timeout: timeout && setTimeout(() => {
         delete messageQueue[messageId + command];
-        reject('Request timeout.')
-      }, timeout)
+        reject('Request timeout.');
+      }, timeout),
     };
   });
 }
