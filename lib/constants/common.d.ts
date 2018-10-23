@@ -1,4 +1,5 @@
 export declare const PLATFORM = "web3neo";
+export declare const VERSION = "v1";
 export declare enum ArgumentDataType {
     STRING = "string",
     BOOLEAN = "boolean",

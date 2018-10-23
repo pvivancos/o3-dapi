@@ -1,13 +1,16 @@
+declare const window: any;
 declare const _web3neo: any;
 declare const webkit: any;
-import { PLATFORM } from './constants/common';
+import { PLATFORM, VERSION } from './constants/common';
 import { EVENT } from './constants/commands';
 import { onEvent, EventName } from './modules/eventListener';
+import { get } from 'lodash';
 
 const messageQueue = {};
 
 interface Message {
   platform: string;
+  version: string;
   messageId: string;
   command: string;
   eventName?: EventName;
@@ -15,6 +18,7 @@ interface Message {
   error: string;
 }
 
+window._web3neo = window._web3neo ? window._web3neo : {};
 _web3neo.receiveMessage = (message: Message) => {
   try {
     if (typeof message === 'string') {
@@ -50,28 +54,32 @@ export function sendMessage({command, data, timeout}: SendMessageArgs): Promise<
   const messageId = Date.now() + Math.random();
   const message = {
     platform: PLATFORM,
+    version: VERSION,
     messageId,
     command,
     data,
   };
 
   return new Promise((resolve, reject) => {
-    if (_web3neo !== undefined) {
-      _web3neo.messageHandler(JSON.stringify(message));
+    const messageHandler = get(window, 'window._web3neo.messageHandler');
+    const webkitPostMessage = get(window, 'window.webkit.messageHandlers.sendMessageHandler.postMessage');
+    if (messageHandler) {
+      messageHandler(JSON.stringify(message));
+    } else if (webkitPostMessage) {
+      webkitPostMessage(message);
     } else {
-      try {
-        webkit.messageHandlers.sendMessageHandler.postMessage(message);
-      } catch (err) {
-        reject(`Messaging service error: ${JSON.stringify(err)}`);
-      }
+      reject(`web3neo provider not found.`);
     }
-    messageQueue[messageId + command] = {
-      resolve,
-      reject,
-      timeout: timeout && setTimeout(() => {
-        delete messageQueue[messageId + command];
-        reject('Request timeout.');
-      }, timeout),
-    };
+
+    if (messageHandler || webkitPostMessage) {
+      messageQueue[messageId + command] = {
+        resolve,
+        reject,
+        timeout: timeout && setTimeout(() => {
+          delete messageQueue[messageId + command];
+          reject('Request timeout.');
+        }, timeout),
+      };
+    }
   });
 }
