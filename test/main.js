@@ -2,10 +2,21 @@
 const errorEle = document.getElementById("error");
 const resultEle = document.getElementById("result");
 const loadingEle = document.getElementById("loading");
+
 const balanceInputEle = document.getElementById("balanceInput");
-const invokeReadScriptHash = document.getElementById("invokeReadScriptHash");
-const invokeReadOperation = document.getElementById("invokeReadOperation");
-const invokeReadArgs = document.getElementById("invokeReadArgs");
+
+const getStorageScriptHashEle = document.getElementById("getStorageScriptHash");
+const getStorageKeyEle = document.getElementById("getStorageKey");
+
+const invokeReadScriptHashEle = document.getElementById("invokeReadScriptHash");
+const invokeReadOperationEle = document.getElementById("invokeReadOperation");
+const invokeReadArgsEle = document.getElementById("invokeReadArgs");
+
+const sendToAddressEle = document.getElementById("sendToAddress");
+const sendAssetEle = document.getElementById("sendAsset");
+const sendAmountEle = document.getElementById("sendAmount");
+const sendRemarkEle = document.getElementById("sendRemark");
+const sendFeeEle = document.getElementById("sendFee");
 
 function clearText() {
   resultEle.innerHTML = '';
@@ -65,12 +76,35 @@ function getBalance() {
   .catch(handleError);
 }
 
+function getStorage() {
+  startLoading();
+  web3neo.getStorage({
+    scriptHash: getStorageScriptHashEle.value,
+    key: getStorageKeyEle.value,
+  })
+  .then(handleSuccess)
+  .catch(handleError);
+}
+
 function invokeRead() {
   startLoading();
   web3neo.invokeRead({
-    scriptHash: invokeReadScriptHash.value,
-    operation: invokeReadOperation.value,
-    args: invokeReadArgs.value,
+    scriptHash: invokeReadScriptHashEle.value,
+    operation: invokeReadOperationEle.value,
+    args: invokeReadArgsEle.value,
+  })
+  .then(handleSuccess)
+  .catch(handleError);
+}
+
+function send() {
+  startLoading();
+  web3neo.send({
+    to: sendToAddressEle.value,
+    asset: sendAssetEle.value,
+    amount: sendAmountEle.value,
+    remark: sendRemarkEle.value,
+    fee: sendFeeEle.value,
   })
   .then(handleSuccess)
   .catch(handleError);
