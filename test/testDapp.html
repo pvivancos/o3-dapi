@@ -11,6 +11,28 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script type="text/javascript" src="../lib/web3neo.min.js"></script>
+  <style media="screen">
+    #result {
+      padding: 5px;
+      margin: 5px;
+      white-space: pre;
+      word-wrap: break-word;
+      font-size: 12px;
+    }
+    #error {
+      padding: 5px;
+      margin: 5px;
+      white-space: pre;
+      word-wrap: break-word;
+      font-size: 12px;
+      color: red;
+    }
+    .string { color: green; }
+    .number { color: darkorange; }
+    .boolean { color: blue; }
+    .null { color: magenta; }
+    .key { color: red; }
+  </style>
 </head>
 
 <body>
@@ -110,11 +132,14 @@ const errorEle = document.getElementById("error");
 const resultEle = document.getElementById("result");
 
 function handleSuccess(data) {
-  resultEle.innerText = JSON.stringify(data);
+  // const json = JSON.stringify(data);
+  const formatted = syntaxHighlight(data);
+  debugger;
+  resultEle.innerHTML = formatted;
 }
 
 function handleError(error) {
-  errorEle.innerText = JSON.stringify(error);
+  errorEle.innerHTML = syntaxHighlight(JSON.stringify(error));
 }
 
 function isReady() {
@@ -147,6 +172,27 @@ function getBalance({address: AZ1QiX5nqgm8dsUY7iRyafKwmKnGP9bUhN}) {
   .catch(handleError);
 }
 
+function syntaxHighlight(json) {
+    if (typeof json != 'string') {
+         json = JSON.stringify(json, undefined, 2);
+    }
+    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+        var cls = 'number';
+        if (/^"/.test(match)) {
+            if (/:$/.test(match)) {
+                cls = 'key';
+            } else {
+                cls = 'string';
+            }
+        } else if (/true|false/.test(match)) {
+            cls = 'boolean';
+        } else if (/null/.test(match)) {
+            cls = 'null';
+        }
+        return '<span class="' + cls + '">' + match + '</span>';
+    });
+}
 
 </script>
 </body>
