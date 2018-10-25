@@ -24,6 +24,11 @@ const sendAmountEle = document.getElementById("sendAmount");
 const sendRemarkEle = document.getElementById("sendRemark");
 const sendFeeEle = document.getElementById("sendFee");
 
+const network = {
+  type: 'PrivateNet',
+  url: 'http://localhost:30333',
+};
+
 function clearText() {
   resultEle.innerHTML = '';
   errorEle.innerHTML = '';
@@ -81,7 +86,7 @@ function getStorage() {
   web3neo.getStorage({
     scriptHash: getStorageScriptHashEle.value,
     key: getStorageKeyEle.value,
-  })
+  }, network)
   .then(handleSuccess)
   .catch(handleError);
 }
@@ -92,7 +97,7 @@ function invokeRead() {
     scriptHash: invokeReadScriptHashEle.value,
     operation: invokeReadOperationEle.value,
     args: invokeReadArgsEle.value,
-  })
+  }, network)
   .then(handleSuccess)
   .catch(handleError);
 }
@@ -105,7 +110,7 @@ function invoke() {
     args: invokeArgsEle.value,
     attachedAssets: invokeAttachedAssetsEle.value,
     fee: invokeFeeEle.value,
-  })
+  }, network)
   .then(handleSuccess)
   .catch(handleError);
 }
