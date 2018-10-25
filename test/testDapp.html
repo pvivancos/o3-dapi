@@ -41,14 +41,6 @@
         </div>
 
         <div class="function-container">
-          <h5 class="title">getNetwork</h5>
-          <p class="text">
-            <p>Return the network the wallet provider is connected to.</p>
-          </p>
-          <button type="button" class="btn btn-primary" onclick="getNetwork()">Get Network</button>
-        </div>
-
-        <div class="function-container">
           <h5 class="title">getAccount</h5>
           <p class="text">
             <p>Return the Account that is currently connected to the dApp.</p>
@@ -94,6 +86,29 @@
           <button type="button" class="btn btn-primary" onclick="invokeRead()">Invoke read</button>
         </div>
 
+        <div class="function-container">
+          <h5 class="title">invoke</h5>
+          <p class="text">
+            <p>Execute a contract invocation.</p>
+          </p>
+          <br/>
+          <p>Script hash:</p>
+          <input id='invokeScriptHash' type="text" value="c36aee199dbba6c3f439983657558cfb67629599"/>
+          <br/>
+          <p>Operation:</p>
+          <input id='invokeOperation' type="text" value="transfer"/>
+          <br/>
+          <p>Arguments:</p>
+          <textarea id='invokeArgs' rows="4" cols="80">[{"type":"ByteArray","value":""},{"type":"ByteArray","value":""},{"type":"ByteArray","value":"0100000000000000"}]</textarea>
+          <br/>
+          <p>Attached assets: (Optional)</p>
+          <input id='invokeAttachedAssets' type="text"/>
+          <br/>
+          <p>Fee: (Optional)</p>
+          <input id='invokeFee' type="text" placeholder="eg. 0.00000001"/>
+          <button type="button" class="btn btn-primary" onclick="invoke()">Invoke</button>
+        </div>
+
         <!-- <div class="function-container">
           <h5 class="title">send</h5>
           <p class="text">
@@ -113,31 +128,8 @@
           <br/>
           <p>Fee: (Optional)</p>
           <input id='sendFee' type="text" placeholder="eg. 0.00000001"/>
-          <button type="button" class="btn btn-primary" onclick="send()">Invoke read</button>
+          <button type="button" class="btn btn-primary" onclick="send()">Send</button>
         </div> -->
-
-        <div class="function-container">
-          <h5 class="title">invoke</h5>
-          <p class="text">
-            <p>Execute a contract invocation.</p>
-          </p>
-          <br/>
-          <p>Script hash:</p>
-          <input id='invokeScriptHash' type="text" value="c36aee199dbba6c3f439983657558cfb67629599"/>
-          <br/>
-          <p>Operation:</p>
-          <input id='invokeOperation' type="text" value="transfer"/>
-          <br/>
-          <p>Arguments:</p>
-          <textarea id='invokeArgs' rows="4" cols="80">[{"type":"ByteArray","value":"bd097b2fcf70e1fd30a5c3ef51e662feeafeba01"}]</textarea>
-          <br/>
-          <p>Attached assets:</p>
-          <input id='invokeAttachedAssets' type="text" placeholder="eg. SWTH or ab38352559b8b203bde5fddfa0b07d8b2525e132"/>
-          <br/>
-          <p>Fee: (Optional)</p>
-          <input id='invokeFee' type="text" placeholder="eg. 0.00000001"/>
-          <button type="button" class="btn btn-primary" onclick="send()">Invoke read</button>
-        </div>
 
       </div>
 

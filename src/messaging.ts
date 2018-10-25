@@ -1,9 +1,15 @@
 declare const window: any;
 declare const _web3neo: any;
 declare const webkit: any;
-import { PLATFORM, VERSION } from './constants/common';
-import { EVENT } from './constants/commands';
-import { onEvent, EventName } from './modules/eventListener';
+import {
+  PLATFORM,
+  VERSION,
+  Network,
+  DefaultNetworks,
+  EventName,
+  Command,
+} from './constants';
+import { onEvent } from './modules/eventListener';
 import { get } from 'lodash';
 
 const messageQueue = {};
@@ -12,14 +18,18 @@ interface Message {
   platform: string;
   version: string;
   messageId: string;
-  command: string;
+  command: Command;
+  data?: any;
+  network?: Network;
+}
+
+interface IncomingMessage extends Message {
   eventName?: EventName;
-  data: any;
-  error: string;
+  error?: string;
 }
 
 window._web3neo = window._web3neo ? window._web3neo : {};
-_web3neo.receiveMessage = (message: Message) => {
+_web3neo.receiveMessage = (message: IncomingMessage) => {
   try {
     if (typeof message === 'string') {
       message = JSON.parse(message);
@@ -30,7 +40,7 @@ _web3neo.receiveMessage = (message: Message) => {
       return;
     }
 
-    if (command === EVENT) {
+    if (command === Command.event) {
       onEvent(eventName, data);
       return;
     }
@@ -45,19 +55,27 @@ _web3neo.receiveMessage = (message: Message) => {
 };
 
 interface SendMessageArgs {
-  command: string;
+  command: Command;
   data?: any;
+  network?: Network;
   timeout?: number;
 }
 
-export function sendMessage({command, data, timeout}: SendMessageArgs): Promise<any> {
-  const messageId = Date.now() + Math.random();
-  const message = {
+export function sendMessage({
+  command,
+  data,
+  network = DefaultNetworks.MainNet,
+  timeout,
+}: SendMessageArgs): Promise<any> {
+
+  const messageId = (Date.now() + Math.random()).toString();
+  const message: Message = {
     platform: PLATFORM,
     version: VERSION,
     messageId,
     command,
     data,
+    network,
   };
 
   return new Promise((resolve, reject) => {

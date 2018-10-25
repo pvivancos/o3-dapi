@@ -1,8 +1,8 @@
 import { sendMessage } from '../../messaging';
-import { IS_READY } from '../../constants/commands';
+import { Command } from '../../constants';
 
 export function isReady(): Promise<boolean> {
   return sendMessage({
-    command: IS_READY,
+    command: Command.isReady,
   });
 }

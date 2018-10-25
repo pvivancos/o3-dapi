@@ -1,5 +1,5 @@
 import { sendMessage } from '../../messaging';
-import { GET_ACCOUNT } from '../../constants/commands';
+import { Command } from '../../constants';
 
 interface Account {
   address: string;
@@ -8,6 +8,6 @@ interface Account {
 
 export function getAccount(): Promise<Account> {
   return sendMessage({
-    command: GET_ACCOUNT,
+    command: Command.getAccount,
   });
 }

@@ -12,6 +12,12 @@ const invokeReadScriptHashEle = document.getElementById("invokeReadScriptHash");
 const invokeReadOperationEle = document.getElementById("invokeReadOperation");
 const invokeReadArgsEle = document.getElementById("invokeReadArgs");
 
+const invokeScriptHashEle = document.getElementById("invokeScriptHash");
+const invokeOperationEle = document.getElementById("invokeOperation");
+const invokeArgsEle = document.getElementById("invokeArgs");
+const invokeAttachedAssetsEle = document.getElementById("invokeAttachedAssets");
+const invokeFeeEle = document.getElementById("invokeFee");
+
 const sendToAddressEle = document.getElementById("sendToAddress");
 const sendAssetEle = document.getElementById("sendAsset");
 const sendAmountEle = document.getElementById("sendAmount");
@@ -56,12 +62,6 @@ function getProvider() {
   .catch(handleError);
 }
 
-function getNetwork() {
-  web3neo.getNetwork()
-  .then(handleSuccess)
-  .catch(handleError);
-}
-
 function getAccount() {
   startLoading();
   web3neo.getAccount()
@@ -97,18 +97,31 @@ function invokeRead() {
   .catch(handleError);
 }
 
-function send() {
+function invoke() {
   startLoading();
-  web3neo.send({
-    to: sendToAddressEle.value,
-    asset: sendAssetEle.value,
-    amount: sendAmountEle.value,
-    remark: sendRemarkEle.value,
-    fee: sendFeeEle.value,
+  web3neo.invoke({
+    scriptHash: invokeScriptHashEle.value,
+    operation: invokeOperationEle.value,
+    args: invokeArgsEle.value,
+    attachedAssets: invokeAttachedAssetsEle.value,
+    fee: invokeFeeEle.value,
   })
   .then(handleSuccess)
   .catch(handleError);
 }
+
+// function send() {
+//   startLoading();
+//   web3neo.send({
+//     to: sendToAddressEle.value,
+//     asset: sendAssetEle.value,
+//     amount: sendAmountEle.value,
+//     remark: sendRemarkEle.value,
+//     fee: sendFeeEle.value,
+//   })
+//   .then(handleSuccess)
+//   .catch(handleError);
+// }
 
 function syntaxHighlight(json) {
     if (typeof json != 'string') {
