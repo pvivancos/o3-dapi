@@ -1,11 +1,9 @@
 declare const window: any;
 declare const _web3neo: any;
-declare const webkit: any;
 import {
   PLATFORM,
   VERSION,
   Network,
-  DefaultNetworks,
   EventName,
   Command,
 } from './constants';
@@ -64,7 +62,7 @@ interface SendMessageArgs {
 export function sendMessage({
   command,
   data,
-  network = DefaultNetworks.MainNet,
+  network = Network.MainNet,
   timeout,
 }: SendMessageArgs): Promise<any> {
 

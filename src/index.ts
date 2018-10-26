@@ -7,7 +7,7 @@ import { invokeRead } from './modules/read/invokeRead';
 import { send } from './modules/write/send';
 import { invoke } from './modules/write/invoke';
 import { addEventListener, removeEventListener } from './modules/eventListener';
-import { ArgumentDataType, EventName } from './constants';
+import { ArgumentDataType, EventName, Network } from './constants';
 
 export default {
   isReady,
@@ -25,6 +25,7 @@ export default {
 
   CONST: {
     EventName,
+    Network,
     ArgumentDataType,
   },
 };

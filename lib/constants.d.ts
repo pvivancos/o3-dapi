@@ -8,18 +8,11 @@ export declare enum ArgumentDataType {
     BYTEARRAY = "ByteArray",
     ARRAY = "Array"
 }
-declare enum NetworkType {
+export declare enum Network {
     MainNet = "MainNet",
     TestNet = "TestNet",
     PrivateNet = "PrivateNet"
 }
-export interface Network {
-    type: NetworkType;
-    url?: string;
-}
-export declare const DefaultNetworks: {
-    [NetworkType: string]: Network;
-};
 export declare enum Command {
     isReady = "isReady",
     getProvider = "getProvider",
@@ -36,5 +29,4 @@ export declare enum EventName {
     READY = "READY",
     ACCOUNT_CHANGED = "ACCOUNT_CHANGED"
 }
-export {};
 //# sourceMappingURL=constants.d.ts.map

@@ -10,25 +10,11 @@ export enum ArgumentDataType {
   ARRAY = 'Array',
 }
 
-enum NetworkType {
+export enum Network {
   MainNet = 'MainNet',
   TestNet = 'TestNet',
   PrivateNet = 'PrivateNet',
 }
-
-export interface Network {
-  type: NetworkType;
-  url?: string;
-}
-
-export const DefaultNetworks: {[NetworkType: string]: Network} = {
-  MainNet: {
-    type: NetworkType.MainNet,
-  },
-  TestNet: {
-    type: NetworkType.TestNet,
-  },
-};
 
 export enum Command {
   isReady = 'isReady',

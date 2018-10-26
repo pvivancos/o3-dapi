@@ -7,7 +7,7 @@ import { invokeRead } from './modules/read/invokeRead';
 import { send } from './modules/write/send';
 import { invoke } from './modules/write/invoke';
 import { addEventListener, removeEventListener } from './modules/eventListener';
-import { ArgumentDataType, EventName } from './constants';
+import { ArgumentDataType, EventName, Network } from './constants';
 declare const _default: {
     isReady: typeof isReady;
     getProvider: typeof getProvider;
@@ -21,6 +21,7 @@ declare const _default: {
     removeEventListener: typeof removeEventListener;
     CONST: {
         EventName: typeof EventName;
+        Network: typeof Network;
         ArgumentDataType: typeof ArgumentDataType;
     };
 };

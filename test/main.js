@@ -1,3 +1,4 @@
+const network = web3neo.CONST.Network.TestNet;
 
 const errorEle = document.getElementById("error");
 const resultEle = document.getElementById("result");
@@ -23,11 +24,6 @@ const sendAssetEle = document.getElementById("sendAsset");
 const sendAmountEle = document.getElementById("sendAmount");
 const sendRemarkEle = document.getElementById("sendRemark");
 const sendFeeEle = document.getElementById("sendFee");
-
-const network = {
-  type: 'PrivateNet',
-  url: 'http://localhost:30333',
-};
 
 function clearText() {
   resultEle.innerHTML = '';
@@ -115,18 +111,18 @@ function invoke() {
   .catch(handleError);
 }
 
-// function send() {
-//   startLoading();
-//   web3neo.send({
-//     to: sendToAddressEle.value,
-//     asset: sendAssetEle.value,
-//     amount: sendAmountEle.value,
-//     remark: sendRemarkEle.value,
-//     fee: sendFeeEle.value,
-//   })
-//   .then(handleSuccess)
-//   .catch(handleError);
-// }
+function send() {
+  startLoading();
+  web3neo.send({
+    to: sendToAddressEle.value,
+    asset: sendAssetEle.value,
+    amount: sendAmountEle.value,
+    remark: sendRemarkEle.value,
+    fee: sendFeeEle.value,
+  }, network)
+  .then(handleSuccess)
+  .catch(handleError);
+}
 
 function syntaxHighlight(json) {
     if (typeof json != 'string') {
