@@ -16,6 +16,7 @@
 
   <div class="nav">
     <h4 class="title">O3 Dapp Platform</h4>
+    <select id="networks" name="networks"></select>
   </div>
 
   <div class="content">
@@ -37,7 +38,15 @@
           <p class="text">
             <p>Returns information about the dAPI provider, including who this provider is, the version of their dAPI, and the NEP that the interface is compatible with.</p>
           </p>
-          <button type="button" class="btn btn-primary" onclick="getProvider()">Get Provider</button>
+          <button type="button" class="btn btn-primary" onclick="getProvider()">Get provider</button>
+        </div>
+
+        <div class="function-container">
+          <h5 class="title">getNetworks</h5>
+          <p class="text">
+            <p>Returns a list of available provider networks</p>
+          </p>
+          <button type="button" class="btn btn-primary" onclick="getNetworks()">Get networks</button>
         </div>
 
         <div class="function-container">
@@ -45,7 +54,7 @@
           <p class="text">
             <p>Return the Account that is currently connected to the dApp.</p>
           </p>
-          <button type="button" class="btn btn-primary" onclick="getAccount()">Get Account</button>
+          <button type="button" class="btn btn-primary" onclick="getAccount()">Get account</button>
         </div>
 
         <div class="function-container">

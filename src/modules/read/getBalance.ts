@@ -1,5 +1,5 @@
 import { sendMessage } from '../../messaging';
-import { Network, Command } from '../../constants';
+import { Command } from '../../constants';
 
 interface BalanceRequest {
   address: string; // Address to check balance(s)
@@ -14,7 +14,7 @@ interface Balances {
   [asset: string]: string;
 }
 
-export function getBalance(data: BalanceRequest|BalanceRequest[], network?: Network): Promise<BalanceResults> {
+export function getBalance(data: BalanceRequest|BalanceRequest[], network?: string): Promise<BalanceResults> {
   return sendMessage({
     command: Command.getBalance,
     data,

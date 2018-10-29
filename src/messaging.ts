@@ -3,9 +3,9 @@ declare const _web3neo: any;
 import {
   PLATFORM,
   VERSION,
-  Network,
   EventName,
   Command,
+  DefaultNetwork,
 } from './constants';
 import { onEvent } from './modules/eventListener';
 import { get } from 'lodash';
@@ -18,7 +18,7 @@ interface Message {
   messageId: string;
   command: Command;
   data?: any;
-  network?: Network;
+  network?: string;
 }
 
 interface IncomingMessage extends Message {
@@ -55,14 +55,14 @@ _web3neo.receiveMessage = (message: IncomingMessage) => {
 interface SendMessageArgs {
   command: Command;
   data?: any;
-  network?: Network;
+  network?: string;
   timeout?: number;
 }
 
 export function sendMessage({
   command,
   data,
-  network = Network.MainNet,
+  network = DefaultNetwork,
   timeout,
 }: SendMessageArgs): Promise<any> {
 

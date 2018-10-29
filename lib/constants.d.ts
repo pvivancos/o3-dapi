@@ -8,15 +8,11 @@ export declare enum ArgumentDataType {
     BYTEARRAY = "ByteArray",
     ARRAY = "Array"
 }
-export declare enum Network {
-    MainNet = "MainNet",
-    TestNet = "TestNet",
-    PrivateNet = "PrivateNet"
-}
+export declare const DefaultNetwork = "MainNet";
 export declare enum Command {
     isReady = "isReady",
     getProvider = "getProvider",
-    getNetwork = "getNetwork",
+    getNetworks = "getNetworks",
     getAccount = "getAccount",
     getBalance = "getBalance",
     getStorage = "getStorage",

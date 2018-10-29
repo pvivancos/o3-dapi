@@ -1,4 +1,3 @@
-import { Network } from '../../constants';
 interface BalanceRequest {
     address: string;
     asset?: string;
@@ -9,6 +8,6 @@ interface BalanceResults {
 interface Balances {
     [asset: string]: string;
 }
-export declare function getBalance(data: BalanceRequest | BalanceRequest[], network?: Network): Promise<BalanceResults>;
+export declare function getBalance(data: BalanceRequest | BalanceRequest[], network?: string): Promise<BalanceResults>;
 export {};
 //# sourceMappingURL=getBalance.d.ts.map

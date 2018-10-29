@@ -1,5 +1,5 @@
 import { sendMessage } from '../../messaging';
-import { ArgumentDataType, Network, Command } from '../../constants';
+import { ArgumentDataType, Command } from '../../constants';
 
 interface InvokeArgs {
   scriptHash: string;
@@ -18,7 +18,7 @@ interface AttachedAssets {
   [asset: string]: string;
 }
 
-export function invoke(data: InvokeArgs, network?: Network): Promise<string> {
+export function invoke(data: InvokeArgs, network?: string): Promise<string> {
   return sendMessage({
     command: Command.invoke,
     data,

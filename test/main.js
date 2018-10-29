@@ -1,5 +1,3 @@
-const network = web3neo.CONST.Network.TestNet;
-
 const errorEle = document.getElementById("error");
 const resultEle = document.getElementById("result");
 const loadingEle = document.getElementById("loading");
@@ -25,6 +23,8 @@ const sendAmountEle = document.getElementById("sendAmount");
 const sendRemarkEle = document.getElementById("sendRemark");
 const sendFeeEle = document.getElementById("sendFee");
 
+const networksEle = document.getElementById("networks");
+
 function clearText() {
   resultEle.innerHTML = '';
   errorEle.innerHTML = '';
@@ -49,6 +49,7 @@ function startLoading() {
 function stopLoading() {
   loadingEle.style = 'display: none;';
 }
+
 stopLoading();
 
 function isReady() {
@@ -59,6 +60,12 @@ function isReady() {
 
 function getProvider() {
   web3neo.getProvider()
+  .then(handleSuccess)
+  .catch(handleError);
+}
+
+function getNetworks() {
+  web3neo.getNetworks()
   .then(handleSuccess)
   .catch(handleError);
 }
@@ -82,7 +89,7 @@ function getStorage() {
   web3neo.getStorage({
     scriptHash: getStorageScriptHashEle.value,
     key: getStorageKeyEle.value,
-  }, network)
+  }, networksEle.value)
   .then(handleSuccess)
   .catch(handleError);
 }
@@ -93,7 +100,7 @@ function invokeRead() {
     scriptHash: invokeReadScriptHashEle.value,
     operation: invokeReadOperationEle.value,
     args: invokeReadArgsEle.value,
-  }, network)
+  }, networksEle.value)
   .then(handleSuccess)
   .catch(handleError);
 }
@@ -106,7 +113,7 @@ function invoke() {
     args: invokeArgsEle.value,
     attachedAssets: invokeAttachedAssetsEle.value,
     fee: invokeFeeEle.value,
-  }, network)
+  }, networksEle.value)
   .then(handleSuccess)
   .catch(handleError);
 }
@@ -119,7 +126,7 @@ function send() {
     amount: sendAmountEle.value,
     remark: sendRemarkEle.value,
     fee: sendFeeEle.value,
-  }, network)
+  }, networksEle.value)
   .then(handleSuccess)
   .catch(handleError);
 }
@@ -145,3 +152,15 @@ function syntaxHighlight(json) {
         return '<span class="' + cls + '">' + match + '</span>';
     });
 }
+
+web3neo.addEventListener(web3neo.Constants.EventName.READY, () => {
+  web3neo.getNetworks()
+  .then(networks => {
+    networks.forEach(network => {
+      const option = document.createElement('option');
+      option.value = network;
+      option.label = network;
+      networksEle.append(option);
+    });
+  });
+});

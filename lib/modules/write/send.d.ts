@@ -1,4 +1,3 @@
-import { Network } from '../../constants';
 interface SendArgs {
     to: string;
     asset: string;
@@ -6,6 +5,6 @@ interface SendArgs {
     remark?: string;
     fee?: string;
 }
-export declare function send(data: SendArgs, network?: Network): Promise<string>;
+export declare function send(data: SendArgs, network?: string): Promise<string>;
 export {};
 //# sourceMappingURL=send.d.ts.map

@@ -1,4 +1,4 @@
-import { Network, ArgumentDataType } from '../../constants';
+import { ArgumentDataType } from '../../constants';
 interface InvokeReadArgs {
     scriptHash: string;
     operation: string;
@@ -8,6 +8,6 @@ interface Argument {
     type: ArgumentDataType;
     value: any;
 }
-export declare function invokeRead(data: InvokeReadArgs, network?: Network): Promise<any>;
+export declare function invokeRead(data: InvokeReadArgs, network?: string): Promise<any>;
 export {};
 //# sourceMappingURL=invokeRead.d.ts.map

@@ -1,5 +1,5 @@
 import { sendMessage } from '../../messaging';
-import { Network, ArgumentDataType, Command } from '../../constants';
+import { ArgumentDataType, Command } from '../../constants';
 
 interface InvokeReadArgs {
   scriptHash: string;
@@ -12,7 +12,7 @@ interface Argument {
   value: any;
 }
 
-export function invokeRead(data: InvokeReadArgs, network?: Network): Promise<any> {
+export function invokeRead(data: InvokeReadArgs, network?: string): Promise<any> {
   return sendMessage({
     command: Command.invokeRead,
     data,

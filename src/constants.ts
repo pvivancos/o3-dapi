@@ -10,16 +10,12 @@ export enum ArgumentDataType {
   ARRAY = 'Array',
 }
 
-export enum Network {
-  MainNet = 'MainNet',
-  TestNet = 'TestNet',
-  PrivateNet = 'PrivateNet',
-}
+export const DefaultNetwork = 'MainNet';
 
 export enum Command {
   isReady = 'isReady',
   getProvider = 'getProvider',
-  getNetwork = 'getNetwork',
+  getNetworks = 'getNetworks',
   getAccount = 'getAccount',
   getBalance = 'getBalance',
   getStorage = 'getStorage',

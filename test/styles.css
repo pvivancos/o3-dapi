@@ -17,6 +17,12 @@ body {
   color: white;
 }
 
+#networks {
+  position: absolute;
+  right: 2rem;
+  top: 1.25rem;
+}
+
 .content {
   display: flex;
   padding: 0 2rem;

@@ -1,8 +1,8 @@
-import { Network, Command } from './constants';
+import { Command } from './constants';
 interface SendMessageArgs {
     command: Command;
     data?: any;
-    network?: Network;
+    network?: string;
     timeout?: number;
 }
 export declare function sendMessage({ command, data, network, timeout, }: SendMessageArgs): Promise<any>;
