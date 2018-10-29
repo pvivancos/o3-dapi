@@ -6,18 +6,24 @@ interface BalanceRequest {
   asset?: string; // Asset symbol or script hash to check balance
 }
 
+interface GetBalanceArgs {
+  query: BalanceRequest|BalanceRequest[];
+  network?: string;
+}
+
 interface BalanceResults {
-  [address: string]: Balances;
+  [address: string]: Balance[];
 }
 
-interface Balances {
-  [asset: string]: string;
+interface Balance {
+  scriptHash: string;
+  symbol: string;
+  amount: string;
 }
 
-export function getBalance(data: BalanceRequest|BalanceRequest[], network?: string): Promise<BalanceResults> {
+export function getBalance(data: GetBalanceArgs): Promise<BalanceResults> {
   return sendMessage({
     command: Command.getBalance,
     data,
-    network,
   });
 }

@@ -79,7 +79,10 @@ function getAccount() {
 
 function getBalance() {
   startLoading();
-  web3neo.getBalance(balanceInputEle.value)
+  web3neo.getBalance({
+    query: balanceInputEle.value,
+    network: networksEle.value,
+  })
   .then(handleSuccess)
   .catch(handleError);
 }
@@ -89,7 +92,8 @@ function getStorage() {
   web3neo.getStorage({
     scriptHash: getStorageScriptHashEle.value,
     key: getStorageKeyEle.value,
-  }, networksEle.value)
+    network: networksEle.value,
+  })
   .then(handleSuccess)
   .catch(handleError);
 }
@@ -100,7 +104,8 @@ function invokeRead() {
     scriptHash: invokeReadScriptHashEle.value,
     operation: invokeReadOperationEle.value,
     args: invokeReadArgsEle.value,
-  }, networksEle.value)
+    network: networksEle.value,
+  })
   .then(handleSuccess)
   .catch(handleError);
 }
@@ -113,7 +118,8 @@ function invoke() {
     args: invokeArgsEle.value,
     attachedAssets: invokeAttachedAssetsEle.value,
     fee: invokeFeeEle.value,
-  }, networksEle.value)
+    network: networksEle.value,
+  })
   .then(handleSuccess)
   .catch(handleError);
 }
@@ -126,7 +132,8 @@ function send() {
     amount: sendAmountEle.value,
     remark: sendRemarkEle.value,
     fee: sendFeeEle.value,
-  }, networksEle.value)
+    network: networksEle.value,
+  })
   .then(handleSuccess)
   .catch(handleError);
 }

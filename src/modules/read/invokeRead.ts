@@ -5,6 +5,7 @@ interface InvokeReadArgs {
   scriptHash: string;
   operation: string;
   args: Argument[];
+  network?: string;
 }
 
 interface Argument {
@@ -12,10 +13,9 @@ interface Argument {
   value: any;
 }
 
-export function invokeRead(data: InvokeReadArgs, network?: string): Promise<any> {
+export function invokeRead(data: InvokeReadArgs): Promise<any> {
   return sendMessage({
     command: Command.invokeRead,
     data,
-    network,
   });
 }

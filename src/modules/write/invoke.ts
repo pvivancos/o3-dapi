@@ -7,6 +7,7 @@ interface InvokeArgs {
   args: Argument[];
   assets?: AttachedAssets;
   fee?: string;
+  network?: string;
 }
 
 interface Argument {
@@ -18,10 +19,9 @@ interface AttachedAssets {
   [asset: string]: string;
 }
 
-export function invoke(data: InvokeArgs, network?: string): Promise<string> {
+export function invoke(data: InvokeArgs): Promise<string> {
   return sendMessage({
     command: Command.invoke,
     data,
-    network,
   });
 }

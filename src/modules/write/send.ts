@@ -7,12 +7,12 @@ interface SendArgs {
   amount: string;
   remark?: string;
   fee?: string;
+  network?: string;
 }
 
-export function send(data: SendArgs, network?: string): Promise<string> {
+export function send(data: SendArgs): Promise<string> {
   return sendMessage({
     command: Command.send,
     data,
-    network,
   });
 }
