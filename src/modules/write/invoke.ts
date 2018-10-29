@@ -19,7 +19,12 @@ interface AttachedAssets {
   [asset: string]: string;
 }
 
-export function invoke(data: InvokeArgs): Promise<string> {
+interface InvokeOutput {
+  txid: string;
+  nodeUrl: string;
+}
+
+export function invoke(data: InvokeArgs): Promise<InvokeOutput> {
   return sendMessage({
     command: Command.invoke,
     data,

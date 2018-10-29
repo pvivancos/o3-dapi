@@ -10,7 +10,12 @@ interface SendArgs {
   network?: string;
 }
 
-export function send(data: SendArgs): Promise<string> {
+interface SendOutput {
+  txid: string;
+  nodeUrl: string;
+}
+
+export function send(data: SendArgs): Promise<SendOutput> {
   return sendMessage({
     command: Command.send,
     data,
