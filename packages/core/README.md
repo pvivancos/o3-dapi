@@ -9,7 +9,7 @@ A plugin is required for use.
 
 In a browser - cdn [![](https://data.jsdelivr.com/v1/package/npm/o3-dapi-core/badge)](https://www.jsdelivr.com/package/npm/o3-dapi-core)
 ```
-<script src="https://cdn.jsdelivr.net/npm/o3-dapi-core/packages/o3-dapi-core/lib/browser/o3-dapi-core.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/o3-dapi-core/packages/o3-dapi-core/lib/o3-dapi-core.min.js"></script>
 ```
 ```
 window.o3dapi
