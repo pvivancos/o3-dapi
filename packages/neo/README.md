@@ -7,7 +7,7 @@ Requires o3-dapi-core to operate.
 
 In a browser - cdn [![](https://data.jsdelivr.com/v1/package/npm/o3-dapi-neo/badge)](https://www.jsdelivr.com/package/npm/o3-dapi-neo)
 ```
-<script src="https://cdn.jsdelivr.net/npm/o3-dapi-neo/packages/o3-dapi-neo/lib/o3-dapi-neo.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/o3-dapi-neo@0.0.1/lib/o3-dapi-neo.min.js"></script>
 ```
 ```
 window.o3dapiNeo
