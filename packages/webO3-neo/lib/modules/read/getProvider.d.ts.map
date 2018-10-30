@@ -1,1 +1,0 @@
-{"version":3,"file":"getProvider.d.ts","sourceRoot":"","sources":["../../../src/modules/read/getProvider.ts"],"names":[],"mappings":"AAGA,UAAU,QAAQ;IAChB,IAAI,EAAE,MAAM,CAAC;IACb,OAAO,EAAE,MAAM,CAAC;IAChB,OAAO,EAAE,MAAM,CAAC;IAChB,aAAa,EAAE,MAAM,EAAE,CAAC;CACzB;AAED,wBAAgB,WAAW,IAAI,OAAO,CAAC,QAAQ,CAAC,CAI/C"}

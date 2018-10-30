@@ -1,1 +1,2 @@
-# web3 interface for NEO
+# o3-dapi
+Decentralized API messaging protocol with blockchain plugins

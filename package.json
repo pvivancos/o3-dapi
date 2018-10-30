@@ -1,16 +1,16 @@
 {
-  "name": "webO3",
+  "name": "o3-dapi",
   "description": "Decentralized API messaging protocol with blockchain plugins",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/O3Labs/webO3.git"
+    "url": "git+https://github.com/O3Labs/o3-dapi.git"
   },
   "author": "Nick Fujita",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/O3Labs/webO3/issues"
+    "url": "https://github.com/O3Labs/o3-dapi/issues"
   },
-  "homepage": "https://github.com/O3Labs/webO3#readme",
+  "homepage": "https://github.com/O3Labs/o3-dapi#readme",
   "keywords": [
     "neo",
     "web3"

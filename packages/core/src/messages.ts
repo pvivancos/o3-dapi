@@ -1,5 +1,5 @@
 declare const window: any;
-declare const _webO3: any;
+declare const _o3dapi: any;
 import { get } from 'lodash-es';
 import {
   EventHandler,
@@ -9,13 +9,13 @@ import {
   SendMessageArgs,
 } from './types';
 
-const PLATFORM = 'webO3';
+const PLATFORM = 'o3dapi';
 const messageQueue = {};
 const eventsListeners: {[blockchain: string]: EventHandler} = {};
 let onReadyMessage;
 
-window._webO3 = window._webO3 ? window._webO3 : {};
-_webO3.receiveMessage = (message: IncomingMessage) => {
+window._o3dapi = window._o3dapi ? window._o3dapi : {};
+_o3dapi.receiveMessage = (message: IncomingMessage) => {
   try {
     if (typeof message === 'string') {
       message = JSON.parse(message);
@@ -81,14 +81,14 @@ export function sendMessage({
   };
 
   return new Promise((resolve, reject) => {
-    const messageHandler = get(window, 'window._webO3.messageHandler');
+    const messageHandler = get(window, 'window._o3dapi.messageHandler');
     const webkitPostMessage = get(window, 'window.webkit.messageHandlers.sendMessageHandler.postMessage');
     if (messageHandler) {
       messageHandler(JSON.stringify(message));
     } else if (webkitPostMessage) {
       webkitPostMessage(message);
     } else {
-      reject(`webO3 provider not found.`);
+      reject(`O3 dapi provider not found.`);
     }
 
     if (messageHandler || webkitPostMessage) {

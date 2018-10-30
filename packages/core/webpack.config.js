@@ -30,9 +30,9 @@ module.exports = (env) => {
     devtool: !DISTRIBUTION && 'inline-source-map',
     output: {
       path: path.join(__dirname, DISTRIBUTION ? 'lib' : 'build'),
-      filename: DISTRIBUTION ? 'webO3-core.min.js' : 'bundle.js',
+      filename: DISTRIBUTION ? 'o3-dapi-core.min.js' : 'bundle.js',
       libraryTarget: "umd",
-      library: 'webO3',
+      library: 'o3dapi',
       libraryExport: 'default',
       globalObject: 'typeof self !== \'undefined\' ? self : this',
     },
