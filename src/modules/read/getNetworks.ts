@@ -1,8 +1,8 @@
 import { sendMessage } from '../../messaging';
 import { Command } from '../../constants';
 
-export function isReady(): Promise<boolean> {
+export function getNetworks(): Promise<string[]> {
   return sendMessage({
-    command: Command.isReady,
+    command: Command.getNetworks,
   });
 }

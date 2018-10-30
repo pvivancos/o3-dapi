@@ -1,4 +1,4 @@
-import { ArgumentDataType } from '../../constants/common';
+import { ArgumentDataType } from '../../constants';
 interface InvokeArgs {
     scriptHash: string;
     operation: string;
@@ -13,6 +13,6 @@ interface Argument {
 interface AttachedAssets {
     [asset: string]: string;
 }
-export declare function invoke(data: InvokeArgs): Promise<string>;
+export declare function invoke(data: InvokeArgs, network?: string): Promise<string>;
 export {};
 //# sourceMappingURL=invoke.d.ts.map

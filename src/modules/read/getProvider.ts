@@ -1,5 +1,5 @@
 import { sendMessage } from '../../messaging';
-import { GET_PROVIDER } from '../../constants/commands';
+import { Command } from '../../constants';
 
 interface Provider {
   name: string;
@@ -10,6 +10,6 @@ interface Provider {
 
 export function getProvider(): Promise<Provider> {
   return sendMessage({
-    command: GET_PROVIDER,
+    command: Command.getProvider,
   });
 }

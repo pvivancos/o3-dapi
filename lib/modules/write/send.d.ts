@@ -5,6 +5,6 @@ interface SendArgs {
     remark?: string;
     fee?: string;
 }
-export declare function send(data: SendArgs): Promise<string>;
+export declare function send(data: SendArgs, network?: string): Promise<string>;
 export {};
 //# sourceMappingURL=send.d.ts.map

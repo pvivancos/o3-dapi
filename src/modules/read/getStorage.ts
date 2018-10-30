@@ -1,14 +1,15 @@
 import { sendMessage } from '../../messaging';
-import { GET_STORAGE } from '../../constants/commands';
+import { Command } from '../../constants';
 
 interface GetStorageArgs {
   scriptHash: string;
   key: string;
+  network?: string;
 }
 
 export function getStorage(data: GetStorageArgs): Promise<string> {
   return sendMessage({
-    command: GET_STORAGE,
+    command: Command.getStorage,
     data,
   });
 }

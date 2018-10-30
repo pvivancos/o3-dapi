@@ -1,18 +1,18 @@
 import { isReady } from './modules/read/isReady';
 import { getProvider } from './modules/read/getProvider';
-import { getNetwork, Network } from './modules/read/getNetwork';
+import { getNetworks } from './modules/read/getNetworks';
 import { getAccount } from './modules/read/getAccount';
 import { getBalance } from './modules/read/getBalance';
 import { getStorage } from './modules/read/getStorage';
 import { invokeRead } from './modules/read/invokeRead';
 import { send } from './modules/write/send';
 import { invoke } from './modules/write/invoke';
-import { addEventListener, removeEventListener, EventName } from './modules/eventListener';
-import { ArgumentDataType } from './constants/common';
+import { addEventListener, removeEventListener } from './modules/eventListener';
+import { ArgumentDataType, EventName } from './constants';
 declare const _default: {
     isReady: typeof isReady;
     getProvider: typeof getProvider;
-    getNetwork: typeof getNetwork;
+    getNetworks: typeof getNetworks;
     getAccount: typeof getAccount;
     getBalance: typeof getBalance;
     getStorage: typeof getStorage;
@@ -21,9 +21,8 @@ declare const _default: {
     invoke: typeof invoke;
     addEventListener: typeof addEventListener;
     removeEventListener: typeof removeEventListener;
-    CONST: {
+    Constants: {
         EventName: typeof EventName;
-        Network: typeof Network;
         ArgumentDataType: typeof ArgumentDataType;
     };
 };

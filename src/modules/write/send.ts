@@ -1,5 +1,5 @@
 import { sendMessage } from '../../messaging';
-import { SEND } from '../../constants/commands';
+import { Command } from '../../constants';
 
 interface SendArgs {
   to: string;
@@ -7,11 +7,17 @@ interface SendArgs {
   amount: string;
   remark?: string;
   fee?: string;
+  network?: string;
 }
 
-export function send(data: SendArgs): Promise<string> {
+interface SendOutput {
+  txid: string;
+  nodeUrl: string;
+}
+
+export function send(data: SendArgs): Promise<SendOutput> {
   return sendMessage({
-    command: SEND,
+    command: Command.send,
     data,
   });
 }

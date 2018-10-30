@@ -1,22 +1,29 @@
 import { sendMessage } from '../../messaging';
-import { GET_BALANCE } from '../../constants/commands';
+import { Command } from '../../constants';
 
 interface BalanceRequest {
   address: string; // Address to check balance(s)
   asset?: string; // Asset symbol or script hash to check balance
 }
 
+interface GetBalanceArgs {
+  params: BalanceRequest|BalanceRequest[];
+  network?: string;
+}
+
 interface BalanceResults {
-  [address: string]: Balances;
+  [address: string]: Balance[];
 }
 
-interface Balances {
-  [asset: string]: string;
+interface Balance {
+  scriptHash: string;
+  symbol: string;
+  amount: string;
 }
 
-export function getBalance(data: BalanceRequest|BalanceRequest[]): Promise<BalanceResults> {
+export function getBalance(data: GetBalanceArgs): Promise<BalanceResults> {
   return sendMessage({
-    command: GET_BALANCE,
+    command: Command.getBalance,
     data,
   });
 }

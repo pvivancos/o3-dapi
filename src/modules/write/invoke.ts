@@ -1,6 +1,5 @@
 import { sendMessage } from '../../messaging';
-import { INVOKE } from '../../constants/commands';
-import { ArgumentDataType } from '../../constants/common';
+import { ArgumentDataType, Command } from '../../constants';
 
 interface InvokeArgs {
   scriptHash: string;
@@ -8,6 +7,7 @@ interface InvokeArgs {
   args: Argument[];
   assets?: AttachedAssets;
   fee?: string;
+  network?: string;
 }
 
 interface Argument {
@@ -19,9 +19,14 @@ interface AttachedAssets {
   [asset: string]: string;
 }
 
-export function invoke(data: InvokeArgs): Promise<string> {
+interface InvokeOutput {
+  txid: string;
+  nodeUrl: string;
+}
+
+export function invoke(data: InvokeArgs): Promise<InvokeOutput> {
   return sendMessage({
-    command: INVOKE,
+    command: Command.invoke,
     data,
   });
 }

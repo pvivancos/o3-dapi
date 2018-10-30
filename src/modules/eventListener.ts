@@ -1,8 +1,4 @@
-export enum EventName {
-  READY = 'READY',
-  NETWORK_CHANGED = 'NETWORK_CHANGED',
-  ACCOUNT_CHANGED = 'ACCOUNT_CHANGED',
-}
+import { EventName } from '../constants';
 
 interface Listeners {
   [eventName: string]: Function[];

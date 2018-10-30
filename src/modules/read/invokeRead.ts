@@ -1,11 +1,11 @@
 import { sendMessage } from '../../messaging';
-import { INVOKE_READ } from '../../constants/commands';
-import { ArgumentDataType } from '../../constants/common';
+import { ArgumentDataType, Command } from '../../constants';
 
 interface InvokeReadArgs {
   scriptHash: string;
   operation: string;
   args: Argument[];
+  network?: string;
 }
 
 interface Argument {
@@ -15,7 +15,7 @@ interface Argument {
 
 export function invokeRead(data: InvokeReadArgs): Promise<any> {
   return sendMessage({
-    command: INVOKE_READ,
+    command: Command.invokeRead,
     data,
   });
 }
