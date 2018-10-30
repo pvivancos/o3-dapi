@@ -1,1 +1,0 @@
-{"version":3,"file":"getStorage.d.ts","sourceRoot":"","sources":["../../../src/modules/read/getStorage.ts"],"names":[],"mappings":"AAGA,UAAU,cAAc;IACtB,UAAU,EAAE,MAAM,CAAC;IACnB,GAAG,EAAE,MAAM,CAAC;CACb;AAED,wBAAgB,UAAU,CAAC,IAAI,EAAE,cAAc,EAAE,OAAO,CAAC,EAAE,MAAM,GAAG,OAAO,CAAC,MAAM,CAAC,CAMlF"}
