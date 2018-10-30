@@ -27,8 +27,6 @@
     "webpack": "4.21.0",
     "webpack-cli": "3.1.2"
   },
-  "dependencies": {
-  },
   "peerDependencies": {
     "webO3-core": "0.0.1"
   },
