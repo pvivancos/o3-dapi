@@ -1,5 +1,4 @@
 export const PLATFORM = 'web3neo';
-export const VERSION = 'v1';
 
 export enum ArgumentDataType {
   STRING = 'string',
