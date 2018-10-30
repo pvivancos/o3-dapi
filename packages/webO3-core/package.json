@@ -1,7 +1,7 @@
 {
   "name": "webO3-core",
   "version": "0.0.1",
-  "description": "O3 JavaScript API core",
+  "description": "webO3 core messaging protocol",
   "main": "./lib/node/webO3-core.min.js",
   "types": "./lib/index.d.ts",
   "scripts": {
