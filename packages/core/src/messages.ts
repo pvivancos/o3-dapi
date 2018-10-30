@@ -9,7 +9,7 @@ import {
   SendMessageArgs,
 } from './types';
 
-const PLATFORM = 'o3dapi';
+const PLATFORM = 'o3-dapi';
 const messageQueue = {};
 const eventsListeners: {[blockchain: string]: EventHandler} = {};
 let onReadyMessage;
