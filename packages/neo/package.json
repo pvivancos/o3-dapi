@@ -1,6 +1,6 @@
 {
   "name": "o3-dapi-neo",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "NEO Plugin for o3-dapi",
   "main": "./lib/node/o3-dapi-neo.min.js",
   "types": "./lib/index.d.ts",
@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/O3Labs/o3-dapi/issues"
   },
-  "homepage": "https://github.com/O3Labs/o3-dapi/packages/o3-dapi#readme",
+  "homepage": "https://github.com/O3Labs/o3-dapi/tree/master/packages/neo",
   "devDependencies": {
     "ts-loader": "5.2.2",
     "tslint": "5.11.0",
@@ -28,7 +28,7 @@
     "webpack-cli": "3.1.2"
   },
   "peerDependencies": {
-    "o3-dapi-core": "0.0.2"
+    "o3-dapi-core": "0.0.3"
   },
   "keywords": [
     "neo",
