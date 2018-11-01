@@ -5,9 +5,10 @@ interface InvokeArgs {
   scriptHash: string;
   operation: string;
   args: Argument[];
-  assets?: AttachedAssets;
   fee?: string;
   network?: string;
+  attachedAssets?: AttachedAssets[];
+  requestedAssets?: RequestedAssets[];
 }
 
 interface Argument {
@@ -16,7 +17,19 @@ interface Argument {
 }
 
 interface AttachedAssets {
-  [asset: string]: string;
+  asset: string;
+  amount: string;
+}
+
+interface RequestedAssets {
+  asset: string;
+  amount: string;
+  utxo: Utxo[];
+}
+
+interface Utxo {
+  index: number;
+  txid: string;
 }
 
 interface InvokeOutput {
