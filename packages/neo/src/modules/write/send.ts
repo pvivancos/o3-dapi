@@ -2,7 +2,8 @@ import { sendMessage } from '../../messaging';
 import { Command } from '../../constants';
 
 interface SendArgs {
-  to: string;
+  fromAddress: string;
+  toAddress: string;
   asset: string;
   amount: string;
   remark?: string;

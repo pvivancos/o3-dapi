@@ -17,6 +17,7 @@ const invokeArgsEle = document.getElementById("invokeArgs");
 const invokeAttachedAssetsEle = document.getElementById("invokeAttachedAssets");
 const invokeFeeEle = document.getElementById("invokeFee");
 
+const sendFromAddressEle = document.getElementById("sendFromAddress");
 const sendToAddressEle = document.getElementById("sendToAddress");
 const sendAssetEle = document.getElementById("sendAsset");
 const sendAmountEle = document.getElementById("sendAmount");
@@ -127,7 +128,8 @@ function invoke() {
 function send() {
   startLoading();
   o3dapi.NEO.send({
-    to: sendToAddressEle.value,
+    fromAddress: sendFromAddressEle.value,
+    toAddress: sendToAddressEle.value,
     asset: sendAssetEle.value,
     amount: sendAmountEle.value,
     remark: sendRemarkEle.value,
