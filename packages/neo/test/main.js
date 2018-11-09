@@ -16,6 +16,9 @@ const invokeOperationEle = document.getElementById("invokeOperation");
 const invokeArgsEle = document.getElementById("invokeArgs");
 const invokeAttachedAssetsEle = document.getElementById("invokeAttachedAssets");
 const invokeFeeEle = document.getElementById("invokeFee");
+const assetIntentOverridesEle = document.getElementById("assetIntentOverrides");
+const triggerContractVerificationEle = document.getElementById("triggerContractVerification");
+
 
 const sendFromAddressEle = document.getElementById("sendFromAddress");
 const sendToAddressEle = document.getElementById("sendToAddress");
@@ -79,13 +82,21 @@ function getAccount() {
 }
 
 function getBalance() {
-  startLoading();
-  o3dapi.NEO.getBalance({
-    params: balanceInputEle.value,
-    network: networksEle.value,
-  })
-  .then(handleSuccess)
-  .catch(handleError);
+  try {
+    startLoading();
+    console.log('nicktest', JSON.stringify({
+      params: balanceInputEle.value && JSON.parse(balanceInputEle.value),
+      network: networksEle.value,
+    }));
+    o3dapi.NEO.getBalance({
+      params: balanceInputEle.value && JSON.parse(balanceInputEle.value),
+      network: networksEle.value,
+    })
+    .then(handleSuccess)
+    .catch(handleError);
+  } catch (err) {
+    handleError('invalid JSON input');
+  }
 }
 
 function getStorage() {
@@ -100,29 +111,49 @@ function getStorage() {
 }
 
 function invokeRead() {
-  startLoading();
-  o3dapi.NEO.invokeRead({
-    scriptHash: invokeReadScriptHashEle.value,
-    operation: invokeReadOperationEle.value,
-    args: invokeReadArgsEle.value,
-    network: networksEle.value,
-  })
-  .then(handleSuccess)
-  .catch(handleError);
+  try {
+    startLoading();
+    o3dapi.NEO.invokeRead({
+      scriptHash: invokeReadScriptHashEle.value,
+      operation: invokeReadOperationEle.value,
+      args: invokeReadArgsEle.value && JSON.parse(invokeReadArgsEle.value),
+      network: networksEle.value,
+    })
+    .then(handleSuccess)
+    .catch(handleError);
+  } catch (err) {
+    handleError('invalid JSON input');
+  }
 }
 
 function invoke() {
-  startLoading();
-  o3dapi.NEO.invoke({
-    scriptHash: invokeScriptHashEle.value,
-    operation: invokeOperationEle.value,
-    args: invokeArgsEle.value,
-    attachedAssets: invokeAttachedAssetsEle.value,
-    fee: invokeFeeEle.value,
-    network: networksEle.value,
-  })
-  .then(handleSuccess)
-  .catch(handleError);
+  try {
+    startLoading();
+    console.log('nicktest', JSON.stringify({
+      scriptHash: invokeScriptHashEle.value,
+      operation: invokeOperationEle.value,
+      args: invokeArgsEle.value && JSON.parse(invokeArgsEle.value),
+      attachedAssets: invokeAttachedAssetsEle.value && JSON.parse(invokeAttachedAssetsEle.value),
+      fee: invokeFeeEle.value,
+      network: networksEle.value,
+      assetIntentOverrides: assetIntentOverridesEle.value && JSON.parse(assetIntentOverridesEle.value),
+      triggerContractVerification: triggerContractVerificationEle.checked,
+    }));
+    o3dapi.NEO.invoke({
+      scriptHash: invokeScriptHashEle.value,
+      operation: invokeOperationEle.value,
+      args: invokeArgsEle.value && JSON.parse(invokeArgsEle.value),
+      attachedAssets: invokeAttachedAssetsEle.value && JSON.parse(invokeAttachedAssetsEle.value),
+      fee: invokeFeeEle.value,
+      network: networksEle.value,
+      assetIntentOverrides: assetIntentOverridesEle.value && JSON.parse(assetIntentOverridesEle.value),
+      triggerContractVerification: triggerContractVerificationEle.checked,
+    })
+    .then(handleSuccess)
+    .catch(handleError);
+  } catch (err) {
+    handleError('invalid JSON input');
+  }
 }
 
 function send() {

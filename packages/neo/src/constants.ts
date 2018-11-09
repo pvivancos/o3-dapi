@@ -8,6 +8,7 @@ export enum ArgumentDataType {
   INTEGER = 'Integer',
   BYTEARRAY = 'ByteArray',
   ARRAY = 'Array',
+  ADDRESS = 'Address',
 }
 
 export const DefaultNetwork = 'MainNet';

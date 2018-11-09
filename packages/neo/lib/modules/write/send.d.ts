@@ -1,5 +1,6 @@
 interface SendArgs {
-    to: string;
+    fromAddress: string;
+    toAddress: string;
     asset: string;
     amount: string;
     remark?: string;

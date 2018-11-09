@@ -3,16 +3,31 @@ interface InvokeArgs {
     scriptHash: string;
     operation: string;
     args: Argument[];
-    assets?: AttachedAssets;
     fee?: string;
     network?: string;
+    attachedAssets?: AttachedAssets[];
+    assetIntentOverrides?: AssetIntentOverrides;
+    triggerContractVerification?: boolean;
 }
 interface Argument {
     type: ArgumentDataType;
     value: any;
 }
 interface AttachedAssets {
-    [asset: string]: string;
+    [asset: string]: number;
+}
+interface AssetIntentOverrides {
+    inputs: AssetInput[];
+    outputs: AssetOutput[];
+}
+interface AssetInput {
+    txid: string;
+    index: number;
+}
+interface AssetOutput {
+    asset: string;
+    address: number;
+    value: string;
 }
 interface InvokeOutput {
     txid: string;

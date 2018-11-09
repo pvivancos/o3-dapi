@@ -6,7 +6,8 @@ export declare enum ArgumentDataType {
     HASH160 = "Hash160",
     INTEGER = "Integer",
     BYTEARRAY = "ByteArray",
-    ARRAY = "Array"
+    ARRAY = "Array",
+    ADDRESS = "Address"
 }
 export declare const DefaultNetwork = "MainNet";
 export declare enum Command {

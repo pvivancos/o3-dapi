@@ -8,7 +8,8 @@ interface InvokeArgs {
   fee?: string;
   network?: string;
   attachedAssets?: AttachedAssets[];
-  requestedAssets?: RequestedAssets[];
+  assetIntentOverrides?: AssetIntentOverrides;
+  triggerContractVerification?: boolean;
 }
 
 interface Argument {
@@ -17,19 +18,23 @@ interface Argument {
 }
 
 interface AttachedAssets {
-  asset: string;
-  amount: string;
+  [asset: string]: number; // 'NEO'|'GAS'
 }
 
-interface RequestedAssets {
-  asset: string;
-  amount: string;
-  utxo: Utxo[];
+interface AssetIntentOverrides {
+  inputs: AssetInput[];
+  outputs: AssetOutput[];
 }
 
-interface Utxo {
-  index: number;
+interface AssetInput {
   txid: string;
+  index: number;
+}
+
+interface AssetOutput {
+  asset: string;
+  address: number;
+  value: string;
 }
 
 interface InvokeOutput {
