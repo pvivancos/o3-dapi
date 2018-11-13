@@ -15,6 +15,8 @@ class O3dapiNeo {
 
   static blockchain = BLOCKCHAIN;
 
+  isAvailable = Boolean((window as any)._o3dapi.isAvailable);
+
   isReady = isReady;
   getProvider = getProvider;
   getNetworks = getNetworks;

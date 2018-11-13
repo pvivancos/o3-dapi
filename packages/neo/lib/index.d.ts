@@ -11,6 +11,7 @@ import { addEventListener, removeEventListener } from './modules/eventListener';
 import { ArgumentDataType, EventName } from './constants';
 declare class O3dapiNeo {
     static blockchain: string;
+    isAvailable: boolean;
     isReady: typeof isReady;
     getProvider: typeof getProvider;
     getNetworks: typeof getNetworks;
