@@ -13,4 +13,6 @@ o3dapiCore.initPlugins = (plugins: Plugin[]) => {
   });
 };
 
+o3dapiCore.isAvailable = Boolean((window as any)._o3dapi.isAvailable);
+
 export default o3dapiCore;

@@ -68,7 +68,6 @@ export function sendMessage({
   network,
   timeout,
 }: SendMessageArgs): Promise<any> {
-  debugger;
   const messageId = blockchain + version + command + (Date.now() + Math.random()).toString();
   const message: Message = {
     platform: PLATFORM,
