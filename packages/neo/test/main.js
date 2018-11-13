@@ -84,10 +84,6 @@ function getAccount() {
 function getBalance() {
   try {
     startLoading();
-    console.log('nicktest', JSON.stringify({
-      params: balanceInputEle.value && JSON.parse(balanceInputEle.value),
-      network: networksEle.value,
-    }));
     o3dapi.NEO.getBalance({
       params: balanceInputEle.value && JSON.parse(balanceInputEle.value),
       network: networksEle.value,
@@ -129,16 +125,6 @@ function invokeRead() {
 function invoke() {
   try {
     startLoading();
-    console.log('nicktest', JSON.stringify({
-      scriptHash: invokeScriptHashEle.value,
-      operation: invokeOperationEle.value,
-      args: invokeArgsEle.value && JSON.parse(invokeArgsEle.value),
-      attachedAssets: invokeAttachedAssetsEle.value && JSON.parse(invokeAttachedAssetsEle.value),
-      fee: invokeFeeEle.value,
-      network: networksEle.value,
-      assetIntentOverrides: assetIntentOverridesEle.value && JSON.parse(assetIntentOverridesEle.value),
-      triggerContractVerification: triggerContractVerificationEle.checked,
-    }));
     o3dapi.NEO.invoke({
       scriptHash: invokeScriptHashEle.value,
       operation: invokeOperationEle.value,
@@ -195,9 +181,28 @@ function syntaxHighlight(json) {
 
 o3dapi.initPlugins([o3dapiNeo]);
 
+if (o3dapi.isAvailable) {
+  console.log('in o3 dapp browser')
+}
+
+o3dapi.NEO.isReady()
+.then(() => {
+  console.log('isReady');
+  onReady()
+})
+.catch(() => {
+  console.log('not ready')
+});
+
 o3dapi.NEO.addEventListener(o3dapi.NEO.Constants.EventName.READY, () => {
+  console.log('addEventListener ready');
+  onReady()
+});
+
+function onReady() {
   o3dapi.NEO.getNetworks()
   .then(networks => {
+    console.log('networks', )
     networks.forEach(network => {
       const option = document.createElement('option');
       option.value = network;
@@ -205,4 +210,4 @@ o3dapi.NEO.addEventListener(o3dapi.NEO.Constants.EventName.READY, () => {
       networksEle.append(option);
     });
   });
-});
+};

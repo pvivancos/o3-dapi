@@ -5,5 +5,6 @@ export function getNetworks(): Promise<string[]> {
   console.log('getNetworks');
   return sendMessage({
     command: Command.getNetworks,
+    timeout: 2500,
   });
 }
