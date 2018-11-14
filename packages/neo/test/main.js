@@ -181,25 +181,15 @@ function syntaxHighlight(json) {
 
 o3dapi.initPlugins([o3dapiNeo]);
 
-if (o3dapi.isAvailable) {
+if (o3dapi.NEO.isAvailable) {
   console.log('in o3 dapp browser')
 }
 
-o3dapi.NEO.isReady()
-.then(() => {
-  console.log('isReady');
-  onReady()
-})
-.catch(() => {
-  console.log('not ready')
-});
-
-o3dapi.NEO.addEventListener(o3dapi.NEO.Constants.EventName.READY, () => {
-  console.log('addEventListener ready');
-  onReady()
-});
+o3dapi.NEO.addEventListener(o3dapi.NEO.Constants.EventName.READY, onReady);
 
 function onReady() {
+  debugger;
+  console.log('onReady');
   o3dapi.NEO.getNetworks()
   .then(networks => {
     console.log('networks', )

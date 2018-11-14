@@ -16,7 +16,6 @@ interface InternalSendMessageArgs extends SendMessageArgs {
 export let _sendMessage = (args: InternalSendMessageArgs): Promise<any> => Promise.reject(new Error('o3-dapi-neo plugin not instanciated.'));
 
 export function sendMessage(args: SendMessageArgs): Promise<any> {
-  console.log('sendMessage', args);
   return _sendMessage({
     ...args,
     blockchain: BLOCKCHAIN,

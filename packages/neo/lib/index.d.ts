@@ -1,4 +1,3 @@
-import { isReady } from './modules/read/isReady';
 import { getProvider } from './modules/read/getProvider';
 import { getNetworks } from './modules/read/getNetworks';
 import { getAccount } from './modules/read/getAccount';
@@ -12,7 +11,6 @@ import { ArgumentDataType, EventName } from './constants';
 declare class O3dapiNeo {
     static blockchain: string;
     isAvailable: boolean;
-    isReady: typeof isReady;
     getProvider: typeof getProvider;
     getNetworks: typeof getNetworks;
     getAccount: typeof getAccount;

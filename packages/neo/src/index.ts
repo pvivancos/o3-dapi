@@ -1,4 +1,3 @@
-import { isReady } from './modules/read/isReady';
 import { getProvider } from './modules/read/getProvider';
 import { getNetworks } from './modules/read/getNetworks';
 import { getAccount } from './modules/read/getAccount';
@@ -17,7 +16,6 @@ class O3dapiNeo {
 
   isAvailable = Boolean((window as any)._o3dapi.isAvailable);
 
-  isReady = isReady;
   getProvider = getProvider;
   getNetworks = getNetworks;
   getAccount = getAccount;

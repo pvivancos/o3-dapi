@@ -12,7 +12,6 @@ import {
 const PLATFORM = 'o3-dapi';
 const messageQueue = {};
 const eventsListeners: {[blockchain: string]: EventHandler} = {};
-let onReadyMessage;
 
 window._o3dapi = window._o3dapi ? window._o3dapi : {};
 _o3dapi.receiveMessage = (message: IncomingMessage) => {
@@ -35,6 +34,9 @@ _o3dapi.receiveMessage = (message: IncomingMessage) => {
     }
 
     if (command === 'event') {
+
+      // ready event is not specifc to any blockchain
+      // so call all listeners on each blockchain plugin
       if (eventName === 'READY') {
         Object.keys(eventsListeners)
         .map(key => eventsListeners[key]) // Object.values
