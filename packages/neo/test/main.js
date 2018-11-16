@@ -42,7 +42,7 @@ function handleSuccess(data) {
 
 function handleError(error) {
   stopLoading();
-  errorEle.innerHTML = syntaxHighlight(JSON.stringify(error));
+  errorEle.innerHTML = syntaxHighlight(error);
 }
 
 function startLoading() {
@@ -188,11 +188,8 @@ if (o3dapi.NEO.isAvailable) {
 o3dapi.NEO.addEventListener(o3dapi.NEO.Constants.EventName.READY, onReady);
 
 function onReady() {
-  debugger;
-  console.log('onReady');
   o3dapi.NEO.getNetworks()
   .then(networks => {
-    console.log('networks', )
     networks.forEach(network => {
       const option = document.createElement('option');
       option.value = network;
