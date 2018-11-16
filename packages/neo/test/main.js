@@ -192,6 +192,9 @@ function onReady() {
   .then(networks => {
     networks.forEach(network => {
       const option = document.createElement('option');
+      if (network === 'TestNet') {
+        option.selected = 'selected';
+      }
       option.value = network;
       option.label = network;
       networksEle.append(option);

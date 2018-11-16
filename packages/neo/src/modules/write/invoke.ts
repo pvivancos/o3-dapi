@@ -4,7 +4,7 @@ import { ArgumentDataType, Command } from '../../constants';
 interface InvokeArgs {
   scriptHash: string;
   operation: string;
-  args: Argument[];
+  args?: Argument[];
   fee?: string;
   network?: string;
   attachedAssets?: AttachedAssets[];
