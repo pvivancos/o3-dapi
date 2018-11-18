@@ -1,0 +1,1 @@
+{"version":3,"file":"verifyMessage.d.ts","sourceRoot":"","sources":["../../../src/modules/message/verifyMessage.ts"],"names":[],"mappings":"AAEA,OAAO,EAAE,SAAS,EAAE,MAAM,UAAU,CAAC;AAErC,UAAU,kBAAkB;IAC1B,OAAO,EAAE,MAAM,CAAC;IAChB,SAAS,EAAE,SAAS,CAAC;CACtB;AAED,wBAAgB,aAAa,CAAC,IAAI,EAAE,kBAAkB,GAAG,OAAO,CAAC,OAAO,CAAC,CAKxE"}

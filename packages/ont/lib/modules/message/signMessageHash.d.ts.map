@@ -1,0 +1,1 @@
+{"version":3,"file":"signMessageHash.d.ts","sourceRoot":"","sources":["../../../src/modules/message/signMessageHash.ts"],"names":[],"mappings":"AAEA,OAAO,EAAE,SAAS,EAAE,MAAM,UAAU,CAAC;AAErC,UAAU,oBAAoB;IAC5B,WAAW,EAAE,MAAM,CAAC;CACrB;AAED,wBAAgB,eAAe,CAAC,IAAI,EAAE,oBAAoB,GAAG,OAAO,CAAC,SAAS,CAAC,CAK9E"}
