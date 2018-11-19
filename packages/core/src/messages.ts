@@ -84,10 +84,15 @@ export function sendMessage({
   return new Promise((resolve, reject) => {
     const messageHandler = get(window, 'window._o3dapi.messageHandler');
     const webkitPostMessage = get(window, 'window.webkit.messageHandlers.sendMessageHandler.postMessage');
+    const isIOS = Boolean(webkitPostMessage) && typeof webkitPostMessage === 'function';
     if (messageHandler) {
       messageHandler(JSON.stringify(message));
-    } else if (webkitPostMessage) {
-      webkitPostMessage(message);
+    } else if (isIOS) {
+      try {
+        window.webkit.messageHandlers.sendMessageHandler.postMessage(message);
+      } catch (err) {
+        reject(`O3 dapi provider not found.`);
+      }
     } else {
       reject(`O3 dapi provider not found.`);
     }
