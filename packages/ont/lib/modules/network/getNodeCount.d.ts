@@ -1,2 +1,6 @@
-export declare function getNodeCount(): Promise<number>;
+interface GetNodeCountArgs {
+    network?: string;
+}
+export declare function getNodeCount(data: GetNodeCountArgs): Promise<number>;
+export {};
 //# sourceMappingURL=getNodeCount.d.ts.map

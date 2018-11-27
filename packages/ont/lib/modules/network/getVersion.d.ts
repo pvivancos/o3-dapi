@@ -1,2 +1,6 @@
-export declare function getVersion(): Promise<string>;
+interface GetVersionArgs {
+    network?: string;
+}
+export declare function getVersion(data: GetVersionArgs): Promise<string>;
+export {};
 //# sourceMappingURL=getVersion.d.ts.map

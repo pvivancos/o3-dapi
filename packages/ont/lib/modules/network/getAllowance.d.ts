@@ -3,6 +3,7 @@ interface Allowance {
     asset: Asset;
     fromAddress: string;
     toAddress: string;
+    network?: string;
 }
 export declare function getAllowance(data: Allowance): Promise<Allowance>;
 export {};

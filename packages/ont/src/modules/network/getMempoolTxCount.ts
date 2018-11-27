@@ -1,8 +1,13 @@
 import { sendMessage } from '../../messaging';
 import { Command } from '../../constants';
 
-export function getMempoolTxCount(): Promise<number[]> {
+interface GetMempoolTxCountInput {
+  network?: string;
+}
+
+export function getMempoolTxCount(data: GetMempoolTxCountInput): Promise<number[]> {
   return sendMessage({
     command: Command.getMempoolTxCount,
+    data,
   });
 }

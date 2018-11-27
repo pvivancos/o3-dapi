@@ -1,5 +1,6 @@
 interface GetBlockTxsByHeightInput {
     height: number;
+    network?: string;
 }
 interface BlockWithTxList {
     Hash: string;

@@ -3,6 +3,7 @@ import { Command } from '../../constants';
 
 interface GetSmartCodeEventInput {
   value: string | number;
+  network?: string;
 }
 
 export function getSmartCodeEvent(data: GetSmartCodeEventInput): Promise<any> {

@@ -3,6 +3,7 @@ import { Command } from '../../constants';
 import { TransactionType, TxSignature, Transaction } from './common';
 
 interface GetBlockInput {
+  network?: string;
   block: number | string;
 }
 

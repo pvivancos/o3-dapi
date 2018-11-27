@@ -16,7 +16,7 @@ import { getStorage } from './modules/network/getStorage';
 import { getAllowance } from './modules/network/getAllowance';
 import { getBlock } from './modules/network/getBlock';
 import { getTransaction } from './modules/network/getTransaction';
-import { getNetwork } from './modules/network/getNetwork';
+import { getNetworks } from './modules/network/getNetworks';
 import { getBalance } from './modules/network/getBalance';
 import { getUnboundOng } from './modules/network/getUnboundOng';
 import { getContract } from './modules/network/getContract';
@@ -57,7 +57,7 @@ declare class O3dapiOnt {
     getAllowance: typeof getAllowance;
     getBlock: typeof getBlock;
     getTransaction: typeof getTransaction;
-    getNetwork: typeof getNetwork;
+    getNetworks: typeof getNetworks;
     getBalance: typeof getBalance;
     getUnboundOng: typeof getUnboundOng;
     getContract: typeof getContract;

@@ -19,7 +19,7 @@ import { getStorage } from './modules/network/getStorage';
 import { getAllowance } from './modules/network/getAllowance';
 import { getBlock } from './modules/network/getBlock';
 import { getTransaction } from './modules/network/getTransaction';
-import { getNetwork } from './modules/network/getNetwork';
+import { getNetworks } from './modules/network/getNetworks';
 import { getBalance } from './modules/network/getBalance';
 import { getUnboundOng } from './modules/network/getUnboundOng';
 import { getContract } from './modules/network/getContract';
@@ -76,7 +76,7 @@ class O3dapiOnt {
   getAllowance = getAllowance;
   getBlock = getBlock;
   getTransaction = getTransaction;
-  getNetwork = getNetwork;
+  getNetworks = getNetworks;
   getBalance = getBalance;
   getUnboundOng = getUnboundOng;
   getContract = getContract;

@@ -2,30 +2,48 @@ const errorEle = document.getElementById("error");
 const resultEle = document.getElementById("result");
 const loadingEle = document.getElementById("loading");
 
-const balanceInputEle = document.getElementById("balanceInput");
+const getMerkleProofInputEle = document.getElementById("getMerkleProofInput");
+
+const getTransactionInputEle = document.getElementById("getTransactionInput");
+
+const getBlockEle = document.getElementById("getBlockInput");
+
+const getSmartCodeEventInputEle = document.getElementById("getSmartCodeEventInput");
+
+const getContractInputEle = document.getElementById("getContractInput");
 
 const getStorageScriptHashEle = document.getElementById("getStorageScriptHash");
 const getStorageKeyEle = document.getElementById("getStorageKey");
 
-const invokeReadScriptHashEle = document.getElementById("invokeReadScriptHash");
-const invokeReadOperationEle = document.getElementById("invokeReadOperation");
-const invokeReadArgsEle = document.getElementById("invokeReadArgs");
+const getBalanceInputEle = document.getElementById("getBalanceInput");
 
-const invokeScriptHashEle = document.getElementById("invokeScriptHash");
-const invokeOperationEle = document.getElementById("invokeOperation");
-const invokeArgsEle = document.getElementById("invokeArgs");
-const invokeAttachedAssetsEle = document.getElementById("invokeAttachedAssets");
-const invokeFeeEle = document.getElementById("invokeFee");
-const assetIntentOverridesEle = document.getElementById("assetIntentOverrides");
-const triggerContractVerificationEle = document.getElementById("triggerContractVerification");
+const getBlockHeightByTxHashInputEle = document.getElementById("getBlockHeightByTxHashInput");
+
+const getAllowanceAssetInputEle = document.getElementById("getAllowanceAssetInput");
+const getAllowanceFromInputEle = document.getElementById("getAllowanceFromInput");
+const getAllowanceToInputEle = document.getElementById("getAllowanceToInput");
 
 
-const sendFromAddressEle = document.getElementById("sendFromAddress");
-const sendToAddressEle = document.getElementById("sendToAddress");
-const sendAssetEle = document.getElementById("sendAsset");
-const sendAmountEle = document.getElementById("sendAmount");
-const sendRemarkEle = document.getElementById("sendRemark");
-const sendFeeEle = document.getElementById("sendFee");
+//
+// const invokeReadScriptHashEle = document.getElementById("invokeReadScriptHash");
+// const invokeReadOperationEle = document.getElementById("invokeReadOperation");
+// const invokeReadArgsEle = document.getElementById("invokeReadArgs");
+//
+// const invokeScriptHashEle = document.getElementById("invokeScriptHash");
+// const invokeOperationEle = document.getElementById("invokeOperation");
+// const invokeArgsEle = document.getElementById("invokeArgs");
+// const invokeAttachedAssetsEle = document.getElementById("invokeAttachedAssets");
+// const invokeFeeEle = document.getElementById("invokeFee");
+// const assetIntentOverridesEle = document.getElementById("assetIntentOverrides");
+// const triggerContractVerificationEle = document.getElementById("triggerContractVerification");
+//
+//
+// const sendFromAddressEle = document.getElementById("sendFromAddress");
+// const sendToAddressEle = document.getElementById("sendToAddress");
+// const sendAssetEle = document.getElementById("sendAsset");
+// const sendAmountEle = document.getElementById("sendAmount");
+// const sendRemarkEle = document.getElementById("sendRemark");
+// const sendFeeEle = document.getElementById("sendFee");
 
 const networksEle = document.getElementById("networks");
 
@@ -56,49 +74,90 @@ function stopLoading() {
 
 stopLoading();
 
-function isReady() {
-  o3dapi.NEO.isReady()
-  .then(handleSuccess)
-  .catch(handleError);
-}
-
 function getProvider() {
-  o3dapi.NEO.getProvider()
+  o3dapi.ONT.getProvider()
   .then(handleSuccess)
   .catch(handleError);
 }
 
 function getNetworks() {
-  o3dapi.NEO.getNetworks()
+  o3dapi.ONT.getNetworks()
   .then(handleSuccess)
   .catch(handleError);
 }
 
-function getAccount() {
+function getNodeCount() {
   startLoading();
-  o3dapi.NEO.getAccount()
+  o3dapi.ONT.getNodeCount({
+    network: networksEle.value,
+  })
   .then(handleSuccess)
   .catch(handleError);
 }
 
-function getBalance() {
-  try {
-    startLoading();
-    o3dapi.NEO.getBalance({
-      params: balanceInputEle.value && JSON.parse(balanceInputEle.value),
-      network: networksEle.value,
-    })
-    .then(handleSuccess)
-    .catch(handleError);
-  } catch (err) {
-    handleError('invalid JSON input');
-  }
+function getBlockHeight() {
+  startLoading();
+  o3dapi.ONT.getBlockHeight({
+    network: networksEle.value,
+  })
+  .then(handleSuccess)
+  .catch(handleError);
+}
+
+function getMerkleProof() {
+  startLoading();
+  o3dapi.ONT.getMerkleProof({
+    txHash: getMerkleProofInputEle.value,
+    network: networksEle.value,
+  })
+  .then(handleSuccess)
+  .catch(handleError);
+}
+
+function getTransaction() {
+  startLoading();
+  o3dapi.ONT.getTransaction({
+    txHash: getTransactionInputEle.value,
+    network: networksEle.value,
+  })
+  .then(handleSuccess)
+  .catch(handleError);
+}
+
+function getBlock() {
+  startLoading();
+  o3dapi.ONT.getBlock({
+    block: getBlockEle.value,
+    network: networksEle.value,
+  })
+  .then(handleSuccess)
+  .catch(handleError);
+}
+
+function getSmartCodeEvent() {
+  startLoading();
+  o3dapi.ONT.getSmartCodeEvent({
+    value: getSmartCodeEventInputEle.value,
+    network: networksEle.value,
+  })
+  .then(handleSuccess)
+  .catch(handleError);
+}
+
+function getContract() {
+  startLoading();
+  o3dapi.ONT.getContract({
+    hash: getContractInputEle.value,
+    network: networksEle.value,
+  })
+  .then(handleSuccess)
+  .catch(handleError);
 }
 
 function getStorage() {
   startLoading();
-  o3dapi.NEO.getStorage({
-    scriptHash: getStorageScriptHashEle.value,
+  o3dapi.ONT.getStorage({
+    contract: getStorageScriptHashEle.value,
     key: getStorageKeyEle.value,
     network: networksEle.value,
   })
@@ -106,56 +165,47 @@ function getStorage() {
   .catch(handleError);
 }
 
-function invokeRead() {
-  try {
-    startLoading();
-    o3dapi.NEO.invokeRead({
-      scriptHash: invokeReadScriptHashEle.value,
-      operation: invokeReadOperationEle.value,
-      args: invokeReadArgsEle.value && JSON.parse(invokeReadArgsEle.value),
-      network: networksEle.value,
-    })
-    .then(handleSuccess)
-    .catch(handleError);
-  } catch (err) {
-    handleError('invalid JSON input');
-  }
-}
-
-function invoke() {
-  try {
-    startLoading();
-    o3dapi.NEO.invoke({
-      scriptHash: invokeScriptHashEle.value,
-      operation: invokeOperationEle.value,
-      args: invokeArgsEle.value && JSON.parse(invokeArgsEle.value),
-      attachedAssets: invokeAttachedAssetsEle.value && JSON.parse(invokeAttachedAssetsEle.value),
-      fee: invokeFeeEle.value,
-      network: networksEle.value,
-      assetIntentOverrides: assetIntentOverridesEle.value && JSON.parse(assetIntentOverridesEle.value),
-      triggerContractVerification: triggerContractVerificationEle.checked,
-    })
-    .then(handleSuccess)
-    .catch(handleError);
-  } catch (err) {
-    handleError('invalid JSON input');
-  }
-}
-
-function send() {
+function getBalance() {
   startLoading();
-  o3dapi.NEO.send({
-    fromAddress: sendFromAddressEle.value,
-    toAddress: sendToAddressEle.value,
-    asset: sendAssetEle.value,
-    amount: sendAmountEle.value,
-    remark: sendRemarkEle.value,
-    fee: sendFeeEle.value,
+  o3dapi.ONT.getBalance({
+    address: getBalanceInputEle.value,
     network: networksEle.value,
   })
   .then(handleSuccess)
   .catch(handleError);
 }
+
+function getBlockHeightByTxHash() {
+  startLoading();
+  o3dapi.ONT.getBlockHeightByTxHash({
+    hash: getBlockHeightByTxHashInputEle.value,
+    network: networksEle.value,
+  })
+  .then(handleSuccess)
+  .catch(handleError);
+}
+
+function getAllowance() {
+  startLoading();
+  o3dapi.ONT.getAllowance({
+    asset: getAllowanceAssetInputEle.value,
+    from: getAllowanceFromInputEle.value,
+    to: getAllowanceToInputEle.value,
+    network: networksEle.value,
+  })
+  .then(handleSuccess)
+  .catch(handleError);
+}
+
+
+// function getGasPrice() {
+//   startLoading();
+//   o3dapi.ONT.getGasPrice({
+//     network: networksEle.value,
+//   })
+//   .then(handleSuccess)
+//   .catch(handleError);
+// }
 
 function syntaxHighlight(json) {
     if (typeof json != 'string') {
@@ -179,20 +229,21 @@ function syntaxHighlight(json) {
     });
 }
 
-o3dapi.initPlugins([o3dapiNeo]);
+o3dapi.initPlugins([o3dapiOnt]);
 
-if (o3dapi.NEO.isAvailable) {
+if (o3dapi.ONT.isAvailable) {
   console.log('in o3 dapp browser')
 }
 
-o3dapi.NEO.addEventListener(o3dapi.NEO.Constants.EventName.READY, onReady);
+o3dapi.ONT.addEventListener(o3dapi.ONT.Constants.EventName.READY, onReady);
 
 function onReady() {
-  o3dapi.NEO.getNetworks()
+  o3dapi.ONT.getNetworks()
   .then(networks => {
     networks.forEach(network => {
       const option = document.createElement('option');
-      if (network === 'TestNet') {
+      // if (network === 'TestNet') {
+      if (network === 'MainNet') {
         option.selected = 'selected';
       }
       option.value = network;

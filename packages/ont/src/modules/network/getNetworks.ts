@@ -8,8 +8,8 @@ interface Network {
   address: string;
 }
 
-export function getNetwork(): Promise<Network> {
+export function getNetworks(): Promise<Network> {
   return sendMessage({
-    command: Command.getNetwork,
+    command: Command.getNetworks,
   });
 }

@@ -1,5 +1,6 @@
 interface GetBalanceInput {
     address: string;
+    network?: string;
 }
 interface Balance {
     ONT: string;

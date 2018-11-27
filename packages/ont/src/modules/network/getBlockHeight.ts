@@ -1,8 +1,13 @@
 import { sendMessage } from '../../messaging';
 import { Command } from '../../constants';
 
-export function getBlockHeight(): Promise<number> {
+interface GetBlockHeightArgs {
+  network?: string;
+}
+
+export function getBlockHeight(data: GetBlockHeightArgs): Promise<number> {
   return sendMessage({
     command: Command.getBlockHeight,
+    data,
   });
 }

@@ -1,8 +1,13 @@
 import { sendMessage } from '../../messaging';
 import { Command } from '../../constants';
 
-export function getVersion(): Promise<string> {
+interface GetVersionArgs {
+  network?: string;
+}
+
+export function getVersion(data: GetVersionArgs): Promise<string> {
   return sendMessage({
     command: Command.getVersion,
+    data,
   });
 }

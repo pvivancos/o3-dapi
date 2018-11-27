@@ -5,14 +5,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>O3 Dapp Platform</title>
+  <title>O3 Dapp Platform - Ontology</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="./styles.css">
-  <script type="text/javascript" src="../../core/lib/o3-dapi-core.min.js"></script>
-  <script type="text/javascript" src="../lib/o3-dapi-ont.min.js"></script>
-  <!-- <script type="text/javascript" src="../../core/build/bundle.js"></script> -->
-  <!-- <script type="text/javascript" src="../build/bundle.js"></script> -->
+  <!-- <script type="text/javascript" src="../../core/lib/o3-dapi-core.min.js"></script>
+  <script type="text/javascript" src="../lib/o3-dapi-ont.min.js"></script> -->
+  <script type="text/javascript" src="../../core/build/bundle.js"></script>
+  <script type="text/javascript" src="../build/bundle.js"></script>
 
   <!-- <script src="https://cdn.jsdelivr.net/npm/o3-dapi-core@0.0.4/lib/o3-dapi-core.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/o3-dapi-ont@0.0.1/lib/o3-dapi-ont.min.js"></script> -->
@@ -48,6 +48,122 @@
         </div>
 
         <div class="function-container">
+          <h5 class="title">getNodeCount</h5>
+          <p class="text">
+            <p>Returns the number of nodes in the network.</p>
+          </p>
+          <button type="button" class="btn btn-primary" onclick="getNodeCount()">Get Node Count</button>
+        </div>
+
+        <div class="function-container">
+          <h5 class="title">getBlockHeight</h5>
+          <p class="text">
+            <p>Returns the block height of the network.</p>
+          </p>
+          <button type="button" class="btn btn-primary" onclick="getBlockHeight()">Get Block Height</button>
+        </div>
+
+        <div class="function-container">
+          <h5 class="title">getMerkleProof</h5>
+          <p class="text">
+            <p>Returns the Merkle Proof for a given transaction hash.</p>
+          </p>
+          <input id='getMerkleProofInput' type="text" value="20054354e385b262f5754929c11990a86757e4e9f5104102ba0b0aa6b1368999"/>
+          <button type="button" class="btn btn-primary" onclick="getMerkleProof()">Get Merkle Proof</button>
+        </div>
+
+        <div class="function-container">
+          <h5 class="title">getTransaction</h5>
+          <p class="text">
+            <p>Returns the transaction JSON for a given transaction hash.</p>
+          </p>
+          <input id='getTransactionInput' type="text" value="20054354e385b262f5754929c11990a86757e4e9f5104102ba0b0aa6b1368999"/>
+          <button type="button" class="btn btn-primary" onclick="getTransaction()">Get Tx</button>
+        </div>
+
+        <div class="function-container">
+          <h5 class="title">getBlock</h5>
+          <p class="text">
+            <p>Returns information about a block a given block height or hash.</p>
+          </p>
+          <input id='getBlockInput' type="text" value="1088379"/>
+          <button type="button" class="btn btn-primary" onclick="getBlock()">Get Block</button>
+        </div>
+
+        <div class="function-container">
+          <h5 class="title">getSmartCodeEvent</h5>
+          <p class="text">
+            <p>Returns information about a block a given block height or hash.</p>
+          </p>
+          <input id='getSmartCodeEventInput' type="text" value="20054354e385b262f5754929c11990a86757e4e9f5104102ba0b0aa6b1368999"/>
+          <button type="button" class="btn btn-primary" onclick="getSmartCodeEvent()">Get Smart Code Event</button>
+        </div>
+
+        <div class="function-container">
+          <h5 class="title">getContract</h5>
+          <p class="text">
+            <p>Returns information about a given smart contract.</p>
+          </p>
+          <input id='getContractInput' type="text" value="0200000000000000000000000000000000000000"/>
+          <button type="button" class="btn btn-primary" onclick="getContract()">Get Contract</button>
+        </div>
+
+        <div class="function-container">
+          <h5 class="title">getStorage</h5>
+          <p class="text">
+            <p>Reads the raw value in smart contract storage.</p>
+          </p>
+          <p>Script hash:</p>
+          <input id='getStorageScriptHash' type="text" value="0200000000000000000000000000000000000000"/>
+          <br/>
+          <p>Key:</p>
+          <input id='getStorageKey' type="text" value="AFmseVrdL9f9oyCzZefL9tG6UbviEH9ugK"/>
+          <button type="button" class="btn btn-primary" onclick="getStorage()">Get storage</button>
+        </div>
+
+        <!-- <div class="function-container">
+          <h5 class="title">getGasPrice</h5>
+          <p class="text">
+            <p>Returns gas price (network fee).</p>
+          </p>
+          <button type="button" class="btn btn-primary" onclick="getGasPrice()">Get gas price</button>
+        </div> -->
+
+        <div class="function-container">
+          <h5 class="title">getBalance</h5>
+          <p class="text">
+            <p>Returns the ONT and ONG balance for a given address.</p>
+          </p>
+          <input id='getBalanceInput' type="text" value="AFmseVrdL9f9oyCzZefL9tG6UbviEH9ugK"/>
+          <button type="button" class="btn btn-primary" onclick="getBalance()">Get balance</button>
+        </div>
+
+        <div class="function-container">
+          <h5 class="title">getBlockHeightByTxHash</h5>
+          <p class="text">
+            <p>Returns the block hight that a given tx was executed in.</p>
+          </p>
+          <input id='getBlockHeightByTxHashInput' type="text" value="20054354e385b262f5754929c11990a86757e4e9f5104102ba0b0aa6b1368999"/>
+          <button type="button" class="btn btn-primary" onclick="getBlockHeightByTxHash()">Get tx block height</button>
+        </div>
+
+        <div class="function-container">
+          <h5 class="title">getAllowance</h5>
+          <p class="text">
+            <p>Reads the raw value in smart contract storage.</p>
+          </p>
+          <p>Asset:</p>
+          <input id='getAllowanceAssetInput' type="text" value="ONT"/>
+          <br/>
+          <p>From address:</p>
+          <input id='getAllowanceFromInput' type="text" value="AFmseVrdL9f9oyCzZefL9tG6UbviEH9ugK"/>
+          <br/>
+          <p>To address:</p>
+          <input id='getAllowanceToInput' type="text" value="AYmMcV5chKwkBWpXCxdCDaBJYrLFLbycYb"/>
+          <button type="button" class="btn btn-primary" onclick="getAllowance()">Get allowance</button>
+        </div>
+
+        <!-- <div class="function-container">
           <h5 class="title">getAccount</h5>
           <p class="text">
             <p>Return the Account that is currently connected to the dApp.</p>
@@ -146,7 +262,7 @@
           <input id='sendFee' type="text" placeholder="eg. 0.00000001"/>
           <br/>
           <button type="button" class="btn btn-primary" onclick="send()">Send</button>
-        </div>
+        </div> -->
 
       </div>
 

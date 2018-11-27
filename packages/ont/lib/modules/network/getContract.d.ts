@@ -1,5 +1,6 @@
 interface GetContractInput {
     hash: string;
+    network?: string;
 }
 interface Contract {
     Code: string;

@@ -3,6 +3,7 @@ import { Command } from '../../constants';
 
 interface GetBalanceInput {
   address: string;
+  network?: string;
 }
 
 interface Balance {

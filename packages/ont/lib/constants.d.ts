@@ -1,5 +1,5 @@
 export declare const BLOCKCHAIN = "ONT";
-export declare const VERSION = "0.0.1";
+export declare const VERSION = "v1";
 export declare enum Command {
     getAccount = "getAccount",
     getPublicKey = "getPublicKey",
@@ -19,7 +19,7 @@ export declare enum Command {
     getAllowance = "getAllowance",
     getBlock = "getBlock",
     getTransaction = "getTransaction",
-    getNetwork = "getNetwork",
+    getNetworks = "getNetworks",
     getBalance = "getBalance",
     getUnboundOng = "getUnboundOng",
     getContract = "getContract",

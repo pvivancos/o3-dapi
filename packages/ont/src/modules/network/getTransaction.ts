@@ -4,6 +4,7 @@ import { TransactionType, TxSignature, Transaction } from './common';
 
 interface GetTransactionInput {
   txHash: string;
+  network?: string;
 }
 
 export function getTransaction(data: GetTransactionInput): Promise<Transaction> {
