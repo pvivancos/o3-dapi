@@ -9,7 +9,7 @@ interface SendInput {
 
 export function send(data: SendInput): Promise<string> {
   return sendMessage({
-    command: Command.getPublicKey,
+    command: Command.send,
     data,
   });
 }

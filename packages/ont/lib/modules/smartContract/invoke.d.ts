@@ -11,6 +11,7 @@ interface InvokeInput {
     gasPrice?: number;
     gasLimit?: number;
     requireIdentity?: boolean;
+    payer?: string;
 }
 export declare function invoke(data: InvokeInput): Promise<InvokeResponse>;
 export {};
