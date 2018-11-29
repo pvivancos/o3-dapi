@@ -325,8 +325,7 @@ function onReady() {
   .then(networks => {
     networks.forEach(network => {
       const option = document.createElement('option');
-      if (network === 'PrivateNet') {
-      // if (network === 'MainNet') {
+      if (network === 'TestNet') {
         option.selected = 'selected';
       }
       option.value = network;
