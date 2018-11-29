@@ -86,7 +86,11 @@ export function sendMessage({
     const webkitPostMessage = get(window, 'window.webkit.messageHandlers.sendMessageHandler.postMessage');
     const isIOS = Boolean(webkitPostMessage) && typeof webkitPostMessage === 'function';
     if (messageHandler) {
-      messageHandler(JSON.stringify(message));
+      try {
+        window._o3dapi.messageHandler(JSON.stringify(message));
+      } catch (err) {
+        reject(`O3 dapi provider not found.`);
+      }
     } else if (isIOS) {
       try {
         window.webkit.messageHandlers.sendMessageHandler.postMessage(message);

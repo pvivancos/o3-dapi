@@ -1,6 +1,6 @@
 {
   "name": "o3-dapi-core",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "O3 dapi core messaging protocol",
   "main": "./lib/node/o3-dapi-core.min.js",
   "types": "./lib/index.d.ts",
