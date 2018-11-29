@@ -9,7 +9,6 @@ export declare enum ArgumentDataType {
     ARRAY = "Array",
     ADDRESS = "Address"
 }
-export declare const DefaultNetwork = "MainNet";
 export declare enum Command {
     isReady = "isReady",
     getProvider = "getProvider",

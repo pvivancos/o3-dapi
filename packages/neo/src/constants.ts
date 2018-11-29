@@ -11,8 +11,6 @@ export enum ArgumentDataType {
   ADDRESS = 'Address',
 }
 
-export const DefaultNetwork = 'MainNet';
-
 export enum Command {
   isReady = 'isReady',
   getProvider = 'getProvider',

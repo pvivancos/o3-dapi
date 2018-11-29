@@ -1,6 +1,6 @@
 {
   "name": "o3-dapi-core",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "O3 dapi core messaging protocol",
   "main": "./lib/node/o3-dapi-core.min.js",
   "types": "./lib/index.d.ts",
@@ -29,6 +29,8 @@
   },
   "dependencies": {
     "@types/lodash-es": "4.17.1",
+    "bs58": "^4.0.1",
+    "crypto-js": "^3.1.9-1",
     "lodash-es": "4.17.11"
   },
   "keywords": [
