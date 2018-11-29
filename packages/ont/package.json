@@ -28,7 +28,7 @@
     "webpack-cli": "3.1.2"
   },
   "peerDependencies": {
-    "o3-dapi-core": "0.0.4"
+    "o3-dapi-core": "0.0.6"
   },
   "keywords": [
     "ont",
