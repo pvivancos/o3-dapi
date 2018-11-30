@@ -1,6 +1,5 @@
 import { sendMessage } from '../../messaging';
 import { Command } from '../../constants';
-import { Parameter } from './common';
 
 interface DeployInput {
   code: string;
@@ -12,6 +11,7 @@ interface DeployInput {
   needStorage?: boolean;
   gasPrice?: number;
   gasLimit?: number;
+  network?: string;
 }
 
 export function deploy(data: DeployInput): Promise<void> {

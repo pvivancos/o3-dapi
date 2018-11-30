@@ -1,0 +1,1 @@
+{"version":3,"file":"balanceOf.d.ts","sourceRoot":"","sources":["../../../../src/modules/nep5/read/balanceOf.ts"],"names":[],"mappings":"AAGA,UAAU,cAAc;IACtB,OAAO,CAAC,EAAE,MAAM,CAAC;IACjB,UAAU,EAAE,MAAM,CAAC;IACnB,OAAO,EAAE,MAAM,CAAC;CACjB;AAED,wBAAgB,SAAS,CAAC,IAAI,EAAE,cAAc,GAAG,OAAO,CAAC,MAAM,CAAC,CAK/D"}

@@ -1,5 +1,5 @@
 import { getAccount } from './modules/asset/getAccount';
-import { getPublicKey } from './modules/asset/getPublicKey';
+// import { getPublicKey } from './modules/asset/getPublicKey';
 import { send } from './modules/asset/send';
 
 import { getIdentity } from './modules/identity/getIdentity';
@@ -8,9 +8,9 @@ import { addAttributes } from './modules/identity/addAttributes';
 import { removeAttribute } from './modules/identity/removeAttribute';
 
 import { signMessage } from './modules/message/signMessage';
-import { signMessageHash } from './modules/message/signMessageHash';
+// import { signMessageHash } from './modules/message/signMessageHash';
 import { verifyMessage } from './modules/message/verifyMessage';
-import { verifyMessageHash } from './modules/message/verifyMessageHash';
+// import { verifyMessageHash } from './modules/message/verifyMessageHash';
 
 import { getNodeCount } from './modules/network/getNodeCount';
 import { getBlockHeight } from './modules/network/getBlockHeight';
@@ -40,6 +40,8 @@ import { invokeRead } from './modules/smartContract/invokeRead';
 import { deploy } from './modules/smartContract/deploy';
 import { ParameterType } from './modules/smartContract/common';
 
+import * as nep5 from './modules/nep5';
+
 import { addEventListener, removeEventListener } from './modules/eventListener';
 
 import {
@@ -55,9 +57,9 @@ class O3dapiOnt {
 
   isAvailable = Boolean((window as any)._o3dapi.isAvailable);
 
+  getProvider = getProvider;
   getAccount = getAccount;
-  getPublicKey = getPublicKey;
-  send = send;
+  getNetworks = getNetworks;
 
   getIdentity = getIdentity;
   getDDO = getDDO;
@@ -65,39 +67,49 @@ class O3dapiOnt {
   removeAttribute = removeAttribute;
 
   signMessage = signMessage;
-  signMessageHash = signMessageHash;
+  // signMessageHash = signMessageHash;
   verifyMessage = verifyMessage;
-  verifyMessageHash = verifyMessageHash;
+  // verifyMessageHash = verifyMessageHash;
 
   getNodeCount = getNodeCount;
   getBlockHeight = getBlockHeight;
   getMerkleProof = getMerkleProof;
-  getStorage = getStorage;
-  getAllowance = getAllowance;
   getBlock = getBlock;
-  getTransaction = getTransaction;
-  getNetworks = getNetworks;
-  getBalance = getBalance;
-  getUnboundOng = getUnboundOng;
-  getContract = getContract;
-  getSmartCodeEvent = getSmartCodeEvent;
   getBlockHeightByTxHash = getBlockHeightByTxHash;
   getBlockHash = getBlockHash;
-  getBlockTxsByHeight = getBlockTxsByHeight;
-  getGasPrice = getGasPrice;
-  getGrantOng = getGrantOng;
-  getMempoolTxCount = getMempoolTxCount;
-  getMempoolTxState = getMempoolTxState;
   getVersion = getVersion;
 
-  getProvider = getProvider;
+  getMempoolTxCount = getMempoolTxCount;
+  getMempoolTxState = getMempoolTxState;
+  getSmartCodeEvent = getSmartCodeEvent;
+  getGasPrice = getGasPrice;
+  getBlockTxsByHeight = getBlockTxsByHeight;
+  getTransaction = getTransaction;
 
+  getAllowance = getAllowance;
+  getBalance = getBalance;
+  getGrantOng = getGrantOng;
+  getUnboundOng = getUnboundOng;
+  send = send;
+
+  getContract = getContract;
+  getStorage = getStorage;
   invoke = invoke;
   invokeRead = invokeRead;
   deploy = deploy;
 
   addEventListener = addEventListener;
   removeEventListener = removeEventListener;
+
+  NEP5 = {
+    init: nep5.init,
+    transfer: nep5.transfer,
+    balanceOf: nep5.balanceOf,
+    totalSupply: nep5.totalSupply,
+    symbol: nep5.symbol,
+    decimals: nep5.decimals,
+    name: nep5.name,
+  };
 
   Constants = {
     EventName,
