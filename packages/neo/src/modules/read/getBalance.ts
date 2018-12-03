@@ -27,11 +27,12 @@ export function getBalance(data: GetBalanceArgs): Promise<BalanceResults> {
     data.params = [data.params];
   }
 
-  data.params.forEach(({address, assets}, index) => {
+  data.params.forEach(({address, assets, fetchUTXO}, index) => {
     if (assets && !Array.isArray(assets)) {
       data.params[index] = {
         address,
         assets: [assets],
+        fetchUTXO,
       };
     }
   });
