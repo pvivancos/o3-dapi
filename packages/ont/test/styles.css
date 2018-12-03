@@ -220,3 +220,40 @@ textarea {
   -webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
   transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
 }
+
+@media only screen and (max-width: 420px) {
+  .nav {
+    height: 5rem;
+  }
+
+  .nav .title {
+    width: 50%
+  }
+
+  #networks {
+    right: 0;
+    top: 2rem;
+  }
+
+  .content {
+    display: block;
+    max-height: none;
+  }
+
+  .functions {
+    max-width: none;
+    margin-right: auto;
+    height: 45vh;
+    margin-bottom: 1rem;
+  }
+
+  .output {
+    max-width: none;
+    margin-bottom: 1rem;
+    height: 40vh;
+  }
+
+  .scroll-container {
+    padding-bottom: none;
+  }
+}
