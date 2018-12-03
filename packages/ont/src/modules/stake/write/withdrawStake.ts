@@ -5,6 +5,8 @@ interface WithdrawStakeInput {
   network?: string;
   nodePublicKey: string;
   amount: number;
+  gasPrice?: number;
+  gasLimit?: number;
 }
 
 interface WithdrawStakeOutput {

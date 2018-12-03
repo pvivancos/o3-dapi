@@ -3,6 +3,8 @@ import { StakeCommand } from '../constants';
 
 interface ClaimStakedOngInput {
   network?: string;
+  gasPrice?: number;
+  gasLimit?: number;
 }
 
 interface ClaimStakedOngOutput {
