@@ -40,7 +40,7 @@ import { invokeRead } from './modules/smartContract/invokeRead';
 import { deploy } from './modules/smartContract/deploy';
 import { ParameterType } from './modules/smartContract/common';
 
-import * as nep5 from './modules/nep5';
+import * as stake from './modules/stake';
 
 import { addEventListener, removeEventListener } from './modules/eventListener';
 
@@ -101,14 +101,19 @@ class O3dapiOnt {
   addEventListener = addEventListener;
   removeEventListener = removeEventListener;
 
-  NEP5 = {
-    init: nep5.init,
-    transfer: nep5.transfer,
-    balanceOf: nep5.balanceOf,
-    totalSupply: nep5.totalSupply,
-    symbol: nep5.symbol,
-    decimals: nep5.decimals,
-    name: nep5.name,
+  stake = {
+    getStakeRoundInfo: stake.getStakeRoundInfo,
+    getNodeList: stake.getNodeList,
+    getTotalStake: stake.getTotalStake,
+    getNodeStakeInfo: stake.getNodeStakeInfo,
+    getStakedClaimableOng: stake.getStakedClaimableOng,
+    getStakedClaimableOngRewards: stake.getStakedClaimableOngRewards,
+
+    addStake: stake.addStake,
+    requestStakeWithdraw: stake.requestStakeWithdraw,
+    withdrawStake: stake.withdrawStake,
+    claimStakedOng: stake.claimStakedOng,
+    claimStakedOngRewards: stake.claimStakedOngRewards,
   };
 
   Constants = {

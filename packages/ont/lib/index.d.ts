@@ -5,7 +5,7 @@ import { getDDO } from './modules/identity/getDDO';
 import { addAttributes } from './modules/identity/addAttributes';
 import { removeAttribute } from './modules/identity/removeAttribute';
 import { signMessage } from './modules/message/signMessage';
-import { signMessageHash } from './modules/message/signMessageHash';
+import { verifyMessage } from './modules/message/verifyMessage';
 import { getNodeCount } from './modules/network/getNodeCount';
 import { getBlockHeight } from './modules/network/getBlockHeight';
 import { getMerkleProof } from './modules/network/getMerkleProof';
@@ -31,7 +31,7 @@ import { invoke } from './modules/smartContract/invoke';
 import { invokeRead } from './modules/smartContract/invokeRead';
 import { deploy } from './modules/smartContract/deploy';
 import { ParameterType } from './modules/smartContract/common';
-import * as nep5 from './modules/nep5';
+import * as stake from './modules/stake';
 import { addEventListener, removeEventListener } from './modules/eventListener';
 import { EventName } from './constants';
 declare class O3dapiOnt {
@@ -45,7 +45,7 @@ declare class O3dapiOnt {
     addAttributes: typeof addAttributes;
     removeAttribute: typeof removeAttribute;
     signMessage: typeof signMessage;
-    signMessageHash: typeof signMessageHash;
+    verifyMessage: typeof verifyMessage;
     getNodeCount: typeof getNodeCount;
     getBlockHeight: typeof getBlockHeight;
     getMerkleProof: typeof getMerkleProof;
@@ -71,14 +71,13 @@ declare class O3dapiOnt {
     deploy: typeof deploy;
     addEventListener: typeof addEventListener;
     removeEventListener: typeof removeEventListener;
-    NEP5: {
-        init: nep5.init;
-        transfer: nep5.transfer;
-        balanceOf: nep5.balanceOf;
-        totalSupply: nep5.totalSupply;
-        symbol: nep5.symbol;
-        decimals: nep5.decimals;
-        name: nep5.name;
+    stake: {
+        getStakeRoundInfo: typeof stake.getStakeRoundInfo;
+        getNodeList: typeof stake.getNodeList;
+        getTotalStake: typeof stake.getTotalStake;
+        getNodeStakeInfo: typeof stake.getNodeStakeInfo;
+        getStakedClaimableOng: typeof stake.getStakedClaimableOng;
+        getStakedClaimableOngRewards: typeof stake.getStakedClaimableOngRewards;
     };
     Constants: {
         EventName: typeof EventName;
