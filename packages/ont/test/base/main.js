@@ -54,6 +54,7 @@ function clearText() {
 }
 
 function handleSuccess(data) {
+  debugger;
   stopLoading();
   const formatted = syntaxHighlight(data);
   resultEle.innerHTML = formatted;
@@ -279,15 +280,19 @@ function send() {
   }
 }
 
-
-// function getGasPrice() {
-//   startLoading();
-//   o3dapi.ONT.getGasPrice({
-//     network: networksEle.value,
-//   })
-//   .then(handleSuccess)
-//   .catch(handleError);
-// }
+function requestTestnetOng() {
+  clearText();
+  o3dapi.ONT.getAccount()
+  .then(({address}) => fetch(`https://ont.io/api/v1/asset/transfer/${address}`))
+  .then(data => data.json())
+  .then(res => {
+    return res.Error ?
+      'Testnet ONG has already been requested with this account once before. Please request with a different account.' :
+      'Request successful! ONG should be in your account shortly.';
+  })
+  .then(handleSuccess)
+  .catch(handleError);
+}
 
 function syntaxHighlight(json) {
     if (typeof json != 'string') {

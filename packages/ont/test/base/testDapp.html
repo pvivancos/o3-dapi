@@ -280,106 +280,13 @@
           <button type="button" class="btn btn-primary" onclick="send()">Send</button>
         </div>
 
-        <!-- <div class="function-container">
-          <h5 class="title">getAccount</h5>
-          <p class="text">
-            <p>Return the Account that is currently connected to the dApp.</p>
-          </p>
-          <button type="button" class="btn btn-primary" onclick="getAccount()">Get account</button>
-        </div>
-
         <div class="function-container">
-          <h5 class="title">getBalance</h5>
+          <h5 class="title">TestNet ONG Request</h5>
           <p class="text">
-            <p>Return balance of a specific asset for the given account, or all balances for an account. Also takes multiple entries.</p>
+            <p>This is not a part of the Ontology dapi, but is a request for 100 testnet ONG. Only one request can be submitted per address. If you have previously received testnet ONG from this faucet before, please change accounts and request again.</p>
           </p>
-          <textarea id='balanceInput' name="name">[{"address":"AScKxyXmNtEnTLTvbVhNQyTJmgytxhwSnM","asset":"GAS"}]</textarea>
-          <button type="button" class="btn btn-primary" onclick="getBalance()">Get Balance</button>
+          <button type="button" class="btn btn-primary" onclick="requestTestnetOng()">Request</button>
         </div>
-
-        <div class="function-container">
-          <h5 class="title">getStorage</h5>
-          <p class="text">
-            <p>Reads the raw value in smart contract storage.</p>
-          </p>
-          <p>Script hash:</p>
-          <input id='getStorageScriptHash' type="text" value="c36aee199dbba6c3f439983657558cfb67629599"/>
-          <br/>
-          <p>Key:</p>
-          <input id='getStorageKey' type="text" value="bd097b2fcf70e1fd30a5c3ef51e662feeafeba01"/>
-          <button type="button" class="btn btn-primary" onclick="getStorage()">Get storage</button>
-        </div>
-
-        <div class="function-container">
-          <h5 class="title">invokeRead</h5>
-          <p class="text">
-            <p>Execute a contract invocation in read-only mode.</p>
-          </p>
-          <p>Script hash:</p>
-          <input id='invokeReadScriptHash' type="text" value="c36aee199dbba6c3f439983657558cfb67629599"/>
-          <br/>
-          <p>Operation:</p>
-          <input id='invokeReadOperation' type="text" value="balanceOf"/>
-          <br/>
-          <p>Arguments:</p>
-          <textarea id='invokeReadArgs'>[{"type":"ByteArray","value":"bd097b2fcf70e1fd30a5c3ef51e662feeafeba01"}]</textarea>
-          <button type="button" class="btn btn-primary" onclick="invokeRead()">Invoke read</button>
-        </div>
-
-        <div class="function-container">
-          <h5 class="title">invoke</h5>
-          <p class="text">
-            <p>Execute a contract invocation.</p>
-          </p>
-          <br/>
-          <p>Script hash:</p>
-          <input id='invokeScriptHash' type="text" value="c36aee199dbba6c3f439983657558cfb67629599"/>
-          <br/>
-          <p>Operation:</p>
-          <input id='invokeOperation' type="text" value="transfer"/>
-          <br/>
-          <p>Arguments:</p>
-          <textarea id='invokeArgs'>[{"type":"ByteArray","value":""},{"type":"ByteArray","value":""},{"type":"ByteArray","value":"0100000000000000"}]</textarea>
-          <br/>
-          <p>Attached assets: (Optional)</p>
-          <input id='invokeAttachedAssets' type="text"/>
-          <br/>
-          <p>Fee: (Optional)</p>
-          <input id='invokeFee' type="text" placeholder="eg. 0.00000001"/>
-          <p>Asset Intent Overrides:</p>
-          <textarea id='assetIntentOverrides'></textarea>
-          <br/>
-          <p>Trigger contract verification:</p>
-          <input id='triggerContractVerification' type="checkbox" />
-          <br/>
-          <button type="button" class="btn btn-primary" onclick="invoke()">Invoke</button>
-        </div>
-
-        <div class="function-container">
-          <h5 class="title">send</h5>
-          <p class="text">
-            <p>Invoke a transfer of a specified amount of a given asset from the connected account to another account.</p>
-          </p>
-          <p>From address:</p>
-          <input id='sendFromAddress' type="text" placeholder="eg. AKJQMHma9MA8KK5M8iQg8ASeg3KZLsjwvB"/>
-          <br/>
-          <p>To address:</p>
-          <input id='sendToAddress' type="text" placeholder="eg. AKJQMHma9MA8KK5M8iQg8ASeg3KZLsjwvB"/>
-          <br/>
-          <p>Asset:</p>
-          <input id='sendAsset' type="text" placeholder="eg. SWTH or ab38352559b8b203bde5fddfa0b07d8b2525e132"/>
-          <br/>
-          <p>Amount:</p>
-          <input id='sendAmount' type="text" placeholder="eg. 0.01"/>
-          <br/>
-          <p>Remark: (Optional)</p>
-          <input id='sendRemark' type="text" placeholder="eg. Lunch last Thursday"/>
-          <br/>
-          <p>Fee: (Optional)</p>
-          <input id='sendFee' type="text" placeholder="eg. 0.00000001"/>
-          <br/>
-          <button type="button" class="btn btn-primary" onclick="send()">Send</button>
-        </div> -->
 
       </div>
 
