@@ -1,0 +1,1 @@
+{"version":3,"file":"getTotalStake.d.ts","sourceRoot":"","sources":["../../../../src/modules/stake/read/getTotalStake.ts"],"names":[],"mappings":"AAGA,UAAU,iBAAiB;IACzB,OAAO,CAAC,EAAE,MAAM,CAAC;IACjB,OAAO,EAAE,MAAM,CAAC;CACjB;AAED,UAAU,UAAU;IAClB,MAAM,EAAE,MAAM,CAAC;CAChB;AAED,wBAAgB,aAAa,CAAC,IAAI,EAAE,iBAAiB,GAAG,OAAO,CAAC,UAAU,CAAC,CAK1E"}
