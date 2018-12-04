@@ -1,5 +1,5 @@
-import { sendMessage } from '../../messaging';
-import { Command } from '../../constants';
+import { sendMessage } from '../messaging';
+import { Command } from '../constants';
 
 type NetworkType = 'MAIN' | 'TEST' | 'PRIVATE';
 

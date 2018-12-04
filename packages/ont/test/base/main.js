@@ -98,7 +98,7 @@ function getAccount() {
 
 function getNodeCount() {
   startLoading();
-  o3dapi.ONT.getNodeCount({
+  o3dapi.ONT.network.getNodeCount({
     network: networksEle.value,
   })
   .then(handleSuccess)
@@ -107,7 +107,7 @@ function getNodeCount() {
 
 function getBlockHeight() {
   startLoading();
-  o3dapi.ONT.getBlockHeight({
+  o3dapi.ONT.network.getBlockHeight({
     network: networksEle.value,
   })
   .then(handleSuccess)
@@ -116,7 +116,7 @@ function getBlockHeight() {
 
 function getMerkleProof() {
   startLoading();
-  o3dapi.ONT.getMerkleProof({
+  o3dapi.ONT.network.getMerkleProof({
     txHash: getMerkleProofInputEle.value,
     network: networksEle.value,
   })
@@ -126,7 +126,7 @@ function getMerkleProof() {
 
 function getTransaction() {
   startLoading();
-  o3dapi.ONT.getTransaction({
+  o3dapi.ONT.tx.getTransaction({
     txHash: getTransactionInputEle.value,
     network: networksEle.value,
   })
@@ -136,7 +136,7 @@ function getTransaction() {
 
 function getBlock() {
   startLoading();
-  o3dapi.ONT.getBlock({
+  o3dapi.ONT.network.getBlock({
     block: getBlockEle.value,
     network: networksEle.value,
   })
@@ -146,7 +146,7 @@ function getBlock() {
 
 function getSmartCodeEvent() {
   startLoading();
-  o3dapi.ONT.getSmartCodeEvent({
+  o3dapi.ONT.tx.getSmartCodeEvent({
     value: getSmartCodeEventInputEle.value,
     network: networksEle.value,
   })
@@ -156,7 +156,7 @@ function getSmartCodeEvent() {
 
 function getContract() {
   startLoading();
-  o3dapi.ONT.getContract({
+  o3dapi.ONT.sc.getContract({
     hash: getContractInputEle.value,
     network: networksEle.value,
   })
@@ -166,7 +166,7 @@ function getContract() {
 
 function getStorage() {
   startLoading();
-  o3dapi.ONT.getStorage({
+  o3dapi.ONT.sc.getStorage({
     contract: getStorageScriptHashEle.value,
     key: getStorageKeyEle.value,
     network: networksEle.value,
@@ -177,7 +177,7 @@ function getStorage() {
 
 function getBalance() {
   startLoading();
-  o3dapi.ONT.getBalance({
+  o3dapi.ONT.assets.getBalance({
     address: getBalanceInputEle.value,
     network: networksEle.value,
   })
@@ -187,7 +187,7 @@ function getBalance() {
 
 function getBlockHeightByTxHash() {
   startLoading();
-  o3dapi.ONT.getBlockHeightByTxHash({
+  o3dapi.ONT.tx.getBlockHeightByTxHash({
     hash: getBlockHeightByTxHashInputEle.value,
     network: networksEle.value,
   })
@@ -197,7 +197,7 @@ function getBlockHeightByTxHash() {
 
 function getAllowance() {
   startLoading();
-  o3dapi.ONT.getAllowance({
+  o3dapi.ONT.assets.getAllowance({
     asset: getAllowanceAssetInputEle.value,
     from: getAllowanceFromInputEle.value,
     to: getAllowanceToInputEle.value,
@@ -210,7 +210,7 @@ function getAllowance() {
 function invokeRead() {
   try {
     startLoading();
-    o3dapi.ONT.invokeRead({
+    o3dapi.ONT.sc.invokeRead({
       scriptHash: invokeReadScriptHashEle.value,
       operation: invokeReadOperationEle.value,
       args: invokeReadArgsEle.value && JSON.parse(invokeReadArgsEle.value),
@@ -226,7 +226,7 @@ function invokeRead() {
 function invoke() {
   try {
     startLoading();
-    o3dapi.ONT.invoke({
+    o3dapi.ONT.sc.invoke({
       scriptHash: invokeScriptHashEle.value,
       operation: invokeOperationEle.value,
       args: invokeArgsEle.value && JSON.parse(invokeArgsEle.value),
@@ -244,7 +244,7 @@ function invoke() {
 function deploy() {
   try {
     startLoading();
-    o3dapi.ONT.deploy({
+    o3dapi.ONT.sc.deploy({
       name: deployNameEle.value,
       version: deployVersionEle.value,
       author: deployAuthorEle.value,
@@ -266,7 +266,7 @@ function deploy() {
 function send() {
   try {
     startLoading();
-    o3dapi.ONT.send({
+    o3dapi.ONT.assets.send({
       to: sendToAddressEle.value,
       amount: sendAmountEle.value,
       asset: sendAssetEle.value,

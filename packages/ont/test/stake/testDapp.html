@@ -89,7 +89,51 @@
           <button type="button" class="btn btn-primary" onclick="getNodeStakeInfo()">Submit</button>
         </div>
 
+        <div class="function-container">
+          <h5 class="title">claimStakedOng</h5>
+          <p class="text">
+            <p>Claim ONG attached to staked ONT (non-rewards).</p>
+          </p>
+          <button type="button" class="btn btn-primary" onclick="claimStakedOng()">Claim</button>
+        </div>
 
+        <div class="function-container">
+          <h5 class="title">claimStakedOngRewards</h5>
+          <p class="text">
+            <p>Claim ONG rewards from staking.</p>
+          </p>
+          <button type="button" class="btn btn-primary" onclick="claimStakedOngRewards()">Claim</button>
+        </div>
+
+        <div class="function-container">
+          <h5 class="title">addStake</h5>
+          <p class="text">
+            <p>Returns information about ONT staked in a specific node by a given account.</p>
+          </p>
+          <input id='addStakeNodePublicKeyInput' type="text" value="03c8f63775536eb420c96228cdccc9de7d80e87f1b562a6eb93c0838064350aa53"/>
+          <input id='addStakeAmountInput' type="text" value="500"/>
+          <button type="button" class="btn btn-primary" onclick="addStake()">Add</button>
+        </div>
+
+        <div class="function-container">
+          <h5 class="title">requestStakeWithdraw</h5>
+          <p class="text">
+            <p>Submits a request to withdraw ONT current staked in a node. This will set the ONT staked in a pending withdraw state. Actual withdraw can be executed in the following round.</p>
+          </p>
+          <input id='requestStakeWithdrawNodePublicKeyInput' type="text" value="03c8f63775536eb420c96228cdccc9de7d80e87f1b562a6eb93c0838064350aa53"/>
+          <input id='requestStakeWithdrawAmountInput' type="text" value="500"/>
+          <button type="button" class="btn btn-primary" onclick="requestStakeWithdraw()">Request</button>
+        </div>
+
+        <div class="function-container">
+          <h5 class="title">withdrawStake</h5>
+          <p class="text">
+            <p>Withdraw stake from node from a previous withdraw request.</p>
+          </p>
+          <input id='withdrawStakeNodePublicKeyInput' type="text" value="03c8f63775536eb420c96228cdccc9de7d80e87f1b562a6eb93c0838064350aa53"/>
+          <input id='withdrawStakeAmountInput' type="text" value="500"/>
+          <button type="button" class="btn btn-primary" onclick="withdrawStake()">Withdraw</button>
+        </div>
       </div>
 
     </div>

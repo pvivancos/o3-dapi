@@ -9,6 +9,13 @@ const getStakedClaimableOngInputEle = document.getElementById("getStakedClaimabl
 const getNodeStakeInfoAddressInputEle = document.getElementById("getNodeStakeInfoAddressInput");
 const getNodeStakeInfoNodePublicKeyInputEle = document.getElementById("getNodeStakeInfoNodePublicKeyInput");
 
+const addStakeNodePublicKeyInput = document.getElementById("addStakeNodePublicKeyInput");
+const addStakeAmountInput = document.getElementById("addStakeAmountInput");
+const requestStakeWithdrawNodePublicKeyInput = document.getElementById("requestStakeWithdrawNodePublicKeyInput");
+const requestStakeWithdrawAmountInput = document.getElementById("requestStakeWithdrawAmountInput");
+const withdrawStakeNodePublicKeyInput = document.getElementById("withdrawStakeNodePublicKeyInput");
+const withdrawStakeAmountInput = document.getElementById("withdrawStakeAmountInput");
+
 function clearText() {
   resultEle.innerHTML = '';
   errorEle.innerHTML = '';
@@ -100,6 +107,64 @@ function getNodeStakeInfo() {
   .then(handleSuccess)
   .catch(handleError);
 }
+
+
+function claimStakedOng() {
+  clearText();
+  startLoading();
+  o3dapi.ONT.stake.claimStakedOng({
+    network: networksEle.value,
+  })
+  .then(handleSuccess)
+  .catch(handleError);
+}
+
+function claimStakedOngRewards() {
+  clearText();
+  startLoading();
+  o3dapi.ONT.stake.claimStakedOngRewards({
+    network: networksEle.value,
+  })
+  .then(handleSuccess)
+  .catch(handleError);
+}
+
+function addStake() {
+  clearText();
+  startLoading();
+  o3dapi.ONT.stake.addStake({
+    network: networksEle.value,
+    nodePublicKey: addStakeNodePublicKeyInput.value,
+    amount: addStakeAmountInput.value,
+  })
+  .then(handleSuccess)
+  .catch(handleError);
+}
+
+function requestStakeWithdraw() {
+  clearText();
+  startLoading();
+  o3dapi.ONT.stake.requestStakeWithdraw({
+    network: networksEle.value,
+    nodePublicKey: requestStakeWithdrawNodePublicKeyInput.value,
+    amount: requestStakeWithdrawAmountInput.value,
+  })
+  .then(handleSuccess)
+  .catch(handleError);
+}
+
+function withdrawStake() {
+  clearText();
+  startLoading();
+  o3dapi.ONT.stake.withdrawStake({
+    network: networksEle.value,
+    nodePublicKey: withdrawStakeNodePublicKeyInput.value,
+    amount: withdrawStakeAmountInput.value,
+  })
+  .then(handleSuccess)
+  .catch(handleError);
+}
+
 
 function syntaxHighlight(json) {
     if (typeof json != 'string') {

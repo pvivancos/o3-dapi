@@ -1,6 +1,5 @@
 import { sendMessage } from '../../messaging';
-import { Command } from '../../constants';
-import { TransactionType, TxSignature, Transaction } from './common';
+import { Command, Transaction } from '../../constants';
 
 interface GetBlockInput {
   network?: string;

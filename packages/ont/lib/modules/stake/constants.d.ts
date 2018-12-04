@@ -4,6 +4,11 @@ export declare enum StakeCommand {
     getTotalStake = "getTotalStake",
     getNodeStakeInfo = "getNodeStakeInfo",
     getStakedClaimableOng = "getStakedClaimableOng",
-    getStakedClaimableOngRewards = "getStakedClaimableOngRewards"
+    getStakedClaimableOngRewards = "getStakedClaimableOngRewards",
+    addStake = "addStake",
+    requestStakeWithdraw = "requestStakeWithdraw",
+    withdrawStake = "withdrawStake",
+    claimStakedOng = "claimStakedOng",
+    claimStakedOngRewards = "claimStakedOngRewards"
 }
 //# sourceMappingURL=constants.d.ts.map

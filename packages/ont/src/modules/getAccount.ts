@@ -1,5 +1,5 @@
-import { sendMessage } from '../../messaging';
-import { Command } from '../../constants';
+import { sendMessage } from '../messaging';
+import { Command } from '../constants';
 
 export function getAccount(): Promise<string> {
   return sendMessage({

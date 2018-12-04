@@ -4,8 +4,6 @@ interface GetNodeStakeInfoArgs {
     nodePublicKey: string;
 }
 interface NodeStakeInfo {
-    name: string;
-    url: string;
     publicKey: string;
     activeStake: number;
     pendingStake: number;

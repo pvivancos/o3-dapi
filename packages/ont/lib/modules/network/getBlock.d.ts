@@ -1,4 +1,4 @@
-import { Transaction } from './common';
+import { Transaction } from '../../constants';
 interface GetBlockInput {
     network?: string;
     block: number | string;
