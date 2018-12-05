@@ -129,7 +129,7 @@ Now that your contract is deployed to your private net, we want to call it. When
 
 Once open, use the network selector to change the network to private net. This testbed allows you to use all of the methods provided by the O3 Ontology plugin in a simple GUI. So you can experiment with calling the different functions on the different networks.
 
-![o3dapinet](./assets/o3dapinet.png)
+![ontdapinet](./assets/ontdapinet.png)
 
 For example, you scroll down to the "getContract" methods, paste in your contract hash for your newly deployed smart contract, and it will pull the details for your contract. You can experiment calling the details for different contracts on test net or main net.
 
