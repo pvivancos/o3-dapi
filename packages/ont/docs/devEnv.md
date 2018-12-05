@@ -69,11 +69,11 @@ In the "Dev Settings" menu, you can set the location of your private Ontology ne
 
 ![o3devset](./assets/o3DevSet.png)
 
-## Creating your Smart
+## Creating your Smart Contract
 
 Open up the SmartX app from the list in the O3 application. Please be sure to open from within the O3 app, and NOT directly from your browser. The version provided in the O3 app list is customized to streamline your development experience using the O3 and Solo Chain apps.
 
-![o3smartx](./assets/o3Smartx.png)
+![o3smartx](./assets/o3smartx.png)
 
 Upon opening the app, you will be presented with the default hello world contract. Click on the "File" button on the top left to open up the menu, where you can open a contract file on your local machine, save the current smart contract to your local machine, or load a template, such as OEP4. For this example, go ahead and load up the OEP4 template.
 
@@ -82,6 +82,8 @@ Upon opening the app, you will be presented with the default hello world contrac
 Once loaded, you can review the code in the IDE, and make changes to properties such as the token name or supply. Once you are satisfied, click on "Compile" on the right hand side to compile the contract to into the format required for deployment.
 
 ![smartxoep4](./assets/smartxoep4.png)
+
+## Deploying your Smart Contract
 
 Once compiled, you should see your compiled contract code on the right hand side. To proceed to deployment, click on either the "Deploy" tab on the top, or the "Next" button on the bottom.
 
@@ -102,3 +104,43 @@ You can then review the transaction confirmation dialog for the deployment trans
 Here, you want to ensure that the transaction is being sent to the correct network (PrivateNet in this case), and all the deployment information. Once ready, click the "Approve" button to sign and broadcast the transaction.
 
 ![smartxtxconfirm2](./assets/smartxtxconfirm2.png)
+
+Once approving, the transaction will be broadcast to your private net, and you will be returned to the SmartX window. From here, you can see the transaction id for your deploy, and can look for this value in Solo Chain.
+
+![smartxtxid](./assets/smartxtxid.png)
+
+In the Solo Chain app, under the "Transaction" tab, you should see your transaction id at the top of the list with the type "Deploy".
+
+![soloChainTxid](./assets/soloChainTxid.png)
+
+In the "Smart Contracts" tab, you should also now see your newly deployed contract in the list of contract.
+
+![soloChainSc](./assets/soloChainSc.png)
+
+Please take note of the "Contract Hash" value of your contract, and make sure that it matches the value provided in SmartX after compiling.
+
+![smartxContractHash](./assets/smartxContractHash.png)
+
+## Calling your Smart Contract
+
+Now that your contract is deployed to your private net, we want to call it. When calling your contract in your dapp, you can use the O3 dapi with the Ontology plugin. To guide you in doing so, the O3 app in dev mode provides a app called "ONT dapi Testbed".
+
+![o3ontdapi](./assets/o3ontdapi.png)
+
+Once open, use the network selector to change the network to private net. This testbed allows you to use all of the methods provided by the O3 Ontology plugin in a simple GUI. So you can experiment with calling the different functions on the different networks.
+
+![o3dapinet](./assets/o3dapinet.png)
+
+For example, you scroll down to the "getContract" methods, paste in your contract hash for your newly deployed smart contract, and it will pull the details for your contract. You can experiment calling the details for different contracts on test net or main net.
+
+![ontdapigc](./assets/ontdapigc.png)
+
+To make a test call to your contract, scroll down to "invokeRead", paste in your contract hash into the "Script Hash" field. We will be calling the "decimals" operation, and clear out the "Arguments" field since this method takes no input arguments. Upon submitting, the ouput on the right hand side will show you the JSON response back from the private net, where the "Result" is "08". Which correctly indicates the 8 decimal places out new token has.
+
+![ontdapiir](./assets/ontdapiir.png)
+
+From here, you can play around with the different methods available in the testbed, and when you are ready to start integrating calls to your contract from your dapp, head on over to the O3 Ontology dapi plugin repo. There you can learn more about how to integrate the JS packages into your app, and look at the source code for this testbed as a reference.
+
+[o3-dapi-ont](https://github.com/O3Labs/o3-dapi/tree/ont-docs/packages/ont)
+
+[ONT dapi Testbed Reference dapp](https://github.com/O3Labs/o3-dapi/tree/ont-docs/packages/ont/test/base)
