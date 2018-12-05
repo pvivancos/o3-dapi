@@ -1,14 +1,14 @@
 import { sendMessage } from '../../../messaging';
 import { Oep4Command } from '../constants';
 
-interface TotalSupplyInput {
+interface DecimalsInput {
   network?: string;
   scriptHash: string;
 }
 
-export function totalSupply(data: TotalSupplyInput): Promise<number> {
+export function getDecimals(data: DecimalsInput): Promise<number> {
   return sendMessage({
-    command: Oep4Command.totalSupply,
+    command: Oep4Command.getDecimals,
     data,
   });
 }
