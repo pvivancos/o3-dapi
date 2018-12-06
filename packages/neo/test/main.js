@@ -1,6 +1,7 @@
 const errorEle = document.getElementById("error");
 const resultEle = document.getElementById("result");
 const loadingEle = document.getElementById("loading");
+const accountEle = document.getElementById("account");
 
 const balanceInputEle = document.getElementById("balanceInput");
 
@@ -77,6 +78,10 @@ function getNetworks() {
 function getAccount() {
   startLoading();
   o3dapi.NEO.getAccount()
+  .then(data => {
+    accountEle.innerHTML = `Connected Account: ${data.address}`;
+    return data;
+  })
   .then(handleSuccess)
   .catch(handleError);
 }
@@ -186,6 +191,10 @@ if (o3dapi.NEO.isAvailable) {
 }
 
 o3dapi.NEO.addEventListener(o3dapi.NEO.Constants.EventName.READY, onReady);
+
+o3dapi.NEO.addEventListener(o3dapi.NEO.Constants.EventName.ACCOUNT_CHANGED, data => {
+  accountEle.innerHTML = `Connected Account: ${data.address}`;
+});
 
 function onReady() {
   o3dapi.NEO.getNetworks()

@@ -2,6 +2,7 @@ const errorEle = document.getElementById("error");
 const resultEle = document.getElementById("result");
 const loadingEle = document.getElementById("loading");
 const networksEle = document.getElementById("networks");
+const accountEle = document.getElementById("account");
 
 const getTotalStakeInputEle = document.getElementById("getTotalStakeInput");
 const getStakedClaimableOngRewardsInputEle = document.getElementById("getStakedClaimableOngRewardsInput");
@@ -195,6 +196,10 @@ if (o3dapi.ONT.isAvailable) {
 }
 
 o3dapi.ONT.addEventListener(o3dapi.ONT.Constants.EventName.READY, onReady);
+
+o3dapi.ONT.addEventListener(o3dapi.ONT.Constants.EventName.ACCOUNT_CHANGED, data => {
+  accountEle.innerHTML = `Connected Account: ${data.address}`;
+});
 
 function onReady() {
   o3dapi.ONT.getNetworks()
