@@ -11,6 +11,8 @@ interface TransferMultiInput {
   network?: string;
   scriptHash: string;
   outputs: Output[];
+  gasPrice?: number;
+  gasLimit?: number;
 }
 
 interface TransferMultiOutput {

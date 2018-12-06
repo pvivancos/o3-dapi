@@ -7,6 +7,8 @@ interface ApproveInput {
   owner: string;
   spender: string;
   amount: string;
+  gasPrice?: number;
+  gasLimit?: number;
 }
 
 interface ApproveOutput {
