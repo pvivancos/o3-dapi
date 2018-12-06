@@ -83,6 +83,8 @@
           <p class="text">
             <p>Returns the Merkle Proof for a given transaction hash.</p>
           </p>
+          <br/>
+          <p>Transaction ID:</p>
           <input id='getMerkleProofInput' type="text" value="20054354e385b262f5754929c11990a86757e4e9f5104102ba0b0aa6b1368999"/>
           <button type="button" class="btn btn-primary" onclick="getMerkleProof()">Get Merkle Proof</button>
         </div>
@@ -92,6 +94,8 @@
           <p class="text">
             <p>Returns the transaction JSON for a given transaction hash.</p>
           </p>
+          <br/>
+          <p>Transaction ID:</p>
           <input id='getTransactionInput' type="text" value="20054354e385b262f5754929c11990a86757e4e9f5104102ba0b0aa6b1368999"/>
           <button type="button" class="btn btn-primary" onclick="getTransaction()">Get Tx</button>
         </div>
@@ -101,6 +105,8 @@
           <p class="text">
             <p>Returns information about a block a given block height or hash.</p>
           </p>
+          <br/>
+          <p>Block height or hash:</p>
           <input id='getBlockInput' type="text" value="1088379"/>
           <button type="button" class="btn btn-primary" onclick="getBlock()">Get Block</button>
         </div>
@@ -110,6 +116,8 @@
           <p class="text">
             <p>Returns information about a block a given block height or hash.</p>
           </p>
+          <br/>
+          <p>Transaction ID:</p>
           <input id='getSmartCodeEventInput' type="text" value="20054354e385b262f5754929c11990a86757e4e9f5104102ba0b0aa6b1368999"/>
           <button type="button" class="btn btn-primary" onclick="getSmartCodeEvent()">Get Smart Code Event</button>
         </div>
@@ -119,6 +127,8 @@
           <p class="text">
             <p>Returns information about a given smart contract.</p>
           </p>
+          <br/>
+          <p>Script hash:</p>
           <input id='getContractInput' type="text" value="0200000000000000000000000000000000000000"/>
           <button type="button" class="btn btn-primary" onclick="getContract()">Get Contract</button>
         </div>
@@ -269,6 +279,7 @@
           <p class="text">
             <p>Invoke a transfer of a specified amount of a given asset from the connected account to another account.</p>
           </p>
+          <br/>
           <p>To address:</p>
           <input id='sendToAddress' type="text" value="AecaeSEBkt5GcBCxwz1F41TvdjX3dnKBkJ"/>
           <br/>

@@ -1,7 +1,6 @@
 body {
   height: 100vh;
   width: 100vw;
-  padding-top: 4rem;
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -12,20 +11,22 @@ textarea {
 }
 
 .nav {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 4rem;
   background-color: #37b6d3;
   padding: 1rem;
   color: white;
+
+  display: flex;
+  align-items: center;
 }
 
-#networks {
-  position: absolute;
-  right: 2rem;
-  top: 1.25rem;
+.nav .title {
+  flex: 1;
+}
+
+.nav .account {
+  font-size: 0.875rem;
+  padding-right: 0.5rem;
 }
 
 .content {
@@ -198,7 +199,7 @@ textarea {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: #37b6d3;
+  background: #2C2E34;
   -webkit-animation: lds-pacman-3 0.5s linear infinite;
   animation: lds-pacman-3 0.5s linear infinite;
 }
@@ -221,18 +222,15 @@ textarea {
   transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
 }
 
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 750px) {
   .nav {
-    height: 5rem;
+    display: block;
+    text-align: center;
   }
 
-  .nav .title {
-    width: 50%
-  }
-
-  #networks {
-    right: 0;
-    top: 2rem;
+  .nav .account {
+    padding-bottom: 0.5rem;
+    padding-right: 0rem;
   }
 
   .content {

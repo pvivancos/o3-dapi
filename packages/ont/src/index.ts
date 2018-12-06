@@ -5,6 +5,7 @@ import * as sc from './modules/sc';
 import * as tx from './modules/tx';
 import * as network from './modules/network';
 import * as stake from './modules/stake';
+import * as oep4 from './modules/oep4';
 
 import { getProvider } from './modules/getProvider';
 import { getAccount } from './modules/getAccount';
@@ -92,6 +93,22 @@ class O3dapiOnt {
     withdrawStake: stake.withdrawStake,
     claimStakedOng: stake.claimStakedOng,
     claimStakedOngRewards: stake.claimStakedOngRewards,
+  };
+
+  oep4 = {
+    getAllowance: oep4.getAllowance,
+    getBalanceOf: oep4.getBalanceOf,
+    getTotalSupply: oep4.getTotalSupply,
+    getSymbol: oep4.getSymbol,
+    getDecimals: oep4.getDecimals,
+    getName: oep4.getName,
+    getTokenDetails: oep4.getTokenDetails,
+
+    init: oep4.init,
+    transfer: oep4.transfer,
+    transferMulti: oep4.transferMulti,
+    approve: oep4.approve,
+    transferFrom: oep4.transferFrom,
   };
 
   addEventListener = addEventListener;

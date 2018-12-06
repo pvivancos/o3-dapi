@@ -2,19 +2,48 @@ const errorEle = document.getElementById("error");
 const resultEle = document.getElementById("result");
 const loadingEle = document.getElementById("loading");
 const networksEle = document.getElementById("networks");
+const accountEle = document.getElementById("account");
 
-const getTotalStakeInputEle = document.getElementById("getTotalStakeInput");
-const getStakedClaimableOngRewardsInputEle = document.getElementById("getStakedClaimableOngRewardsInput");
-const getStakedClaimableOngInputEle = document.getElementById("getStakedClaimableOngInput");
-const getNodeStakeInfoAddressInputEle = document.getElementById("getNodeStakeInfoAddressInput");
-const getNodeStakeInfoNodePublicKeyInputEle = document.getElementById("getNodeStakeInfoNodePublicKeyInput");
+const getTokenDetailsInputEle = document.getElementById("getTokenDetailsInput");
+const getNameInputEle = document.getElementById("getNameInput");
+const getSymbolInputEle = document.getElementById("getSymbolInput");
+const getDecimalsInputEle = document.getElementById("getDecimalsInput");
+const getTotalSupplyInputEle = document.getElementById("getTotalSupplyInput");
+const getBalanceOfContractInputEle = document.getElementById("getBalanceOfContractInput");
+const getBalanceOfAddressInputEle = document.getElementById("getBalanceOfAddressInput");
+const getAllowanceContractInputEle = document.getElementById("getAllowanceContractInput");
+const getAllowanceOwnerInputEle = document.getElementById("getAllowanceOwnerInput");
+const getAllowanceSpenderInputEle = document.getElementById("getAllowanceSpenderInput");
 
-const addStakeNodePublicKeyInput = document.getElementById("addStakeNodePublicKeyInput");
-const addStakeAmountInput = document.getElementById("addStakeAmountInput");
-const requestStakeWithdrawNodePublicKeyInput = document.getElementById("requestStakeWithdrawNodePublicKeyInput");
-const requestStakeWithdrawAmountInput = document.getElementById("requestStakeWithdrawAmountInput");
-const withdrawStakeNodePublicKeyInput = document.getElementById("withdrawStakeNodePublicKeyInput");
-const withdrawStakeAmountInput = document.getElementById("withdrawStakeAmountInput");
+const initContractInputEle = document.getElementById("initContractInput");
+const initGasPriceInputEle = document.getElementById("initGasPriceInput");
+const initGasLimitInputEle = document.getElementById("initGasLimitInput");
+
+const transferContractInputEle = document.getElementById("transferContractInput");
+const transferFromInputEle = document.getElementById("transferFromInput");
+const transferToInputEle = document.getElementById("transferToInput");
+const transferAmountInputEle = document.getElementById("transferAmountInput");
+const transferGasPriceInputEle = document.getElementById("transferGasPriceInput");
+const transferGasLimitInputEle = document.getElementById("transferGasLimitInput");
+
+const transferFromContractInputEle = document.getElementById("transferFromContractInput");
+const transferFromFromInputEle = document.getElementById("transferFromFromInput");
+const transferFromToInputEle = document.getElementById("transferFromToInput");
+const transferFromAmountInputEle = document.getElementById("transferFromAmountInput");
+const transferFromGasPriceInputEle = document.getElementById("transferFromGasPriceInput");
+const transferFromGasLimitInputEle = document.getElementById("transferFromGasLimitInput");
+
+const approveContractInputEle = document.getElementById("approveContractInput");
+const approveOwnerInputEle = document.getElementById("approveOwnerInput");
+const approveSpenderInputEle = document.getElementById("approveSpenderInput");
+const approveAmountInputEle = document.getElementById("approveAmountInput");
+const approveGasPriceInputEle = document.getElementById("approveGasPriceInput");
+const approveGasLimitInputEle = document.getElementById("approveGasLimitInput");
+
+const transferMultiContractInputEle = document.getElementById("transferMultiContractInput");
+const transferMultiOutputsInputEle = document.getElementById("transferMultiOutputsInput");
+const transferMultiGasPriceInputEle = document.getElementById("transferMultiGasPriceInput");
+const transferMultiGasLimitInputEle = document.getElementById("transferMultiGasLimitInput");
 
 function clearText() {
   resultEle.innerHTML = '';
@@ -43,128 +72,160 @@ function stopLoading() {
 
 stopLoading();
 
-function getStakeRoundInfo() {
+function getTokenDetails() {
   clearText();
   startLoading();
-  o3dapi.ONT.stake.getStakeRoundInfo({
+  o3dapi.ONT.oep4.getTokenDetails({
     network: networksEle.value,
+    scriptHash: getTokenDetailsInputEle.value,
   })
   .then(handleSuccess)
   .catch(handleError);
 }
 
-function getNodeList() {
+function getName() {
   clearText();
   startLoading();
-  o3dapi.ONT.stake.getNodeList({
+  o3dapi.ONT.oep4.getName({
     network: networksEle.value,
+    scriptHash: getNameInputEle.value,
   })
   .then(handleSuccess)
   .catch(handleError);
 }
 
-function getTotalStake() {
+function getSymbol() {
   clearText();
   startLoading();
-  o3dapi.ONT.stake.getTotalStake({
+  o3dapi.ONT.oep4.getSymbol({
     network: networksEle.value,
-    address: getTotalStakeInputEle.value,
+    scriptHash: getSymbolInputEle.value,
   })
   .then(handleSuccess)
   .catch(handleError);
 }
 
-function getStakedClaimableOngRewards() {
+function getDecimals() {
   clearText();
   startLoading();
-  o3dapi.ONT.stake.getStakedClaimableOngRewards({
+  o3dapi.ONT.oep4.getDecimals({
     network: networksEle.value,
-    address: getStakedClaimableOngRewardsInputEle.value,
+    scriptHash: getDecimalsInputEle.value,
   })
   .then(handleSuccess)
   .catch(handleError);
 }
 
-function getStakedClaimableOng() {
+function getTotalSupply() {
   clearText();
   startLoading();
-  o3dapi.ONT.stake.getStakedClaimableOng({
+  o3dapi.ONT.oep4.getTotalSupply({
     network: networksEle.value,
-    address: getStakedClaimableOngInputEle.value,
+    scriptHash: getTotalSupplyInputEle.value,
   })
   .then(handleSuccess)
   .catch(handleError);
 }
 
-function getNodeStakeInfo() {
+function getBalanceOf() {
   clearText();
   startLoading();
-  o3dapi.ONT.stake.getNodeStakeInfo({
+  o3dapi.ONT.oep4.getBalanceOf({
     network: networksEle.value,
-    address: getNodeStakeInfoAddressInputEle.value,
-    nodePublicKey: getNodeStakeInfoNodePublicKeyInputEle.value,
+    scriptHash: getBalanceOfContractInputEle.value,
+    address: getBalanceOfAddressInputEle.value,
   })
   .then(handleSuccess)
   .catch(handleError);
 }
 
-
-function claimStakedOng() {
+function getAllowance() {
   clearText();
   startLoading();
-  o3dapi.ONT.stake.claimStakedOng({
+  o3dapi.ONT.oep4.getAllowance({
     network: networksEle.value,
+    scriptHash: getAllowanceContractInputEle.value,
+    owner: getAllowanceOwnerInputEle.value,
+    spender:getAllowanceSpenderInputEle.value,
   })
   .then(handleSuccess)
   .catch(handleError);
 }
 
-function claimStakedOngRewards() {
+function init() {
   clearText();
   startLoading();
-  o3dapi.ONT.stake.claimStakedOngRewards({
+  o3dapi.ONT.oep4.init({
     network: networksEle.value,
+    scriptHash: initContractInputEle.value,
+    gasPrice: initGasPriceInputEle.value,
+    gasLimit: initGasLimitInputEle.value,
   })
   .then(handleSuccess)
   .catch(handleError);
 }
 
-function addStake() {
+function transfer() {
   clearText();
   startLoading();
-  o3dapi.ONT.stake.addStake({
+  o3dapi.ONT.oep4.transfer({
     network: networksEle.value,
-    nodePublicKey: addStakeNodePublicKeyInput.value,
-    amount: addStakeAmountInput.value,
+    scriptHash: transferContractInputEle.value,
+    from: transferFromInputEle.value,
+    to: transferToInputEle.value,
+    amount: transferAmountInputEle.value,
+    gasPrice: transferGasPriceInputEle.value,
+    gasLimit: transferGasLimitInputEle.value,
   })
   .then(handleSuccess)
   .catch(handleError);
 }
 
-function requestStakeWithdraw() {
+function transferFrom() {
   clearText();
   startLoading();
-  o3dapi.ONT.stake.requestStakeWithdraw({
+  o3dapi.ONT.oep4.transferFrom({
     network: networksEle.value,
-    nodePublicKey: requestStakeWithdrawNodePublicKeyInput.value,
-    amount: requestStakeWithdrawAmountInput.value,
+    scriptHash: transferFromContractInputEle.value,
+    from: transferFromFromInputEle.value,
+    to: transferFromToInputEle.value,
+    amount: transferFromAmountInputEle.value,
+    gasPrice: transferFromGasPriceInputEle.value,
+    gasLimit: transferFromGasLimitInputEle.value,
   })
   .then(handleSuccess)
   .catch(handleError);
 }
 
-function withdrawStake() {
+function transferMulti() {
   clearText();
   startLoading();
-  o3dapi.ONT.stake.withdrawStake({
+  o3dapi.ONT.oep4.transferMulti({
     network: networksEle.value,
-    nodePublicKey: withdrawStakeNodePublicKeyInput.value,
-    amount: withdrawStakeAmountInput.value,
+    scriptHash: transferMultiContractInputEle.value,
+    outputs: transferMultiOutputsInputEle.value,
+    gasPrice: transferMultiGasPriceInputEle.value,
+    gasLimit: transferMultiGasLimitInputEle.value,
   })
   .then(handleSuccess)
   .catch(handleError);
 }
 
+function approve() {
+  clearText();
+  startLoading();
+  o3dapi.ONT.oep4.approve({
+    network: networksEle.value,
+    scriptHash: approveContractInputEle.value,
+    owner: approveOwnerInputEle.value,
+    spender: approveSpenderInputEle.value,
+    amount: approveAmountInputEle.value,
+    gasPrice: approveGasPriceInputEle.value,
+    gasLimit: approveGasLimitInputEle.value,
+  })
+  .then(handleSuccess)
+  .catch(handleError);
+}
 
 function syntaxHighlight(json) {
     if (typeof json != 'string') {
@@ -195,6 +256,10 @@ if (o3dapi.ONT.isAvailable) {
 }
 
 o3dapi.ONT.addEventListener(o3dapi.ONT.Constants.EventName.READY, onReady);
+
+o3dapi.ONT.addEventListener(o3dapi.ONT.Constants.EventName.ACCOUNT_CHANGED, data => {
+  accountEle.innerHTML = `Connected Account: ${data.address}`;
+});
 
 function onReady() {
   o3dapi.ONT.getNetworks()
