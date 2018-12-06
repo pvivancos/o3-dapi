@@ -63,7 +63,7 @@ Once on the apps screen, click on the title "Apps" rapidly 10 times to put the O
 
 You should notice that in dev mode you will now have access to the "Dev Settings" menu on the top right, and the addition of several developer apps to the app list.
 
-![o3devmode](./assets/o3DevMode.png)
+![o3devMode](./assets/o3devMode.png)
 
 In the "Dev Settings" menu, you can set the location of your private Ontology network. By default, it should already be set up to work with your Solo Chain private network.
 
