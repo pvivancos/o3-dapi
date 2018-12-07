@@ -31,6 +31,11 @@
     <select id="networks" name="networks"></select>
   </div>
 
+  <div class="contracthash-container">
+    <div>Contract hash:</div>
+    <input id='contractHash' type="text" value="8cae506e0c37359626e341e44a2ab166055bec78"/>
+  </div>
+
   <div class="content">
 
     <div class="functions">
@@ -42,9 +47,6 @@
           <p class="text">
             <p>Returns name, symbol, decimals, and total supply of a given token.</p>
           </p>
-          <br/>
-          <p>Script hash:</p>
-          <input id='getTokenDetailsInput' type="text" value="8cae506e0c37359626e341e44a2ab166055bec78"/>
           <button type="button" class="btn btn-primary" onclick="getTokenDetails()">Submit</button>
         </div>
 
@@ -53,9 +55,6 @@
           <p class="text">
             <p>Returns the name of a given token.</p>
           </p>
-          <br/>
-          <p>Script hash:</p>
-          <input id='getNameInput' type="text" value="8cae506e0c37359626e341e44a2ab166055bec78"/>
           <button type="button" class="btn btn-primary" onclick="getName()">Submit</button>
         </div>
 
@@ -64,9 +63,6 @@
           <p class="text">
             <p>Returns the symbol of a given token.</p>
           </p>
-          <br/>
-          <p>Script hash:</p>
-          <input id='getSymbolInput' type="text" value="8cae506e0c37359626e341e44a2ab166055bec78"/>
           <button type="button" class="btn btn-primary" onclick="getSymbol()">Submit</button>
         </div>
 
@@ -75,9 +71,6 @@
           <p class="text">
             <p>Returns the number of decimals of a given token.</p>
           </p>
-          <br/>
-          <p>Script hash:</p>
-          <input id='getDecimalsInput' type="text" value="8cae506e0c37359626e341e44a2ab166055bec78"/>
           <button type="button" class="btn btn-primary" onclick="getDecimals()">Submit</button>
         </div>
 
@@ -86,9 +79,6 @@
           <p class="text">
             <p>Returns the total supply of a given token.</p>
           </p>
-          <br/>
-          <p>Script hash:</p>
-          <input id='getTotalSupplyInput' type="text" value="8cae506e0c37359626e341e44a2ab166055bec78"/>
           <button type="button" class="btn btn-primary" onclick="getTotalSupply()">Submit</button>
         </div>
 
@@ -99,54 +89,9 @@
           </p>
 
           <br/>
-          <p>Script hash:</p>
-          <input id='getBalanceOfContractInput' type="text" value="8cae506e0c37359626e341e44a2ab166055bec78"/>
-
-          <br/>
           <p>Account address:</p>
           <input id='getBalanceOfAddressInput' type="text" placeholder="AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ"/>
           <button type="button" class="btn btn-primary" onclick="getBalanceOf()">Get balance</button>
-        </div>
-
-        <div class="function-container">
-          <h5 class="title">getAllowance</h5>
-          <p class="text">
-            <p>Returns the transfer allowance from one account to another.</p>
-          </p>
-
-          <br/>
-          <p>Script hash:</p>
-          <input id='getAllowanceContractInput' type="text" value="8cae506e0c37359626e341e44a2ab166055bec78"/>
-
-          <br/>
-          <p>Owner address:</p>
-          <input id='getAllowanceOwnerInput' type="text" placeholder="AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ"/>
-
-          <br/>
-          <p>Spender address:</p>
-          <input id='getAllowanceSpenderInput' type="text" placeholder="AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ"/>
-          <button type="button" class="btn btn-primary" onclick="getAllowance()">Get allowance</button>
-        </div>
-
-        <div class="function-container">
-          <h5 class="title">init</h5>
-          <p class="text">
-            <p>Initialize the contract.</p>
-          </p>
-
-          <br/>
-          <p>Script hash:</p>
-          <input id='initContractInput' type="text" value="8cae506e0c37359626e341e44a2ab166055bec78"/>
-
-          <br/>
-          <p>Gas price override (optional):</p>
-          <input id='initGasPriceInput' type="text" placeholder="500"/>
-
-          <br/>
-          <p>Gas limit override (optional):</p>
-          <input id='initGasLimitInput' type="text" placeholder="20000"/>
-
-          <button type="button" class="btn btn-primary" onclick="init()">Init</button>
         </div>
 
         <div class="function-container">
@@ -154,10 +99,6 @@
           <p class="text">
             <p>Transfer tokens.</p>
           </p>
-
-          <br/>
-          <p>Script hash:</p>
-          <input id='transferContractInput' type="text" value="8cae506e0c37359626e341e44a2ab166055bec78"/>
 
           <br/>
           <p>From address:</p>
@@ -183,14 +124,76 @@
         </div>
 
         <div class="function-container">
+          <h5 class="title">transferMulti</h5>
+          <p class="text">
+            <p>Execute multiple transfers.</p>
+          </p>
+
+          <br/>
+          <p>Outputs:</p>
+          <textarea id='transferMultiOutputsInput'>[{"from":"AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ","to":"AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ","amount":"0.0001"}]</textarea>
+
+          <br/>
+          <p>Gas price override (optional):</p>
+          <input id='transferMultiGasPriceInput' type="text" placeholder="500"/>
+
+          <br/>
+          <p>Gas limit override (optional):</p>
+          <input id='transferMultiGasLimitInput' type="text" placeholder="20000"/>
+
+          <button type="button" class="btn btn-primary" onclick="transferMulti()">Submit</button>
+        </div>
+
+        <div class="function-container">
+          <h5 class="title">getAllowance</h5>
+          <p class="text">
+            <p>Returns the transfer allowance from one account to another.</p>
+          </p>
+
+          <br/>
+          <p>Owner address:</p>
+          <input id='getAllowanceOwnerInput' type="text" placeholder="AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ"/>
+
+          <br/>
+          <p>Spender address:</p>
+          <input id='getAllowanceSpenderInput' type="text" placeholder="AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ"/>
+          <button type="button" class="btn btn-primary" onclick="getAllowance()">Get allowance</button>
+        </div>
+
+        <div class="function-container">
+          <h5 class="title">approve</h5>
+          <p class="text">
+            <p>Pre approve a transfer from one address to another.</p>
+          </p>
+
+          <br/>
+          <p>Owner address:</p>
+          <input id='approveOwnerInput' type="text" placeholder="AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ"/>
+
+          <br/>
+          <p>Spender address:</p>
+          <input id='approveSpenderInput' type="text" placeholder="AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ"/>
+
+          <br/>
+          <p>Amount:</p>
+          <input id='approveAmountInput' type="text" placeholder="0.001"/>
+
+          <br/>
+          <p>Gas price override (optional):</p>
+          <input id='approveGasPriceInput' type="text" placeholder="500"/>
+
+          <br/>
+          <p>Gas limit override (optional):</p>
+          <input id='approveGasLimitInput' type="text" placeholder="20000"/>
+
+          <button type="button" class="btn btn-primary" onclick="approve()">Submit</button>
+        </div>
+
+        <div class="function-container">
           <h5 class="title">transferFrom</h5>
           <p class="text">
             <p>Transfer tokens from another address.</p>
           </p>
-
-          <br/>
-          <p>Script hash:</p>
-          <input id='transferFromContractInput' type="text" value="8cae506e0c37359626e341e44a2ab166055bec78"/>
 
           <br/>
           <p>From address:</p>
@@ -216,61 +219,20 @@
         </div>
 
         <div class="function-container">
-          <h5 class="title">transferMulti</h5>
+          <h5 class="title">init</h5>
           <p class="text">
-            <p>Execute multiple transfers.</p>
+            <p>Initialize the contract.</p>
           </p>
 
           <br/>
-          <p>Script hash:</p>
-          <input id='transferMultiContractInput' type="text" value="8cae506e0c37359626e341e44a2ab166055bec78"/>
-
-          <br/>
-          <p>Outputs:</p>
-          <textarea id='transferMultiOutputsInput'>[{"from":"AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ","to":"AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ","amount":"0.0001"}]</textarea>
-
-          <br/>
           <p>Gas price override (optional):</p>
-          <input id='transferMultiGasPriceInput' type="text" placeholder="500"/>
+          <input id='initGasPriceInput' type="text" placeholder="500"/>
 
           <br/>
           <p>Gas limit override (optional):</p>
-          <input id='transferMultiGasLimitInput' type="text" placeholder="20000"/>
+          <input id='initGasLimitInput' type="text" placeholder="20000"/>
 
-          <button type="button" class="btn btn-primary" onclick="transferMulti()">Submit</button>
-        </div>
-
-        <div class="function-container">
-          <h5 class="title">approve</h5>
-          <p class="text">
-            <p>Pre approve a transfer from one address to another.</p>
-          </p>
-
-          <br/>
-          <p>Script hash:</p>
-          <input id='approveContractInput' type="text" value="8cae506e0c37359626e341e44a2ab166055bec78"/>
-
-          <br/>
-          <p>Owner address:</p>
-          <input id='approveOwnerInput' type="text" placeholder="AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ"/>
-
-          <br/>
-          <p>Spender address:</p>
-          <input id='approveSpenderInput' type="text" placeholder="AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ"/>
-
-          <br/>
-          <p>Amount:</p>
-          <input id='approveAmountInput' type="text" placeholder="0.001"/>
-
-          <br/>
-          <p>Gas price override (optional):</p>
-          <input id='approveGasPriceInput' type="text" placeholder="500"/>
-
-          <br/>
-          <p>Gas limit override (optional):</p>
-          <input id='approveGasLimitInput' type="text" placeholder="20000"/>
-
-          <button type="button" class="btn btn-primary" onclick="approve()">Submit</button>
+          <button type="button" class="btn btn-primary" onclick="init()">Init</button>
         </div>
 
       </div>

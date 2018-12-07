@@ -4,43 +4,33 @@ const loadingEle = document.getElementById("loading");
 const networksEle = document.getElementById("networks");
 const accountEle = document.getElementById("account");
 
-const getTokenDetailsInputEle = document.getElementById("getTokenDetailsInput");
-const getNameInputEle = document.getElementById("getNameInput");
-const getSymbolInputEle = document.getElementById("getSymbolInput");
-const getDecimalsInputEle = document.getElementById("getDecimalsInput");
-const getTotalSupplyInputEle = document.getElementById("getTotalSupplyInput");
-const getBalanceOfContractInputEle = document.getElementById("getBalanceOfContractInput");
+const contractHashEle = document.getElementById("contractHash");
+
 const getBalanceOfAddressInputEle = document.getElementById("getBalanceOfAddressInput");
-const getAllowanceContractInputEle = document.getElementById("getAllowanceContractInput");
 const getAllowanceOwnerInputEle = document.getElementById("getAllowanceOwnerInput");
 const getAllowanceSpenderInputEle = document.getElementById("getAllowanceSpenderInput");
 
-const initContractInputEle = document.getElementById("initContractInput");
 const initGasPriceInputEle = document.getElementById("initGasPriceInput");
 const initGasLimitInputEle = document.getElementById("initGasLimitInput");
 
-const transferContractInputEle = document.getElementById("transferContractInput");
 const transferFromInputEle = document.getElementById("transferFromInput");
 const transferToInputEle = document.getElementById("transferToInput");
 const transferAmountInputEle = document.getElementById("transferAmountInput");
 const transferGasPriceInputEle = document.getElementById("transferGasPriceInput");
 const transferGasLimitInputEle = document.getElementById("transferGasLimitInput");
 
-const transferFromContractInputEle = document.getElementById("transferFromContractInput");
 const transferFromFromInputEle = document.getElementById("transferFromFromInput");
 const transferFromToInputEle = document.getElementById("transferFromToInput");
 const transferFromAmountInputEle = document.getElementById("transferFromAmountInput");
 const transferFromGasPriceInputEle = document.getElementById("transferFromGasPriceInput");
 const transferFromGasLimitInputEle = document.getElementById("transferFromGasLimitInput");
 
-const approveContractInputEle = document.getElementById("approveContractInput");
 const approveOwnerInputEle = document.getElementById("approveOwnerInput");
 const approveSpenderInputEle = document.getElementById("approveSpenderInput");
 const approveAmountInputEle = document.getElementById("approveAmountInput");
 const approveGasPriceInputEle = document.getElementById("approveGasPriceInput");
 const approveGasLimitInputEle = document.getElementById("approveGasLimitInput");
 
-const transferMultiContractInputEle = document.getElementById("transferMultiContractInput");
 const transferMultiOutputsInputEle = document.getElementById("transferMultiOutputsInput");
 const transferMultiGasPriceInputEle = document.getElementById("transferMultiGasPriceInput");
 const transferMultiGasLimitInputEle = document.getElementById("transferMultiGasLimitInput");
@@ -77,7 +67,7 @@ function getTokenDetails() {
   startLoading();
   o3dapi.ONT.oep4.getTokenDetails({
     network: networksEle.value,
-    scriptHash: getTokenDetailsInputEle.value,
+    scriptHash: contractHashEle.value,
   })
   .then(handleSuccess)
   .catch(handleError);
@@ -88,7 +78,7 @@ function getName() {
   startLoading();
   o3dapi.ONT.oep4.getName({
     network: networksEle.value,
-    scriptHash: getNameInputEle.value,
+    scriptHash: contractHashEle.value,
   })
   .then(handleSuccess)
   .catch(handleError);
@@ -99,7 +89,7 @@ function getSymbol() {
   startLoading();
   o3dapi.ONT.oep4.getSymbol({
     network: networksEle.value,
-    scriptHash: getSymbolInputEle.value,
+    scriptHash: contractHashEle.value,
   })
   .then(handleSuccess)
   .catch(handleError);
@@ -110,7 +100,7 @@ function getDecimals() {
   startLoading();
   o3dapi.ONT.oep4.getDecimals({
     network: networksEle.value,
-    scriptHash: getDecimalsInputEle.value,
+    scriptHash: contractHashEle.value,
   })
   .then(handleSuccess)
   .catch(handleError);
@@ -121,7 +111,7 @@ function getTotalSupply() {
   startLoading();
   o3dapi.ONT.oep4.getTotalSupply({
     network: networksEle.value,
-    scriptHash: getTotalSupplyInputEle.value,
+    scriptHash: contractHashEle.value,
   })
   .then(handleSuccess)
   .catch(handleError);
@@ -132,7 +122,7 @@ function getBalanceOf() {
   startLoading();
   o3dapi.ONT.oep4.getBalanceOf({
     network: networksEle.value,
-    scriptHash: getBalanceOfContractInputEle.value,
+    scriptHash: contractHashEle.value,
     address: getBalanceOfAddressInputEle.value,
   })
   .then(handleSuccess)
@@ -144,7 +134,7 @@ function getAllowance() {
   startLoading();
   o3dapi.ONT.oep4.getAllowance({
     network: networksEle.value,
-    scriptHash: getAllowanceContractInputEle.value,
+    scriptHash: contractHashEle.value,
     owner: getAllowanceOwnerInputEle.value,
     spender:getAllowanceSpenderInputEle.value,
   })
@@ -157,7 +147,7 @@ function init() {
   startLoading();
   o3dapi.ONT.oep4.init({
     network: networksEle.value,
-    scriptHash: initContractInputEle.value,
+    scriptHash: contractHashEle.value,
     gasPrice: initGasPriceInputEle.value,
     gasLimit: initGasLimitInputEle.value,
   })
@@ -170,7 +160,7 @@ function transfer() {
   startLoading();
   o3dapi.ONT.oep4.transfer({
     network: networksEle.value,
-    scriptHash: transferContractInputEle.value,
+    scriptHash: contractHashEle.value,
     from: transferFromInputEle.value,
     to: transferToInputEle.value,
     amount: transferAmountInputEle.value,
@@ -186,7 +176,7 @@ function transferFrom() {
   startLoading();
   o3dapi.ONT.oep4.transferFrom({
     network: networksEle.value,
-    scriptHash: transferFromContractInputEle.value,
+    scriptHash: contractHashEle.value,
     from: transferFromFromInputEle.value,
     to: transferFromToInputEle.value,
     amount: transferFromAmountInputEle.value,
@@ -198,17 +188,21 @@ function transferFrom() {
 }
 
 function transferMulti() {
-  clearText();
-  startLoading();
-  o3dapi.ONT.oep4.transferMulti({
-    network: networksEle.value,
-    scriptHash: transferMultiContractInputEle.value,
-    outputs: transferMultiOutputsInputEle.value,
-    gasPrice: transferMultiGasPriceInputEle.value,
-    gasLimit: transferMultiGasLimitInputEle.value,
-  })
-  .then(handleSuccess)
-  .catch(handleError);
+  try {
+    clearText();
+    startLoading();
+    o3dapi.ONT.oep4.transferMulti({
+      network: networksEle.value,
+      scriptHash: contractHashEle.value,
+      outputs: JSON.parse(transferMultiOutputsInputEle.value),
+      gasPrice: transferMultiGasPriceInputEle.value,
+      gasLimit: transferMultiGasLimitInputEle.value,
+    })
+    .then(handleSuccess)
+    .catch(handleError);
+  } catch (err) {
+    handleError('Invalid JSON.')
+  }
 }
 
 function approve() {
@@ -216,7 +210,7 @@ function approve() {
   startLoading();
   o3dapi.ONT.oep4.approve({
     network: networksEle.value,
-    scriptHash: approveContractInputEle.value,
+    scriptHash: contractHashEle.value,
     owner: approveOwnerInputEle.value,
     spender: approveSpenderInputEle.value,
     amount: approveAmountInputEle.value,
@@ -264,9 +258,9 @@ o3dapi.ONT.addEventListener(o3dapi.ONT.Constants.EventName.ACCOUNT_CHANGED, data
 function onReady() {
   o3dapi.ONT.getNetworks()
   .then(networks => {
-    networks.forEach(network => {
+    networks.forEach((network, index) => {
       const option = document.createElement('option');
-      if (network === 'TestNet') {
+      if (index === 0 || network === 'PrivateNet') {
         option.selected = 'selected';
       }
       option.value = network;

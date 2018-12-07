@@ -5,6 +5,15 @@ body {
   overflow: hidden;
 }
 
+.contracthash-container {
+  padding-left: 2rem;
+  padding-top: 1rem;
+}
+
+#contractHash {
+  width: 60%;
+}
+
 textarea {
   width: 100%;
   height: 10rem;
