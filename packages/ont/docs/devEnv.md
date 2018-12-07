@@ -121,7 +121,7 @@ Please take note of the "Contract Hash" value of your contract, and make sure th
 
 ![smartxContractHash](./assets/smartxContractHash.png)
 
-## Calling your Smart Contract
+## Calling your Smart Contract (O3 dapi Testbed)
 
 Now that your contract is deployed to your private net, we want to call it. When calling your contract in your dapp, you can use the O3 dapi with the Ontology plugin. To guide you in doing so, the O3 app in dev mode provides a app called "ONT dapi Testbed".
 
@@ -141,6 +141,26 @@ To make a test call to your contract, scroll down to "invokeRead", paste in your
 
 From here, you can play around with the different methods available in the testbed, and when you are ready to start integrating calls to your contract from your dapp, head on over to the O3 Ontology dapi plugin repo. There you can learn more about how to integrate the JS packages into your app, and look at the source code for this testbed as a reference.
 
-[o3-dapi-ont](https://github.com/O3Labs/o3-dapi/tree/ont-docs/packages/ont)
+[o3-dapi-ont](https://github.com/O3Labs/o3-dapi/tree/master/packages/ont)
 
-[ONT dapi Testbed Reference dapp](https://github.com/O3Labs/o3-dapi/tree/ont-docs/packages/ont/test/base)
+[ONT dapi Testbed Reference dapp](https://github.com/O3Labs/o3-dapi/tree/master/packages/ont/test/base)
+
+## Calling your Smart Contract (O3 dapi - OEP4 Testbed)
+
+The O3 dapi protocol also supports convinience methods for OEP4 tokens, which can be found in the dev apps list under "ONT OEP4 Testbed".
+
+![o3appoep4](./assets/o3appoep4.png)
+
+Upon opening the OEP4 testbed app, you should first paste in the script hash of the contract which you would like to interface with, and select the network on which your contract is currently deployed to.
+
+![o3oep4hash](./assets/o3oep4hash.png)
+
+The `getTokenDetails` method will give you an overview of your token, but each method can also be called individually.
+
+![o3oep4token](./assets/o3oep4token.png)
+
+You can also invoke all the methods on the token to test our your logic.
+
+![o3oep4invoke](./assets/o3oep4invoke.png)
+
+All of these methods are available on the o3-dapi-ont plugin at `o3dapi.ONT.oep4`. Examples of all calls can be found for the testbed code [here](https://github.com/O3Labs/o3-dapi/tree/master/packages/ont/test/oep4).
