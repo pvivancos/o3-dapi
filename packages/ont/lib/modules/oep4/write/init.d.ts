@@ -1,5 +1,8 @@
 interface InitInput {
     network?: string;
+    scriptHash: string;
+    gasPrice?: number;
+    gasLimit?: number;
 }
 interface InitOutput {
     txid: string;

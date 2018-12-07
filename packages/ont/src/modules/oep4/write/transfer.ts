@@ -7,6 +7,8 @@ interface TransferInput {
   from: string;
   to: string;
   amount: string;
+  gasPrice?: number;
+  gasLimit?: number;
 }
 
 interface TransferOutput {

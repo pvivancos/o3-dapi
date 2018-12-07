@@ -1,15 +1,14 @@
 import { sendMessage } from '../../../messaging';
 import { Oep4Command } from '../constants';
 
-interface BalanceOfInput {
+interface TotalSupplyInput {
   network?: string;
   scriptHash: string;
-  address: string;
 }
 
-export function balanceOf(data: BalanceOfInput): Promise<string> {
+export function getTotalSupply(data: TotalSupplyInput): Promise<number> {
   return sendMessage({
-    command: Oep4Command.balanceOf,
+    command: Oep4Command.getTotalSupply,
     data,
   });
 }

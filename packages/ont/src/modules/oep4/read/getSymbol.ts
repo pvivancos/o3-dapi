@@ -1,14 +1,14 @@
 import { sendMessage } from '../../../messaging';
 import { Oep4Command } from '../constants';
 
-interface NameInput {
+interface SymbolInput {
   network?: string;
   scriptHash: string;
 }
 
-export function name(data: NameInput): Promise<string> {
+export function getSymbol(data: SymbolInput): Promise<string> {
   return sendMessage({
-    command: Oep4Command.name,
+    command: Oep4Command.getSymbol,
     data,
   });
 }

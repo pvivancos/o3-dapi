@@ -4,10 +4,11 @@ import { Oep4Command } from '../constants';
 interface TransferFromInput {
   network?: string;
   scriptHash: string;
-  spender: string;
   from: string;
   to: string;
   amount: string;
+  gasPrice?: number;
+  gasLimit?: number;
 }
 
 interface TransferFromOutput {
