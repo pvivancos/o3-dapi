@@ -1,7 +1,13 @@
 import { sendMessage } from '../messaging';
 import { Command } from '../constants';
 
-export function getAccount(): Promise<string> {
+interface AccountOutput {
+  address: string,
+  publicKey: string,
+  label: string,
+}
+
+export function getAccount(): Promise<AccountOutput> {
   return sendMessage({
     command: Command.getAccount,
   });

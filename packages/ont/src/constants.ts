@@ -50,6 +50,7 @@ export enum Command {
   invokeRead = 'invokeRead',
   deploy = 'deploy',
 
+  disconnect = 'disconnect',
 }
 
 export enum EventName {

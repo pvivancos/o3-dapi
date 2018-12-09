@@ -35,7 +35,8 @@ export declare enum Command {
     getProvider = "getProvider",
     invoke = "invoke",
     invokeRead = "invokeRead",
-    deploy = "deploy"
+    deploy = "deploy",
+    disconnect = "disconnect"
 }
 export declare enum EventName {
     READY = "READY"
