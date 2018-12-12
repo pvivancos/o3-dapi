@@ -94,11 +94,6 @@ function getNetworks() {
 function getAccount() {
   startLoading();
   o3dapi.ONT.getAccount()
-  .then(data => {
-    accountEle.innerHTML = `Connected Account: ${data.address}`;
-    disconnectEle.innerHTML = 'disconnect';
-    return data;
-  })
   .then(handleSuccess)
   .catch(handleError);
 }
@@ -343,6 +338,7 @@ o3dapi.ONT.addEventListener(o3dapi.ONT.Constants.EventName.READY, onReady);
 
 o3dapi.ONT.addEventListener(o3dapi.ONT.Constants.EventName.ACCOUNT_CHANGED, data => {
   accountEle.innerHTML = `Connected Account: ${data.address}`;
+  disconnectEle.innerHTML = 'disconnect';
 });
 
 function onReady() {

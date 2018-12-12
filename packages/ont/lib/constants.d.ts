@@ -39,7 +39,8 @@ export declare enum Command {
     disconnect = "disconnect"
 }
 export declare enum EventName {
-    READY = "READY"
+    READY = "READY",
+    ACCOUNT_CHANGED = "ACCOUNT_CHANGED"
 }
 export declare type Asset = 'ONT' | 'ONG' | string;
 export declare enum TransactionType {

@@ -55,6 +55,7 @@ export enum Command {
 
 export enum EventName {
   READY = 'READY',
+  ACCOUNT_CHANGED = 'ACCOUNT_CHANGED',
 }
 
 export type Asset = 'ONT' | 'ONG' | string;
