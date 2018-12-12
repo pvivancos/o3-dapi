@@ -79,11 +79,6 @@ function getNetworks() {
 function getAccount() {
   startLoading();
   o3dapi.NEO.getAccount()
-  .then(data => {
-    accountEle.innerHTML = `Connected Account: ${data.address}`;
-    disconnectEle.innerHTML = 'disconnect';
-    return data;
-  })
   .then(handleSuccess)
   .catch(handleError);
 }
@@ -207,6 +202,7 @@ o3dapi.NEO.addEventListener(o3dapi.NEO.Constants.EventName.READY, onReady);
 
 o3dapi.NEO.addEventListener(o3dapi.NEO.Constants.EventName.ACCOUNT_CHANGED, data => {
   accountEle.innerHTML = `Connected Account: ${data.address}`;
+  disconnectEle.innerHTML = 'disconnect';
 });
 
 function onReady() {
