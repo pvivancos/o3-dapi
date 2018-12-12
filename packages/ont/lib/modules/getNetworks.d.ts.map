@@ -1,1 +1,1 @@
-{"version":3,"file":"getNetworks.d.ts","sourceRoot":"","sources":["../../src/modules/getNetworks.ts"],"names":[],"mappings":"AAGA,aAAK,WAAW,GAAG,MAAM,GAAG,MAAM,GAAG,SAAS,CAAC;AAE/C,UAAU,OAAO;IACf,IAAI,EAAE,WAAW,CAAC;IAClB,OAAO,EAAE,MAAM,CAAC;CACjB;AAED,wBAAgB,WAAW,IAAI,OAAO,CAAC,OAAO,CAAC,CAI9C"}
+{"version":3,"file":"getNetworks.d.ts","sourceRoot":"","sources":["../../src/modules/getNetworks.ts"],"names":[],"mappings":"AAGA,UAAU,iBAAiB;IACzB,QAAQ,EAAE,MAAM,EAAE,CAAC;IACnB,cAAc,EAAE,MAAM,CAAC;CACxB;AAED,wBAAgB,WAAW,IAAI,OAAO,CAAC,iBAAiB,CAAC,CAIxD"}

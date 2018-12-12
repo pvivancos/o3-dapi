@@ -6,6 +6,7 @@ import { getStorage } from './modules/read/getStorage';
 import { invokeRead } from './modules/read/invokeRead';
 import { send } from './modules/write/send';
 import { invoke } from './modules/write/invoke';
+import { disconnect } from './modules/disconnect';
 import { addEventListener, removeEventListener } from './modules/eventListener';
 import { ArgumentDataType, EventName, BLOCKCHAIN } from './constants';
 import { initMessaging } from './messaging';
@@ -28,6 +29,8 @@ class O3dapiNeo {
 
   addEventListener = addEventListener;
   removeEventListener = removeEventListener;
+
+  disconnect = disconnect;
 
   Constants = {
     EventName,

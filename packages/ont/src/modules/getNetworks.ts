@@ -1,14 +1,12 @@
 import { sendMessage } from '../messaging';
 import { Command } from '../constants';
 
-type NetworkType = 'MAIN' | 'TEST' | 'PRIVATE';
-
-interface Network {
-  type: NetworkType;
-  address: string;
+interface GetNetworksOutput {
+  networks: string[];
+  defaultNetwork: string;
 }
 
-export function getNetworks(): Promise<Network> {
+export function getNetworks(): Promise<GetNetworksOutput> {
   return sendMessage({
     command: Command.getNetworks,
   });

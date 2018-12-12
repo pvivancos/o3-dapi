@@ -22,6 +22,7 @@ export enum Command {
   send = 'send',
   invoke = 'invoke',
   event = 'event',
+  disconnect = 'disconnect',
 }
 
 export enum EventName {

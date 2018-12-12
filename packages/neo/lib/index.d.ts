@@ -6,6 +6,7 @@ import { getStorage } from './modules/read/getStorage';
 import { invokeRead } from './modules/read/invokeRead';
 import { send } from './modules/write/send';
 import { invoke } from './modules/write/invoke';
+import { disconnect } from './modules/disconnect';
 import { addEventListener, removeEventListener } from './modules/eventListener';
 import { ArgumentDataType, EventName } from './constants';
 declare class O3dapiNeo {
@@ -21,6 +22,7 @@ declare class O3dapiNeo {
     invoke: typeof invoke;
     addEventListener: typeof addEventListener;
     removeEventListener: typeof removeEventListener;
+    disconnect: typeof disconnect;
     Constants: {
         EventName: typeof EventName;
         ArgumentDataType: typeof ArgumentDataType;

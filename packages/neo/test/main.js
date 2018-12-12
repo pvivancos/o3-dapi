@@ -2,6 +2,7 @@ const errorEle = document.getElementById("error");
 const resultEle = document.getElementById("result");
 const loadingEle = document.getElementById("loading");
 const accountEle = document.getElementById("account");
+const disconnectEle = document.getElementById("disconnect");
 
 const balanceInputEle = document.getElementById("balanceInput");
 
@@ -80,6 +81,7 @@ function getAccount() {
   o3dapi.NEO.getAccount()
   .then(data => {
     accountEle.innerHTML = `Connected Account: ${data.address}`;
+    disconnectEle.innerHTML = 'disconnect';
     return data;
   })
   .then(handleSuccess)
@@ -162,6 +164,17 @@ function send() {
   .catch(handleError);
 }
 
+function disconnect() {
+  o3dapi.NEO.disconnect()
+  .then(data => {
+    accountEle.innerHTML = '';
+    disconnectEle.innerHTML = '';
+    return data;
+  })
+  .then(handleSuccess)
+  .catch(handleError);
+}
+
 function syntaxHighlight(json) {
     if (typeof json != 'string') {
          json = JSON.stringify(json, undefined, 2);
@@ -198,10 +211,10 @@ o3dapi.NEO.addEventListener(o3dapi.NEO.Constants.EventName.ACCOUNT_CHANGED, data
 
 function onReady() {
   o3dapi.NEO.getNetworks()
-  .then(({networks}) => {
+  .then(({networks, defaultNetwork}) => {
     networks.forEach(network => {
       const option = document.createElement('option');
-      if (network === 'TestNet') {
+      if (network === defaultNetwork) {
         option.selected = 'selected';
       }
       option.value = network;

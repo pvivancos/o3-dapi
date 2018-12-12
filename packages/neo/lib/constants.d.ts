@@ -19,7 +19,8 @@ export declare enum Command {
     invokeRead = "invokeRead",
     send = "send",
     invoke = "invoke",
-    event = "event"
+    event = "event",
+    disconnect = "disconnect"
 }
 export declare enum EventName {
     READY = "READY",

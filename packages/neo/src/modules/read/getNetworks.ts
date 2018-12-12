@@ -3,6 +3,7 @@ import { Command } from '../../constants';
 
 interface GetNetworksOutput {
   networks: string[];
+  defaultNetwork: string;
 }
 
 export function getNetworks(): Promise<GetNetworksOutput> {
