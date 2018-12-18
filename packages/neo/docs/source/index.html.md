@@ -65,36 +65,59 @@ getProvider()
 
 > Example Response
 
-```json
+```javascript
 {
-  "name": "O3",
-  "website": "o3.network",
-  "version": "1.0",
-  "compatibility": ["NEP-1", "NEP-2", "NEP-3"]
+  name: 'Awesome Wallet',
+  website: 'https://www.awesome.com',
+  version: 'v0.0.1',
+  compatibility: [
+    'NEP-14',
+    'NEP-23',
+    'NEP-29'
+  ]
 }
 ```
 
 Returns information about the dAPI provider, including who this provider is, the version of their dAPI, and the NEP that the interface is compatible with.
 
-### Provider Response
+### Input Arguements
+
+None
+
+### Success Response
 | Parameter     | Type     | Description                                                      |
 |:------------- |:-------- |:---------------------------------------------------------------- |
 | name          | String   | The name of the wallet provider                                  |
 | website       | String   | The website of the wallet provider                               |
 | version       | String   | The version of the dAPI that the the wallet supports             |
-| compatibility | [String] | A list of all applicable NEPs which the wallet provider supports |
+| compatibility | String[] | A list of all applicable NEPs which the wallet provider supports |
+
+
+### Error Response
+| Parameter   | Type    | Description                                  |
+|:----------- |:------- |:-------------------------------------------- |
+| type        | string  | The type of error which has occured          |
+| description | string  | A description of the error which has occured |
+| data        | string? | Any raw data associated with the error       |
 
 ## getNetworks
 
 ```javascript
 getNetworks()
 .then(response => {
-  const networks = response.networks;
+  const {
+    networks,
+    defaultNetwork,
+  } = response.networks;
+
   console.log('Networks: ' + networks);
   // eg. ["MainNet", "TestNet", "PrivateNet"]
+
+  console.log('Default network: ' + defaultNetwork);
+  // eg. "MainNet"
 })
-.catch((err: string) => {
-  switch(err) {
+.catch(({type: string, description: string, data: any}) => {
+  switch(type) {
     case NO_PROVIDER:
       console.log('No provider available.');
       break;
@@ -106,19 +129,33 @@ getNetworks()
 ```
 
 > Example Response
-```json
+
+```javascript
 {
-  "networks": ["MainNet", "TestNet", "PrivateNet"]
+  networks: ["MainNet", "TestNet", "PrivateNet"],
+  defaultNetwork: "TestNet",
 }
 ```
 
-Returns the networks that the wallet provider has available to connect to.
+Returns the networks the wallet provider has available to connect to, along with the default network the wallet is currently set to.
 
-### Networks Response
+### Input Arguements
 
-| Parameter | Type     | Description                                                   |
-|:--------- |:-------- |:------------------------------------------------------------- |
-| networks  | [String] | A list of all networks which this wallet will allow access to |
+None
+
+### Success Response
+
+| Parameter      | Type     | Description                                                        |
+|:-------------- |:-------- |:------------------------------------------------------------------ |
+| networks       | string[] | A list of all networks which this wallet provider allows access to |
+| defaultNetwork | string   | Network the wallet is currently set to                             |
+
+### Error Response
+| Parameter   | Type    | Description                                  |
+|:----------- |:------- |:-------------------------------------------- |
+| type        | string  | The type of error which has occured          |
+| description | string  | A description of the error which has occured |
+| data        | string? | Any raw data associated with the error       |
 
 ## getAccount
 
@@ -147,10 +184,10 @@ getAccount()
 
 > Example Response
 
-```json
+```javascript
 {
-  "address": "AeysVbKWiLSuSDhg7DTzUdDyYYKfgjojru",
-  "publicKey": "03d43468721ef8936548878071b534d8228c313e02e6d90cef8c65fd3c2d4eaeed"
+  address: 'AeysVbKWiLSuSDhg7DTzUdDyYYKfgjojru',
+  publicKey: '03d43468721ef8936548878071b534d8228c313e02e6d90cef8c65fd3c2d4eaeed'
 }
 ```
 
@@ -162,6 +199,12 @@ Return the Account that is currently connected to the dApp.
 | address   | String | The address of the account that is currently connected to the dapp    |
 | publicKey | String | The public key of the account that is currently connected to the dapp |
 
+### Error Response
+| Parameter   | Type    | Description                                  |
+|:----------- |:------- |:-------------------------------------------- |
+| type        | string  | The type of error which has occured          |
+| description | string  | A description of the error which has occured |
+| data        | string? | Any raw data associated with the error       |
 
 ## getBalance
 
@@ -200,23 +243,23 @@ getBalance({
 
 > Single Address with specific balances requested
 
-```json
-//input
+```javascript
+// input
 {
-  "params": {
-    "address": "AeysVbKWiLSuSDhg7DTzUdDyYYKfgjojru",
-    "assets": ["NKN"]
+  params: {
+    address: 'AeysVbKWiLSuSDhg7DTzUdDyYYKfgjojru',
+    assets: ['NKN']
   },
-  "network": "MainNet",
+  network: 'MainNet',
 }
 
-//output
+// output
 {
-  "AeysVbKWiLSuSDhg7DTzUdDyYYKfgjojru": [
+  AeysVbKWiLSuSDhg7DTzUdDyYYKfgjojru: [
     {
-      "scriptHash": "c36aee199dbba6c3f439983657558cfb67629599",
-      "symbol": "NKN",
-      "amount": "0.00000233",
+      scriptHash: 'c36aee199dbba6c3f439983657558cfb67629599',
+      symbol: 'NKN',
+      amount: '0.00000233',
     }
   ],
 }
@@ -224,37 +267,37 @@ getBalance({
 
 > Single Address with all balances requested
 
-```json
-// Query Input
+```javascript
+// input
 {
-  "params": {
-    "address": "AeysVbKWiLSuSDhg7DTzUdDyYYKfgjojru",
+  params: {
+    address: 'AeysVbKWiLSuSDhg7DTzUdDyYYKfgjojru',
   },
-  "network": "MainNet",
+  network: 'MainNet',
 }
 
-// Query Output
+// output
 {
-  "AeysVbKWiLSuSDhg7DTzUdDyYYKfgjojru": [
+  AeysVbKWiLSuSDhg7DTzUdDyYYKfgjojru: [
     {
-      "scriptHash": "c56f33fc6ecfcd0c225c4ab356fee59390af8560be0e930faebe74a6daff7c9b",
-      "symbol": "NEO",
-      "amount": "10",
+      scriptHash: 'c56f33fc6ecfcd0c225c4ab356fee59390af8560be0e930faebe74a6daff7c9b',
+      symbol: 'NEO',
+      amount: '10',
     },
     {
-      "scriptHash": "602c79718b16e442de58778e148d0b1084e3b2dffd5de6b7b16cee7969282de7",
-      "symbol": "GAS",
-      "amount": "777.0001",
+      scriptHash: '602c79718b16e442de58778e148d0b1084e3b2dffd5de6b7b16cee7969282de7',
+      symbol: 'GAS',
+      amount: '777.0001',
     },
     {
-      "scriptHash": "c36aee199dbba6c3f439983657558cfb67629599",
-      "symbol": "NKN",
-      "amount": "0.00000233",
+      scriptHash: 'c36aee199dbba6c3f439983657558cfb67629599',
+      symbol: 'NKN',
+      amount: '0.00000233',
     },
     {
-      "scriptHash": "fc732edee1efdf968c23c20a9628eaa5a6ccb934",
-      "symbol": "NNC",
-      "amount": "2000",
+      scriptHash: 'fc732edee1efdf968c23c20a9628eaa5a6ccb934',
+      symbol: 'NNC',
+      amount: '2000',
     }
   ]
 }
@@ -262,50 +305,50 @@ getBalance({
 
 > Multiple address balance queries
 
-```json
-// Query Input
+```javascript
+// input
 {
-  "params": [
+  params: [
     {
-      "address": "AeysVbKWiLSuSDhg7DTzUdDyYYKfgjojru",
+      address: 'AeysVbKWiLSuSDhg7DTzUdDyYYKfgjojru',
     },
     {
-      "address": "AbKNY45nRDy6B65YPVz1B6YXiTnzRqU2uQ",
-      "asset": ["PHX"],
+      address: 'AbKNY45nRDy6B65YPVz1B6YXiTnzRqU2uQ',
+      asset: 'PHX',
     },
   ],
-  "network": "MainNet",
+  network: 'MainNet',
 }
 
-// Query Output
+// output
 {
-  "AeysVbKWiLSuSDhg7DTzUdDyYYKfgjojru": [
+  AeysVbKWiLSuSDhg7DTzUdDyYYKfgjojru: [
     {
-      "scriptHash": "c56f33fc6ecfcd0c225c4ab356fee59390af8560be0e930faebe74a6daff7c9",
-      "symbol": "NEO",
-      "amount": "10",
+      scriptHash: 'c56f33fc6ecfcd0c225c4ab356fee59390af8560be0e930faebe74a6daff7c9b',
+      symbol: 'NEO',
+      amount: '10',
     },
     {
-      "scriptHash": "602c79718b16e442de58778e148d0b1084e3b2dffd5de6b7b16cee7969282de7",
-      "symbol": "GAS",
-      "amount": "777.0001",
+      scriptHash: '602c79718b16e442de58778e148d0b1084e3b2dffd5de6b7b16cee7969282de7',
+      symbol: 'GAS',
+      amount: '777.0001',
     },
     {
-      "scriptHash": "c36aee199dbba6c3f439983657558cfb67629599",
-      "symbol": "NKN",
-      "amount": "0.00000233",
+      scriptHash: 'c36aee199dbba6c3f439983657558cfb67629599',
+      symbol: 'NKN',
+      amount: '0.00000233',
     },
     {
-      "scriptHash": "fc732edee1efdf968c23c20a9628eaa5a6ccb934",
-      "symbol": "NNC",
-      "amount": "2000",
+      scriptHash: 'fc732edee1efdf968c23c20a9628eaa5a6ccb934',
+      symbol: 'NNC',
+      amount: '2000',
     }
   ],
-  "AbKNY45nRDy6B65YPVz1B6YXiTnzRqU2uQ": [
+  AbKNY45nRDy6B65YPVz1B6YXiTnzRqU2uQ: [
     {
-      "scriptHash": "1578103c13e39df15d0d29826d957e85d770d8c9",
-      "symbol": "PHX",
-      "amount": "11000",
+      scriptHash: '1578103c13e39df15d0d29826d957e85d770d8c9',
+      symbol: 'PHX',
+      amount: '11000',
     }
   ]
 }
@@ -314,49 +357,47 @@ getBalance({
 
 Allows the DAPP to query the balance of a user, this includes both native assets (NEO/GAS) and NEP-5 tokens
 
+### Input Arguements
+| Parameter | Type             | Description                                                                              |
+|:--------- |:---------------- |:---------------------------------------------------------------------------------------- |
+| params    | BalanceRequest[] | A list of Balance Request Objects, specifying which addresses, and which assets to query |
+| network   | String           | The call will only work for the networks available in the GetNetworks command            |
 
-### Request Parameters
-| Parameter  | Type             | Description                                                                              |
-|:---------- |:---------------- |:---------------------------------------------------------------------------------------- |
-| params     | [BalanceRequest] | A list of Balance Request Objects, specifying which addresses, and which assets to query |
-| network    | String           | The call will only work for the networks available in the GetNetworks command            |
-| fetchUTXO? | boolean          | The response will fetch NEO and GAS UTXO's if this attribute is true                     |
+#### Balance Request
+| Parameter  | Type     | Description                                                                   |
+|:---------- |:-------- |:----------------------------------------------------------------------------- |
+| address    | String   | The address whose balance you want to query                                   |
+| assets     | String[] | A list of contract hash (or symbold on MainNet only) to query the balance for |
+| fetchUTXO? | boolean  | The response will fetch NEO and GAS UTXO's if this attribute is true          |
 
-### Balance Request
-| Parameter | Type     | Description                                 |
-|:--------- |:-------- |:------------------------------------------- |
-| address   | String   | The address whose balance you want to query |
-| assets    | [String] | A list of symbols to query the balance for  |
-
-### Response Parameters
+### Success Response
 | Parameter | Type              | Description                                                                          |
 |:--------- |:----------------- |:------------------------------------------------------------------------------------ |
-| address_1 | [BalanceResponse] | This key is the actual address of the query eg. "AeysVbKWiLSuSDhg7DTzUdDyYYKfgjojru" |
-| address_2 | [BalanceResponse] | This key is the actual address of the query eg. "AbKNY45nRDy6B65YPVz1B6YXiTnzRqU2uQ" |
-| address_n | [BalanceResponse] | This key is the actual address of the query eg. "AUdawyrLMskxXMUE8osX9mSLKz8R7777kE" |
+| address_1 | BalanceResponse[] | This key is the actual address of the query eg. "AeysVbKWiLSuSDhg7DTzUdDyYYKfgjojru" |
+| address_2 | BalanceResponse[] | This key is the actual address of the query eg. "AbKNY45nRDy6B65YPVz1B6YXiTnzRqU2uQ" |
+| address_n | BalanceResponse[] | This key is the actual address of the query eg. "AUdawyrLMskxXMUE8osX9mSLKz8R7777kE" |
 
 <aside class="notice">
 The amount of addresses is n where n is the number of addresses specified in your query
 </aside>
 
 
-### BalanceResponse
-| Parameter  | Type   | Description                                                                                          |
-|:---------- |:------ |:---------------------------------------------------------------------------------------------------- |
-| scriptHash | String | Script hash of the given asset                                                                       |
-| symbol     | String | Symbol of the given asset                                                                            |
-| amount     | String | Double Value of the balance represented as a String                                                  |
-| unspent    | [UTXO] | If fetch utxo's was turned on then the utxo array will be returned for the native assets NEO and GAS |
+#### BalanceResponse
+| Parameter  | Type    | Description                                                                                          |
+|:---------- |:------- |:---------------------------------------------------------------------------------------------------- |
+| scriptHash | String  | Script hash of the given asset                                                                       |
+| symbol     | String  | Symbol of the given asset                                                                            |
+| amount     | String  | Double Value of the balance represented as a String                                                  |
+| unspent    | UTXO[]? | If fetch utxo's was turned on then the utxo array will be returned for the native assets NEO and GAS |
 
-### UTXO
-| Parameter      | Type   | Description                                           |
-|:-------------- |:------ |:----------------------------------------------------- |
-| asset          | String | Script hash of the native asset                       |
-| createdAtBlock | String | Block number where this utxo was created              |
-| index          | Int    | ???                                                   |
-| txid           | String | The transaction id of this UTXO                       |
-| value          | String | The double value of this UTXO represented as a String |
-
+#### UTXO
+| Parameter      | Type   | Description                                                           |
+|:-------------- |:------ |:--------------------------------------------------------------------- |
+| asset          | String | Script hash of the native asset                                       |
+| createdAtBlock | String | Block number where this utxo was created                              |
+| index          | Int    | Output index of the UTXO relative to the txid in which it was created |
+| txid           | String | The transaction id of this UTXO                                       |
+| value          | String | The double value of this UTXO represented as a String                 |
 
 
 ## getStorage
@@ -388,7 +429,7 @@ getStorage({
 
 > Example Response
 
-```json
+```javascript
 {
     "result": "hello world"
 }
@@ -448,7 +489,7 @@ invokeRead({
 
 > Example Response
 
-```json
+```javascript
 {
   "script": "8h89fh398f42f.....89hf2894hf9834",
   "state": "HALT, BREAK",
@@ -532,7 +573,7 @@ send({
 
 > Example Response
 
-```json
+```javascript
 {
   txid: 'ed54fb38dff371be6e3f96e4880405758c07fe6dd1295eb136fe15f311e9ff77',
   nodeUrl: 'http://seed7.ngd.network:10332',
@@ -606,7 +647,7 @@ invoke({
 
 > Example Response
 
-```json
+```javascript
 {
   "txid": "ed54fb38dff371be6e3f96e4880405758c07fe6dd1295eb136fe15f311e9ff77",
   "nodeUrl": "http://seed7.ngd.network:10332"
