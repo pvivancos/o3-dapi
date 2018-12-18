@@ -51,8 +51,8 @@ getProvider()
   console.log('Provider dAPI version: ' + version);
   console.log('Provider dAPI compatibility: ' + JSON.stringify(compatibility));
 })
-.catch((err: string) => {
-  switch(err) {
+.catch(({type: string, description: string, data: any}) => {
+  switch(type) {
     case NO_PROVIDER:
       console.log('No provider available.');
       break;
@@ -60,6 +60,7 @@ getProvider()
       console.log('The user rejected the request to connect with your dApp.');
       break;
   }
+});
 ```
 
 > Example Response
@@ -76,12 +77,12 @@ getProvider()
 Returns information about the dAPI provider, including who this provider is, the version of their dAPI, and the NEP that the interface is compatible with.
 
 ### Provider Response
-Parameter | Type |  Description
---------- | ---- |-----------
-name | String | The name of the wallet provider
-website  | String | The website of the wallet provider
-version | String | The version of the dAPI that the the wallet supports
-compatibility | [String] | A list of all applicable NEPs which the wallet provider supports
+| Parameter     | Type     | Description                                                      |
+|:------------- |:-------- |:---------------------------------------------------------------- |
+| name          | String   | The name of the wallet provider                                  |
+| website       | String   | The website of the wallet provider                               |
+| version       | String   | The version of the dAPI that the the wallet supports             |
+| compatibility | [String] | A list of all applicable NEPs which the wallet provider supports |
 
 ## getNetworks
 
@@ -114,9 +115,10 @@ getNetworks()
 Returns the networks that the wallet provider has available to connect to.
 
 ### Networks Response
-Parameter | Type |  Description
---------- | ---- |-----------
-networks | [String] | A list of all networks which this wallet will allow access to
+
+| Parameter | Type     | Description                                                   |
+|:--------- |:-------- |:------------------------------------------------------------- |
+| networks  | [String] | A list of all networks which this wallet will allow access to |
 
 ## getAccount
 
@@ -155,10 +157,10 @@ getAccount()
 Return the Account that is currently connected to the dApp.
 
 ### Account Response
-Parameter | Type |  Description
---------- | ---- |-----------
-address | String | The address of the account that is currently connected to the dapp
-publicKey | String | The public key of the account that is currently connected to the dapp
+| Parameter | Type   | Description                                                           |
+|:--------- |:------ |:--------------------------------------------------------------------- |
+| address   | String | The address of the account that is currently connected to the dapp    |
+| publicKey | String | The public key of the account that is currently connected to the dapp |
 
 
 ## getBalance
@@ -314,24 +316,24 @@ Allows the DAPP to query the balance of a user, this includes both native assets
 
 
 ### Request Parameters
-Parameter | Type |  Description
---------- | ---- |-----------
-params |[BalanceRequest] | A list of Balance Request Objects, specifying which addresses, and which assets to query
-network | String | The call will only work for the networks available in the GetNetworks command
-fetchUTXO? | boolean | The response will fetch NEO and GAS UTXO's if this attribute is true
+| Parameter  | Type             | Description                                                                              |
+|:---------- |:---------------- |:---------------------------------------------------------------------------------------- |
+| params     | [BalanceRequest] | A list of Balance Request Objects, specifying which addresses, and which assets to query |
+| network    | String           | The call will only work for the networks available in the GetNetworks command            |
+| fetchUTXO? | boolean          | The response will fetch NEO and GAS UTXO's if this attribute is true                     |
 
 ### Balance Request
-Parameter | Type |  Description
---------- | ---- |-----------
-address | String   | The address whose balance you want to query
-assets  | [String] | A list of symbols to query the balance for
+| Parameter | Type     | Description                                 |
+|:--------- |:-------- |:------------------------------------------- |
+| address   | String   | The address whose balance you want to query |
+| assets    | [String] | A list of symbols to query the balance for  |
 
 ### Response Parameters
-Parameter | Type |  Description
---------- | ---- |-----------
-address_1 | [BalanceResponse] | This key is the actual address of the query eg. "AeysVbKWiLSuSDhg7DTzUdDyYYKfgjojru"
-address_2 | [BalanceResponse] | This key is the actual address of the query eg. "AbKNY45nRDy6B65YPVz1B6YXiTnzRqU2uQ"
-address_n | [BalanceResponse] | This key is the actual address of the query eg. "AUdawyrLMskxXMUE8osX9mSLKz8R7777kE"
+| Parameter | Type              | Description                                                                          |
+|:--------- |:----------------- |:------------------------------------------------------------------------------------ |
+| address_1 | [BalanceResponse] | This key is the actual address of the query eg. "AeysVbKWiLSuSDhg7DTzUdDyYYKfgjojru" |
+| address_2 | [BalanceResponse] | This key is the actual address of the query eg. "AbKNY45nRDy6B65YPVz1B6YXiTnzRqU2uQ" |
+| address_n | [BalanceResponse] | This key is the actual address of the query eg. "AUdawyrLMskxXMUE8osX9mSLKz8R7777kE" |
 
 <aside class="notice">
 The amount of addresses is n where n is the number of addresses specified in your query
@@ -339,21 +341,21 @@ The amount of addresses is n where n is the number of addresses specified in you
 
 
 ### BalanceResponse
-Parameter | Type |  Description
---------- | ---- |-----------
-scriptHash | String | Script hash of the given asset
-symbol  | String | Symbol of the given asset
-amount | String | Double Value of the balance represented as a String
-unspent | [UTXO] | If fetch utxo's was turned on then the utxo array will be returned for the native assets NEO and GAS
+| Parameter  | Type   | Description                                                                                          |
+|:---------- |:------ |:---------------------------------------------------------------------------------------------------- |
+| scriptHash | String | Script hash of the given asset                                                                       |
+| symbol     | String | Symbol of the given asset                                                                            |
+| amount     | String | Double Value of the balance represented as a String                                                  |
+| unspent    | [UTXO] | If fetch utxo's was turned on then the utxo array will be returned for the native assets NEO and GAS |
 
 ### UTXO
-Parameter | Type |  Description
---------- | ---- |-----------
-asset | String | Script hash of the native asset
-createdAtBlock | String | Block number where this utxo was created
-index | Int | ???
-txid | String | The transaction id of this UTXO
-value | String | The double value of this UTXO represented as a String
+| Parameter      | Type   | Description                                           |
+|:-------------- |:------ |:----------------------------------------------------- |
+| asset          | String | Script hash of the native asset                       |
+| createdAtBlock | String | Block number where this utxo was created              |
+| index          | Int    | ???                                                   |
+| txid           | String | The transaction id of this UTXO                       |
+| value          | String | The double value of this UTXO represented as a String |
 
 
 
@@ -396,16 +398,16 @@ getStorage({
 Returns the raw value located in contract storage
 
 ### Get Storage Request
-Parameter | Type |  Description
---------- | ---- |-----------
-scriptHash | String | Scripthash of the contract whose storage you are querying on
-key | String | Key of the storage value to retrieve from the contract
-network | String? | Network alias to submit this request to. If omitted, will default to "MainNet".
+| Parameter  | Type    | Description                                                                     |
+|:---------- |:------- |:------------------------------------------------------------------------------- |
+| scriptHash | String  | Scripthash of the contract whose storage you are querying on                    |
+| key        | String  | Key of the storage value to retrieve from the contract                          |
+| network    | String? | Network alias to submit this request to. If omitted, will default to "MainNet". |
 
 ### Get Storage Response
-Parameter | Type |  Description
---------- | ---- |-----------
-result  | String | The raw value located in contract storage
+| Parameter | Type   | Description                               |
+|:--------- |:------ |:----------------------------------------- |
+| result    | String | The raw value located in contract storage |
 
 
 ## invokeRead
@@ -463,18 +465,18 @@ invokeRead({
 Execute a contract invocation in read-only mode.
 
 ### Invoke Read Request
-Parameter | Type |  Description
---------- | ---- |-----------
-scriptHash  | String | The script hash of the contract you want to invoke a read on
-operation | String | The operation on the smart contract that you want to invoke a read on
-args | [Argument] | The input arguments necessary to perform this operation
-network | String? | Network alias to submit this request to. If omitted, will default to "MainNet"
+| Parameter  | Type       | Description                                                                    |
+|:---------- |:---------- |:------------------------------------------------------------------------------ |
+| scriptHash | String     | The script hash of the contract you want to invoke a read on                   |
+| operation  | String     | The operation on the smart contract that you want to invoke a read on          |
+| args       | [Argument] | The input arguments necessary to perform this operation                        |
+| network    | String?    | Network alias to submit this request to. If omitted, will default to "MainNet" |
 
 ### Argument
-Parameter | Type |  Description
---------- | ---- |-----------
-type | String | The type of the argument with you are using
-value | String | String representation of the argument which you are using
+| Parameter | Type   | Description                                               |
+|:--------- |:------ |:--------------------------------------------------------- |
+| type      | String | The type of the argument with you are using               |
+| value     | String | String representation of the argument which you are using |
 
 ### Invoke Read Response
 The wallet will return the direct response from the RPC node.
@@ -540,21 +542,21 @@ send({
 The send API can be used for accepting payments from the user in a cryptocurrency that is located on the NEO blockchain. It requires user authentication in order for the transaction to be relayed. The transaction will be relayed by the wallet.
 
 ### Send Request
-Parameter | Type |  Description
---------- | ---- |-----------
-fromAddress | String | The address from where the transaction is being sent. This will be the same value as the one received from the getAccount API
-toAddress | String | The address to where the user should send their funds
-asset | String | The asset which is being requested for payment...e.g GAS or CGAS
-amount | String | The amount which is being requested for payment
-remark | String? | A transaction attribute remark which may be placed in the transaction, this data will appear in the transaction record on the blockchain
-fee | String? | If a fee is specified then the wallet SHOULD NOT override it, if a fee is not specified the wallet SHOULD allow the user to attach an optional fee
-network | String? | Network alias to submit this request to. If omitted, will default to "MainNet".
+| Parameter   | Type    | Description                                                                                                                                        |
+|:----------- |:------- |:-------------------------------------------------------------------------------------------------------------------------------------------------- |
+| fromAddress | String  | The address from where the transaction is being sent. This will be the same value as the one received from the getAccount API                      |
+| toAddress   | String  | The address to where the user should send their funds                                                                                              |
+| asset       | String  | The asset which is being requested for payment...e.g GAS or CGAS                                                                                   |
+| amount      | String  | The amount which is being requested for payment                                                                                                    |
+| remark      | String? | A transaction attribute remark which may be placed in the transaction, this data will appear in the transaction record on the blockchain           |
+| fee         | String? | If a fee is specified then the wallet SHOULD NOT override it, if a fee is not specified the wallet SHOULD allow the user to attach an optional fee |
+| network     | String? | Network alias to submit this request to. If omitted, will default to "MainNet".                                                                    |
 
 ### Send Response
-Parameter | Type |  Description
---------- | ---- |-----------
-txid  | String | The transaction id of the send request which can be queried on the blockchain
-nodeURL | String | The node to which the transaction was submitted to
+| Parameter | Type   | Description                                                                   |
+|:--------- |:------ |:----------------------------------------------------------------------------- |
+| txid      | String | The transaction id of the send request which can be queried on the blockchain |
+| nodeURL   | String | The node to which the transaction was submitted to                            |
 
 <aside class="warning">
 It is reccommended that the DAPP take appropriate levels of risk prevention when accepting transactions. The dapp can query the mempool of a known node to ensure that the transaction will indeed be broadcast on the network.
@@ -614,59 +616,58 @@ invoke({
 Invoke allows for the generic execution of smart contracts on behalf of the user. It is reccommended to have a general understanding of the NEO blockchain, and to be able successfully use all other commands listed previously in this document before attempting a generic contract execution.
 
 ### Invoke Request
-Parameter | Type |  Description
---------- | ---- |-----------
-scriptHash | String | The script hash of the contract that you wish to invoke
-operation | String | The operation on the smart contract that you wish to call. This can be fetched from the contract ABI
-args | [Argument] | A list of arguments necessary to perform on the operation you wish to call
-fee | String? | If a fee is specified then the wallet SHOULD NOT override it, if a fee is not specified the wallet SHOULD allow the user to attach an optional fee
-network | String? | Network alias to submit this request to. If omitted, will default to "MainNet".
-assets | AttachedAssets? | Describes the assets to attach with the smart contract, e.g. attaching assets to mint tokens during a token sale
-assetIntentOverrides | AssetIntentOverrides | Used to specify the exact the exact UTXO's to use for attached assets. If this is provided fee and attachedAssets will be ignored
-triggerContractVerification | Boolean? | Adds the instruction to invoke the contract verifican trigger
+| Parameter                   | Type                 | Description                                                                                                                                        |
+|:--------------------------- |:-------------------- |:-------------------------------------------------------------------------------------------------------------------------------------------------- |
+| scriptHash                  | String               | The script hash of the contract that you wish to invoke                                                                                            |
+| operation                   | String               | The operation on the smart contract that you wish to call. This can be fetched from the contract ABI                                               |
+| args                        | [Argument]           | A list of arguments necessary to perform on the operation you wish to call                                                                         |
+| fee                         | String?              | If a fee is specified then the wallet SHOULD NOT override it, if a fee is not specified the wallet SHOULD allow the user to attach an optional fee |
+| network                     | String?              | Network alias to submit this request to. If omitted, will default to "MainNet".                                                                    |
+| assets                      | AttachedAssets?      | Describes the assets to attach with the smart contract, e.g. attaching assets to mint tokens during a token sale                                   |
+| assetIntentOverrides        | AssetIntentOverrides | Used to specify the exact the exact UTXO's to use for attached assets. If this is provided fee and attachedAssets will be ignored                  |
+| triggerContractVerification | Boolean?             | Adds the instruction to invoke the contract verifican trigger                                                                                      |
 
 ### Argument
-Parameter | Type |  Description
---------- | ---- |-----------
-type | String | The type of the argument with you are using
-value | String | String representation of the argument which you are using
+| Parameter | Type   | Description                                               |
+|:--------- |:------ |:--------------------------------------------------------- |
+| type      | String | The type of the argument with you are using               |
+| value     | String | String representation of the argument which you are using |
 
 <aside class =notice>
 Available types are "String"|"Boolean"|"Hash160"|"Integer"|"ByteArray"|"Array"|"Address"
 </aside>
 
 ### AttachedAssets
-Parameter | Type |  Description
---------- | ---- |-----------
-NEO | String? | The amount of NEO to attach to the contract invocation
-GAS | String? | The amount of GAS to attach to the contract invocation
+| Parameter | Type    | Description                                            |
+|:--------- |:------- |:------------------------------------------------------ |
+| NEO       | String? | The amount of NEO to attach to the contract invocation |
+| GAS       | String? | The amount of GAS to attach to the contract invocation |
 
 ### AssetIntentOverrides
-Parameter | Type |  Description
---------- | ---- |-----------
-inputs | [AssetInput] | A list of UTXO inputs to use for this transaction
-outputs | [AssetOutput] | A list of UTXO outputs to use for this transaction
+| Parameter | Type          | Description                                        |
+|:--------- |:------------- |:-------------------------------------------------- |
+| inputs    | [AssetInput]  | A list of UTXO inputs to use for this transaction  |
+| outputs   | [AssetOutput] | A list of UTXO outputs to use for this transaction |
 
 ### AssetInput
-Parameter | Type |  Description
---------- | ---- |-----------
-txid | String | Transaction id to be used as input
-index | String | Index of the UTXO, can be found from transaction details
+| Parameter | Type   | Description                                              |
+|:--------- |:------ |:-------------------------------------------------------- |
+| txid      | String | Transaction id to be used as input                       |
+| index     | String | Index of the UTXO, can be found from transaction details |
 
 ### AssetOutput
-Parameter | Type |  Description
---------- | ---- |-----------
-asset | String | A list of UTXO inputs to use for this transaction
-address | String | A list of UTXO outputs to use for this transaction
-value  | String | String representation of double or integer value to be used as output
+| Parameter | Type   | Description                                                           |
+|:--------- |:------ |:--------------------------------------------------------------------- |
+| asset     | String | A list of UTXO inputs to use for this transaction                     |
+| address   | String | A list of UTXO outputs to use for this transaction                    |
+| value     | String | String representation of double or integer value to be used as output |
 
 
 ### Invoke Response
-Parameter | Type |  Description
---------- | ---- |-----------
-txid  | String | The transaction id of the send request which can be queried on the blockchain
-nodeURL | String | The node to which the transaction was submitted to
-
+| Parameter | Type   | Description                                                                   |
+|:--------- |:------ |:----------------------------------------------------------------------------- |
+| txid      | String | The transaction id of the send request which can be queried on the blockchain |
+| nodeURL   | String | The node to which the transaction was submitted to                            |
 
 
 # Events
@@ -675,18 +676,18 @@ Events are a way for the wallet to asynchronously with the DAPP when certain cha
 ## READY
 On a READY event, the callback will fire with a single argument with information about the wallet provider. At any time a READY event listener is added, it will immidiately be called if the provider is already in a ready state. This provides a single flow for dapp developers since this listener should start any and all interactions with the dapi protocol.
 
-Parameter | Type |  Description
---------- | ---- |-----------
-name | String | Name of the provider
-website | String | Website of the provider
-version| String | Version of the dAPI whih the provider supports
-compatibility| [String] | List of NEP's which the dAPI provider will support
+| Parameter     | Type     | Description                                        |
+|:------------- |:-------- |:-------------------------------------------------- |
+| name          | String   | Name of the provider                               |
+| website       | String   | Website of the provider                            |
+| version       | String   | Version of the dAPI whih the provider supports     |
+| compatibility | [String] | List of NEP's which the dAPI provider will support |
 
 
 ## ACCOUNT_CHANGED
 On a ACCOUNT_CHANGED event, the callback will fire with a single argument of the new account. In the case that the user logs out without providing a new account to connect, this will be null.
 
-Parameter | Type |  Description
---------- | ---- |-----------
-address | String | Address of the new account
-publicKey | String | Public Key of the new account
+| Parameter | Type   | Description                   |
+|:--------- |:------ |:----------------------------- |
+| address   | String | Address of the new account    |
+| publicKey | String | Public Key of the new account |
