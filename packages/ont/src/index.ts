@@ -10,6 +10,7 @@ import * as oep4 from './modules/oep4';
 import { getProvider } from './modules/getProvider';
 import { getAccount } from './modules/getAccount';
 import { getNetworks } from './modules/getNetworks';
+import { disconnect } from './modules/disconnect';
 
 import { ParameterType } from './modules/sc/common';
 
@@ -30,6 +31,7 @@ class O3dapiOnt {
   getProvider = getProvider;
   getNetworks = getNetworks;
   getAccount = getAccount;
+  disconnect = disconnect;
 
   identity = {
     getIdentity: identity.getIdentity,

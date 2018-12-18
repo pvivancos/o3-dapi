@@ -3,6 +3,7 @@ const resultEle = document.getElementById("result");
 const loadingEle = document.getElementById("loading");
 const networksEle = document.getElementById("networks");
 const accountEle = document.getElementById("account");
+const disconnectEle = document.getElementById("disconnect");
 
 const getMerkleProofInputEle = document.getElementById("getMerkleProofInput");
 
@@ -55,7 +56,6 @@ function clearText() {
 }
 
 function handleSuccess(data) {
-  debugger;
   stopLoading();
   const formatted = syntaxHighlight(data);
   resultEle.innerHTML = formatted;
@@ -92,7 +92,7 @@ function getNetworks() {
 }
 
 function getAccount() {
-  clearText();
+  startLoading();
   o3dapi.ONT.getAccount()
   .then(handleSuccess)
   .catch(handleError);
@@ -295,6 +295,17 @@ function requestTestnetOng() {
   .catch(handleError);
 }
 
+function disconnect() {
+  o3dapi.ONT.disconnect()
+  .then(data => {
+    accountEle.innerHTML = '';
+    disconnectEle.innerHTML = '';
+    return data;
+  })
+  .then(handleSuccess)
+  .catch(handleError);
+}
+
 function syntaxHighlight(json) {
     if (typeof json != 'string') {
          json = JSON.stringify(json, undefined, 2);
@@ -327,14 +338,15 @@ o3dapi.ONT.addEventListener(o3dapi.ONT.Constants.EventName.READY, onReady);
 
 o3dapi.ONT.addEventListener(o3dapi.ONT.Constants.EventName.ACCOUNT_CHANGED, data => {
   accountEle.innerHTML = `Connected Account: ${data.address}`;
+  disconnectEle.innerHTML = 'disconnect';
 });
 
 function onReady() {
   o3dapi.ONT.getNetworks()
-  .then(networks => {
+  .then(({networks, defaultNetwork}) => {
     networks.forEach(network => {
       const option = document.createElement('option');
-      if (network === 'TestNet') {
+      if (network === defaultNetwork) {
         option.selected = 'selected';
       }
       option.value = network;

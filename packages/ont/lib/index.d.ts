@@ -9,6 +9,7 @@ import * as oep4 from './modules/oep4';
 import { getProvider } from './modules/getProvider';
 import { getAccount } from './modules/getAccount';
 import { getNetworks } from './modules/getNetworks';
+import { disconnect } from './modules/disconnect';
 import { ParameterType } from './modules/sc/common';
 import { addEventListener, removeEventListener } from './modules/eventListener';
 import { EventName } from './constants';
@@ -18,6 +19,7 @@ declare class O3dapiOnt {
     getProvider: typeof getProvider;
     getNetworks: typeof getNetworks;
     getAccount: typeof getAccount;
+    disconnect: typeof disconnect;
     identity: {
         getIdentity: typeof identity.getIdentity;
         getDDO: typeof identity.getDDO;

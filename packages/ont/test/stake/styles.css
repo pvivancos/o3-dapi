@@ -24,9 +24,20 @@ textarea {
   flex: 1;
 }
 
+.nav .disconnect,
 .nav .account {
   font-size: 0.875rem;
   padding-right: 0.5rem;
+}
+
+.nav .disconnect {
+  color: lightgrey;
+  cursor: pointer;
+}
+
+.account-container {
+  display: flex;
+  text-align: left;
 }
 
 .content {

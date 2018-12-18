@@ -35,10 +35,12 @@ export declare enum Command {
     getProvider = "getProvider",
     invoke = "invoke",
     invokeRead = "invokeRead",
-    deploy = "deploy"
+    deploy = "deploy",
+    disconnect = "disconnect"
 }
 export declare enum EventName {
-    READY = "READY"
+    READY = "READY",
+    ACCOUNT_CHANGED = "ACCOUNT_CHANGED"
 }
 export declare type Asset = 'ONT' | 'ONG' | string;
 export declare enum TransactionType {

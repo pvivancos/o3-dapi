@@ -50,10 +50,12 @@ export enum Command {
   invokeRead = 'invokeRead',
   deploy = 'deploy',
 
+  disconnect = 'disconnect',
 }
 
 export enum EventName {
   READY = 'READY',
+  ACCOUNT_CHANGED = 'ACCOUNT_CHANGED',
 }
 
 export type Asset = 'ONT' | 'ONG' | string;

@@ -1,8 +1,7 @@
-declare type NetworkType = 'MAIN' | 'TEST' | 'PRIVATE';
-interface Network {
-    type: NetworkType;
-    address: string;
+interface GetNetworksOutput {
+    networks: string[];
+    defaultNetwork: string;
 }
-export declare function getNetworks(): Promise<Network>;
+export declare function getNetworks(): Promise<GetNetworksOutput>;
 export {};
 //# sourceMappingURL=getNetworks.d.ts.map
