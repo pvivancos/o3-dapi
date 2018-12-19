@@ -37,6 +37,81 @@ html, body {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+// NAV BAR
+////////////////////////////////////////////////////////////////////////////////
+//
+// header {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   height: 4rem;
+//   width: 100%;
+//   background-color: $nav-bg;
+//   z-index: 99;
+//   display: flex;
+//   border-bottom: 4px solid white;
+//   box-sizing: border-box;
+//
+//   .nav-links {
+//     display: -ms-flexbox;
+//     display: flex;
+//     position: fixed;
+//     right: 0;
+//     top: 1rem;
+//
+//     .link {
+//       padding: 0 2rem;
+//       color: white;
+//     }
+//   }
+// }
+//
+// .page-title-container {
+//   position: relative;
+//   flex: 1;
+//
+//   .page-title {
+//     color: white;
+//     font-size: 2rem;
+//     width: 50%;
+//     text-align: center;
+//     padding: 0.5rem 0;
+//   }
+// }
+//
+// main {
+//   margin-top: 4rem;
+//   position: relative;
+// }
+//
+// .logo-container {
+//   color: white;
+//   display: flex;
+//   font-size: 2.5rem;
+//   align-items: flex-end;
+//   transform: translateY(-0.55rem);
+//   width: 16.5rem;
+//   justify-content: center;
+//
+//   .logo {
+//     height: 2.5rem;
+//     padding-left: 0.25rem;
+//   }
+// }
+//
+// .mini-nav {
+//   display: none;
+//
+//   .logo-container {
+//     padding-top: 1.5rem;
+//   }
+//
+//   .page-title {
+//     width: auto;
+//   }
+// }
+
+////////////////////////////////////////////////////////////////////////////////
 // TABLE OF CONTENTS
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -71,12 +146,17 @@ html, body {
     }
   }
 
-  // This is the logo at the top of the ToC
-  .logo {
-    display: block;
-    max-width: 100%;
-    margin-bottom: $logo-margin;
-  }
+  // // This is the logo at the top of the ToC
+  // .logo {
+  //   display: block;
+  //   max-width: 100%;
+  //   display: block;
+  //   box-sizing: border-box;
+  //   width: 5rem;
+  //   margin: auto;
+  //   padding: 1.5rem 0;
+  //   margin-bottom: $logo-margin;
+  // }
 
   &>.search {
     position: relative;
@@ -559,6 +639,7 @@ html, body {
 @media (max-width: $tablet-width) {
   .toc-wrapper {
     left: -$nav-width;
+    top: 0;
 
     &.open {
       left: 0;
@@ -576,6 +657,33 @@ html, body {
   .toc-link {
     padding-top: 0.3em;
     padding-bottom: 0.3em;
+  }
+
+  header {
+    display: none;
+  }
+
+  main {
+    margin-top: 0;
+  }
+
+  .mini-nav {
+    display: block;
+    border-bottom: 4px solid white;
+    box-sizing: border-box;
+
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem;
+
+      .link {
+        padding: 1rem;
+        color: white;
+      }
+    }
   }
 }
 
