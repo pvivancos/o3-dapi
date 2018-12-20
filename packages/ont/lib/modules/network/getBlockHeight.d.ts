@@ -1,5 +1,5 @@
 interface GetBlockHeightArgs {
-    network?: string;
+    network: string;
 }
 export declare function getBlockHeight(data: GetBlockHeightArgs): Promise<number>;
 export {};

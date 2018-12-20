@@ -2,7 +2,7 @@ import { sendMessage } from '../../../messaging';
 import { Oep4Command } from '../constants';
 
 interface AllowanceInput {
-  network?: string;
+  network: string;
   scriptHash: string;
   owner: string;
   spender: string;

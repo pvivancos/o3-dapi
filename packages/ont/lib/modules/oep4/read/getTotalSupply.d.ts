@@ -1,5 +1,5 @@
 interface TotalSupplyInput {
-    network?: string;
+    network: string;
     scriptHash: string;
 }
 export declare function getTotalSupply(data: TotalSupplyInput): Promise<number>;

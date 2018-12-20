@@ -1,5 +1,5 @@
 interface GetGasPriceInput {
-    network?: string;
+    network: string;
 }
 interface GasPrice {
     gasPrice: number;

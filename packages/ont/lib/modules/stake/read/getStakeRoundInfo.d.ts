@@ -1,5 +1,5 @@
 interface GetStakeRoundInfoArgs {
-    network?: string;
+    network: string;
 }
 interface StakeRoundInfo {
     currentRound: number;

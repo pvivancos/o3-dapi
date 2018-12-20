@@ -2,7 +2,7 @@ import { sendMessage } from '../../messaging';
 import { Command, Transaction } from '../../constants';
 
 interface GetBlockInput {
-  network?: string;
+  network: string;
   block: number | string;
 }
 

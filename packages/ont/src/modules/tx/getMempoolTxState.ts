@@ -3,7 +3,7 @@ import { Command } from '../../constants';
 
 interface GetMempoolTxStateInput {
   hash: string;
-  network?: string;
+  network: string;
 }
 
 export function getMempoolTxState(data: GetMempoolTxStateInput): Promise<any> {

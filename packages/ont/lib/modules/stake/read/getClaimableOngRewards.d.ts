@@ -1,5 +1,5 @@
 interface GetClaimableOngRewardsArgs {
-    network?: string;
+    network: string;
     address: string;
 }
 interface ClaimableOngRewards {

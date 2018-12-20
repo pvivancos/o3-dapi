@@ -1,5 +1,5 @@
 interface GetNodeCountArgs {
-    network?: string;
+    network: string;
 }
 export declare function getNodeCount(data: GetNodeCountArgs): Promise<number>;
 export {};

@@ -6,7 +6,7 @@ interface Output {
     amount: string;
 }
 interface TransferFromInput {
-    network?: string;
+    network: string;
     scriptHash: string;
     outputs: Output[];
 }

@@ -1,5 +1,5 @@
 interface AddStakeInput {
-    network?: string;
+    network: string;
     nodePublicKey: string;
     amount: number;
     gasPrice?: number;

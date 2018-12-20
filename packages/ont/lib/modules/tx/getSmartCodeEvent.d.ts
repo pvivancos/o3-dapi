@@ -1,6 +1,6 @@
 interface GetSmartCodeEventInput {
     value: string | number;
-    network?: string;
+    network: string;
 }
 export declare function getSmartCodeEvent(data: GetSmartCodeEventInput): Promise<any>;
 export {};

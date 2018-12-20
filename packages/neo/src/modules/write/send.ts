@@ -8,7 +8,7 @@ interface SendArgs {
   amount: string;
   remark?: string;
   fee?: string;
-  network?: string;
+  network: string;
 }
 
 interface SendOutput {

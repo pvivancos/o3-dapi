@@ -2,7 +2,7 @@ import { sendMessage } from '../../../messaging';
 import { Oep8Command } from '../constants';
 
 interface NameInput {
-  network?: string;
+  network: string;
   scriptHash: string;
   tokenId: string;
 }

@@ -2,7 +2,7 @@ import { sendMessage } from '../../../messaging';
 import { Oep4Command } from '../constants';
 
 interface InitInput {
-  network?: string;
+  network: string;
   scriptHash: string;
   gasPrice?: number;
   gasLimit?: number;

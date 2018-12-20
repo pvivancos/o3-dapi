@@ -2,7 +2,7 @@ import { sendMessage } from '../../../messaging';
 import { StakeCommand } from '../constants';
 
 interface GetTotalStakeArgs {
-  network?: string;
+  network: string;
   address: string;
 }
 

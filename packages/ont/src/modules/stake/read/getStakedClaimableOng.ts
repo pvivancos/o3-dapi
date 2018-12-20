@@ -2,7 +2,7 @@ import { sendMessage } from '../../../messaging';
 import { StakeCommand } from '../constants';
 
 interface GetStakedClaimableOngArgs {
-  network?: string;
+  network: string;
   address: string;
 }
 

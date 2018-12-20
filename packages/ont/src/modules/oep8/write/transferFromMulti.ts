@@ -10,7 +10,7 @@ interface Output {
 }
 
 interface TransferFromInput {
-  network?: string;
+  network: string;
   scriptHash: string;
   outputs: Output[];
 }

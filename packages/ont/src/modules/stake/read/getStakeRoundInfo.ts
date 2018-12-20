@@ -2,7 +2,7 @@ import { sendMessage } from '../../../messaging';
 import { StakeCommand } from '../constants';
 
 interface GetStakeRoundInfoArgs {
-  network?: string;
+  network: string;
 }
 
 interface StakeRoundInfo {

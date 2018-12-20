@@ -1,6 +1,6 @@
 interface GetBlockHeightByTxHashInput {
     hash: string;
-    network?: string;
+    network: string;
 }
 export declare function getBlockHeightByTxHash(data: GetBlockHeightByTxHashInput): Promise<number>;
 export {};

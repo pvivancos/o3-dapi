@@ -2,7 +2,7 @@ import { sendMessage } from '../../messaging';
 import { Command } from '../../constants';
 
 interface GetVersionArgs {
-  network?: string;
+  network: string;
 }
 
 export function getVersion(data: GetVersionArgs): Promise<string> {

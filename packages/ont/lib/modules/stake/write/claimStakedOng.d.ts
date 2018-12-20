@@ -1,5 +1,5 @@
 interface ClaimStakedOngInput {
-    network?: string;
+    network: string;
     gasPrice?: number;
     gasLimit?: number;
 }

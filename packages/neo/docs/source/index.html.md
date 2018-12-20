@@ -170,8 +170,8 @@ getAccount()
   console.log('Provider address: ' + address);
   console.log('Provider public key: ' + publicKey);
 })
-.catch((err: string) => {
-  switch(err) {
+.catch(({type: string, description: string, data: any}) => {
+  switch(type) {
     case NO_PROVIDER:
       console.log('No provider available.');
       break;
@@ -229,8 +229,8 @@ getBalance({
     });
   });
 })
-.catch((err: string) => {
-  switch(err) {
+.catch(({type: string, description: string, data: any}) => {
+  switch(type) {
     case NO_PROVIDER:
       console.log('No provider available.');
       break;
@@ -609,7 +609,7 @@ The send API can be used for accepting payments from the user in a cryptocurrenc
 | amount      | String  | The amount which is being requested for payment                                                                                                    |
 | remark      | String? | A transaction attribute remark which may be placed in the transaction, this data will appear in the transaction record on the blockchain           |
 | fee         | String? | If a fee is specified then the wallet SHOULD NOT override it, if a fee is not specified the wallet SHOULD allow the user to attach an optional fee |
-| network     | String  | Network alias to submit this request to. If omitted, will default to "MainNet".                                                                    |
+| network     | String  | Network alias to submit this request to.                                                                                                           |
 
 ### Success Response
 | Parameter | Type   | Description                                                                   |

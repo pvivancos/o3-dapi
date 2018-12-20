@@ -6,7 +6,7 @@ export interface Message {
     messageId: string;
     command: string;
     data?: any;
-    network?: string;
+    network: string;
 }
 export interface IncomingMessage extends Message {
     eventName?: string;

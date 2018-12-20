@@ -1,7 +1,7 @@
 interface GetStorageArgs {
     scriptHash: string;
     key: string;
-    network?: string;
+    network: string;
 }
 interface GetStorageOutput {
     result: string;

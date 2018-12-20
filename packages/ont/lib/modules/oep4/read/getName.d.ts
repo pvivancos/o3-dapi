@@ -1,5 +1,5 @@
 interface NameInput {
-    network?: string;
+    network: string;
     scriptHash: string;
 }
 export declare function getName(data: NameInput): Promise<string>;

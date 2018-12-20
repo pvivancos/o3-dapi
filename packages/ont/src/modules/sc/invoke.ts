@@ -10,7 +10,7 @@ interface InvokeInput {
   gasLimit?: number;
   requireIdentity?: boolean;
   payer?: string;
-  network?: string;
+  network: string;
 }
 
 interface InvokeOutput {

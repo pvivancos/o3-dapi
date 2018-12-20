@@ -1,5 +1,5 @@
 interface TransferFromInput {
-    network?: string;
+    network: string;
     scriptHash: string;
     tokenId: string;
     spender: string;

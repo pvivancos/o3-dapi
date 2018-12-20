@@ -3,7 +3,7 @@ interface InvokeReadInput {
     scriptHash: string;
     operation: string;
     args?: Parameter[];
-    network?: string;
+    network: string;
 }
 export declare function invokeRead(data: InvokeReadInput): Promise<any>;
 export {};

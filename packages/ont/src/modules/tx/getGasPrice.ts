@@ -2,7 +2,7 @@ import { sendMessage } from '../../messaging';
 import { Command } from '../../constants';
 
 interface GetGasPriceInput {
-  network?: string;
+  network: string;
 }
 
 interface GasPrice {

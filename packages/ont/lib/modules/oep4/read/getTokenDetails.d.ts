@@ -1,5 +1,5 @@
 interface TokenDetailsInput {
-    network?: string;
+    network: string;
     scriptHash: string;
 }
 interface TokenDetailsOutput {
