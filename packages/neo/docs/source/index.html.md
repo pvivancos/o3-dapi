@@ -15,7 +15,7 @@ includes:
 search: false
 ---
 
-# Introduction
+# Introduction Test
 
 Welcome to the NEO dAPI. This allows your decentralized application to connect to any NEO wallet which conforms to the dAPI standard. You no longer have to spend any time building out your own wallet, and can instead focus on making your application great. If you'd like to learn more about the use cases of this dAPI, please read below. Otherwise, feel free to skip directly to the method implementation starting with Read Methods.
 
