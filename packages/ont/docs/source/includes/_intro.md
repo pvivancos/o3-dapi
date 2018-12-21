@@ -1,4 +1,4 @@
-# Introduction Test Calls
+# Introduction
 
 The Ontology dAPI standard, proposed in [OEP-6](https://github.com/ontio/OEPs/pull/8), details a general API for interacting with the Ontology blockchain, to be made available to dApp developers by wallet providers, such as O3.
 
