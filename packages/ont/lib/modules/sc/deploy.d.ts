@@ -8,7 +8,7 @@ interface DeployInput {
     needStorage?: boolean;
     gasPrice?: number;
     gasLimit?: number;
-    network?: string;
+    network: string;
 }
 export declare function deploy(data: DeployInput): Promise<void>;
 export {};

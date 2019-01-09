@@ -3,7 +3,7 @@ import { Command } from '../../constants';
 
 interface GetContractInput {
   hash: string;
-  network?: string;
+  network: string;
 }
 
 interface Contract {

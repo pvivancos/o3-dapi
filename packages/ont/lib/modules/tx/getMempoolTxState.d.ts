@@ -1,6 +1,6 @@
 interface GetMempoolTxStateInput {
     hash: string;
-    network?: string;
+    network: string;
 }
 export declare function getMempoolTxState(data: GetMempoolTxStateInput): Promise<any>;
 export {};

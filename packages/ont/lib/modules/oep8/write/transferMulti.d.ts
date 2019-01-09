@@ -5,7 +5,7 @@ interface Output {
     amount: string;
 }
 interface TransferMultiInput {
-    network?: string;
+    network: string;
     scriptHash: string;
     outputs: Output[];
 }

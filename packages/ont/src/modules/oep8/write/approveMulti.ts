@@ -9,7 +9,7 @@ interface Output {
 }
 
 interface ApproveMultiInput {
-  network?: string;
+  network: string;
   scriptHash: string;
   outputs: Output[];
 }

@@ -1,5 +1,5 @@
 interface TransferInput {
-    network?: string;
+    network: string;
     scriptHash: string;
     to: string;
     amount: string;

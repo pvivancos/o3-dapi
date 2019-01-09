@@ -1,6 +1,6 @@
 interface GetMerkleProofInput {
     txHash: string;
-    network?: string;
+    network: string;
 }
 interface MerkleProof {
     Type: string;

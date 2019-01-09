@@ -4,7 +4,7 @@ import { Transaction } from '../../constants';
 
 interface GetTransactionInput {
   txHash: string;
-  network?: string;
+  network: string;
 }
 
 export function getTransaction(data: GetTransactionInput): Promise<Transaction> {

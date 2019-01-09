@@ -2,7 +2,7 @@ import { sendMessage } from '../../../messaging';
 import { StakeCommand } from '../constants';
 
 interface RequestStakeWithdrawInput {
-  network?: string;
+  network: string;
   nodePublicKey: string;
   amount: number;
   gasPrice?: number;

@@ -1,5 +1,5 @@
 interface DecimalsInput {
-    network?: string;
+    network: string;
     scriptHash: string;
 }
 export declare function getDecimals(data: DecimalsInput): Promise<number>;

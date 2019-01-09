@@ -1,5 +1,5 @@
 interface GetMempoolTxCountInput {
-    network?: string;
+    network: string;
 }
 export declare function getMempoolTxCount(data: GetMempoolTxCountInput): Promise<number[]>;
 export {};

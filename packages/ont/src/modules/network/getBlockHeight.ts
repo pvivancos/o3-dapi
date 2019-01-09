@@ -2,7 +2,7 @@ import { sendMessage } from '../../messaging';
 import { Command } from '../../constants';
 
 interface GetBlockHeightArgs {
-  network?: string;
+  network: string;
 }
 
 export function getBlockHeight(data: GetBlockHeightArgs): Promise<number> {

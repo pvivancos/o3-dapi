@@ -1,5 +1,5 @@
 interface NameInput {
-    network?: string;
+    network: string;
     scriptHash: string;
     tokenId: string;
 }

@@ -3,7 +3,7 @@ import { Command } from '../../constants';
 
 interface GetBlockHashInput {
   height: number;
-  network?: string;
+  network: string;
 }
 
 export function getBlockHash(data: GetBlockHashInput): Promise<string> {

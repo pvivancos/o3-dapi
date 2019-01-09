@@ -9,7 +9,7 @@ interface BalanceRequest {
 
 interface GetBalanceArgs {
   params: BalanceRequest|BalanceRequest[];
-  network?: string;
+  network: string;
 }
 
 interface BalanceResults {

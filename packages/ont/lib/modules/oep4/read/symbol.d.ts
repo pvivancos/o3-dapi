@@ -1,5 +1,5 @@
 interface SymbolInput {
-    network?: string;
+    network: string;
     scriptHash: string;
 }
 export declare function symbol(data: SymbolInput): Promise<string>;

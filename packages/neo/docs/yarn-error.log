@@ -1,0 +1,41 @@
+Arguments: 
+  /Users/nick/.nvm/versions/node/v10.14.2/bin/node /usr/local/Cellar/yarn/1.7.0/libexec/bin/yarn.js start
+
+PATH: 
+  /Users/nick/.nvm/versions/node/v10.14.2/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin
+
+Yarn version: 
+  1.7.0
+
+Node version: 
+  10.14.2
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/nick/code/o3-dapi/packages/neo/docs/package.json: Unexpected token } in JSON at position 244
+      at JSON.parse (<anonymous>)
+      at /usr/local/Cellar/yarn/1.7.0/libexec/lib/cli.js:1130:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.7.0/libexec/lib/cli.js:98:30)
+      at /usr/local/Cellar/yarn/1.7.0/libexec/lib/cli.js:109:13
+
+npm manifest: 
+  {
+    "name": "o3-dapi-neo-docs",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+      "install": "bundle install",
+      "start": "bundle exec middleman server",
+      "dist": "bundle exec middleman build --clean"
+    },
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

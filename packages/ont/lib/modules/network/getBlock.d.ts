@@ -1,6 +1,6 @@
 import { Transaction } from '../../constants';
 interface GetBlockInput {
-    network?: string;
+    network: string;
     block: number | string;
 }
 interface BlockHeader {

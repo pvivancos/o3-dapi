@@ -1,5 +1,5 @@
 interface GetStakedClaimableOngArgs {
-    network?: string;
+    network: string;
     address: string;
 }
 interface StakedClaimableOng {

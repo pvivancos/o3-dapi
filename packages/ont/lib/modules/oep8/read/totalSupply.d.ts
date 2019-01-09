@@ -1,5 +1,5 @@
 interface TotalSupplyInput {
-    network?: string;
+    network: string;
     scriptHash: string;
     tokenId: string;
 }

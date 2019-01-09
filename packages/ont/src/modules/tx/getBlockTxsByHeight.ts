@@ -3,7 +3,7 @@ import { Command } from '../../constants';
 
 interface GetBlockTxsByHeightInput {
   height: number;
-  network?: string;
+  network: string;
 }
 
 interface BlockWithTxList {

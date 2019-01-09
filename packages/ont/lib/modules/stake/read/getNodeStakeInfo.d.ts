@@ -1,5 +1,5 @@
 interface GetNodeStakeInfoArgs {
-    network?: string;
+    network: string;
     address: string;
     nodePublicKey: string;
 }

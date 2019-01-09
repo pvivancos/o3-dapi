@@ -3,7 +3,7 @@ import { Command } from '../../constants';
 
 interface GetMerkleProofInput {
   txHash: string;
-  network?: string;
+  network: string;
 }
 
 interface MerkleProof {

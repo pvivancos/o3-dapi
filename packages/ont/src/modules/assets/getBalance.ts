@@ -3,13 +3,12 @@ import { Command } from '../../constants';
 
 interface GetBalanceInput {
   address: string;
-  network?: string;
+  network: string;
 }
 
 interface Balance {
-  ONT: string;
-  ONG: string;
-  [key: string]: string;
+  ont: string;
+  ong: string;
 }
 
 export function getBalance(data: GetBalanceInput): Promise<Balance> {

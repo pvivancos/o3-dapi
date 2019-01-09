@@ -2,7 +2,7 @@ import { sendMessage } from '../../messaging';
 import { Command } from '../../constants';
 
 interface GetNodeCountArgs {
-  network?: string;
+  network: string;
 }
 
 export function getNodeCount(data: GetNodeCountArgs): Promise<number> {

@@ -1,5 +1,5 @@
 interface ApproveInput {
-    network?: string;
+    network: string;
     scriptHash: string;
     tokenId: string;
     owner: string;

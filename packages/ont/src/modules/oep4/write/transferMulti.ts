@@ -8,7 +8,7 @@ interface Output {
 }
 
 interface TransferMultiInput {
-  network?: string;
+  network: string;
   scriptHash: string;
   outputs: Output[];
   gasPrice?: number;

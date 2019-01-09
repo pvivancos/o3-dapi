@@ -1,5 +1,5 @@
 interface ApproveInput {
-    network?: string;
+    network: string;
     scriptHash: string;
     owner: string;
     spender: string;

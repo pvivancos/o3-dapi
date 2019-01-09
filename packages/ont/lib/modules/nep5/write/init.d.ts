@@ -1,5 +1,5 @@
 interface InitInput {
-    network?: string;
+    network: string;
 }
 interface InitOutput {
     txid: string;

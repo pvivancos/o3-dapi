@@ -1,5 +1,5 @@
 interface ClaimStakedOngRewardsInput {
-    network?: string;
+    network: string;
 }
 interface ClaimStakedOngRewardsOutput {
     txid: string;

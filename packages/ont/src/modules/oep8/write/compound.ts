@@ -2,7 +2,7 @@ import { sendMessage } from '../../../messaging';
 import { Oep8Command } from '../constants';
 
 interface CompoundInput {
-  network?: string;
+  network: string;
   scriptHash: string;
   account: string;
   compoundNum: number;

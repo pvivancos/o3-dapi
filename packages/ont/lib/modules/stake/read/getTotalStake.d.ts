@@ -1,5 +1,5 @@
 interface GetTotalStakeArgs {
-    network?: string;
+    network: string;
     address: string;
 }
 interface TotalStake {

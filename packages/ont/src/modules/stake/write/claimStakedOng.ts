@@ -2,7 +2,7 @@ import { sendMessage } from '../../../messaging';
 import { StakeCommand } from '../constants';
 
 interface ClaimStakedOngInput {
-  network?: string;
+  network: string;
   gasPrice?: number;
   gasLimit?: number;
 }

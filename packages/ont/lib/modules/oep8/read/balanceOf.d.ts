@@ -1,5 +1,5 @@
 interface BalanceOfInput {
-    network?: string;
+    network: string;
     scriptHash: string;
     tokenId: string;
     address: string;

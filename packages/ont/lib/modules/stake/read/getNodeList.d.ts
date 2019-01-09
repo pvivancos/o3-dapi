@@ -1,5 +1,5 @@
 interface GetNodeListArgs {
-    network?: string;
+    network: string;
 }
 interface NodeList {
     address: string;

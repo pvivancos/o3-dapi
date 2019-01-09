@@ -2,7 +2,7 @@ import { sendMessage } from '../../../messaging';
 import { Oep4Command } from '../constants';
 
 interface TransferInput {
-  network?: string;
+  network: string;
   scriptHash: string;
   from: string;
   to: string;
