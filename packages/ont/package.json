@@ -1,6 +1,6 @@
 {
   "name": "o3-dapi-ont",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Ontology Plugin for o3-dapi",
   "main": "./lib/o3-dapi-ont.min.js",
   "types": "./lib/index.d.ts",
@@ -28,7 +28,7 @@
     "webpack-cli": "3.1.2"
   },
   "peerDependencies": {
-    "o3-dapi-core": "0.0.8"
+    "o3-dapi-core": "0.0.9"
   },
   "keywords": [
     "ont",

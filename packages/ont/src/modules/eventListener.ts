@@ -1,3 +1,4 @@
+declare const window: any;
 import { EventName } from '../constants';
 
 interface Listeners {
@@ -11,11 +12,11 @@ export function addEventListener(event: EventName, callback: Function) {
   currentListeners.push(callback);
   listeners[event] = currentListeners;
 
-  const isReady = Boolean((window as any)._o3dapi.isReady);
+  const isReady = window._o3dapi.isReady;
 
   if (event === EventName.READY && isReady) {
     const readyListeners = listeners[EventName.READY];
-    readyListeners && readyListeners.forEach(callback => callback());
+    readyListeners && readyListeners.forEach(callback => callback(isReady));
   }
 }
 

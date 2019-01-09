@@ -2,9 +2,9 @@ import { sendMessage } from '../messaging';
 import { Command } from '../constants';
 
 interface AccountOutput {
-  address: string,
-  publicKey: string,
-  label: string,
+  address: string;
+  publicKey: string;
+  label: string;
 }
 
 export function getAccount(): Promise<AccountOutput> {
