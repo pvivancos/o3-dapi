@@ -3,9 +3,8 @@ interface GetBalanceInput {
     network: string;
 }
 interface Balance {
-    ONT: string;
-    ONG: string;
-    [key: string]: string;
+    ont: string;
+    ong: string;
 }
 export declare function getBalance(data: GetBalanceInput): Promise<Balance>;
 export {};

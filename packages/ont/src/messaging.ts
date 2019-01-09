@@ -4,6 +4,7 @@ import { BLOCKCHAIN, VERSION } from './constants';
 interface SendMessageArgs {
   command: string;
   data?: any;
+  network?: string;
   timeout?: number;
 }
 
