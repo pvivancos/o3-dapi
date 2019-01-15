@@ -55,7 +55,7 @@ Give the account a name, and a password to login to this account in the future.
 
 ![o3import3](../images/o3Import3.png)
 
-You should now be logged into the Solo Chain master account in O3. Please navigate to the apps screen by clicking on the apps icon in the toolbar on the left hand side.
+Please navigate to the apps screen by clicking on the apps icon in the toolbar on the left hand side.
 
 ![o3apps](../images/o3Apps.png)
 
