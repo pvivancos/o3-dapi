@@ -43,11 +43,9 @@ Be sure to install the desktop version of the O3 application for development. Mo
 
 ## O3 Setup
 
-Open up the O3 app, and click the "Import existing wallet" button.
+Open up the O3 app, and click the "Import existing wallet" button, or create a new wallet if you do not already have one.
 
 ![o3import](../images/o3Import.png)
-
-Paste the Solo Chain master account private key into the provided field.
 
 ![o3import2](../images/o3Import2.png)
 
@@ -55,7 +53,7 @@ Give the account a name, and a password to login to this account in the future.
 
 ![o3import3](../images/o3Import3.png)
 
-You should now be logged into the Solo Chain master account in O3. Please navigate to the apps screen by clicking on the apps icon in the toolbar on the left hand side.
+You should now be logged into a wallet in O3. Please navigate to the apps screen by clicking on the apps icon in the toolbar on the left hand side.
 
 ![o3apps](../images/o3Apps.png)
 
@@ -71,7 +69,7 @@ You should notice that in dev mode you will now have access to the "Dev Settings
 To get your feet wet, we provide a testbed that will let you interact with all the O3 API's
 
 
-Now that your contract is deployed to your private net, we want to call it. When calling your contract in your dapp, you can use the O3 dapi with the Ontology plugin. To guide you in doing so, the O3 app in dev mode provides a app called "ONT dapi Testbed".
+Now that your contract is deployed to your private net, we want to call it. When calling your contract in your dapp, you can use the O3 dapi with the Ontology plugin. To guide you in doing so, the O3 app in dev mode provides a app called "NEO dapi Testbed".
 
 ![o3neodapi](../images/neo-dapi.png)
 
