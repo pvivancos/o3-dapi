@@ -1,6 +1,7 @@
 interface SendMessageArgs {
     command: string;
     data?: any;
+    network?: string;
     timeout?: number;
 }
 interface InternalSendMessageArgs extends SendMessageArgs {
