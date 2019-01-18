@@ -4,6 +4,9 @@ const loadingEle = document.getElementById("loading");
 const accountEle = document.getElementById("account");
 const disconnectEle = document.getElementById("disconnect");
 
+const returnAccountPublicKeyEle = document.getElementById("returnAccountPublicKey");
+
+
 const balanceInputEle = document.getElementById("balanceInput");
 
 const getStorageScriptHashEle = document.getElementById("getStorageScriptHash");
@@ -78,7 +81,15 @@ function getNetworks() {
 
 function getAccount() {
   startLoading();
-  o3dapi.NEO.getAccount()
+  let data;
+
+  if (returnAccountPublicKeyEle.checked) {
+    data = {
+      publicKey: true,
+    };
+  }
+
+  o3dapi.NEO.getAccount(data)
   .then(handleSuccess)
   .catch(handleError);
 }

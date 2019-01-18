@@ -5,6 +5,8 @@ const networksEle = document.getElementById("networks");
 const accountEle = document.getElementById("account");
 const disconnectEle = document.getElementById("disconnect");
 
+const returnAccountPublicKeyEle = document.getElementById("returnAccountPublicKey");
+
 const getMerkleProofInputEle = document.getElementById("getMerkleProofInput");
 
 const getTransactionInputEle = document.getElementById("getTransactionInput");
@@ -93,7 +95,15 @@ function getNetworks() {
 
 function getAccount() {
   startLoading();
-  o3dapi.ONT.getAccount()
+  let data;
+
+  if (returnAccountPublicKeyEle.checked) {
+    data = {
+      publicKey: true,
+    };
+  }
+
+  o3dapi.ONT.getAccount(data)
   .then(handleSuccess)
   .catch(handleError);
 }
