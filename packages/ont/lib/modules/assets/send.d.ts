@@ -2,7 +2,8 @@ import { Asset } from '../../constants';
 interface SendInput {
     to: string;
     asset: Asset;
-    amount: number;
+    amount: string;
+    network: string;
 }
 export declare function send(data: SendInput): Promise<string>;
 export {};

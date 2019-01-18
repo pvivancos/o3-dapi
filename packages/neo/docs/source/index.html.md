@@ -44,12 +44,14 @@ getProvider()
     website,
     version,
     compatibility,
+    theme,
   } = provider;
 
   console.log('Provider name: ' + name);
   console.log('Provider website: ' + website);
   console.log('Provider dAPI version: ' + version);
   console.log('Provider dAPI compatibility: ' + JSON.stringify(compatibility));
+  console.log('Provider UI theme: ' + theme);
 })
 .catch(({type: string, description: string, data: any}) => {
   switch(type) {
@@ -74,7 +76,8 @@ getProvider()
     'NEP-14',
     'NEP-23',
     'NEP-29'
-  ]
+  ],
+  theme: 'Dark Mode'
 }
 ```
 
@@ -91,6 +94,7 @@ None
 | website       | String   | The website of the wallet provider                               |
 | version       | String   | The version of the dAPI that the the wallet supports             |
 | compatibility | String[] | A list of all applicable NEPs which the wallet provider supports |
+| theme         | String   | UI theme of the provider                                         |
 
 
 ### Error Response

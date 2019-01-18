@@ -1,1 +1,1 @@
-{"version":3,"file":"getBlockHeight.d.ts","sourceRoot":"","sources":["../../../src/modules/network/getBlockHeight.ts"],"names":[],"mappings":"AAGA,UAAU,kBAAkB;IAC1B,OAAO,CAAC,EAAE,MAAM,CAAC;CAClB;AAED,wBAAgB,cAAc,CAAC,IAAI,EAAE,kBAAkB,GAAG,OAAO,CAAC,MAAM,CAAC,CAKxE"}
+{"version":3,"file":"getBlockHeight.d.ts","sourceRoot":"","sources":["../../../src/modules/network/getBlockHeight.ts"],"names":[],"mappings":"AAGA,UAAU,kBAAkB;IAC1B,OAAO,EAAE,MAAM,CAAC;CACjB;AAED,wBAAgB,cAAc,CAAC,IAAI,EAAE,kBAAkB,GAAG,OAAO,CAAC,MAAM,CAAC,CAKxE"}

@@ -1,1 +1,1 @@
-{"version":3,"file":"getBlockHash.d.ts","sourceRoot":"","sources":["../../../src/modules/network/getBlockHash.ts"],"names":[],"mappings":"AAGA,UAAU,iBAAiB;IACzB,MAAM,EAAE,MAAM,CAAC;IACf,OAAO,CAAC,EAAE,MAAM,CAAC;CAClB;AAED,wBAAgB,YAAY,CAAC,IAAI,EAAE,iBAAiB,GAAG,OAAO,CAAC,MAAM,CAAC,CAKrE"}
+{"version":3,"file":"getBlockHash.d.ts","sourceRoot":"","sources":["../../../src/modules/network/getBlockHash.ts"],"names":[],"mappings":"AAGA,UAAU,iBAAiB;IACzB,MAAM,EAAE,MAAM,CAAC;IACf,OAAO,EAAE,MAAM,CAAC;CACjB;AAED,wBAAgB,YAAY,CAAC,IAAI,EAAE,iBAAiB,GAAG,OAAO,CAAC,MAAM,CAAC,CAKrE"}

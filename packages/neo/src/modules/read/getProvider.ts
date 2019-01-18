@@ -6,6 +6,7 @@ interface Provider {
   website: string;
   version: string;
   compatibility: string[];
+  theme: string;
 }
 
 export function getProvider(): Promise<Provider> {
