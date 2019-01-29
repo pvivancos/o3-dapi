@@ -97,7 +97,7 @@ Read methods do not alter the state of the blockchain. It can help you query inf
 ## getProvider
 
 ```typescript
-getProvider()
+o3dapi.NEO.getProvider()
 .then((provider: Provider) => {
   const {
     name,
@@ -177,7 +177,7 @@ None
 ## getNetworks
 
 ```typescript
-getNetworks()
+dapi.NEO.getNetworks()
 .then(response => {
   const {
     networks,
@@ -234,7 +234,7 @@ None
 ## getAccount
 
 ```typescript
-getAccount()
+o3dapi.NEO.getAccount()
 .then((account: Account) => {
   const {
     address,
@@ -283,7 +283,7 @@ Return the Account that is currently connected to the dApp.
 ## getBalance
 
 ```typescript
-getBalance({
+o3dapi.NEO.getBalance({
   params: {
     address: 'AeysVbKWiLSuSDhg7DTzUdDyYYKfgjojru',
     assets: ['NKN']
@@ -477,7 +477,7 @@ The amount of addresses is n where n is the number of addresses specified in you
 ## getStorage
 
 ```typescript
-getStorage({
+o3dapi.NEO.getStorage({
   scriptHash: '505663a29d83663a838eee091249abd167e928f5',
   key: 'game.status',
   network: 'TestNet'
@@ -534,7 +534,7 @@ Returns the raw value located in contract storage
 ## invokeRead
 
 ```typescript
-invokeRead({
+o3dapi.NEO.invokeRead({
   scriptHash: '505663a29d83663a838eee091249abd167e928f5',
   operation: 'calculatorAdd',
   arguments: [
@@ -628,7 +628,7 @@ Write methods will alter the state on the blockchain, and require a user signatu
 ## send
 
 ```typescript
-send({
+o3dapi.NEO.send({
   fromAddress: 'ATaWxfUAiBcQixNPq6TvKHEHPQum9bx79d',
   toAddress: 'ATaWxfUAiBcQixNPq6TvKHEHPQum9bx79d',
   asset: 'GAS',
@@ -704,7 +704,7 @@ It is reccommended that the DAPP take appropriate levels of risk prevention when
 
 ## Invoke
 ```typescript
-invoke({
+o3dapi.NEO.invoke({
   scriptHash: '505663a29d83663a838eee091249abd167e928f5',
   operation: 'storeData',
   arguments: [
