@@ -15,6 +15,6 @@ o3dapiCore.initPlugins = (plugins: Plugin[]) => {
 
 o3dapiCore.isAvailable = Boolean((window as any)._o3dapi.isAvailable);
 
-o3dapiCore.openO3 = window.open('https://deeplink.o3.network/');
+o3dapiCore.openO3 = () => window.open('https://deeplink.o3.network/');
 
 export default o3dapiCore;

@@ -34,18 +34,9 @@ _o3dapi.receiveMessage = (message: IncomingMessage) => {
     }
 
     if (command === 'event') {
-
-      // ready event is not specifc to any blockchain
-      // so call all listeners on each blockchain plugin
-      if (eventName === 'READY') {
-        Object.keys(eventsListeners)
-        .map(key => eventsListeners[key]) // Object.values
-        .forEach(handler => handler(eventName, data));
-        return;
-      }
-
-      const handler = eventsListeners[blockchain];
-      handler && handler(eventName, data);
+      Object.keys(eventsListeners)
+      .map(key => eventsListeners[key]) // Object.values
+      .forEach(handler => handler(eventName, data));
       return;
     }
 
