@@ -8,13 +8,15 @@ import {
   AddEventsListenerArgs,
   SendMessageArgs,
 } from './types';
+import { isSocketConnected, sendSocketMessage, initSocket } from './socket';
 
 const PLATFORM = 'o3-dapi';
 const messageQueue = {};
 const eventsListeners: {[blockchain: string]: EventHandler} = {};
 
 window._o3dapi = window._o3dapi ? window._o3dapi : {};
-_o3dapi.receiveMessage = (message: IncomingMessage) => {
+
+export function receiveMessage(message: IncomingMessage) {
   try {
     if (typeof message === 'string') {
       message = JSON.parse(message);
@@ -34,6 +36,9 @@ _o3dapi.receiveMessage = (message: IncomingMessage) => {
     }
 
     if (command === 'event') {
+      if (eventName === 'READY') {
+        window._o3dapi.isReady = data;
+      }
       Object.keys(eventsListeners)
       .map(key => eventsListeners[key]) // Object.values
       .forEach(handler => handler(eventName, data));
@@ -47,7 +52,9 @@ _o3dapi.receiveMessage = (message: IncomingMessage) => {
       error ? reject(error) : resolve(data);
     }
   } catch (err) {}
-};
+}
+
+_o3dapi.receiveMessage = receiveMessage;
 
 export function addEventsListener({blockchain, callback}: AddEventsListenerArgs) {
   eventsListeners[blockchain] = callback;
@@ -73,10 +80,16 @@ export function sendMessage({
   };
 
   return new Promise((resolve, reject) => {
+
     const messageHandler = get(window, 'window._o3dapi.messageHandler');
+
     const webkitPostMessage = get(window, 'window.webkit.messageHandlers.sendMessageHandler.postMessage');
+
     const isIOS = Boolean(webkitPostMessage) && typeof webkitPostMessage === 'function';
-    if (messageHandler) {
+
+    if (isSocketConnected()) {
+      sendSocketMessage(message);
+    } else if (messageHandler) {
       try {
         window._o3dapi.messageHandler(JSON.stringify(message));
       } catch (err) {
@@ -89,10 +102,24 @@ export function sendMessage({
         reject(`O3 dapi provider not found.`);
       }
     } else {
-      reject(`O3 dapi provider not found.`);
+      initSocket()
+      .then(() => {
+        sendSocketMessage(message);
+        messageQueue[messageId] = {
+          resolve,
+          reject,
+          timeout: timeout && setTimeout(() => {
+            delete messageQueue[messageId];
+            reject('Request timeout.');
+          }, timeout),
+        };
+      })
+      .catch(() => {
+        reject(`O3 dapi provider not found.`);
+      });
     }
 
-    if (messageHandler || webkitPostMessage) {
+    if (messageHandler || webkitPostMessage || isSocketConnected()) {
       messageQueue[messageId] = {
         resolve,
         reject,
