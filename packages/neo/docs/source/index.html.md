@@ -33,7 +33,7 @@ Each wallet provider, when deciding on supporting dApps to utilize their service
 # Development Environment
 This is a walkthrough of how to get setup in order to interact with O3 API's connecting to the NEO blockchain.
 
-## Installation
+## O3 App Installation
 Download and install the latest version of the latest versions of the O3 apps.
 
 
@@ -89,6 +89,64 @@ After testing out the methods in the testbed, you will likely want to connect to
 From here that you can test out your application with the O3 Wallet. Just install the inject the latest o3-dapi package located here for an easy way to access all dapi methods using javascript.
 
 [NEO dapi](https://github.com/O3Labs/o3-dapi/tree/master/packages/neo)
+
+# Getting Started w/ Development
+
+The o3-dapi requires 2 packages to operate, `o3-dapi-core` and `o3-dapi-neo`.
+
+You can install via CDN in a browser application or via NPM for bundled apps.
+
+## In a browser - cdn
+
+o3-dapi-core [![](https://data.jsdelivr.com/v1/package/npm/o3-dapi-core/badge)](https://www.jsdelivr.com/package/npm/o3-dapi-core)
+
+o3-dapi-neo [![](https://data.jsdelivr.com/v1/package/npm/o3-dapi-neo/badge)](https://www.jsdelivr.com/package/npm/o3-dapi-neo)
+
+```
+<script src="https://cdn.jsdelivr.net/npm/o3-dapi-core/lib/o3-dapi-core.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/o3-dapi-neo/lib/o3-dapi-neo.min.js"></script>
+```
+```
+window.o3dapi
+window.o3dapiNeo
+```
+
+## Install via npm
+
+o3-dapi-core [![npm version](https://badge.fury.io/js/o3-dapi-neo.svg)](https://badge.fury.io/js/o3-dapi-neo)
+
+o3-dapi-neo [![npm version](https://badge.fury.io/js/o3-dapi-core.svg)](https://badge.fury.io/js/o3-dapi-core)
+
+```
+npm i --save o3-dapi-core o3-dapi-neo
+
+or
+
+yarn add o3-dapi-core o3-dapi-neo
+```
+
+```
+var o3dapi = require('o3-dapi-core');
+var o3dapiNeo = require('o3-dapi-neo');
+
+or
+
+import o3dapi from 'o3-dapi-core';
+import o3dapiNeo from 'o3-dapi-neo';
+```
+
+## Example
+```
+import o3dapi from 'o3-dapi-core';
+import o3dapiNeo from 'o3-dapi-neo';
+
+// Init the NEO plugin into the core dapi provider package
+o3dapi.initPlugins([o3dapiNeo]);
+
+
+o3dapi.NEO.getNetworks()
+.then(networks => console.log(networks));
+```
 
 # Read Methods
 
