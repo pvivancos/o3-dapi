@@ -234,3 +234,18 @@ Return the AccountPublicKey that is currently connected to the dApp.
 | type        | String  | The type of error which has occured          |
 | description | String  | A description of the error which has occured |
 | data        | String? | Any raw data associated with the error       |
+
+
+## disconnect
+
+```typescript
+o3dapi.ONT.disconnect()
+.then(() => {
+  console.log('Account sucessfully disconnected!');
+})
+.catch(() => {
+  console.log('There was a proider error while disconnecting');
+});
+```
+
+Disconnects the user account from the dapp. This method can be used to log a user out, or to change to a different user, by chaining the `getAccount` methods call after `disconnect` successfully returns.

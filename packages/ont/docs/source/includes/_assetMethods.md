@@ -5,7 +5,7 @@
 Fetch the ONT and ONG balance of a given account.
 
 ```typescript
-o3dapi.ONT.getBalance({
+o3dapi.ONT.asset.getBalance({
   network: 'MainNet',
   address: 'AeysVbKWiLSuSDhg7DTzUdDyYYKfgjojru',
 })
@@ -59,7 +59,7 @@ Return the ONT
 Fetch the claimable ONG amount for a given account.
 
 ```typescript
-o3dapi.ONT.getUnboundOng({
+o3dapi.ONT.asset.getUnboundOng({
   network: 'MainNet',
   address: 'AeysVbKWiLSuSDhg7DTzUdDyYYKfgjojru',
 })
@@ -103,7 +103,7 @@ o3dapi.ONT.getUnboundOng({
 Fetch the ONG amount granted to a given account.
 
 ```typescript
-o3dapi.ONT.getGrantOng({
+o3dapi.ONT.asset.getGrantOng({
   network: 'MainNet',
   address: 'AeysVbKWiLSuSDhg7DTzUdDyYYKfgjojru',
 })
@@ -147,7 +147,7 @@ o3dapi.ONT.getGrantOng({
 Fetch the amount of a given asset that was pre-allocation from one account to another.
 
 ```typescript
-o3dapi.ONT.getAllowance({
+o3dapi.ONT.asset.getAllowance({
   network: 'MainNet',
   fromAddress: 'AeysVbKWiLSuSDhg7DTzUdDyYYKfgjojru',
   toAddress: 'AGchtbL3ibh9qG1n9KXJusEuAjjSWTsLyk',
@@ -194,7 +194,7 @@ o3dapi.ONT.getAllowance({
 Fetch the amount of a given asset that was pre-allocation from one account to another.
 
 ```typescript
-o3dapi.ONT.send({
+o3dapi.ONT.asset.send({
   network: 'MainNet',
   from: 'AeysVbKWiLSuSDhg7DTzUdDyYYKfgjojru',
   to: 'AGchtbL3ibh9qG1n9KXJusEuAjjSWTsLyk',
