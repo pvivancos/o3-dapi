@@ -38,7 +38,6 @@ export default class MessageEncryption {
   }
 
   decrypt(input: string): {message, error?: string} {
-    console.log('decrypt', input);
     try {
       const textParts = input.split(':');
       const iv = Buffer.from(textParts.shift(), 'hex');
