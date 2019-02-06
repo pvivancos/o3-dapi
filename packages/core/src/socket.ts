@@ -15,11 +15,11 @@ export function initSocket(isHTTPS = true): Promise<void> {
 
     socket.on('connect', res => {
       isConnected = true;
-      resolve();
     });
 
     socket.on('event', res => {
       if (res && res.eventName === 'READY' && !messageEncryption && res.key) {
+        resolve();
         messageEncryption = new MessageEncryption();
         messageEncryption.setSharedKey(res.key);
         socket.emit('register', messageEncryption.getPublicKey());
@@ -49,7 +49,6 @@ export function initSocket(isHTTPS = true): Promise<void> {
       socket.close();
       if (isHTTPS) {
         initSocket(false)
-        .then(() => resolve())
         .catch(() => { reject(); });
       } else {
         reject();

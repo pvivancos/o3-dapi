@@ -114,7 +114,7 @@ export function sendMessage({
           }, timeout),
         };
       })
-      .catch(() => {
+      .catch(err => {
         reject(`O3 dapi provider not found.`);
       });
     }
