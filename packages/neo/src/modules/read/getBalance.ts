@@ -46,10 +46,11 @@ export function getBalance(data: GetBalanceArgs): Promise<BalanceResults> {
     // can be removed in the case that all wallets update to assetID,
     // and none left using scriptHash, including already deployed versions
     Object.keys(data).reduce((accum, key) => {
-      accum[key] = data[key].map(({scriptHash, symbol, amount}) => ({
+      accum[key] = data[key].map(({scriptHash, symbol, amount, unspent}) => ({
         assetID: scriptHash,
         symbol,
         amount,
+        unspent,
       }));
       return accum;
     }, {})
