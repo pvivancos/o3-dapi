@@ -13,6 +13,8 @@ import { isSocketConnected, sendSocketMessage, initSocket } from './socket';
 const PLATFORM = 'o3-dapi';
 const messageQueue = {};
 const eventsListeners: {[blockchain: string]: EventHandler} = {};
+const NO_PROVIDER = { type: 'NO_PROVIDER', description: 'O3 dapi provider not found.'};
+const REQUEST_TIMEOUT = { type: 'REQUEST_TIMEOUT', description: 'Provider is taking longer that timeout specified to complete request.'};
 
 window._o3dapi = window._o3dapi ? window._o3dapi : {};
 
@@ -93,13 +95,13 @@ export function sendMessage({
       try {
         window._o3dapi.messageHandler(JSON.stringify(message));
       } catch (err) {
-        reject(`O3 dapi provider not found.`);
+        reject(NO_PROVIDER);
       }
     } else if (isIOS) {
       try {
         window.webkit.messageHandlers.sendMessageHandler.postMessage(message);
       } catch (err) {
-        reject(`O3 dapi provider not found.`);
+        reject(NO_PROVIDER);
       }
     } else {
       initSocket()
@@ -110,12 +112,12 @@ export function sendMessage({
           reject,
           timeout: timeout && setTimeout(() => {
             delete messageQueue[messageId];
-            reject('Request timeout.');
+            reject(REQUEST_TIMEOUT);
           }, timeout),
         };
       })
       .catch(err => {
-        reject(`O3 dapi provider not found.`);
+        reject(NO_PROVIDER);
       });
     }
 
@@ -125,7 +127,7 @@ export function sendMessage({
         reject,
         timeout: timeout && setTimeout(() => {
           delete messageQueue[messageId];
-          reject('Request timeout.');
+          reject(REQUEST_TIMEOUT);
         }, timeout),
       };
     }
