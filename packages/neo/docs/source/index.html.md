@@ -231,7 +231,7 @@ None
 | Parameter   | Type    | Description                                  |
 |:----------- |:------- |:-------------------------------------------- |
 | type        | String  | The type of error which has occured          |
-| description | String  | A description of the error which has occured |
+| description | String? | A description of the error which has occured |
 | data        | String? | Any raw data associated with the error       |
 
 ## getNetworks
@@ -288,7 +288,7 @@ None
 | Parameter   | Type    | Description                                  |
 |:----------- |:------- |:-------------------------------------------- |
 | type        | String  | The type of error which has occured          |
-| description | String  | A description of the error which has occured |
+| description | String? | A description of the error which has occured |
 | data        | String? | Any raw data associated with the error       |
 
 ## getAccount
@@ -337,7 +337,7 @@ Return the Account that is currently connected to the dApp.
 | Parameter   | Type    | Description                                  |
 |:----------- |:------- |:-------------------------------------------- |
 | type        | String  | The type of error which has occured          |
-| description | String  | A description of the error which has occured |
+| description | String? | A description of the error which has occured |
 | data        | String? | Any raw data associated with the error       |
 
 ## getBalance
@@ -588,7 +588,7 @@ Returns the raw value located in contract storage
 | Parameter   | Type    | Description                                  |
 |:----------- |:------- |:-------------------------------------------- |
 | type        | String  | The type of error which has occured          |
-| description | String  | A description of the error which has occured |
+| description | String? | A description of the error which has occured |
 | data        | String? | Any raw data associated with the error       |
 
 ## invokeRead
@@ -677,7 +677,7 @@ The wallet will return the direct response from the RPC node.
 | Parameter   | Type    | Description                                  |
 |:----------- |:------- |:-------------------------------------------- |
 | type        | String  | The type of error which has occured          |
-| description | String  | A description of the error which has occured |
+| description | String? | A description of the error which has occured |
 | data        | String? | Any raw data associated with the error       |
 
 
@@ -759,7 +759,7 @@ It is reccommended that the DAPP take appropriate levels of risk prevention when
 | Parameter   | Type    | Description                                  |
 |:----------- |:------- |:-------------------------------------------- |
 | type        | String  | The type of error which has occured          |
-| description | String  | A description of the error which has occured |
+| description | String? | A description of the error which has occured |
 | data        | String? | Any raw data associated with the error       |
 
 ## Invoke
@@ -869,7 +869,7 @@ Available types are "String"|"Boolean"|"Hash160"|"Integer"|"ByteArray"|"Array"|"
 | Parameter   | Type    | Description                                  |
 |:----------- |:------- |:-------------------------------------------- |
 | type        | String  | The type of error which has occured          |
-| description | String  | A description of the error which has occured |
+| description | String? | A description of the error which has occured |
 | data        | String? | Any raw data associated with the error       |
 
 # Events
