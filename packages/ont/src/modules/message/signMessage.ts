@@ -8,7 +8,7 @@ interface SignMessageInput {
 
 export function signMessage(data: SignMessageInput): Promise<Signature> {
   return sendMessage({
-    command: Command.getIdentity,
+    command: Command.signMessage,
     data,
   });
 }

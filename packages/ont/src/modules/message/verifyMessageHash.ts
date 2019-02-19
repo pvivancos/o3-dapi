@@ -9,7 +9,7 @@ interface VerifyMessageHashInput {
 
 export function verifyMessageHash(data: VerifyMessageHashInput): Promise<boolean> {
   return sendMessage({
-    command: Command.getIdentity,
+    command: Command.verifyMessageHash,
     data,
   });
 }

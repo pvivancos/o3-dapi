@@ -4,12 +4,13 @@ import { Signature } from './common';
 
 interface VerifyMessageInput {
   message: string;
-  signature: Signature;
+  publicKey: string;
+  data: string;
 }
 
 export function verifyMessage(data: VerifyMessageInput): Promise<boolean> {
   return sendMessage({
-    command: Command.getIdentity,
+    command: Command.verifyMessage,
     data,
   });
 }

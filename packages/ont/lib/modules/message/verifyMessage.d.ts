@@ -1,7 +1,7 @@
-import { Signature } from './common';
 interface VerifyMessageInput {
     message: string;
-    signature: Signature;
+    publicKey: string;
+    data: string;
 }
 export declare function verifyMessage(data: VerifyMessageInput): Promise<boolean>;
 export {};
