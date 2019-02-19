@@ -16,6 +16,7 @@ includes:
   - networkMethods
   - txMethods
   - scMethods
+  - messageMethods
   - stakeMethods
   - oep4Methods
   - events
