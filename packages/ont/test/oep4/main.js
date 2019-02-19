@@ -290,6 +290,7 @@ function handleNewNetworks({networks, defaultNetwork}) {
     }
     option.value = network;
     option.label = network;
+    option.innerHTML = network;
     networksEle.append(option);
   });
 }
