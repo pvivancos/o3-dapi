@@ -22,6 +22,6 @@ if (!o3dapiCore.isAvailable) {
   .catch(() => {});
 }
 
-o3dapiCore.openO3 = () => window.open('https://deeplink.o3.network/');
+o3dapiCore.openO3 = () => window.location.replace('o3network://deep');
 
 export default o3dapiCore;
