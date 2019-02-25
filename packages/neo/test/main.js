@@ -90,6 +90,14 @@ function getAccount() {
   .catch(handleError);
 }
 
+function getPublicKey() {
+  startLoading();
+
+  o3dapi.NEO.getPublicKey()
+  .then(handleSuccess)
+  .catch(handleError);
+}
+
 function getBalance() {
   try {
     startLoading();

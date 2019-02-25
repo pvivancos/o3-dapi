@@ -291,6 +291,7 @@ None
 | description | String? | A description of the error which has occured |
 | data        | String? | Any raw data associated with the error       |
 
+
 ## getAccount
 
 ```typescript
@@ -339,6 +340,57 @@ Return the Account that is currently connected to the dApp.
 | type        | String  | The type of error which has occured          |
 | description | String? | A description of the error which has occured |
 | data        | String? | Any raw data associated with the error       |
+
+
+## getPublicKey
+
+```typescript
+o3dapi.NEO.getPublicKey()
+.then((publicKeyData: PublicKeyData) => {
+  const {
+    address,
+    publicKey,
+  } = publicKeyData;
+
+  console.log('Account address: ' + address);
+  console.log('Account public key: ' + publicKey);
+})
+.catch(({type: string, description: string, data: any}) => {
+  switch(type) {
+    case NO_PROVIDER:
+      console.log('No provider available.');
+      break;
+    case CONNECTION_DENIED:
+      console.log('The user rejected the request to connect with your dApp');
+      break;
+  }
+});
+```
+
+> Example Response
+
+```typescript
+{
+  address: 'ATUaTd3LA4kZiyB6it9fdb5oJpZYMBF4DX',
+  publicKey: '03fa41b6ff75ebeff8464556629cfceae7402f5d815626a7a6542f786974b942e0'
+}
+```
+
+Return the public key of the Account that is currently connected to the dApp.
+
+### Success Response
+| Parameter | Type   | Description                                                           |
+|:--------- |:------ |:--------------------------------------------------------------------- |
+| address   | String | The address of the account that is currently connected to the dapp    |
+| publicKey | String | The public key of the account that is currently connected to the dapp |
+
+### Error Response
+| Parameter   | Type    | Description                                  |
+|:----------- |:------- |:-------------------------------------------- |
+| type        | String  | The type of error which has occured          |
+| description | String? | A description of the error which has occured |
+| data        | String? | Any raw data associated with the error       |
+
 
 ## getBalance
 

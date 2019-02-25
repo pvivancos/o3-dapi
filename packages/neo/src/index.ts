@@ -1,6 +1,7 @@
 import { getProvider, Provider } from './modules/read/getProvider';
 import { getNetworks, GetNetworksOutput } from './modules/read/getNetworks';
 import { getAccount, Account } from './modules/read/getAccount';
+import { getPublicKey, PublicKeyOutput } from './modules/read/getPublicKey';
 import { getBalance, GetBalanceArgs, BalanceResults } from './modules/read/getBalance';
 import { getStorage, GetStorageArgs, GetStorageOutput } from './modules/read/getStorage';
 import { invokeRead, InvokeReadArgs } from './modules/read/invokeRead';
@@ -20,6 +21,7 @@ class O3dapiNeo {
   getProvider = getProvider;
   getNetworks = getNetworks;
   getAccount = getAccount;
+  getPublicKey = getPublicKey;
   getBalance = getBalance;
   getStorage = getStorage;
   invokeRead = invokeRead;
@@ -46,6 +48,7 @@ export default O3dapiNeo;
 export type getProvider = () => Promise<Provider>;
 export type getNetworks = () => Promise<GetNetworksOutput>;
 export type getAccount = () => Promise<Account>;
+export type getPublicKey = () => Promise<PublicKeyOutput>;
 export type getBalance = (data: GetBalanceArgs) => Promise<BalanceResults>;
 export type getStorage = (data: GetStorageArgs) => Promise<GetStorageOutput>;
 export type invokeRead = (data: InvokeReadArgs) => Promise<any>;

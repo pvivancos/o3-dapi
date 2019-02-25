@@ -15,6 +15,7 @@ export declare enum Command {
     getProvider = "getProvider",
     getNetworks = "getNetworks",
     getAccount = "getAccount",
+    getPublicKey = "getPublicKey",
     getBalance = "getBalance",
     getStorage = "getStorage",
     invokeRead = "invokeRead",
