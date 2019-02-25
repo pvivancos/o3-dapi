@@ -660,7 +660,7 @@ Execute a contract invocation in read-only mode.
 | value     | String | String representation of the argument which you are using |
 
 <aside class =notice>
-Available types are "String"|"Boolean"|"Hash160"|"Integer"|"ByteArray"|"Array"|"Address"
+Available types are "String"|"Boolean"|"Hash160"|"Hash256"|"Integer"|"ByteArray"|"Array"|"Address"
 </aside>
 
 ### Success Response
@@ -830,7 +830,7 @@ Invoke allows for the generic execution of smart contracts on behalf of the user
 | value     | String | String representation of the argument which you are using |
 
 <aside class =notice>
-Available types are "String"|"Boolean"|"Hash160"|"Integer"|"ByteArray"|"Array"|"Address"
+Available types are "String"|"Boolean"|"Hash160"|"Hash256"|"Integer"|"ByteArray"|"Array"|"Address"
 </aside>
 
 #### AttachedAssets

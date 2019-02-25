@@ -5,6 +5,7 @@ export enum ArgumentDataType {
   STRING = 'String',
   BOOLEAN = 'Boolean',
   HASH160 = 'Hash160',
+  HASH256 = 'Hash256',
   INTEGER = 'Integer',
   BYTEARRAY = 'ByteArray',
   ARRAY = 'Array',
