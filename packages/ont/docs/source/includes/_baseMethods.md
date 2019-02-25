@@ -15,6 +15,7 @@ o3dapi.ONT.getProvider()
 
   const {
     theme,
+    currency,
   } = extra;
 
   console.log('Provider name: ' + name);
@@ -22,6 +23,7 @@ o3dapi.ONT.getProvider()
   console.log('Provider dAPI version: ' + version);
   console.log('Provider dAPI compatibility: ' + JSON.stringify(compatibility));
   console.log('Provider UI theme: ' + theme);
+  console.log('Provider Base currency: ' + currency);
 })
 .catch(({type: string, description: string, data: any}) => {
   switch(type) {
@@ -46,7 +48,8 @@ o3dapi.ONT.getProvider()
     'OEP-6',
   ],
   extra: {
-    theme: 'Dark Mode'
+    theme: 'Dark Mode',
+    currency: 'USD',
   }
 }
 ```
@@ -67,9 +70,10 @@ None
 | extra         | Object   | Provider specific attributes                                     |
 
 ##### extra
-| Parameter | Type   | Description              |
-| --------- | ------ | ------------------------ |
-| theme     | string | UI theme of the provider |
+| Parameter | Type   | Description               |
+| --------- | ------ | ------------------------- |
+| theme     | string | UI theme of the provider  |
+| currency  | string | Base currency set by user |
 
 
 ### Error Response
