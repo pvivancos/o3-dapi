@@ -31,6 +31,12 @@ const sendFeeEle = document.getElementById("sendFee");
 
 const networksEle = document.getElementById("networks");
 
+const signMessageInputEle = document.getElementById("signMessageInput");
+
+const verifyMessageInputEle = document.getElementById("verifyMessageInput");
+const verifyMessageSignatureInputEle = document.getElementById("verifyMessageSignatureInput");
+const verifyMessagePiblicKeyInputEle = document.getElementById("verifyMessagePiblicKeyInput");
+
 function clearText() {
   resultEle.innerHTML = '';
   errorEle.innerHTML = '';
@@ -172,6 +178,34 @@ function send() {
   })
   .then(handleSuccess)
   .catch(handleError);
+}
+
+function signMessage() {
+  try {
+    startLoading();
+    o3dapi.NEO.signMessage({
+      message: signMessageInputEle.value,
+    })
+    .then(handleSuccess)
+    .catch(handleError);
+  } catch (err) {
+    handleError('invalid JSON input');
+  }
+}
+
+function verifyMessage() {
+  try {
+    startLoading();
+    o3dapi.NEO.verifyMessage({
+      message: verifyMessageInputEle.value,
+      data: verifyMessageSignatureInputEle.value,
+      publicKey: verifyMessagePiblicKeyInputEle.value,
+    })
+    .then(handleSuccess)
+    .catch(handleError);
+  } catch (err) {
+    handleError('invalid JSON input');
+  }
 }
 
 function disconnect() {

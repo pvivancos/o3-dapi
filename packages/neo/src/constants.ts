@@ -25,6 +25,8 @@ export enum Command {
   invoke = 'invoke',
   event = 'event',
   disconnect = 'disconnect',
+  signMessage = 'signMessage',
+  verifyMessage = 'verifyMessage',
 }
 
 export enum EventName {

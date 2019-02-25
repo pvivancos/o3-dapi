@@ -17,10 +17,10 @@
   <!-- <script type="text/javascript" src="../../core/lib/o3-dapi-core.min.js"></script> -->
   <!-- <script type="text/javascript" src="../lib/o3-dapi-neo.min.js"></script> -->
   <!-- <script type="text/javascript" src="../../core/build/bundle.js"></script> -->
-  <script type="text/javascript" src="../build/bundle.js"></script>
+  <!-- <script type="text/javascript" src="../build/bundle.js"></script> -->
 
   <script src="https://cdn.jsdelivr.net/npm/o3-dapi-core@0.1.4/lib/o3-dapi-core.min.js"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/o3-dapi-neo@0.1.3/lib/o3-dapi-neo.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/o3-dapi-neo@0.1.4/lib/o3-dapi-neo.min.js"></script>
 </head>
 
 <body>
@@ -163,6 +163,33 @@
           <input id='sendFee' type="text" placeholder="eg. 0.00000001"/>
           <br/>
           <button type="button" class="btn btn-primary" onclick="send()">Send</button>
+        </div>
+
+        <div class="function-container">
+          <h5 class="title">signMessage</h5>
+          <p class="text">
+            <p>Sign an arbitrary message.</p>
+          </p>
+          <p>Message:</p>
+          <textarea id='signMessageInput'>Hello World!</textarea>
+          <button type="button" class="btn btn-primary" onclick="signMessage()">Sign</button>
+        </div>
+
+        <div class="function-container">
+          <h5 class="title">verifyMessage</h5>
+          <p class="text">
+            <p>Verify a message signature.</p>
+          </p>
+          <p>Message:</p>
+          <textarea id='verifyMessageInput'>Hello World!</textarea>
+          <br/>
+          <p>Signature:</p>
+          <textarea id='verifyMessageSignatureInput'></textarea>
+          <br/>
+          <p>Public Key:</p>
+          <input id='verifyMessagePiblicKeyInput' type="text"/>
+          <br/>
+          <button type="button" class="btn btn-primary" onclick="verifyMessage()">Verify</button>
         </div>
 
       </div>

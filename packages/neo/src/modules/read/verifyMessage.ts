@@ -1,13 +1,17 @@
 import { sendMessage } from '../../messaging';
 import { Command } from '../../constants';
 
-interface VerifyMessageInput {
+export interface VerifyMessageInput {
   message: string;
   publicKey: string;
   data: string;
 }
 
-export function verifyMessage(data: VerifyMessageInput): Promise<boolean> {
+export interface VerifyMessageOutput {
+  result: boolean;
+}
+
+export function verifyMessage(data: VerifyMessageInput): Promise<VerifyMessageOutput> {
   return sendMessage({
     command: Command.verifyMessage,
     data,

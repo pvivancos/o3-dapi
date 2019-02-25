@@ -22,7 +22,9 @@ export declare enum Command {
     send = "send",
     invoke = "invoke",
     event = "event",
-    disconnect = "disconnect"
+    disconnect = "disconnect",
+    signMessage = "signMessage",
+    verifyMessage = "verifyMessage"
 }
 export declare enum EventName {
     READY = "READY",
