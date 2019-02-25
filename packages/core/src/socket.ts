@@ -54,10 +54,6 @@ export function initSocket(isHTTPS = true): Promise<void> {
         reject();
       }
     });
-
-    setTimeout(() => {
-      socket.emit('ping');
-    }, 1000);
   });
 }
 
