@@ -90,7 +90,7 @@ o3dapi.NEO.invoke({
       value: 'hello'
     }
   ],
-  assets: {
+  attachedAssets: {
     NEO: '100',
     GAS: '0.0001',
   },
@@ -136,7 +136,7 @@ Invoke allows for the generic execution of smart contracts on behalf of the user
 | args                        | Argument[]           | A list of arguments necessary to perform on the operation you wish to call                                                                         |
 | fee                         | String?              | If a fee is specified then the wallet SHOULD NOT override it, if a fee is not specified the wallet SHOULD allow the user to attach an optional fee |
 | network                     | String               | Network alias to submit this request to.                                                                                                           |
-| assets                      | AttachedAssets?      | Describes the assets to attach with the smart contract, e.g. attaching assets to mint tokens during a token sale                                   |
+| attachedAssets              | AttachedAssets?      | Describes the assets to attach with the smart contract, e.g. attaching assets to mint tokens during a token sale                                   |
 | assetIntentOverrides        | AssetIntentOverrides | Used to specify the exact UTXO's to use for attached assets. If this is provided fee and attachedAssets will be ignored                            |
 | triggerContractVerification | Boolean?             | Adds the instruction to invoke the contract verifican trigger                                                                                      |
 
