@@ -256,8 +256,8 @@ o3dapi.NEO.getBalance({
 })
 .then((results: BalanceResults) => {
   Object.keys(results).forEach(address => {
-    const { balances } = results[address];
-    Object.keys(balances).forEach(balance => {
+    const balances = results[address];
+    balances.forEach(balance => {
       const { assetID, symbol, amount } = balance
 
       console.log('Address: ' + address);
