@@ -5,7 +5,7 @@ export interface InvokeArgs {
     args?: Argument[];
     fee?: string;
     network: string;
-    attachedAssets?: AttachedAssets[];
+    attachedAssets?: AttachedAssets;
     assetIntentOverrides?: AssetIntentOverrides;
     triggerContractVerification?: boolean;
 }
@@ -14,7 +14,7 @@ interface Argument {
     value: any;
 }
 interface AttachedAssets {
-    [asset: string]: number;
+    [asset: string]: string;
 }
 interface AssetIntentOverrides {
     inputs: AssetInput[];

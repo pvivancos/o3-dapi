@@ -5,6 +5,7 @@ export interface Provider {
     compatibility: string[];
     extra: {
         theme: string;
+        currency: string;
     };
 }
 export declare function getProvider(): Promise<Provider>;
