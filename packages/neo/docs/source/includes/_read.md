@@ -396,10 +396,10 @@ o3dapi.NEO.getBalance({
 Allows the DAPP to query the balance of a user, this includes both native assets (NEO/GAS) and NEP-5 tokens
 
 ### Input Arguments
-| Parameter | Type             | Description                                                                              |
-|:--------- |:---------------- |:---------------------------------------------------------------------------------------- |
-| params    | BalanceRequest[] | A list of Balance Request Objects, specifying which addresses, and which assets to query |
-| network   | String           | The call will only work for the networks available in the GetNetworks command            |
+| Parameter | Type                               | Description                                                                              |
+|:--------- |:---------------------------------- |:---------------------------------------------------------------------------------------- |
+| params    | BalanceRequest or BalanceRequest[] | A list of Balance Request Objects, specifying which addresses, and which assets to query |
+| network   | String                             | The call will only work for the networks available in the GetNetworks command            |
 
 #### Balance Request
 | Parameter  | Type     | Description                                                                   |
