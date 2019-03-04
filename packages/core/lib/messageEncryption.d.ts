@@ -8,8 +8,8 @@ export default class MessageEncryption {
     getPublicKey(): any;
     setSharedKey(key: any): void;
     hasSharedKey(): boolean;
-    encrypt(message: string): string;
-    decrypt(input: string): {
+    encrypt(message: string): string | any;
+    decrypt(input: string | any): {
         message: any;
         error?: string;
     };

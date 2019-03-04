@@ -27,7 +27,7 @@ export default class MessageEncryption {
     return Boolean(this.shared);
   }
 
-  encrypt(message: string): string {
+  encrypt(message: string): string|any {
     const data = {
       message,
       nonce: Date.now() + Math.floor(Math.random() * 100000000000000000),
@@ -36,15 +36,35 @@ export default class MessageEncryption {
     randomFillSync(iv);
     const cipher = createCipheriv(this.cipherAlgorithm, this._getSharedKey(), iv);
     const encrypted = cipher.update(JSON.stringify(data), UTF8, HEX) + cipher.final(HEX);
-    return `${iv.toString('hex')}:${encrypted.toString()}`;
+
+    if (this.cipherAlgorithm === AES256) {
+      return `${iv.toString('hex')}:${encrypted.toString()}`;
+    } else {
+      return {
+        iv: iv.toString('hex'),
+        encrypted: encrypted.toString(),
+        authTag: cipher.getAuthTag(),
+      };
+    }
   }
 
-  decrypt(input: string): {message, error?: string} {
+  decrypt(input: string|any): {message, error?: string} {
     try {
-      const textParts = input.split(':');
-      const iv = Buffer.from(textParts.shift(), 'hex');
-      const encryptedText = Buffer.from(textParts.join(':'), 'hex');
+      let iv;
+      let encryptedText;
+      let authTag;
+      debugger;
+      if (this.cipherAlgorithm === AES256) {
+        const textParts = input.split(':');
+        iv = Buffer.from(textParts.shift(), 'hex');
+        encryptedText = Buffer.from(textParts.join(':'), 'hex');
+      } else {
+        iv = input.iv;
+        encryptedText = input.encrypted;
+        authTag = input.authTag;
+      }
       const decipher = createDecipheriv(this.cipherAlgorithm, this._getSharedKey(), iv);
+      authTag && decipher.setAuthTag(authTag);
       const data = JSON.parse(decipher.update(encryptedText, HEX, UTF8) + decipher.final(UTF8));
 
       if (!data || !data.nonce || this.nonceMap[data.nonce]) {
@@ -57,6 +77,7 @@ export default class MessageEncryption {
       this.nonceMap[data.nonce] = true;
       return { message: data.message };
     } catch (err) {
+      debugger;
       return {
         message: input,
         error: 'There was an error decrypting the message.',
