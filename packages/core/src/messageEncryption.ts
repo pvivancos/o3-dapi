@@ -38,7 +38,7 @@ export default class MessageEncryption {
     const encrypted = cipher.update(JSON.stringify(data), UTF8, HEX) + cipher.final(HEX);
 
     if (this.cipherAlgorithm === AES256) {
-      return `${iv.toString('hex')}:${encrypted.toString()}`;
+      return `${iv.toString(HEX)}:${encrypted.toString()}`;
     } else {
       return {
         iv: iv.toString(HEX),
@@ -55,8 +55,8 @@ export default class MessageEncryption {
       let authTag;
       if (this.cipherAlgorithm === AES256) {
         const textParts = input.split(':');
-        iv = Buffer.from(textParts.shift(), 'hex');
-        encryptedText = Buffer.from(textParts.join(':'), 'hex');
+        iv = Buffer.from(textParts.shift(), HEX);
+        encryptedText = Buffer.from(textParts.join(':'), HEX);
       } else {
         iv = Buffer.from(input.iv, HEX);
         encryptedText = Buffer.from(input.encrypted, HEX);
