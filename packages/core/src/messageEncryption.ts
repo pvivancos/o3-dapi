@@ -41,9 +41,9 @@ export default class MessageEncryption {
       return `${iv.toString('hex')}:${encrypted.toString()}`;
     } else {
       return {
-        iv: iv.toString('hex'),
+        iv: iv.toString(HEX),
         encrypted: encrypted.toString(),
-        authTag: cipher.getAuthTag(),
+        authTag: cipher.getAuthTag().toString(HEX),
       };
     }
   }
@@ -53,15 +53,14 @@ export default class MessageEncryption {
       let iv;
       let encryptedText;
       let authTag;
-      debugger;
       if (this.cipherAlgorithm === AES256) {
         const textParts = input.split(':');
         iv = Buffer.from(textParts.shift(), 'hex');
         encryptedText = Buffer.from(textParts.join(':'), 'hex');
       } else {
-        iv = input.iv;
-        encryptedText = input.encrypted;
-        authTag = input.authTag;
+        iv = Buffer.from(input.iv, HEX);
+        encryptedText = Buffer.from(input.encrypted, HEX);
+        authTag = Buffer.from(input.authTag, HEX);
       }
       const decipher = createDecipheriv(this.cipherAlgorithm, this._getSharedKey(), iv);
       authTag && decipher.setAuthTag(authTag);
@@ -77,7 +76,6 @@ export default class MessageEncryption {
       this.nonceMap[data.nonce] = true;
       return { message: data.message };
     } catch (err) {
-      debugger;
       return {
         message: input,
         error: 'There was an error decrypting the message.',
