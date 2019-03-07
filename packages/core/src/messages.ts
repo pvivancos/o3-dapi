@@ -1,4 +1,5 @@
 declare const window: any;
+declare const global: any;
 declare const _o3dapi: any;
 import { get } from 'lodash-es';
 import {
@@ -16,7 +17,11 @@ const eventsListeners: {[blockchain: string]: EventHandler} = {};
 const NO_PROVIDER = { type: 'NO_PROVIDER', description: 'O3 dapi provider not found.'};
 const REQUEST_TIMEOUT = { type: 'REQUEST_TIMEOUT', description: 'Provider is taking longer that timeout specified to complete request.'};
 
-window._o3dapi = window._o3dapi ? window._o3dapi : {};
+const isBrowser = typeof window !== 'undefined';
+const safeWindow = isBrowser ? window : global;
+
+safeWindow._o3dapi = safeWindow._o3dapi ? safeWindow._o3dapi : {};
+_o3dapi.receiveMessage = receiveMessage;
 
 export function receiveMessage(message: IncomingMessage) {
   try {
@@ -25,7 +30,6 @@ export function receiveMessage(message: IncomingMessage) {
     }
     const {
       platform,
-      blockchain,
       command,
       messageId,
       data,
@@ -39,7 +43,7 @@ export function receiveMessage(message: IncomingMessage) {
 
     if (command === 'event') {
       if (eventName === 'READY') {
-        window._o3dapi.isReady = data;
+        safeWindow._o3dapi.isReady = data;
       }
       Object.keys(eventsListeners)
       .map(key => eventsListeners[key]) // Object.values
@@ -55,8 +59,6 @@ export function receiveMessage(message: IncomingMessage) {
     }
   } catch (err) {}
 }
-
-_o3dapi.receiveMessage = receiveMessage;
 
 export function addEventsListener({blockchain, callback}: AddEventsListenerArgs) {
   eventsListeners[blockchain] = callback;
@@ -83,9 +85,9 @@ export function sendMessage({
 
   return new Promise((resolve, reject) => {
 
-    const messageHandler = get(window, 'window._o3dapi.messageHandler');
+    const messageHandler = isBrowser && get(window, 'window._o3dapi.messageHandler');
 
-    const webkitPostMessage = get(window, 'window.webkit.messageHandlers.sendMessageHandler.postMessage');
+    const webkitPostMessage = isBrowser && get(window, 'window.webkit.messageHandlers.sendMessageHandler.postMessage');
 
     const isIOS = Boolean(webkitPostMessage) && typeof webkitPostMessage === 'function';
 
@@ -95,12 +97,14 @@ export function sendMessage({
       try {
         window._o3dapi.messageHandler(JSON.stringify(message));
       } catch (err) {
+        console.log('android error', err);
         reject(NO_PROVIDER);
       }
     } else if (isIOS) {
       try {
         window.webkit.messageHandlers.sendMessageHandler.postMessage(message);
       } catch (err) {
+        console.log('ios error', err);
         reject(NO_PROVIDER);
       }
     } else {
@@ -117,6 +121,7 @@ export function sendMessage({
         };
       })
       .catch(err => {
+        console.log('socket error', err);
         reject(NO_PROVIDER);
       });
     }

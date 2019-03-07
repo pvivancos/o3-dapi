@@ -1,3 +1,6 @@
+declare const global: any;
+const isBrowser = typeof window !== 'undefined';
+const safeWindow = isBrowser ? window : global;
 import { getProvider, Provider } from './modules/read/getProvider';
 import { getNetworks, GetNetworksOutput } from './modules/read/getNetworks';
 import { getAccount, Account } from './modules/read/getAccount';
@@ -20,7 +23,7 @@ class O3dapiNeo {
 
   static blockchain = BLOCKCHAIN;
 
-  isAvailable = Boolean((window as any)._o3dapi.isAvailable);
+  isAvailable = Boolean(safeWindow._o3dapi.isAvailable);
 
   getProvider = getProvider;
   getNetworks = getNetworks;
