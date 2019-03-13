@@ -11,8 +11,8 @@ export interface DeployArgs {
   needsStorage?: boolean;
   dynamicInvoke?: boolean;
   isPayable?: boolean;
-  returnType: string;
   parameterList: string;
+  returnType: string;
   code: string;
 }
 

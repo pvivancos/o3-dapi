@@ -177,10 +177,10 @@ Available types are "String"|"Boolean"|"Hash160"|"Hash256"|"Integer"|"ByteArray"
 
 
 ### Success Response
-| Parameter | Type   | Description                                                                   |
-|:--------- |:------ |:----------------------------------------------------------------------------- |
-| txid      | String | The transaction id of the send request which can be queried on the blockchain |
-| nodeURL   | String | The node to which the transaction was submitted to                            |
+| Parameter | Type   | Description                                                             |
+|:--------- |:------ |:----------------------------------------------------------------------- |
+| txid      | String | The transaction id of the invoke which can be queried on the blockchain |
+| nodeURL   | String | The node to which the transaction was submitted to                      |
 
 ### Error Response
 | Parameter   | Type    | Description                                  |
@@ -245,6 +245,83 @@ Signs a provided messaged with an account selected by user. A salt prefix is add
 | data      | String | The signed data                                              |
 | salt      | String | The salt prefix added to the original message before signing |
 | message   | String | The original message                                         |
+
+
+### Error Response
+
+| Parameter   | Type    | Description                                   |
+|:----------- |:------- |:--------------------------------------------- |
+| type        | String  | The type of error which has occurred          |
+| description | String  | A description of the error which has occurred |
+| data        | String? | Any raw data associated with the error        |
+
+
+## deploy
+
+```typescript
+o3dapi.NEO.deploy({
+  network: 'PrivateNet',
+  name: 'Hello world!',
+  version: 'v0.0.1',
+  author: 'John Smith',
+  email: 'info@o3.network',
+  description: 'My first contract.',
+  needsStorage: true,
+  dynamicInvoke: false,
+  isPayable: false,
+  parameterList: '0710',
+  returnType: '05',
+  code: '53c56b0d57616b652075702c204e454f21680f4e656f2e52756e74696d652e4c6f6761006c7566',
+})
+.then(({txid, nodeUrl}: InvokeOutput) => {
+  console.log('Deploy transaction success!');
+  console.log('Transaction ID: ' + txid);
+  console.log('RPC node URL: ' + nodeUrl);
+})
+.catch(({type: string, description: string, data: any}) => {
+  switch(type) {
+    case UNKNOWN_ERROR:
+      console.log(description);
+      break;
+  }
+});
+```
+
+> Example Response
+
+```typescript
+{
+  txid: 'ed54fb38dff371be6e3f96e4880405758c07fe6dd1295eb136fe15f311e9ff77',
+  nodeUrl: 'http://seed7.ngd.network:10332',
+}:
+```
+
+Will deploy a compiled smart contract to the blockchain with the provided input parameters. The GAS cost for deploying the contract will be calculated by the provider, and displayed to the user upon tx acceptance or rejection.
+
+### Input Arguments
+
+| Parameter     | Type    | Description                                                                                                          |
+|:------------- |:------- |:-------------------------------------------------------------------------------------------------------------------- |
+| message       | String  | The message to sign                                                                                                  |
+| network       | String  | Network alias to submit this request to.                                                                             |
+| name          | String  | The name of the contract to be deployed                                                                              |
+| version       | String  | The version of the contract to be deployed                                                                           |
+| author        | String  | The author of the contract to be deployed                                                                            |
+| email         | String  | The email of the contract to be deployed                                                                             |
+| description   | String  | The description of the contract to be deployed                                                                       |
+| needsStorage  | Boolean | Whether or not the contract will use storage                                                                         |
+| dynamicInvoke | Boolean | Whether or not the contract will be performing dynamic invocations of other smart contracts                          |
+| isPayable     | Boolean | Whether or not the contract will be able to accept native assets                                                     |
+| parameterList | String  | The list of input argument types for the Main function on the contract. https://docs.neo.org/en-us/sc/Parameter.html |
+| returnType    | String  | The list of output returnType argument types. https://docs.neo.org/en-us/sc/Parameter.html                           |
+| code          | String  | The hex of the compiled smart contract avm                                                                           |
+
+
+### Success Response
+| Parameter | Type   | Description                                                             |
+|:--------- |:------ |:----------------------------------------------------------------------- |
+| txid      | String | The transaction id of the deploy which can be queried on the blockchain |
+| nodeURL   | String | The node to which the transaction was submitted to                      |
 
 
 ### Error Response
