@@ -24,7 +24,8 @@ export declare enum Command {
     event = "event",
     disconnect = "disconnect",
     signMessage = "signMessage",
-    verifyMessage = "verifyMessage"
+    verifyMessage = "verifyMessage",
+    deploy = "deploy"
 }
 export declare enum EventName {
     READY = "READY",

@@ -12,6 +12,7 @@ import { verifyMessage, VerifyMessageInput, VerifyMessageOutput } from './module
 
 import { send, SendArgs, SendOutput } from './modules/write/send';
 import { invoke, InvokeArgs, InvokeOutput } from './modules/write/invoke';
+import { deploy, DeployArgs, DeployOutput } from './modules/write/deploy';
 import { signMessage, SignMessageInput, Signature } from './modules/write/signMessage';
 
 import { disconnect } from './modules/disconnect';
@@ -36,6 +37,7 @@ class O3dapiNeo {
 
   send = send;
   invoke = invoke;
+  deploy = deploy;
   signMessage = signMessage;
 
   addEventListener = addEventListener;
@@ -65,6 +67,7 @@ export type verifyMessage = (data: VerifyMessageInput) => Promise<VerifyMessageO
 
 export type send = (data: SendArgs) => Promise<SendOutput>;
 export type invoke = (data: InvokeArgs) => Promise<InvokeOutput>;
+export type deploy = (data: DeployArgs) => Promise<DeployOutput>;
 export type signMessage = (data: SignMessageInput) => Promise<Signature>;
 
 export type disconnect = () => Promise<boolean>;

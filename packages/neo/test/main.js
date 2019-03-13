@@ -37,6 +37,18 @@ const verifyMessageInputEle = document.getElementById("verifyMessageInput");
 const verifyMessageSignatureInputEle = document.getElementById("verifyMessageSignatureInput");
 const verifyMessagePiblicKeyInputEle = document.getElementById("verifyMessagePiblicKeyInput");
 
+const deployNameEle = document.getElementById("deployName");
+const deployVersionEle = document.getElementById("deployVersion");
+const deployAuthorEle = document.getElementById("deployAuthor");
+const deployEmailEle = document.getElementById("deployEmail");
+const deployDescriptionEle = document.getElementById("deployDescription");
+const deployNeedsStorageEle = document.getElementById("deployNeedsStorage");
+const deployDynamicInvokeEle = document.getElementById("deployDynamicInvoke");
+const deployIsPayableEle = document.getElementById("deployIsPayable");
+const deployReturnTypeEle = document.getElementById("deployReturnType");
+const deployParameterListEle = document.getElementById("deployParameterList");
+const deployCodeEle = document.getElementById("deployCode");
+
 function clearText() {
   resultEle.innerHTML = '';
   errorEle.innerHTML = '';
@@ -200,6 +212,30 @@ function verifyMessage() {
       message: verifyMessageInputEle.value,
       data: verifyMessageSignatureInputEle.value,
       publicKey: verifyMessagePiblicKeyInputEle.value,
+    })
+    .then(handleSuccess)
+    .catch(handleError);
+  } catch (err) {
+    handleError('invalid JSON input');
+  }
+}
+
+function deploy() {
+  try {
+    startLoading();
+    o3dapi.NEO.deploy({
+      network: networksEle.value,
+      name: deployNameEle.value,
+      version: deployVersionEle.value,
+      author: deployAuthorEle.value,
+      email: deployEmailEle.value,
+      description: deployDescriptionEle.value,
+      needsStorage: deployNeedsStorageEle.checked,
+      dynamicInvoke: deployDynamicInvokeEle.checked,
+      isPayable: deployIsPayableEle.checked,
+      returnType: deployReturnTypeEle.value,
+      parameterList: deployParameterListEle.value,
+      code: deployCodeEle.value,
     })
     .then(handleSuccess)
     .catch(handleError);

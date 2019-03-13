@@ -6,8 +6,8 @@ interface DeployInput {
     email?: string;
     description?: string;
     needStorage?: boolean;
-    gasPrice?: number;
-    gasLimit?: number;
+    gasPrice?: string;
+    gasLimit?: string;
     network: string;
 }
 export declare function deploy(data: DeployInput): Promise<void>;
