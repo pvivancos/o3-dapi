@@ -48,6 +48,7 @@ const deployIsPayableEle = document.getElementById("deployIsPayable");
 const deployReturnTypeEle = document.getElementById("deployReturnType");
 const deployParameterListEle = document.getElementById("deployParameterList");
 const deployCodeEle = document.getElementById("deployCode");
+const deployAvmFileEle = document.getElementById("deployAvmFile");
 
 function clearText() {
   resultEle.innerHTML = '';
@@ -276,6 +277,22 @@ function syntaxHighlight(json) {
         return '<span class="' + cls + '">' + match + '</span>';
     });
 }
+
+function readSingleFile(evt) {
+  var f = evt.target.files[0];
+  if (f) {
+    var r = new FileReader();
+    r.onload = function(e) {
+      var contents = e.target.result;
+      deployCodeEle.innerHTML = Array.prototype.map.call(new Uint8Array(contents), x => ('00' + x.toString(16)).slice(-2)).join('');
+    }
+    r.readAsArrayBuffer(f);
+  } else {
+    alert("Failed to load file");
+  }
+}
+
+deployAvmFileEle.addEventListener('change', readSingleFile, false);
 
 o3dapi.initPlugins([o3dapiNeo]);
 
