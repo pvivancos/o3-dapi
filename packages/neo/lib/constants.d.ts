@@ -34,4 +34,8 @@ export declare enum EventName {
     DISCONNECTED = "DISCONNECTED",
     NETWORK_CHANGED = "NETWORK_CHANGED"
 }
+export declare enum Network {
+    MainNet = "MainNet",
+    TestNet = "TestNet"
+}
 //# sourceMappingURL=constants.d.ts.map

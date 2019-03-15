@@ -37,3 +37,8 @@ export enum EventName {
   DISCONNECTED = 'DISCONNECTED',
   NETWORK_CHANGED = 'NETWORK_CHANGED',
 }
+
+export enum Network {
+  MainNet = 'MainNet',
+  TestNet = 'TestNet',
+}
