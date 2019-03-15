@@ -7,6 +7,8 @@ import {
 
 import { initSocket } from './socket';
 
+import * as utils from './utils';
+
 const o3dapiCore: any = {};
 const isBrowser = typeof window !== 'undefined';
 
@@ -26,5 +28,7 @@ if (!o3dapiCore.isAvailable) {
 }
 
 o3dapiCore.openO3 = () => window.location.replace('o3network://deep');
+
+o3dapiCore.utils = utils;
 
 export default o3dapiCore;

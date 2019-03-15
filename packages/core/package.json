@@ -1,6 +1,6 @@
 {
   "name": "o3-dapi-core",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "O3 dapi core messaging protocol",
   "main": "./lib/o3-dapi-core.min.js",
   "types": "./lib/index.d.ts",
@@ -30,8 +30,10 @@
   },
   "dependencies": {
     "browserify-cipher": "~1.0.1",
+    "bs58": "^4.0.1",
     "buffer": "~5.2.1",
     "create-ecdh": "~4.0.3",
+    "crypto-js": "^3.1.9-1",
     "lodash-es": "4.17.11",
     "randomfill": "~1.0.4",
     "socket.io-client": "~2.2.0"

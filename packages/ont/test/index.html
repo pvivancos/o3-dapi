@@ -19,7 +19,7 @@
   <!-- <script type="text/javascript" src="../../core/build/bundle.js"></script> -->
   <!-- <script type="text/javascript" src="../build/bundle.js"></script> -->
 
-  <script src="https://cdn.jsdelivr.net/npm/o3-dapi-core@0.2.0/lib/o3-dapi-core.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/o3-dapi-core@0.3.0/lib/o3-dapi-core.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/o3-dapi-ont@0.2.3/lib/o3-dapi-ont.min.js"></script>
 </head>
 
@@ -349,6 +349,112 @@
         <div id="loading"><div style="width:100%;height:100%" class="lds-pacman"><div><div></div><div></div><div></div></div><div><div></div><div></div></div></div></div>
         <div id="result"></div>
         <div id="error"></div>
+      </div>
+    </div>
+
+
+    <div id="utils-button" onclick="toggleUtils()">Utils</div>
+
+    <div id="utils">
+      <h3>Utils</h3>
+      <div class="scroll-container">
+
+        <div class="function-container">
+          <h5 class="title">Hex String <===> String</h5>
+          <div class="text">
+            68656c6c6f <===> hello
+          </div>
+          <div class="">
+            <div class="row">
+              <div>Hex string:</div>
+              <div>
+                <input id='utilsHex2strInput' type="text"/>
+              </div>
+              <div>=></div>
+              <div id='utilsHex2strOutput'></div>
+            </div>
+            <div class="row">
+              <div>String:</div>
+              <div>
+                <input id='utilsStr2hexInput' type="text"/>
+              </div>
+              <div>=></div>
+              <div id='utilsStr2hexOutput'></div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="utilsString()">Transform</button>
+        </div>
+
+        <div class="function-container">
+          <h5 class="title">Hex String  <===> Integer</h5>
+          <div class="text">
+            00e1f505 <===> 100000000
+          </div>
+          <div class="">
+            <div class="row">
+              <div>Hex string:</div>
+              <div>
+                <input id='utilsHex2intInput' type="text"/>
+              </div>
+              <div>=></div>
+              <div id='utilsHex2intOutput'></div>
+            </div>
+            <div class="row">
+              <div>Integer:</div>
+              <div>
+                <input id='utilsInt2hexInput' type="number"/>
+              </div>
+              <div>=></div>
+              <div id='utilsInt2hexOutput'></div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="utilsInteger()">Transform</button>
+        </div>
+
+        <div class="function-container">
+          <h5 class="title">Big endian <===> Little endian</h5>
+          <div class="text">
+            bc99b2a477e28581b2fd04249ba27599ebd736d3 <===> d336d7eb9975a29b2404fdb28185e277a4b299bc
+          </div>
+          <div class="">
+            <div class="row">
+              <div>Hex string:</div>
+              <div>
+                <input id='utilsReverseHexInput' type="text"/>
+              </div>
+              <div>=></div>
+              <div id='utilsReverseHexOutput'></div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="utilsReverseHex()">Transform</button>
+        </div>
+
+        <div class="function-container">
+          <h5 class="title">Address <===> ScriptHash</h5>
+          <div class="text">
+            Ab2fvZdmnM4HwDgVbdBrbTLz1wK5TcEyhU <===> d336d7eb9975a29b2404fdb28185e277a4b299bc
+          </div>
+          <div class="">
+            <div class="row">
+              <div>Address:</div>
+              <div>
+                <input id='utilsAddress2scriptHashInput' type="text"/>
+              </div>
+              <div>=></div>
+              <div id='utilsAddress2scriptHashOutput'></div>
+            </div>
+            <div class="row">
+              <div>ScriptHash:</div>
+              <div>
+                <input id='utilsScriptHash2addressInput' type="text"/>
+              </div>
+              <div>=></div>
+              <div id='utilsScriptHash2addressOutput'></div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="utilsAddress()">Transform</button>
+        </div>
+
       </div>
     </div>
   </div>

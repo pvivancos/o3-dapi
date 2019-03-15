@@ -21,6 +21,7 @@ includes:
   - oep4Methods
   - events
   - errors
+  - utils
   - devEnv
 
 search: true
