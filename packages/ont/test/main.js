@@ -56,6 +56,34 @@ const verifyMessageInputEle = document.getElementById("verifyMessageInput");
 const verifyMessageSignatureInputEle = document.getElementById("verifyMessageSignatureInput");
 const verifyMessagePiblicKeyInputEle = document.getElementById("verifyMessagePiblicKeyInput");
 
+const utilsButtonEle = document.getElementById("utils-button");
+const utilsEle = document.getElementById("utils");
+
+const utilsHex2strInputEle = document.getElementById("utilsHex2strInput");
+const utilsStr2hexInputEle = document.getElementById("utilsStr2hexInput");
+const utilsHex2intInputEle = document.getElementById("utilsHex2intInput");
+const utilsInt2hexInputEle = document.getElementById("utilsInt2hexInput");
+const utilsReverseHexInputEle = document.getElementById("utilsReverseHexInput");
+const utilsAddress2scriptHashInputEle = document.getElementById("utilsAddress2scriptHashInput");
+const utilsScriptHash2addressInputEle = document.getElementById("utilsScriptHash2addressInput");
+const utilsHex2strOutputEle = document.getElementById("utilsHex2strOutput");
+const utilsStr2hexOutputEle = document.getElementById("utilsStr2hexOutput");
+const utilsHex2intOutputEle = document.getElementById("utilsHex2intOutput");
+const utilsInt2hexOutputEle = document.getElementById("utilsInt2hexOutput");
+const utilsReverseHexOutputEle = document.getElementById("utilsReverseHexOutput");
+const utilsAddress2scriptHashOutputEle = document.getElementById("utilsAddress2scriptHashOutput");
+const utilsScriptHash2addressOutputEle = document.getElementById("utilsScriptHash2addressOutput");
+
+let isUtilsOpen;
+function toggleUtils() {
+  if (isUtilsOpen) {
+    utilsEle.classList.remove("active");
+  } else {
+    utilsEle.classList.add("active");
+  }
+  isUtilsOpen = !isUtilsOpen;
+}
+
 function clearText() {
   resultEle.innerHTML = '';
   errorEle.innerHTML = '';
@@ -351,6 +379,36 @@ function disconnect() {
   })
   .then(handleSuccess)
   .catch(handleError);
+}
+
+function utilsString() {
+  const hex2strResult = utilsHex2strInputEle.value ? o3dapi.utils.hex2str(utilsHex2strInputEle.value) : '';
+  const str2hexResult = utilsStr2hexInputEle.value ? o3dapi.utils.str2hex(utilsStr2hexInputEle.value) : '';
+
+  utilsHex2strOutputEle.innerHTML = hex2strResult;
+  utilsStr2hexOutputEle.innerHTML = str2hexResult;
+}
+
+function utilsInteger() {
+  const hex2intResult = utilsHex2intInputEle.value ? o3dapi.utils.hex2int(utilsHex2intInputEle.value) : '';
+  const int2hexResult = utilsInt2hexInputEle.value ? o3dapi.utils.int2hex(utilsInt2hexInputEle.value) : '';
+
+  utilsHex2intOutputEle.innerHTML = hex2intResult;
+  utilsInt2hexOutputEle.innerHTML = int2hexResult;
+}
+
+function utilsReverseHex() {
+  const reversehexResult = utilsReverseHexInputEle.value ? o3dapi.utils.reverseHex(utilsReverseHexInputEle.value) : '';
+
+  utilsReverseHexOutputEle.innerHTML = reversehexResult;
+}
+
+function utilsAddress() {
+  const address2scriptHashResult = utilsAddress2scriptHashInputEle.value ? o3dapi.utils.address2scriptHash(utilsAddress2scriptHashInputEle.value) : '';
+  const scriptHash2addressResult = utilsScriptHash2addressInputEle.value ? o3dapi.utils.scriptHash2address(utilsScriptHash2addressInputEle.value) : '';
+
+  utilsAddress2scriptHashOutputEle.innerHTML = address2scriptHashResult;
+  utilsScriptHash2addressOutputEle.innerHTML = scriptHash2addressResult;
 }
 
 function syntaxHighlight(json) {
