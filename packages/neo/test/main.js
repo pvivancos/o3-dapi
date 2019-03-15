@@ -98,11 +98,11 @@ function handleError(error) {
 
 function startLoading() {
   clearText();
-  loadingEle.style = 'display: block;';
+  // loadingEle.style = 'display: block;';
 }
 
 function stopLoading() {
-  loadingEle.style = 'display: none;';
+  // loadingEle.style = 'display: none;';
 }
 
 stopLoading();
@@ -113,10 +113,15 @@ function isReady() {
   .catch(handleError);
 }
 
-function getProvider() {
+function getProvider(elem) {
   o3dapi.NEO.getProvider()
-  .then(handleSuccess)
-  .catch(handleError);
+  .then(function(data){
+    const formatted = syntaxHighlight(data);
+    document.getElementById(elem).innerHTML = formatted;
+  })
+  .catch(function(error){
+     document.getElementById(elem).innerHTML = syntaxHighlight(error);
+  });
 }
 
 function getNetworks() {
@@ -315,42 +320,42 @@ function utilsAddress() {
 }
 
 function syntaxHighlight(json) {
-    if (typeof json != 'string') {
-         json = JSON.stringify(json, undefined, 2);
-    }
-    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
-        var cls = 'number';
-        if (/^"/.test(match)) {
-            if (/:$/.test(match)) {
-                cls = 'key';
-            } else {
-                cls = 'string';
-            }
-        } else if (/true|false/.test(match)) {
-            cls = 'boolean';
-        } else if (/null/.test(match)) {
-            cls = 'null';
-        }
-        return '<span class="' + cls + '">' + match + '</span>';
-    });
-}
-
-function readSingleFile(evt) {
-  var f = evt.target.files[0];
-  if (f) {
-    var r = new FileReader();
-    r.onload = function(e) {
-      var contents = e.target.result;
-      deployCodeEle.innerHTML = Array.prototype.map.call(new Uint8Array(contents), x => ('00' + x.toString(16)).slice(-2)).join('');
-    }
-    r.readAsArrayBuffer(f);
-  } else {
-    alert("Failed to load file");
+  if (typeof json != 'string') {
+    json = JSON.stringify(json, undefined, 2);
   }
+  json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+    var cls = 'number';
+    if (/^"/.test(match)) {
+      if (/:$/.test(match)) {
+        cls = 'key';
+      } else {
+        cls = 'string';
+      }
+    } else if (/true|false/.test(match)) {
+      cls = 'boolean';
+    } else if (/null/.test(match)) {
+      cls = 'null';
+    }
+    return '<span class="' + cls + '">' + match + '</span>';
+  });
 }
 
-deployAvmFileEle.addEventListener('change', readSingleFile, false);
+// function readSingleFile(evt) {
+//   var f = evt.target.files[0];
+//   if (f) {
+//     var r = new FileReader();
+//     r.onload = function(e) {
+//       var contents = e.target.result;
+//       deployCodeEle.innerHTML = Array.prototype.map.call(new Uint8Array(contents), x => ('00' + x.toString(16)).slice(-2)).join('');
+//     }
+//     r.readAsArrayBuffer(f);
+//   } else {
+//     alert("Failed to load file");
+//   }
+// }
+
+// deployAvmFileEle.addEventListener('change', readSingleFile, false);
 
 o3dapi.initPlugins([o3dapiNeo]);
 
