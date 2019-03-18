@@ -1,8 +1,8 @@
 {
-  "name": "o3-dapi-neoclient",
+  "name": "o3-dapi-ontclient",
   "version": "0.0.2",
-  "description": "Client plugin for o3-dapi-neo",
-  "main": "./lib/o3-dapi-neoclient.min.js",
+  "description": "Client plugin for o3-dapi-ont",
+  "main": "./lib/o3-dapi-ontclient.min.js",
   "types": "./lib/index.d.ts",
   "scripts": {
     "start": "webpack --mode development --watch",
@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/O3Labs/o3-dapi/issues"
   },
-  "homepage": "https://github.com/O3Labs/o3-dapi/tree/master/packages/neoclient",
+  "homepage": "https://github.com/O3Labs/o3-dapi/tree/master/packages/ont-client",
   "devDependencies": {
     "ts-loader": "5.2.2",
     "tslint": "5.11.0",
@@ -29,15 +29,15 @@
   },
   "peerDependencies": {
     "o3-dapi-core": "0.3.0",
-    "o3-dapi-neo": "0.4.1"
+    "o3-dapi-ont": "0.3.0"
   },
   "keywords": [
-    "neo",
+    "ont",
+    "ontology",
     "dapi",
     "web3"
   ],
   "dependencies": {
-    "@cityofzion/neon-js": "3.11.0",
-    "bignumber.js": "^8.1.1"
+    "ontology-ts-sdk": "1.0.11"
   }
 }
