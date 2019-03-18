@@ -19,7 +19,7 @@ interface BalanceOfOutput {
   decimals: number;
 }
 
-export function getBalanceOf({
+export function getDecimals({
   network,
   scriptHash,
 }: DecimalsInput): Promise<BalanceOfOutput> {

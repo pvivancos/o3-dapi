@@ -18,7 +18,7 @@ interface TokenDetailsInput {
 interface TokenDetailsOutput {
   name: string;
   symbol: string;
-  decimals: string;
+  decimals: number;
   totalSupply: string;
 }
 
@@ -74,7 +74,7 @@ export function getTokenDetails({
           });
         }
 
-        const decimals = decimalsResponse.Result.Result;
+        const decimals = Number(decimalsResponse.Result.Result);
         const totalSupply = reverseHex2FixedNumStr(totalSupplyResponse.Result.Result, decimals).toString();
 
         resolve({

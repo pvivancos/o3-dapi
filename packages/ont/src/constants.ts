@@ -1,6 +1,11 @@
 export const BLOCKCHAIN = 'ONT';
 export const VERSION = 'v1';
 
+export enum Network {
+  MainNet = 'MainNet',
+  TestNet = 'TestNet',
+}
+
 export enum Command {
 
   // ASSET

@@ -1,0 +1,1 @@
+{"version":3,"file":"getGasPrice.d.ts","sourceRoot":"","sources":["../../../src/modules/tx/getGasPrice.ts"],"names":[],"mappings":"AAGA,OAAO,EAAY,OAAO,EAAE,MAAM,iBAAiB,CAAC;AAGpD,UAAU,gBAAgB;IACxB,OAAO,EAAE,OAAO,CAAC;CAClB;AAED,UAAU,QAAQ;IAChB,QAAQ,EAAE,MAAM,CAAC;IACjB,MAAM,EAAE,MAAM,CAAC;CAChB;AAED,wBAAgB,WAAW,CAAC,EAC1B,OAAO,GACR,EAAE,gBAAgB,GAAG,OAAO,CAAC,QAAQ,CAAC,CAqBtC"}

@@ -30,9 +30,9 @@ module.exports = (env) => {
     devtool: !DISTRIBUTION && 'inline-source-map',
     output: {
       path: path.join(__dirname, DISTRIBUTION ? 'lib' : 'build'),
-      filename: DISTRIBUTION ? 'o3-dapi-neoclient.min.js' : 'bundle.js',
+      filename: DISTRIBUTION ? 'o3-dapi-ontclient.min.js' : 'bundle.js',
       libraryTarget: "umd",
-      library: 'o3dapiNeoClient',
+      library: 'o3dapiOntClient',
       libraryExport: 'default',
       globalObject: 'typeof self !== \'undefined\' ? self : this',
     },

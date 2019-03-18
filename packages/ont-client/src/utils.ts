@@ -56,3 +56,13 @@ function trimDecimalStr(numberSrt) {
   const trimmedDecimalString = parts[1].replace(/\.?0+$/, '');
   return `${parts[0]}.${trimmedDecimalString}`;
 }
+
+export function int2FixedDecimalStr(value: number, decimals: number): string {
+  const number = new BigNumber(value);
+
+  if (number.isEqualTo('0')) {
+    return '0';
+  }
+
+  return trimDecimalStr(number.dividedBy(Math.pow(10, decimals)).toFixed(decimals));
+}
