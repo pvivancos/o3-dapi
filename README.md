@@ -22,3 +22,9 @@ Install via npm [![npm version](https://badge.fury.io/js/o3-dapi-ont.svg)](https
 In a browser - cdn [![](https://data.jsdelivr.com/v1/package/npm/o3-dapi-neoclient/badge)](https://www.jsdelivr.com/package/npm/o3-dapi-neoclient)
 
 Install via npm [![npm version](https://badge.fury.io/js/o3-dapi-neoclient.svg)](https://badge.fury.io/js/o3-dapi-neoclient)
+
+## o3-dapi-ontclient
+
+In a browser - cdn [![](https://data.jsdelivr.com/v1/package/npm/o3-dapi-ontclient/badge)](https://www.jsdelivr.com/package/npm/o3-dapi-ontclient)
+
+Install via npm [![npm version](https://badge.fury.io/js/o3-dapi-ontclient.svg)](https://badge.fury.io/js/o3-dapi-ontclient)
