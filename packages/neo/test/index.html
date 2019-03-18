@@ -112,11 +112,11 @@ a{
           </a>
           <div class="collapse show" id="navbar-functions">
             <ul class="nav flex-column">
-             <li class="nav-item"><a class="nav-link" href="#getProvider">getProvider</a></li>
-             <li class="nav-item"><a class="nav-link" href="#getNetworks">getNetworks</a></li>
-             <li class="nav-item"><a class="nav-link" href="#getAccount">getAccount</a></li>
-             <li class="nav-item"><a class="nav-link" href="#getPublicKey">getPublicKey</a></li>
-             <li class="nav-item"><a class="nav-link" href="#getBalance">getBalance</a></li>
+             <li class="nav-item"><a class="nav-link" data-toggle="collapse" href="#collapse-getProvider" role="button" aria-expanded="true" aria-controls="collapse-getProvider">getProvider</a></li>
+             <li class="nav-item"><a class="nav-link"  data-toggle="collapse" href="#collapse-getNetworks" role="button" aria-expanded="false" aria-controls="collapse-getNetworks">getNetworks</a></li>
+             <li class="nav-item"><a class="nav-link" data-toggle="collapse" href="#collapse-getAccount" role="button" aria-expanded="false" aria-controls="collapse-getAccount">getAccount</a></li>
+             <li class="nav-item"><a class="nav-link" data-toggle="collapse" href="#collapse-getPublicKey" role="button" aria-expanded="false" aria-controls="collapse-getPublicKey">getPublicKey</a></li>
+             <li class="nav-item"><a class="nav-link" data-toggle="collapse" href="#collapse-getBalance" role="button" aria-expanded="false" aria-controls="collapse-getBalance">getBalance</a></li>
              <li class="nav-item"><a class="nav-link" href="#getStorage">getStorage</a></li>
              <li class="nav-item"><a class="nav-link" href="#invokeRead">invokeRead</a></li>
              <li class="nav-item"><a class="nav-link" href="#invoke">invoke</a></li>
@@ -159,14 +159,16 @@ a{
     <div class="col-lg-12 col-xl-12">
       <div class="docs-content">
         <h2 class="mb-5">O3 Dapp Platform — NEO</h2>
-        <div id="accordion-2" class="accordion accordion-spaced">
+
+
+        <div id="collapse-getProvider" class="collapse show">
 
          <div class="card" id="getProvider">
-          <div class="card-header py-4" id="heading-getProvider" data-toggle="collapse" role="button" data-target="#collapse-getProvider" aria-expanded="false" aria-controls="collapse-getProvider">
+          <div class="card-header py-4">
             <h6 class="">getProvider</h6>
             <p class="small mb-0">Returns information about the dAPI provider, including who this provider is, the version of their dAPI, and the NEP that the interface is compatible with.</p>
           </div>
-          <div id="collapse-getProvider" class="collapse" aria-labelledby="heading-getProvider" data-parent="#accordion-2">
+          <div>
             <div class="card-body">
               <button class="btn btn-primary btn-sm" onclick="getProvider('getProvider-result')">Run</button>
             </div>
@@ -178,13 +180,13 @@ a{
         </div>
       </div>
 
-      <div id="accordion-getNetworks" class="accordion accordion-spaced">
+      <div  id="collapse-getNetworks" class="collapse">
         <div class="card" id="getNetworks">
-          <div class="card-header py-4" id="heading-getNetworks" data-toggle="collapse" role="button" data-target="#collapse-getNetworks" aria-expanded="false" aria-controls="collapse-getNetworks">
+          <div class="card-header py-4">
             <h6 class="">getNetworks</h6>
             <p class="small mb-0">Returns a list of available provider networks.</p>
           </div>
-          <div id="collapse-getNetworks" class="collapse" aria-labelledby="heading-getNetworks" data-parent="#accordion-2">
+          <div>
             <div class="card-body">
               <button class="btn btn-primary btn-sm" onclick="getNetworks('getNetworks-result')">Run</button>
             </div>
@@ -197,14 +199,16 @@ a{
           </div>
         </div>
       </div>
-      <div id="accordion-getAccount" class="accordion accordion-spaced">
+
+   <div id="collapse-getAccount" class="collapse">
         <div class="card" id="getAccount">
-          <div class="card-header py-4" id="heading-getAccount" data-toggle="collapse" role="button" data-target="#collapse-getAccount" aria-expanded="false" aria-controls="collapse-getAccount">
+          <div class="card-header py-4">
             <h6 class="">getAccount</h6>
             <p class="small mb-0">Return the Account that is currently connected to the dApp.</p>
           </div>
-          <div id="collapse-getAccount" class="collapse" aria-labelledby="heading-getAccount" data-parent="#accordion-2">
+          <div>
             <div class="card-body">
+
               <button class="btn btn-primary btn-sm">Run</button>
             </div>
             <div class="card-footer">
@@ -212,18 +216,17 @@ a{
               <h6>Result</h6>
               <pre><div class="p-3 border rounded" id="getAccount-result"></div></pre>
             </div>
-
           </div>
         </div>
       </div>
 
-      <div id="accordion-getPublicKey" class="accordion accordion-spaced">
+      <div id="collapse-getPublicKey" class="collapse">
         <div class="card" id="getPublicKey">
-          <div class="card-header py-4" id="heading-getPublicKey" data-toggle="collapse" role="button" data-target="#collapse-getPublicKey" aria-expanded="false" aria-controls="collapse-getPublicKey">
+          <div class="card-header py-4">
             <h6 class="">getPublicKey</h6>
             <p class="small mb-0">Return the Public Key of the Account that is currently connected to the dApp.</p>
           </div>
-          <div id="collapse-getPublicKey" class="collapse" aria-labelledby="heading-getPublicKey" data-parent="#accordion-2">
+          <div>
             <div class="card-body">
 
               <button class="btn btn-primary btn-sm">Run</button>
@@ -236,13 +239,14 @@ a{
           </div>
         </div>
       </div>
-      <div id="accordion-getBalance" class="accordion accordion-spaced">
+
+      <div id="collapse-getBalance" class="collapse">
         <div class="card" id="getBalance">
-          <div class="card-header py-4" id="heading-getBalance" data-toggle="collapse" role="button" data-target="#collapse-getBalance" aria-expanded="false" aria-controls="collapse-getBalance">
+          <div class="card-header py-4">
             <h6 class="">getBalance</h6>
             <p class="small mb-0">Return balance of a specific asset for the given account, or all balances for an account. Also takes multiple entries.</p>
           </div>
-          <div id="collapse-getBalance" class="collapse" aria-labelledby="heading-getBalance" data-parent="#accordion-2">
+          <div>
             <div class="card-body">
 
               <button class="btn btn-primary btn-sm">Run</button>
