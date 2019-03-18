@@ -1,0 +1,1 @@
+{"version":3,"file":"getBlockHeight.d.ts","sourceRoot":"","sources":["../../../src/modules/network/getBlockHeight.ts"],"names":[],"mappings":"AAGA,OAAO,EAAY,OAAO,EAAE,MAAM,iBAAiB,CAAC;AAGpD,UAAU,kBAAkB;IAC1B,OAAO,EAAE,OAAO,CAAC;CAClB;AAED,wBAAgB,cAAc,CAAC,EAAE,OAAO,EAAE,EAAE,kBAAkB,GAAG,OAAO,CAAC,MAAM,CAAC,CAqB/E"}

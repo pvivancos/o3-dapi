@@ -1,8 +1,8 @@
 import { Asset } from '../../constants';
 interface Allowance {
     asset: Asset;
-    fromAddress: string;
-    toAddress: string;
+    from: string;
+    to: string;
     network: string;
 }
 export declare function getAllowance(data: Allowance): Promise<Allowance>;

@@ -29,7 +29,7 @@
   },
   "peerDependencies": {
     "o3-dapi-core": "0.3.0",
-    "o3-dapi-neo": "0.3.0"
+    "o3-dapi-neo": "0.4.1"
   },
   "keywords": [
     "neo",

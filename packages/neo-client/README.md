@@ -39,6 +39,9 @@ o3dapi.initPlugins([o3dapiNeo]);
 o3dapi.NEO.setClientPlugin(o3dapiNeoClient)
 
 // o3 app does not need to be open, and site can be accessed from any browser to operate on same methods
-o3dapi.NEO.getBalance([{address: 'AScKxyXmNtEnTLTvbVhNQyTJmgytxhwSnM'}])
+o3dapi.NEO.getBalance({
+  params: [{address: 'AScKxyXmNtEnTLTvbVhNQyTJmgytxhwSnM'}],
+  network: 'MainNet',
+})
 .then(balances => console.log(balances));
 ```

@@ -1,0 +1,1 @@
+{"version":3,"file":"getUnboundOng.d.ts","sourceRoot":"","sources":["../../../src/modules/assets/getUnboundOng.ts"],"names":[],"mappings":"AAOA,OAAO,EAAY,OAAO,EAAE,MAAM,iBAAiB,CAAC;AAGpD,UAAU,kBAAkB;IAC1B,OAAO,EAAE,MAAM,CAAC;IAChB,OAAO,EAAE,OAAO,CAAC;CAClB;AAED,wBAAgB,aAAa,CAAC,EAAE,OAAO,EAAE,OAAO,EAAE,EAAE,kBAAkB,GAAG,OAAO,CAAC,MAAM,CAAC,CAqBvF"}

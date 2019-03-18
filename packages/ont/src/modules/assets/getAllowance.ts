@@ -3,8 +3,8 @@ import { Command, Asset } from '../../constants';
 
 interface Allowance {
   asset: Asset;
-  fromAddress: string;
-  toAddress: string;
+  from: string;
+  to: string;
   network: string;
 }
 
