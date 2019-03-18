@@ -14,8 +14,8 @@
   <link rel="stylesheet" href="./docs.css" id="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/o3-dapi-core@0.3.0/lib/o3-dapi-core.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/o3-dapi-neo@0.3.1/lib/o3-dapi-neo.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <style type="text/css">
-  
   .string {
     color: #000;
   }
@@ -37,241 +37,528 @@
   }
 </style>
 <style type="text/css">
-[v-cloak] {display: none}
-*, body{
-  color:#000;
+[v-cloak] {
+  display: none
 }
-a{
-  color:#000 !important;
+
+*,
+body {
+  color: #000;
 }
+
+a {
+  color: #000 !important;
+}
+
+
+.docs-content>div.method[id]:before {
+  display: block;
+  height: 6rem;
+  margin-top: -6rem;
+  visibility: hidden;
+  content: "";
+}
+
 </style>
 </head>
 
 <body class="docs">
- <header class="header fixed-top border-bottom">
-  <!-- Nav -->
-  <nav id="navbar-main" class="navbar navbar-expand-lg navbar-light bg-white">
-    <div class="container-fluid">
-      <!-- Brand logo -->
-      <a class="navbar-brand" href="index.html">
-        <img alt="Image placeholder" src="https://cdn.o3.network/logo/logo-light.png" id="navbar-logo" style="height: 40px;">
-      </a>
-      <!-- Sidenav toggler -->
-      <button class="sidenav-toggler ml-auto mr-3 active" type="button" data-action="sidenav-pin" data-target="#sidenav-main">
-        <div class="sidenav-toggler-inner">
-          <i class="sidenav-toggler-line"></i>
-          <i class="sidenav-toggler-line"></i>
-          <i class="sidenav-toggler-line"></i>
-        </div>
-      </button>
-      <!-- Search form -->
-      <form class="navbar-search navbar-search-dark form-inline mr-sm-3 d-none" id="navbar-search-main">
-        <div class="form-group mb-0">
-          <div class="input-group input-group-merge">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-search"></i></span>
-            </div>
-            <input class="form-control" placeholder="Search" type="text">
+
+  <header class="header fixed-top border-bottom" style="">
+    <div class="container-fluid bg-primary" style="height: 9px;z-index: 19999">
+    </div>
+    <nav id="navbar-main" class="navbar navbar-expand-lg navbar-light bg-white">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+          <img alt="Image placeholder" src="https://cdn.o3.network/logo/logo-light.png" id="navbar-logo" style="height: 40px;">
+        </a>
+        <button class="sidenav-toggler ml-auto mr-3 active" type="button" data-action="sidenav-pin" data-target="#sidenav-main">
+          <div class="sidenav-toggler-inner">
+            <i class="sidenav-toggler-line"></i>
+            <i class="sidenav-toggler-line"></i>
+            <i class="sidenav-toggler-line"></i>
           </div>
-        </div>
-        <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
-          <span aria-hidden="true">×</span>
         </button>
-      </form>
-      <!-- Navbar -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="https://docs.o3.network">Documents</a>
-          </li>
-          <li class="nav-item">
-            <select id="networks" name="networks" class="custom-select"></select>
-          </li>
-          
-        </ul>
+        <!-- Search form -->
+        <form class="navbar-search navbar-search-dark form-inline mr-sm-3 d-none" id="navbar-search-main">
+          <div class="form-group mb-0">
+            <div class="input-group input-group-merge">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-search"></i></span>
+              </div>
+              <input class="form-control" placeholder="Search" type="text">
+            </div>
+          </div>
+          <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </form>
+        <!-- Navbar -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="https://docs.o3.network">Documents</a>
+            </li>
+            <li class="nav-item">
+              <select id="networks" name="networks" class="custom-select"></select>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div id="app" class="">
+
+    <nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white" id="sidenav-main">
+      <div class="px-3 scrollbar-inner">
+        <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+          <ul class="navbar-nav mb-md-3">
+            <ul class="section-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#navbar-functions" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-functions">
+                  Available functions
+                </a>
+                <div class="collapse show" id="navbar-functions">
+                  <ul class="nav flex-column">
+                    <li class="nav-item"><a class="nav-link" href="#collapse-getProvider">getProvider</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#collapse-getNetworks">getNetworks</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#collapse-getAccount">getAccount</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#collapse-getPublicKey">getPublicKey</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#collapse-getBalance" >getBalance</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#collapse-getStorage">getStorage</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#collapse-invokeRead">invokeRead</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#collapse-invoke">invoke</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#collapse-send">send</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#collapse-signMessage">signMessage</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#collapse-verifyMessage">verifyMessage</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#navbar-utils" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-utils">
+                  Utilities
+                </a>
+                <div class="collapse show" id="navbar-utils">
+                  <ul class="nav flex-column">
+                    <li class="nav-item"><a class="nav-link" href="#collapse-hex2str">Hex to String</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#collapse-str2hex">String to Hex</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#collapse-hex2int">Hex to Integer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#collapse-int2hex">Integer to Hex</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#collapse-reverseHex">Reverse Hex</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#collapse-address2scripthash">Address to Script hash</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#collapse-scripthash2address">Script hash to Address</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="main-content">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-lg-12 col-xl-12">
+            <div class="docs-content">
+
+              <div class="docs-page-title">
+                <h2>O3 dApp Platform — NEO</h2>
+              </div>
+
+              <p class="text-muted docs-lead">A testbed for dAPI for NEO blockchain.</p>
+              <hr class="divider divider-fade"></hr>
+
+              <div id="collapse-getProvider" class="method">
+                <div class="card" id="getProvider">
+                  <div class="card-header py-4">
+                    <h3 class="mt-0">getProvider</h3>
+                    <p class="small mb-0">Returns information about the dAPI provider, including who this provider is, the version of their dAPI, and the NEP that the interface is compatible with.</p>
+                  </div>
+                  <div>
+                    <div class="card-body">
+                      <button class="btn btn-primary btn-sm" onclick="getProvider('getProvider-result')">Run</button>
+                    </div>
+                    <div class="card-footer">
+                      <h6>Result</h6>
+                      <pre><div class="p-3 border rounded" id="getProvider-result"></div></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="collapse-getNetworks" class="method">
+                <div class="card" id="getNetworks">
+                  <div class="card-header py-4">
+                    <h3 class="mt-0">getNetworks</h3>
+                    <p class="small mb-0">Returns a list of available provider networks.</p>
+                  </div>
+                  <div>
+                    <div class="card-body">
+                      <button class="btn btn-primary btn-sm" onclick="getNetworks('getNetworks-result')">Run</button>
+                    </div>
+                    <div class="card-footer">
+
+                      <h6>Result</h6>
+                      <pre><div class="p-3 border rounded" id="getNetworks-result"></div></pre>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div id="collapse-getAccount" class="method">
+                <div class="card" id="getAccount">
+                  <div class="card-header py-4">
+                    <h3 class="mt-0">getAccount</h3>
+                    <p class="small mb-0">Return the Account that is currently connected to the dApp.</p>
+                  </div>
+                  <div>
+                    <div class="card-body">
+
+                      <button class="btn btn-primary btn-sm" onclick="getAccount('getAccount-result')">Run</button>
+                    </div>
+                    <div class="card-footer">
+
+                      <h6>Result</h6>
+                      <pre><div class="p-3 border rounded" id="getAccount-result"></div></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="collapse-getPublicKey" class="method">
+                <div class="card" id="getPublicKey">
+                  <div class="card-header py-4">
+                    <h3 class="mt-0">getPublicKey</h3>
+                    <p class="small mb-0">Return the Public Key of the Account that is currently connected to the dApp.</p>
+                  </div>
+                  <div>
+                    <div class="card-body">
+
+                      <button class="btn btn-primary btn-sm" onclick="getPublicKey('getPublicKey-result')">Run</button>
+                    </div>
+                    <div class="card-footer">
+
+                      <h6>Result</h6>
+                      <pre><div class="p-3 border rounded" id="getPublicKey-result"></div></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="collapse-getBalance" class="method">
+                <div class="card" id="getBalance">
+                  <div class="card-header py-4">
+                    <h3 class="mt-0">getBalance</h3>
+                    <p class="small mb-0">Return balance of a specific asset for the given account, or all balances for an account. Also takes multiple entries.</p>
+                  </div>
+                  <div>
+                    <div class="card-body">
+                      <h6>Input</h6>
+                      <textarea class="form-control mb-2" id="getBalance-input" placeholder="getBalance input" rows="12">{{formatInput(getBalanceInput)}}</textarea>
+                      <button class="btn btn-primary btn-sm" onclick="getBalance('getBalance-input','getBalance-result')">Run</button>
+                    </div>
+                    <div class="card-footer">
+                      <h6>Result</h6>
+                      <pre><div class="p-3 border rounded" id="getBalance-result"></div></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="collapse-getStorage" class="method">
+                <div class="card" id="getStorage">
+                  <div class="card-header py-4">
+                    <h3 class="mt-0">getStorage</h3>
+                    <p class="small mb-0">Reads the raw value in smart contract storage.</p>
+                  </div>
+                  <div>
+                    <div class="card-body">
+                      <h6>Input</h6>
+                      <textarea class="form-control mb-2" id="getStorage-input" placeholder="getStorage input" rows="6">{{formatInput(getStorageInput)}}</textarea>
+                      <button class="btn btn-primary btn-sm" onclick="getStorage('getStorage-input','getStorage-result')">Run</button>
+                    </div>
+                    <div class="card-footer">
+                      <h6>Result</h6>
+                      <pre><div class="p-3 border rounded" id="getStorage-result"></div></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="collapse-invokeRead" class="method">
+                <div class="card" id="invokeRead">
+                  <div class="card-header py-4">
+                    <h3 class="mt-0">invokeRead</h3>
+                    <p class="small mb-0">Execute a contract invocation in read-only mode.</p>
+                  </div>
+                  <div>
+                    <div class="card-body">
+                      <h6>Input</h6>
+                      <textarea class="form-control mb-2" id="invokeRead-input" placeholder="invokeRead input" rows="12">{{formatInput(invokeReadInput)}}</textarea>
+                      <button class="btn btn-primary btn-sm" onclick="invokeRead('invokeRead-input','invokeRead-result')">Run</button>
+                    </div>
+                    <div class="card-footer">
+                      <h6>Result</h6>
+                      <pre><div class="p-3 border rounded" id="invokeRead-result"></div></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="collapse-invoke" class="method">
+                <div class="card" id="invoke">
+                  <div class="card-header py-4">
+                    <h3 class="mt-0">invoke</h3>
+                    <p class="small mb-0">Execute a contract invocation.</p>
+                  </div>
+                  <div>
+                    <div class="card-body">
+                      <h6>Input</h6>
+                      <textarea class="form-control mb-2" id="invoke-input" placeholder="invoke input" rows="22">{{formatInput(invokeInput)}}</textarea>
+                      <button class="btn btn-primary btn-sm" onclick="invoke('invoke-input','invoke-result')">Run</button>
+                    </div>
+                    <div class="card-footer">
+                      <h6>Result</h6>
+                      <pre><div class="p-3 border rounded" id="invoke-result"></div></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="collapse-send" class="method">
+                <div class="card" id="send">
+                  <div class="card-header py-4">
+                    <h3 class="mt-0">send</h3>
+                    <p class="small mb-0">Invoke a transfer of a specified amount of a given asset from the connected account to another account.</p>
+                  </div>
+                  <div>
+                    <div class="card-body">
+                      <h6>Input</h6>
+                      <textarea class="form-control mb-2" id="send-input" placeholder="send input" rows="12">{{formatInput(sendInput)}}</textarea>
+                      <button class="btn btn-primary btn-sm" onclick="send('send-input','send-result')">Run</button>
+                    </div>
+                    <div class="card-footer">
+                      <h6>Result</h6>
+                      <pre><div class="p-3 border rounded" id="send-result"></div></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="collapse-signMessage" class="method">
+                <div class="card" id="signMessage">
+                  <div class="card-header py-4">
+                    <h3 class="mt-0">signMessage</h3>
+                    <p class="small mb-0">Invoke a transfer of a specified amount of a given asset from the connected account to another account.</p>
+                  </div>
+                  <div>
+                    <div class="card-body">
+                      <h6>Input</h6>
+                      <textarea class="form-control mb-2" id="signMessage-input" placeholder="signMessage input" rows="4">{{formatInput(signMessageInput)}}</textarea>
+                      <button class="btn btn-primary btn-sm" onclick="signMessage('signMessage-input','signMessage-result')">Run</button>
+                    </div>
+                    <div class="card-footer">
+                      <h6>Result</h6>
+                      <pre><div class="p-3 border rounded" id="signMessage-result"></div></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="collapse-verifyMessage" class="method">
+                <div class="card" id="verifyMessage">
+                  <div class="card-header py-4">
+                    <h3 class="mt-0">verifyMessage</h3>
+                    <p class="small mb-0">Verify a message signature.</p>
+                  </div>
+                  <div>
+                    <div class="card-body">
+                      <h6>Input</h6>
+                      <textarea class="form-control mb-2" id="verifyMessage-input" placeholder="verifyMessage input" rows="4">{{formatInput(verifyMessageInput)}}</textarea>
+                      <button class="btn btn-primary btn-sm" onclick="verifyMessage('verifyMessage-input','verifyMessage-result')">Run</button>
+                    </div>
+                    <div class="card-footer">
+                      <h6>Result</h6>
+                      <pre><div class="p-3 border rounded" id="verifyMessage-result"></div></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <h2 class="mb-3">Utilities</h2>
+              
+
+              <div id="collapse-hex2str" class="method">
+                <div class="card">
+                  <div class="card-header py-4">
+                    <h6 class="mb-0">Hex → String</h6>
+                  </div>
+                  <div>
+                    <div class="card-body pb-0">
+                      <div class="form-group">
+                        <label class="form-control-label" for="basic-url">Enter the hexadecimal text to decode</label>
+                        <textarea class="form-control mb-2" id="hex2str-input" placeholder="Hex input" rows="4">4f33</textarea>
+                        <button class="btn btn-primary btn-sm" onclick="hex2str('hex2str-input','hex2str-result')">Convert</button>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <h6>Result</h6>
+                      <div class="p-3 border rounded" id="hex2str-result"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="collapse-str2hex" class="method">
+                <div class="card">
+                  <div class="card-header py-4">
+                    <h6 class="mb-0">String → Hex</h6>
+                  </div>
+                  <div>
+                    <div class="card-body pb-0">
+                      <div class="form-group">
+                        <label class="form-control-label" for="basic-url">Enter the text to encode to hex</label>
+                        <textarea class="form-control mb-2" id="str2hex-input" placeholder="Hex input" rows="4">O3</textarea>
+                        <button class="btn btn-primary btn-sm" onclick="str2hex('str2hex-input','str2hex-result')">Convert</button>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <h6>Result</h6>
+                      <div class="p-3 border rounded" id="str2hex-result"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="collapse-hex2int" class="method">
+                <div class="card">
+                  <div class="card-header py-4">
+                    <h6 class="mb-0">Hex → Integer</h6>
+                  </div>
+                  <div>
+                    <div class="card-body pb-0">
+                      <div class="form-group">
+                        <label class="form-control-label" for="basic-url">Enter the hexadecimal text to decode</label>
+                        <textarea class="form-control mb-2" id="hex2int-input" placeholder="Hex input" rows="4">00e1f505</textarea>
+                        <button class="btn btn-primary btn-sm" onclick="hex2int('hex2int-input','hex2int-result')">Convert</button>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <h6>Result</h6>
+                      <div class="p-3 border rounded" id="hex2int-result"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="collapse-int2hex" class="method">
+                <div class="card">
+                  <div class="card-header py-4">
+                    <h6 class="mb-0">Integer → Hex</h6>
+                  </div>
+                  <div>
+                    <div class="card-body pb-0">
+                      <div class="form-group">
+                        <label class="form-control-label" for="basic-url">Enter the hexadecimal text to decode</label>
+                        <textarea class="form-control mb-2" id="int2hex-input" placeholder="Hex input" rows="4">100000000</textarea>
+                        <button class="btn btn-primary btn-sm" onclick="int2hex('int2hex-input','int2hex-result')">Convert</button>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <h6>Result</h6>
+                      <div class="p-3 border rounded" id="int2hex-result"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="collapse-reverseHex" class="method">
+                <div class="card">
+                  <div class="card-header py-4">
+                    <h6 class="mb-0">Reverse Hex</h6>
+                  </div>
+                  <div>
+                    <div class="card-body pb-0">
+                      <div class="form-group">
+                        <label class="form-control-label" for="basic-url">Enter the hexadecimal text to reverse</label>
+                        <textarea class="form-control mb-2" id="reverseHex-input" placeholder="Hex input" rows="4">bc99b2a477e28581b2fd04249ba27599ebd736d3</textarea>
+                        <button class="btn btn-primary btn-sm" onclick="reverseHex('reverseHex-input','reverseHex-result')">Convert</button>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <h6>Result</h6>
+                      <div class="p-3 border rounded" id="reverseHex-result"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="collapse-address2scripthash" class="method">
+                <div class="card">
+                  <div class="card-header py-4">
+                    <h6 class="mb-0">Address → Script hash</h6>
+                  </div>
+                  <div>
+                    <div class="card-body pb-0">
+                      <div class="form-group">
+                        <label class="form-control-label" for="basic-url">Enter the address to convert</label>
+                        <textarea class="form-control mb-2" id="address2scripthash-input" placeholder="Hex input" rows="4">Ab2fvZdmnM4HwDgVbdBrbTLz1wK5TcEyhU</textarea>
+                        <button class="btn btn-primary btn-sm" onclick="address2scripthash('address2scripthash-input','address2scripthash-result')">Convert</button>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <h6>Result</h6>
+                      <div class="p-3 border rounded" id="address2scripthash-result"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="collapse-scripthash2address" class="method">
+                <div class="card">
+                  <div class="card-header py-4">
+                    <h6 class="mb-0">Script hash → Address</h6>
+                  </div>
+                  <div>
+                    <div class="card-body pb-0">
+                      <div class="form-group">
+                        <label class="form-control-label" for="basic-url">Enter the script hash to convert</label>
+                        <textarea class="form-control mb-2" id="scripthash2address-input" placeholder="Hex input" rows="4">d336d7eb9975a29b2404fdb28185e277a4b299bc</textarea>
+                        <button class="btn btn-primary btn-sm" onclick="scripthash2address('scripthash2address-input','scripthash2address-result')">Convert</button>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <h6>Result</h6>
+                      <div class="p-3 border rounded" id="scripthash2address-result"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+            </div>
+            <!-- docs-content -->
+          </div>
+          <!-- col -->
+        </div>
+        <!-- row -->
       </div>
     </div>
-  </nav>
-</header>
+    <!-- main-content -->
+  </div>
+  <!-- app -->
 
-
-<!-- Sidenav -->
-<nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white" id="sidenav-main">
-  <div class="px-3 scrollbar-inner">
-    <!-- Collapse -->
-    <div class="collapse navbar-collapse" id="sidenav-collapse-main">
-      <!-- Navigation -->
-      <!-- Heading -->
-      <!--       <h6 class="navbar-heading text-muted mt-4">Available functions</h6> -->
-      <!-- Navigation -->
-      <ul class="navbar-nav mb-md-3">
-       <ul class="section-nav">
-         <li class="nav-item">
-          <a class="nav-link" href="#navbar-functions" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-functions">
-            Available functions
-          </a>
-          <div class="collapse show" id="navbar-functions">
-            <ul class="nav flex-column">
-             <li class="nav-item"><a class="nav-link" data-toggle="collapse" href="#collapse-getProvider" role="button" aria-expanded="true" aria-controls="collapse-getProvider">getProvider</a></li>
-             <li class="nav-item"><a class="nav-link"  data-toggle="collapse" href="#collapse-getNetworks" role="button" aria-expanded="false" aria-controls="collapse-getNetworks">getNetworks</a></li>
-             <li class="nav-item"><a class="nav-link" data-toggle="collapse" href="#collapse-getAccount" role="button" aria-expanded="false" aria-controls="collapse-getAccount">getAccount</a></li>
-             <li class="nav-item"><a class="nav-link" data-toggle="collapse" href="#collapse-getPublicKey" role="button" aria-expanded="false" aria-controls="collapse-getPublicKey">getPublicKey</a></li>
-             <li class="nav-item"><a class="nav-link" data-toggle="collapse" href="#collapse-getBalance" role="button" aria-expanded="false" aria-controls="collapse-getBalance">getBalance</a></li>
-             <li class="nav-item"><a class="nav-link" href="#getStorage">getStorage</a></li>
-             <li class="nav-item"><a class="nav-link" href="#invokeRead">invokeRead</a></li>
-             <li class="nav-item"><a class="nav-link" href="#invoke">invoke</a></li>
-             <li class="nav-item"><a class="nav-link" href="#send">send</a></li>
-             <li class="nav-item"><a class="nav-link" href="#signMessage">signMessage</a></li>
-             <li class="nav-item"><a class="nav-link" href="#verifyMessage">verifyMessage</a></li>
-             <li class="nav-item"><a class="nav-link" href="#deploy">deploy</a></li>
-
-
-           </ul>
-         </div>
-       </li>
-       <li class="nav-item">
-        <a class="nav-link" href="#navbar-utils" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-utils">
-          Utilities
-        </a>
-        <div class="collapse" id="navbar-utils">
-          <ul class="nav flex-column">
-           <li class="nav-item"><a class="nav-link" href="#getProvider">Hex String to String</a></li>
-           <li class="nav-item"><a class="nav-link" href="#getNetworks">Hex String to Integer</a></li>
-           <li class="nav-item"><a class="nav-link" href="#getAccount">Big endian to Little endian</a></li>
-           <li class="nav-item"><a class="nav-link" href="#getPublicKey">Address to ScriptHash</a></li>
-           
-
-
-
-         </ul>
-       </div>
-     </li>
-   </ul>
- </div>
-</div>
-</nav>
-
-<!-- Main content -->
-<div class="main-content">
-  <section class="container-fluid">
-
-   <div class="row justify-content-center">
-    <div class="col-lg-12 col-xl-12">
-      <div class="docs-content">
-        <h2 class="mb-5">O3 Dapp Platform — NEO</h2>
-
-
-        <div id="collapse-getProvider" class="collapse show">
-
-         <div class="card" id="getProvider">
-          <div class="card-header py-4">
-            <h6 class="">getProvider</h6>
-            <p class="small mb-0">Returns information about the dAPI provider, including who this provider is, the version of their dAPI, and the NEP that the interface is compatible with.</p>
-          </div>
-          <div>
-            <div class="card-body">
-              <button class="btn btn-primary btn-sm" onclick="getProvider('getProvider-result')">Run</button>
-            </div>
-            <div class="card-footer">
-              <h6>Result</h6>
-              <pre><div class="p-3 border rounded" id="getProvider-result"></div></pre>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div  id="collapse-getNetworks" class="collapse">
-        <div class="card" id="getNetworks">
-          <div class="card-header py-4">
-            <h6 class="">getNetworks</h6>
-            <p class="small mb-0">Returns a list of available provider networks.</p>
-          </div>
-          <div>
-            <div class="card-body">
-              <button class="btn btn-primary btn-sm" onclick="getNetworks('getNetworks-result')">Run</button>
-            </div>
-            <div class="card-footer">
-
-              <h6>Result</h6>
-              <pre><div class="p-3 border rounded" id="getNetworks-result"></div></pre>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-   <div id="collapse-getAccount" class="collapse">
-        <div class="card" id="getAccount">
-          <div class="card-header py-4">
-            <h6 class="">getAccount</h6>
-            <p class="small mb-0">Return the Account that is currently connected to the dApp.</p>
-          </div>
-          <div>
-            <div class="card-body">
-
-              <button class="btn btn-primary btn-sm">Run</button>
-            </div>
-            <div class="card-footer">
-
-              <h6>Result</h6>
-              <pre><div class="p-3 border rounded" id="getAccount-result"></div></pre>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div id="collapse-getPublicKey" class="collapse">
-        <div class="card" id="getPublicKey">
-          <div class="card-header py-4">
-            <h6 class="">getPublicKey</h6>
-            <p class="small mb-0">Return the Public Key of the Account that is currently connected to the dApp.</p>
-          </div>
-          <div>
-            <div class="card-body">
-
-              <button class="btn btn-primary btn-sm">Run</button>
-            </div>
-            <div class="card-footer">
-
-              <h6>Result</h6>
-              <pre><div class="p-3 border rounded" id="getPublicKey-result"></div></pre>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div id="collapse-getBalance" class="collapse">
-        <div class="card" id="getBalance">
-          <div class="card-header py-4">
-            <h6 class="">getBalance</h6>
-            <p class="small mb-0">Return balance of a specific asset for the given account, or all balances for an account. Also takes multiple entries.</p>
-          </div>
-          <div>
-            <div class="card-body">
-
-              <button class="btn btn-primary btn-sm">Run</button>
-            </div>
-            <div class="card-footer">
-
-              <h6>Result</h6>
-              <pre><div class="p-3 border rounded" id="getBalance-result"></div></pre>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-    </div> <!-- docs-content -->
-  </div> <!-- col -->
-</div> <!-- row -->
-</section>
-
-<script type="text/javascript" src="./syntaxHighlight.js"></script>
-<script type="text/javascript" src="./main.js"></script>
-<script type="text/javascript" src="./functions.js"></script>
-<script type="text/javascript" src="./utils.js"></script>
-<script src="https://cdn.o3.app/css/purpose2.0/assets/js/purpose.core.js"></script>
-<script src="https://cdn.o3.app/css/purpose2.0/assets/js/purpose.js"></script>
+  <script type="text/javascript" src="./syntaxHighlight.js"></script>
+  <script type="text/javascript" src="./main.js"></script>
+  <script type="text/javascript" src="./functions.js"></script>
+  <script type="text/javascript" src="./utils.js"></script>
+  <script src="https://cdn.o3.app/css/purpose2.0/assets/js/purpose.core.js"></script>
+  <script src="https://cdn.o3.app/css/purpose2.0/assets/js/purpose.js"></script>
 </body>
+
 </html>
