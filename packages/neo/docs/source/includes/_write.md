@@ -272,6 +272,7 @@ o3dapi.NEO.deploy({
   parameterList: '0710',
   returnType: '05',
   code: '53c56b0d57616b652075702c204e454f21680f4e656f2e52756e74696d652e4c6f6761006c7566',
+  networkFee: '0.001',
 })
 .then(({txid, nodeUrl}: InvokeOutput) => {
   console.log('Deploy transaction success!');
@@ -315,6 +316,7 @@ Will deploy a compiled smart contract to the blockchain with the provided input 
 | parameterList | String  | The list of input argument types for the Main function on the contract. https://docs.neo.org/en-us/sc/Parameter.html |
 | returnType    | String  | The list of output returnType argument types. https://docs.neo.org/en-us/sc/Parameter.html                           |
 | code          | String  | The hex of the compiled smart contract avm                                                                           |
+| netowrkFee    | String  | The network fee to execute the transaction, in addition to the deploy fee which will be added automatically          |
 
 
 ### Success Response

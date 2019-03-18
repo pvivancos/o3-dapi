@@ -49,6 +49,7 @@ const deployReturnTypeEle = document.getElementById("deployReturnType");
 const deployParameterListEle = document.getElementById("deployParameterList");
 const deployCodeEle = document.getElementById("deployCode");
 const deployAvmFileEle = document.getElementById("deployAvmFile");
+const deployNetworkFee = document.getElementById("deployNetworkFee");
 
 const utilsButtonEle = document.getElementById("utils-button");
 const utilsEle = document.getElementById("utils");
@@ -265,6 +266,7 @@ function deploy() {
       returnType: deployReturnTypeEle.value,
       parameterList: deployParameterListEle.value,
       code: deployCodeEle.value,
+      networkFee: deployNetworkFee.value,
     })
     .then(handleSuccess)
     .catch(handleError);
