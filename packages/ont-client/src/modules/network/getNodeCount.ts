@@ -1,13 +1,32 @@
-import { sendMessage } from '../../messaging';
-import { Command } from '../../constants';
+import {
+  RestClient,
+} from 'ontology-ts-sdk';
+import { ErrorMsg, Network } from '../../constants';
+import { parseError, getNetworkUrl } from '../../utils';
 
 interface GetNodeCountArgs {
-  network: string;
+  network: Network;
 }
 
-export function getNodeCount(data: GetNodeCountArgs): Promise<number> {
-  return sendMessage({
-    command: Command.getNodeCount,
-    data,
+export function getNodeCount({ network }: GetNodeCountArgs): Promise<number> {
+  return new Promise((resolve, reject) => {
+    try {
+      const url = getNetworkUrl(network);
+
+      new RestClient(url).getNodeCount()
+      .then(res => res.Result)
+      .then(resolve)
+      .catch(err => {
+        reject({
+          type: ErrorMsg.UNKNOWN_ERROR,
+          description: parseError(err),
+        });
+      });
+    } catch (err) {
+      reject({
+        type: ErrorMsg.UNKNOWN_ERROR,
+        description: parseError(err),
+      });
+    }
   });
 }
