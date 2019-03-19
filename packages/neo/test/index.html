@@ -66,6 +66,8 @@ a {
 
 <body class="docs">
 
+<div id="app">
+
   <header class="header fixed-top border-bottom" style="">
     <div class="container-fluid bg-primary" style="height: 9px;z-index: 19999">
     </div>
@@ -81,20 +83,6 @@ a {
             <i class="sidenav-toggler-line"></i>
           </div>
         </button>
-        <!-- Search form -->
-        <form class="navbar-search navbar-search-dark form-inline mr-sm-3 d-none" id="navbar-search-main">
-          <div class="form-group mb-0">
-            <div class="input-group input-group-merge">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-search"></i></span>
-              </div>
-              <input class="form-control" placeholder="Search" type="text">
-            </div>
-          </div>
-          <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </form>
         <!-- Navbar -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
@@ -108,16 +96,14 @@ a {
               <a class="nav-link" target="_blank" href="https://docs.o3.network">Documents</a>
             </li>
             <li class="nav-item">
-              <select id="networks" name="networks" class="custom-select"></select>
+              <select id="networks" name="networks" class="custom-select" v-model="network"></select>
             </li>
-
           </ul>
         </div>
       </div>
     </nav>
   </header>
 
-  <div id="app" class="">
 
     <nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white" id="sidenav-main">
       <div class="px-3 scrollbar-inner">

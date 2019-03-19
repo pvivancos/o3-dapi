@@ -68,6 +68,7 @@ const utilsReverseHexOutputEle = document.getElementById("utilsReverseHexOutput"
 const utilsAddress2scriptHashOutputEle = document.getElementById("utilsAddress2scriptHashOutput");
 const utilsScriptHash2addressOutputEle = document.getElementById("utilsScriptHash2addressOutput");
 
+
 let isUtilsOpen;
 function toggleUtils() {
   if (isUtilsOpen) {
@@ -206,6 +207,7 @@ o3dapi.NEO.addEventListener(o3dapi.NEO.Constants.EventName.DISCONNECTED, data =>
 o3dapi.NEO.addEventListener(o3dapi.NEO.Constants.EventName.NETWORK_CHANGED, handleNewNetworks);
 
 function handleNewNetworks({networks, defaultNetwork}) {
+  const networksEle = document.getElementById("networks");
   [].slice.call(networksEle.children).forEach(child => networksEle.remove(child));
   networks.forEach(network => {
     const option = document.createElement('option');
