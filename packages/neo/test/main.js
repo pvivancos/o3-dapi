@@ -29,7 +29,6 @@ const sendAmountEle = document.getElementById("sendAmount");
 const sendRemarkEle = document.getElementById("sendRemark");
 const sendFeeEle = document.getElementById("sendFee");
 
-const networksEle = document.getElementById("networks");
 
 const signMessageInputEle = document.getElementById("signMessageInput");
 
@@ -99,11 +98,11 @@ function handleError(error) {
 
 function startLoading() {
   clearText();
-  loadingEle.style = 'display: block;';
+  // loadingEle.style = 'display: block;';
 }
 
 function stopLoading() {
-  loadingEle.style = 'display: none;';
+  // loadingEle.style = 'display: none;';
 }
 
 stopLoading();
@@ -114,141 +113,7 @@ function isReady() {
   .catch(handleError);
 }
 
-function getProvider() {
-  o3dapi.NEO.getProvider()
-  .then(handleSuccess)
-  .catch(handleError);
-}
 
-function getNetworks() {
-  o3dapi.NEO.getNetworks()
-  .then(handleSuccess)
-  .catch(handleError);
-}
-
-function getAccount() {
-  startLoading();
-
-  o3dapi.NEO.getAccount()
-  .then(accountData => {
-    accountEle.innerHTML = `Connected Account: ${accountData.address}`;
-    disconnectEle.innerHTML = 'disconnect';
-    handleSuccess(accountData);
-  })
-  .catch(handleError);
-}
-
-function getPublicKey() {
-  startLoading();
-
-  o3dapi.NEO.getPublicKey()
-  .then(handleSuccess)
-  .catch(handleError);
-}
-
-function getBalance() {
-  try {
-    startLoading();
-    o3dapi.NEO.getBalance({
-      params: balanceInputEle.value && JSON.parse(balanceInputEle.value),
-      network: networksEle.value,
-    })
-    .then(handleSuccess)
-    .catch(handleError);
-  } catch (err) {
-    handleError('invalid JSON input');
-  }
-}
-
-function getStorage() {
-  startLoading();
-  o3dapi.NEO.getStorage({
-    scriptHash: getStorageScriptHashEle.value,
-    key: getStorageKeyEle.value,
-    network: networksEle.value,
-  })
-  .then(handleSuccess)
-  .catch(handleError);
-}
-
-function invokeRead() {
-  try {
-    startLoading();
-    o3dapi.NEO.invokeRead({
-      scriptHash: invokeReadScriptHashEle.value,
-      operation: invokeReadOperationEle.value,
-      args: invokeReadArgsEle.value && JSON.parse(invokeReadArgsEle.value),
-      network: networksEle.value,
-    })
-    .then(handleSuccess)
-    .catch(handleError);
-  } catch (err) {
-    handleError('invalid JSON input');
-  }
-}
-
-function invoke() {
-  try {
-    startLoading();
-    o3dapi.NEO.invoke({
-      scriptHash: invokeScriptHashEle.value,
-      operation: invokeOperationEle.value,
-      args: invokeArgsEle.value && JSON.parse(invokeArgsEle.value),
-      attachedAssets: invokeAttachedAssetsEle.value && JSON.parse(invokeAttachedAssetsEle.value),
-      fee: invokeFeeEle.value,
-      network: networksEle.value,
-      assetIntentOverrides: assetIntentOverridesEle.value && JSON.parse(assetIntentOverridesEle.value),
-      triggerContractVerification: triggerContractVerificationEle.checked,
-    })
-    .then(handleSuccess)
-    .catch(handleError);
-  } catch (err) {
-    handleError('invalid JSON input');
-  }
-}
-
-function send() {
-  startLoading();
-  o3dapi.NEO.send({
-    fromAddress: sendFromAddressEle.value,
-    toAddress: sendToAddressEle.value,
-    asset: sendAssetEle.value,
-    amount: sendAmountEle.value,
-    remark: sendRemarkEle.value,
-    fee: sendFeeEle.value,
-    network: networksEle.value,
-  })
-  .then(handleSuccess)
-  .catch(handleError);
-}
-
-function signMessage() {
-  try {
-    startLoading();
-    o3dapi.NEO.signMessage({
-      message: signMessageInputEle.value,
-    })
-    .then(handleSuccess)
-    .catch(handleError);
-  } catch (err) {
-    handleError('invalid JSON input');
-  }
-}
-
-function verifyMessage() {
-  try {
-    startLoading();
-    o3dapi.NEO.verifyMessage({
-      message: verifyMessageInputEle.value,
-      data: verifyMessageSignatureInputEle.value,
-      publicKey: verifyMessagePiblicKeyInputEle.value,
-    })
-    .then(handleSuccess)
-    .catch(handleError);
-  } catch (err) {
-    handleError('invalid JSON input');
-  }
-}
 
 function deploy() {
   try {
@@ -286,27 +151,6 @@ function disconnect() {
   .catch(handleError);
 }
 
-function utilsString() {
-  const hex2strResult = utilsHex2strInputEle.value ? o3dapi.utils.hex2str(utilsHex2strInputEle.value) : '';
-  const str2hexResult = utilsStr2hexInputEle.value ? o3dapi.utils.str2hex(utilsStr2hexInputEle.value) : '';
-
-  utilsHex2strOutputEle.innerHTML = hex2strResult;
-  utilsStr2hexOutputEle.innerHTML = str2hexResult;
-}
-
-function utilsInteger() {
-  const hex2intResult = utilsHex2intInputEle.value ? o3dapi.utils.hex2int(utilsHex2intInputEle.value) : '';
-  const int2hexResult = utilsInt2hexInputEle.value ? o3dapi.utils.int2hex(utilsInt2hexInputEle.value) : '';
-
-  utilsHex2intOutputEle.innerHTML = hex2intResult;
-  utilsInt2hexOutputEle.innerHTML = int2hexResult;
-}
-
-function utilsReverseHex() {
-  const reversehexResult = utilsReverseHexInputEle.value ? o3dapi.utils.reverseHex(utilsReverseHexInputEle.value) : '';
-
-  utilsReverseHexOutputEle.innerHTML = reversehexResult;
-}
 
 function utilsAddress() {
   const address2scriptHashResult = utilsAddress2scriptHashInputEle.value ? o3dapi.utils.address2scriptHash(utilsAddress2scriptHashInputEle.value) : '';
@@ -316,27 +160,7 @@ function utilsAddress() {
   utilsScriptHash2addressOutputEle.innerHTML = scriptHash2addressResult;
 }
 
-function syntaxHighlight(json) {
-    if (typeof json != 'string') {
-         json = JSON.stringify(json, undefined, 2);
-    }
-    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
-        var cls = 'number';
-        if (/^"/.test(match)) {
-            if (/:$/.test(match)) {
-                cls = 'key';
-            } else {
-                cls = 'string';
-            }
-        } else if (/true|false/.test(match)) {
-            cls = 'boolean';
-        } else if (/null/.test(match)) {
-            cls = 'null';
-        }
-        return '<span class="' + cls + '">' + match + '</span>';
-    });
-}
+
 
 function readSingleFile(evt) {
   var f = evt.target.files[0];
@@ -352,7 +176,8 @@ function readSingleFile(evt) {
   }
 }
 
-deployAvmFileEle.addEventListener('change', readSingleFile, false);
+
+// deployAvmFileEle.addEventListener('change', readSingleFile, false);
 
 o3dapi.initPlugins([o3dapiNeo]);
 
