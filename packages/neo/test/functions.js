@@ -1,30 +1,31 @@
 var app = new Vue({
 	el: '#app',
 	data: {
+		network:"",
 		getStorageInput: {
 			scriptHash: "c36aee199dbba6c3f439983657558cfb67629599",
 			key: "bd097b2fcf70e1fd30a5c3ef51e662feeafeba01",
-			network: "MainNet",
+			network: "TestNet",
 		},
 		getBalanceInput: {
 			params: [{
 				"address": "AScKxyXmNtEnTLTvbVhNQyTJmgytxhwSnM",
 				"assets": ["GAS"]
 			}],
-			network: "MainNet",
+			network: "TestNet",
 		},
 		invokeReadInput: {
 			scriptHash: "c36aee199dbba6c3f439983657558cfb67629599",
 			operation: "balanceOf",
 			args:[{"type":"ByteArray","value":"bd097b2fcf70e1fd30a5c3ef51e662feeafeba01"}],
-			network: "MainNet",
+			network: "TestNet",
 		},
 		invokeInput: {
 			scriptHash: "c36aee199dbba6c3f439983657558cfb67629599",
 			operation: "transfer",
 			args: [{"type":"ByteArray","value":""},{"type":"ByteArray","value":""},{"type":"ByteArray","value":"0100000000000000"}],
 			fee: "0.11",
-			network: "MainNet",
+			network: "TestNet",
 			triggerContractVerification: false,
 		},
 		sendInput: {
@@ -34,7 +35,7 @@ var app = new Vue({
 			amount: "1",
 			remark: "TestRemark",
 			fee: "0.011",
-			network: "MainNet",
+			network: "TestNet",
 		},
 		signMessageInput:{
 			message: "Here is a message",
@@ -45,14 +46,21 @@ var app = new Vue({
 			publicKey: "",
 		}
 	},
+	watch: {
+		network:function(value){
+			this.getStorageInput.network = value;
+			this.getBalanceInput.network = value;
+			this.invokeReadInput.network = value;
+			this.invokeInput.network = value;
+			this.sendInput.network = value;
+		}
+	},
 	methods: {
 		formatInput(json) {
 			return JSON.stringify(json, null, "\t");
 		}
 	}
 })
-
-const networksEle = document.getElementById("networks");
 
 
 function getProvider(elem) {
