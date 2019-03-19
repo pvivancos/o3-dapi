@@ -1,5 +1,9 @@
 export declare const BLOCKCHAIN = "ONT";
 export declare const VERSION = "v1";
+export declare enum Network {
+    MainNet = "MainNet",
+    TestNet = "TestNet"
+}
 export declare enum Command {
     getAccount = "getAccount",
     getPublicKey = "getPublicKey",

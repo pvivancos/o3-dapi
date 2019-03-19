@@ -14,6 +14,7 @@ export interface DeployArgs {
   parameterList: string;
   returnType: string;
   code: string;
+  networkFee?: string;
 }
 
 export interface DeployOutput {

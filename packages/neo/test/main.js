@@ -48,6 +48,7 @@ const deployReturnTypeEle = document.getElementById("deployReturnType");
 const deployParameterListEle = document.getElementById("deployParameterList");
 const deployCodeEle = document.getElementById("deployCode");
 const deployAvmFileEle = document.getElementById("deployAvmFile");
+const deployNetworkFee = document.getElementById("deployNetworkFee");
 
 const utilsButtonEle = document.getElementById("utils-button");
 const utilsEle = document.getElementById("utils");
@@ -130,6 +131,7 @@ function deploy() {
       returnType: deployReturnTypeEle.value,
       parameterList: deployParameterListEle.value,
       code: deployCodeEle.value,
+      networkFee: deployNetworkFee.value,
     })
     .then(handleSuccess)
     .catch(handleError);
@@ -159,19 +161,21 @@ function utilsAddress() {
 }
 
 
-// function readSingleFile(evt) {
-//   var f = evt.target.files[0];
-//   if (f) {
-//     var r = new FileReader();
-//     r.onload = function(e) {
-//       var contents = e.target.result;
-//       deployCodeEle.innerHTML = Array.prototype.map.call(new Uint8Array(contents), x => ('00' + x.toString(16)).slice(-2)).join('');
-//     }
-//     r.readAsArrayBuffer(f);
-//   } else {
-//     alert("Failed to load file");
-//   }
-// }
+
+function readSingleFile(evt) {
+  var f = evt.target.files[0];
+  if (f) {
+    var r = new FileReader();
+    r.onload = function(e) {
+      var contents = e.target.result;
+      deployCodeEle.value = Array.prototype.map.call(new Uint8Array(contents), x => ('00' + x.toString(16)).slice(-2)).join('');
+    }
+    r.readAsArrayBuffer(f);
+  } else {
+    alert("Failed to load file");
+  }
+}
+
 
 // deployAvmFileEle.addEventListener('change', readSingleFile, false);
 

@@ -1,0 +1,1 @@
+{"version":3,"file":"getBlockHash.d.ts","sourceRoot":"","sources":["../../../src/modules/network/getBlockHash.ts"],"names":[],"mappings":"AAGA,OAAO,EAAY,OAAO,EAAE,MAAM,iBAAiB,CAAC;AAGpD,UAAU,iBAAiB;IACzB,MAAM,EAAE,MAAM,CAAC;IACf,OAAO,EAAE,OAAO,CAAC;CAClB;AAED,wBAAgB,YAAY,CAAC,EAAE,OAAO,EAAE,MAAM,EAAE,EAAE,iBAAiB,GAAG,OAAO,CAAC,MAAM,CAAC,CA0BpF"}

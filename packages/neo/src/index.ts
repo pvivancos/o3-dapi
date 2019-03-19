@@ -19,6 +19,7 @@ import { disconnect } from './modules/disconnect';
 import { addEventListener, removeEventListener } from './modules/eventListener';
 import { ArgumentDataType, EventName, BLOCKCHAIN } from './constants';
 import { initMessaging } from './messaging';
+import { methodSelector } from './modules/utils';
 
 class O3dapiNeo {
 
@@ -30,10 +31,11 @@ class O3dapiNeo {
   getNetworks = getNetworks;
   getAccount = getAccount;
   getPublicKey = getPublicKey;
-  getBalance = getBalance;
-  getStorage = getStorage;
-  invokeRead = invokeRead;
-  verifyMessage = verifyMessage;
+
+  getBalance: getBalance = methodSelector(this, 'getBalance', getBalance);
+  getStorage: getStorage = methodSelector(this, 'getStorage', getStorage);
+  invokeRead: invokeRead = methodSelector(this, 'invokeRead', invokeRead);
+  verifyMessage: verifyMessage = methodSelector(this, 'verifyMessage', verifyMessage, false);
 
   send = send;
   invoke = invoke;
@@ -50,8 +52,14 @@ class O3dapiNeo {
     ArgumentDataType,
   };
 
+  private clientPlugin;
+
   constructor(sendMessageMethod, addEventListenerMethod) {
     initMessaging(sendMessageMethod, addEventListenerMethod);
+  }
+
+  setClientPlugin(plugin) {
+    this.clientPlugin = plugin;
   }
 }
 
