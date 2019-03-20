@@ -64,6 +64,7 @@ export function addEventsListener({blockchain, callback}: AddEventsListenerArgs)
   eventsListeners[blockchain] = callback;
 }
 
+let socketInitPromise;
 export function sendMessage({
   blockchain,
   version,
@@ -108,8 +109,11 @@ export function sendMessage({
         reject(NO_PROVIDER);
       }
     } else {
-      initSocket()
+      socketInitPromise = socketInitPromise || initSocket();
+
+      socketInitPromise
       .then(() => {
+        socketInitPromise = null;
         sendSocketMessage(message);
         messageQueue[messageId] = {
           resolve,
@@ -121,7 +125,7 @@ export function sendMessage({
         };
       })
       .catch(err => {
-        console.log('socket error', err);
+        socketInitPromise = null;
         reject(NO_PROVIDER);
       });
     }
