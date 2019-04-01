@@ -2245,10 +2245,10 @@ o3-dapi-ont@^0.3.0:
   resolved "https://registry.yarnpkg.com/o3-dapi-ont/-/o3-dapi-ont-0.3.0.tgz#ae3aca5fcbfc4133424b1766b88715c6c48e5b1c"
   integrity sha512-ng73pdPUfH6osYzt2cFpqyUlavrzriJhhJBoeeBrH/GunYkH4kvhSgHYUvRL7JiJYIpIWGSE4mw40isyvYOIOg==
 
-o3-dapi-ontclient@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/o3-dapi-ontclient/-/o3-dapi-ontclient-0.0.1.tgz#8f3e1073f0069eedde6a934e09276d90a0dab83d"
-  integrity sha512-SqG/Er4Iey/uXsobxFsCv/CeTwSLzZWPs+LeWR7uqN5yQJh6U7SUTRurOJdpaPs9BsPtvYF7o+tt6Y5NE2OfAA==
+o3-dapi-ontclient@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/o3-dapi-ontclient/-/o3-dapi-ontclient-0.0.3.tgz#41dbcfe694e6e7e21caff8d8911ec7e0d127ea77"
+  integrity sha512-qatf4sI8pnGfuQCQipsNCQ2m0RovLUib14ruSIy8OM3hNK7hGR9bCGkUnHDCI94ZRQpS+rp+nOWnEcFwehtHNQ==
   dependencies:
     ontology-ts-sdk "1.0.11"
 
