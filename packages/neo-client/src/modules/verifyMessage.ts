@@ -1,4 +1,4 @@
-import { wallet } from '@cityofzion/neon-js';
+import { wallet, u } from '@cityofzion/neon-js';
 import { ErrorMsg } from '../constants';
 import { parseError } from '../utils';
 
@@ -19,9 +19,13 @@ export default function verifyMessage({
 }: VerifyMessageInput): Promise<VerifyMessageOutput> {
   return new Promise((resolve, reject) => {
     try {
-      resolve({
-        result: wallet.verifyMessage(message, data, publicKey),
-      });
+      const parameterHexString = u.str2hexstring(message);
+      const lengthHex = ((parameterHexString.length / 2).toString(16) as any).padStart(2, '0');
+      const concatenatedString = lengthHex + parameterHexString;
+      const messageHex = '010001f0' + concatenatedString + '0000';
+      const result = wallet.verifyMessage(u.hexstring2str(messageHex), data, publicKey);
+
+      resolve({ result });
     } catch (err) {
       reject({
         type: ErrorMsg.UNKNOWN_ERROR,
