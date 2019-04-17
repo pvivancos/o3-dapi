@@ -6,7 +6,7 @@ export interface InvokeArgs {
   operation: string;
   args?: Argument[];
   fee?: string;
-  network: string;
+  network?: string;
   attachedAssets?: AttachedAssets;
   assetIntentOverrides?: AssetIntentOverrides;
   triggerContractVerification?: boolean;

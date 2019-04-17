@@ -2,7 +2,7 @@ import { sendMessage } from '../../messaging';
 import { Command } from '../../constants';
 
 export interface DeployArgs {
-  network: any;
+  network?: any;
   name: string;
   version: string;
   author: string;

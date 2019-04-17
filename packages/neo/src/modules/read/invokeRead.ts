@@ -5,7 +5,7 @@ export interface InvokeReadArgs {
   scriptHash: string;
   operation: string;
   args: Argument[];
-  network: string;
+  network?: string;
 }
 
 interface Argument {
