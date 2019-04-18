@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/o3-dapi-core@0.3.2/lib/o3-dapi-core.min.js"></script>
+    <script type="text/javascript" src="../build/bundle.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/o3-dapi-neo@0.4.2/lib/o3-dapi-neo.min.js"></script> -->
+  </head>
+  <body>
+    <script type="text/javascript">
+      (function() {
+        o3dapi.initPlugins([O3dapiCoinbase]);
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const token = urlParams.get('code');
+
+        o3dapi.COINBASE.connect({token})
+        .then(() => window.close())
+        .catch(err => console.error('something went wrong'))
+      })()
+    </script>
+  </body>
+</html>
