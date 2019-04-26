@@ -12,7 +12,7 @@ interface InternalSendMessageArgs extends SendMessageArgs {
   version: string;
 }
 
-export let _sendMessage = (args: InternalSendMessageArgs): Promise<any> => Promise.reject(new Error('o3-dapi-coinbase plugin not instanciated.'));
+export let _sendMessage = (args: InternalSendMessageArgs): Promise<any> => Promise.reject(new Error('o3-dapi-pay plugin not instanciated.'));
 
 export function sendMessage(args: SendMessageArgs): Promise<any> {
   return _sendMessage({

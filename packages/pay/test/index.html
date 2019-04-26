@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/o3-dapi-core@0.3.4/lib/o3-dapi-core.min.js"></script>
+    <script type="text/javascript" src="../build/bundle.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/o3-dapi-coinbase@0.0.2/lib/o3-dapi-coinbase.min.js"></script> -->
+  </head>
+  <body>
+    <h1>Request Payment of Digital Assets</h1>
+    <script type="text/javascript">
+      o3dapi.initPlugins([o3dapiPay]);
+
+      o3dapi.onReady(provider => {
+        o3dapi.PAY.send({
+          asset: o3dapi.PAY.assets.USDC,
+          toAddress: 'ATphdznMVmtdREtr3nWAq4C5H4A8ioV4Bd',
+          amount: '1'
+        })
+        .then(result => {
+          const {
+            asset,
+            toAddress,
+            amount,
+            txid,
+          } = result;
+          console.log('sent: ', txid);
+        })
+        .catch(err => {
+          console.error('failed or rejected', err);
+        });
+      });
+    </script>
+  </body>
+</html>
