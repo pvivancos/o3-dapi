@@ -2,22 +2,23 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <script src="https://cdn.jsdelivr.net/npm/o3-dapi-core@0.3.2/lib/o3-dapi-core.min.js"></script>
-    <script type="text/javascript" src="../build/bundle.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/o3-dapi-neo@0.4.2/lib/o3-dapi-neo.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/o3-dapi-core@0.3.4/lib/o3-dapi-core.min.js"></script>
+    <!-- <script type="text/javascript" src="../build/bundle.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/o3-dapi-coinbase@0.0.2/lib/o3-dapi-coinbase.min.js"></script>
   </head>
   <body>
+    <h1>Connecting your Coinbase account to your O3 wallet.</h1>
     <script type="text/javascript">
-      (function() {
-        o3dapi.initPlugins([O3dapiCoinbase]);
+      o3dapi.initPlugins([o3dapiCoinbase]);
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const token = urlParams.get('code');
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get('code');
 
+      o3dapi.onReady(provider => {
         o3dapi.COINBASE.connect({token})
         .then(() => window.close())
         .catch(err => console.error('something went wrong'))
-      })()
+      });
     </script>
   </body>
 </html>

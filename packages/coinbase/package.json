@@ -1,6 +1,6 @@
 {
   "name": "o3-dapi-coinbase",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Coinbase Plugin for o3-dapi",
   "main": "./lib/o3-dapi-coinbase.min.js",
   "types": "./lib/index.d.ts",

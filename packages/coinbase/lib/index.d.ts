@@ -1,5 +1,6 @@
 import connect from './modules/connect';
 declare class O3dapiCoinbase {
+    static blockchain: string;
     connect: typeof connect;
     constructor(sendMessageMethod: any);
 }

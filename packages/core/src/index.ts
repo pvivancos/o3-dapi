@@ -3,6 +3,7 @@ import { Plugin } from './types';
 import {
   sendMessage,
   addEventsListener,
+  onReady,
 } from './messages';
 
 import { initSocket } from './socket';
@@ -30,5 +31,7 @@ if (!o3dapiCore.isAvailable) {
 o3dapiCore.openO3 = () => window.location.replace('o3network://deep');
 
 o3dapiCore.utils = utils;
+
+o3dapiCore.onReady = onReady;
 
 export default o3dapiCore;

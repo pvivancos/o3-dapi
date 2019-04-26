@@ -23,6 +23,11 @@ const safeWindow = isBrowser ? window : global;
 safeWindow._o3dapi = safeWindow._o3dapi ? safeWindow._o3dapi : {};
 _o3dapi.receiveMessage = receiveMessage;
 
+let localReadyCallback;
+export function onReady(callback) {
+  localReadyCallback = callback;
+}
+
 export function receiveMessage(message: IncomingMessage) {
   try {
     if (typeof message === 'string') {
@@ -44,6 +49,7 @@ export function receiveMessage(message: IncomingMessage) {
     if (command === 'event') {
       if (eventName === 'READY') {
         safeWindow._o3dapi.isReady = data;
+        localReadyCallback && localReadyCallback(data);
       }
       Object.keys(eventsListeners)
       .map(key => eventsListeners[key]) // Object.values
