@@ -28,6 +28,8 @@ export enum Command {
   signMessage = 'signMessage',
   verifyMessage = 'verifyMessage',
   deploy = 'deploy',
+
+  RegisterBlockHeightListener = 'RegisterBlockHeightListener',
 }
 
 export enum EventName {
@@ -36,6 +38,7 @@ export enum EventName {
   CONNECTED = 'CONNECTED',
   DISCONNECTED = 'DISCONNECTED',
   NETWORK_CHANGED = 'NETWORK_CHANGED',
+  BLOCK_HEIGHT_CHANGED = 'BLOCK_HEIGHT_CHANGED',
 }
 
 export enum Network {
