@@ -51,6 +51,28 @@ On a NETWORK_CHANGED event, the user has changed the network their provider wall
 | networks       | String[] | A list of all networks which this wallet provider allows access to |
 | defaultNetwork | String   | Network the wallet is currently set to                             |
 
+## BLOCK_HEIGHT_CHANGED
+
+On a BLOCK_HEIGHT_CHANGED event, the block has advanced to the next.
+
+| Parameter   | Type     | Description                                       |
+|:----------- |:-------- |:------------------------------------------------- |
+| network     | String   | Network of the block which changed                |
+| blockHeight | Number   | Height of the new block                           |
+| blockTime   | Number   | Timestamp of the new block                        |
+| blockHash   | String   | Hash of the new block                             |
+| tx          | String[] | List of transaction ids executed in the new block |
+
+## TRANSACTION_CONFIRMED
+
+On a TRANSACTION_CONFIRMED event, a previously broadcast transaction via the dapi has been confirmed by the blockchain.
+
+| Parameter   | Type   | Description                                 |
+|:----------- |:------ |:------------------------------------------- |
+| txid        | String | Transaction id which was confirmed on chain |
+| blockHeight | Number | Height of the new block                     |
+| blockTime   | Number | Timestamp of the new block                  |
+
 # Event Methods
 
 ## addEventListener

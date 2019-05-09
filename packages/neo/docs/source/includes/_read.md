@@ -550,12 +550,12 @@ o3dapi.NEO.invokeRead({
 Execute a contract invocation in read-only mode.
 
 ### Input Arguments
-| Parameter  | Type       | Description                                                                    |
-|:---------- |:---------- |:------------------------------------------------------------------------------ |
-| scriptHash | String     | The script hash of the contract you want to invoke a read on                   |
-| operation  | String     | The operation on the smart contract that you want to invoke a read on          |
-| args       | Argument[] | The input arguments necessary to perform this operation                        |
-| network    | String     | Network alias to submit this request to. If omitted, will default to "MainNet" |
+| Parameter  | Type       | Description                                                                                              |
+|:---------- |:---------- |:-------------------------------------------------------------------------------------------------------- |
+| scriptHash | String     | The script hash of the contract you want to invoke a read on                                             |
+| operation  | String     | The operation on the smart contract that you want to invoke a read on                                    |
+| args       | Argument[] | The input arguments necessary to perform this operation                                                  |
+| network    | String     | Network alias to submit this request to. If omitted, will default the network which the wallet is set to |
 
 #### Argument
 | Parameter | Type   | Description                                               |
@@ -638,3 +638,269 @@ Returns whether the provided signature data matches the provided message and was
 | type        | String  | The type of error which has occurred          |
 | description | String  | A description of the error which has occurred |
 | data        | String? | Any raw data associated with the error        |
+
+## getBlock
+
+```typescript
+o3dapi.NEO.getBlock({
+  blockHeight: 2619690,
+  network: 'TestNet'
+})
+.then((result: Object) => {
+  console.log('Block information: ' + JSON.stringigy(result));
+})
+.catch(({type: string, description: string, data: any}) => {
+  switch(type) {
+    case NO_PROVIDER:
+      console.log('No provider available.');
+      break;
+   case RPC_ERROR:
+    console.log('There was an error when broadcasting this transaction to the network.');
+    break;
+  }
+});
+```
+
+Get information about a specific block.
+
+> Example Response
+
+```typescript
+{
+  "hash": "0xc1668a114ee680597196ed402a0e0507fd8348e6090a54250d7accfadbd74b6e",
+  "size": 686,
+  "version": 0,
+  "previousblockhash": "0xbae289c94e17ae90022673186fd6e1e48b7dd7afb89319bff0e2832db06d16b3",
+  "merkleroot": "0x07d70f7337d3869a7daa538425d78a47212fb8c6130d66d84ac48526853a4e51",
+  "time": 1557376153,
+  "index": 2619690,
+  "nonce": "8efd62ebb85ee68b",
+  "nextconsensus": "AWZo4qAxhT8fwKL93QATSjCYCgHmCY1XLB",
+  "script": {
+    "invocation": "402a1dab9e5593d1d7d2a22a36772d4541b8053d33f8b8474b7d5a20066c1bd821e051fc252ed16146930d55ecb17fbb74972fba4c4b27af81a707999ca1313dd2401520eba2dd3b54a74a798cbb716c484ba6f6f21218f099e3d622a0fbd15989f38f9b0b344daf9b89175055d3a92f49df65118e8598735d651bedd4f1811baeb140e6491c03f3057f404d2fe7db50e40e82ade405a9dc7fccd81f4ba0b499a4a29f8570d631b8d40c5995b17d9391fe9ff8c73f28a4e1eb922b7a1ce9d1a5dc0448402cfcdede54828875d45402120aa2d8f78c7bd40df5e5d3b1873fd7e4d03672ebd0904f90c90fa519c623968f55550ae55374de66dc0db9c9d865c593bb95be5640214db0cd3cea6f4ad866df4129d482b89583805d1bdb08ce8399881e70351778a3e4a4093cf69aa7b99b83347fbfd38d85ff45d6a78ca2ab8cacffbfbc8c2d16",
+    "verification": "5521030ef96257401b803da5dd201233e2be828795672b775dd674d69df83f7aec1e36210327da12b5c40200e9f65569476bbff2218da4f32548ff43b6387ec1416a231ee821025bdf3f181f53e9696227843950deb72dcd374ded17c057159513c3d0abe20b64210266b588e350ab63b850e55dbfed0feeda44410a30966341b371014b803a15af0721026ce35b29147ad09e4afe4ec4a7319095f08198fa8babbe3c56e970b143528d222103c089d7122b840a4935234e82e26ae5efd0c2acb627239dc9f207311337b6f2c12103fd95a9cb3098e6447d0de9f76cc97fd5e36830f9c7044457c15a0e81316bf28f57ae"
+  },
+  "tx": [
+    {
+      "txid": "0x07d70f7337d3869a7daa538425d78a47212fb8c6130d66d84ac48526853a4e51",
+      "size": 10,
+      "type": "MinerTransaction",
+      "version": 0,
+      "attributes": [],
+      "vin": [],
+      "vout": [],
+      "sys_fee": "0",
+      "net_fee": "0",
+      "scripts": [],
+      "nonce": 3093227147
+    }
+  ],
+  "confirmations": 70,
+  "nextblockhash": "0x2c9d6a107b21e83e09dd1b89df344a726895147d410120c46996290692ba29aa"
+}
+```
+
+Execute a contract invocation in read-only mode.
+
+### Input Arguments
+| Parameter   | Type    | Description                                                                                              |
+|:----------- |:------- |:-------------------------------------------------------------------------------------------------------- |
+| blockHeight | integer | The height of the block you would like to get information about.                                         |
+| network     | String  | Network alias to submit this request to. If omitted, will default the network which the wallet is set to |
+
+### Success Response
+The wallet will return the direct response from the RPC node.
+
+### Error Response
+| Parameter   | Type    | Description                                  |
+|:----------- |:------- |:-------------------------------------------- |
+| type        | String  | The type of error which has occured          |
+| description | String? | A description of the error which has occured |
+| data        | String? | Any raw data associated with the error       |
+
+## getTransaction
+
+```typescript
+o3dapi.NEO.getTransaction({
+  txid: '7e049fd7c253dabf38e4156df30c78b30d49f307196aa89b99a47d2330789bf2',
+  network: 'TestNet'
+})
+.then((result: Object) => {
+  console.log('Transaction details: ' + JSON.stringigy(result));
+})
+.catch(({type: string, description: string, data: any}) => {
+  switch(type) {
+    case NO_PROVIDER:
+      console.log('No provider available.');
+      break;
+   case RPC_ERROR:
+    console.log('There was an error when broadcasting this transaction to the network.');
+    break;
+  }
+});
+```
+
+Get information about a specific transaction.
+
+> Example Response
+
+```typescript
+{
+  "txid": "0x7e049fd7c253dabf38e4156df30c78b30d49f307196aa89b99a47d2330789bf2",
+  "size": 556,
+  "type": "InvocationTransaction",
+  "version": 1,
+  "attributes": [
+    {
+      "usage": "Script",
+      "data": "296ac124021a71c449a9bad320c16429b08ad6ee"
+    },
+    {
+      "usage": "Remark",
+      "data": "cbb549adec34d741"
+    }
+  ],
+  "vin": [],
+  "vout": [],
+  "sys_fee": "0",
+  "net_fee": "0",
+  "scripts": [
+    {
+      "invocation": "4072b83e8aca62c27dc36b032b895e757db00620384e26f43cd0ecc9904bff1e652dd94a03226d6dcb0b6f91104cb40be6455aa0fc3b474a8a8e5fa43ff4b10b8d40af726dc0976f15cd8a134634074c5613ab1e59979fec37b611392975c92afa11038fd9d96ddfb306df12ae200dc3c15fa17cb9530389e28f090fd8c9721c3307",
+      "verification": "53c56b6c766b00527ac46c766b51527ac4616c766b00c36121022949376faacb0c6783da8ab63548926cb3a2e8d786063a449833f927fa8853f0ac642f006c766b51c361210292a25f5f0772d73d3fb50d42bb3cb443505b15e106789d19efa4d09c5ddca756ac635f006c766b00c361210292a25f5f0772d73d3fb50d42bb3cb443505b15e106789d19efa4d09c5ddca756ac642f006c766b51c36121022949376faacb0c6783da8ab63548926cb3a2e8d786063a449833f927fa8853f0ac62040000620400516c766b52527ac46203006c766b52c3616c7566"
+    }
+  ],
+  "script": "0400e1f505147869ef9732cdf6f6d54adaa5cae3b55a9396bceb14296ac124021a71c449a9bad320c16429b08ad6ee53c1087472616e7366657267f1dfcf0051ec48ec95c8d0569e0b95075d099d84f10400e1f50514b1fdddf658ce5ff9f83e66ede2f333ecfcc0463e14296ac124021a71c449a9bad320c16429b08ad6ee53c1087472616e7366657267f1dfcf0051ec48ec95c8d0569e0b95075d099d84f1",
+  "gas": "0",
+  "blockhash": "0x4ea57fe267a392933d2b03fa733fbf1fa12c13f7e8ae2051e45465800e1a7cdb",
+  "confirmations": 9,
+  "blocktime": 1557377749
+}
+```
+
+Execute a contract invocation in read-only mode.
+
+### Input Arguments
+| Parameter | Type   | Description                                                                                              |
+|:--------- |:------ |:-------------------------------------------------------------------------------------------------------- |
+| txid      | String | The id of the transaction you would like to get information about.                                       |
+| network   | String | Network alias to submit this request to. If omitted, will default the network which the wallet is set to |
+
+### Success Response
+The wallet will return the direct response from the RPC node.
+
+### Error Response
+| Parameter   | Type    | Description                                  |
+|:----------- |:------- |:-------------------------------------------- |
+| type        | String  | The type of error which has occured          |
+| description | String? | A description of the error which has occured |
+| data        | String? | Any raw data associated with the error       |
+
+## getApplicationLog
+
+```typescript
+o3dapi.NEO.getApplicationLog({
+  txid: '7e049fd7c253dabf38e4156df30c78b30d49f307196aa89b99a47d2330789bf2',
+  network: 'TestNet'
+})
+.then((result: Object) => {
+  console.log('Application log of transaction execution: ' + JSON.stringigy(result));
+})
+.catch(({type: string, description: string, data: any}) => {
+  switch(type) {
+    case NO_PROVIDER:
+      console.log('No provider available.');
+      break;
+   case RPC_ERROR:
+    console.log('There was an error when broadcasting this transaction to the network.');
+    break;
+  }
+});
+```
+
+Get the application log for a given transaction.
+
+> Example Response
+
+```typescript
+{
+  "txid": "0x7e049fd7c253dabf38e4156df30c78b30d49f307196aa89b99a47d2330789bf2",
+  "executions": [
+    {
+      "trigger": "Application",
+      "contract": "0x72985e7f2cea98b89af54d8607bc6400814c4b45",
+      "vmstate": "HALT",
+      "gas_consumed": "5.292",
+      "stack": [],
+      "notifications": [
+        {
+          "contract": "0x849d095d07950b9e56d0c895ec48ec5100cfdff1",
+          "state": {
+            "type": "Array",
+            "value": [
+              {
+                "type": "ByteArray",
+                "value": "7472616e73666572"
+              },
+              {
+                "type": "ByteArray",
+                "value": "296ac124021a71c449a9bad320c16429b08ad6ee"
+              },
+              {
+                "type": "ByteArray",
+                "value": "7869ef9732cdf6f6d54adaa5cae3b55a9396bceb"
+              },
+              {
+                "type": "ByteArray",
+                "value": "00e1f505"
+              }
+            ]
+          }
+        },
+        {
+          "contract": "0x849d095d07950b9e56d0c895ec48ec5100cfdff1",
+          "state": {
+            "type": "Array",
+            "value": [
+              {
+                "type": "ByteArray",
+                "value": "7472616e73666572"
+              },
+              {
+                "type": "ByteArray",
+                "value": "296ac124021a71c449a9bad320c16429b08ad6ee"
+              },
+              {
+                "type": "ByteArray",
+                "value": "b1fdddf658ce5ff9f83e66ede2f333ecfcc0463e"
+              },
+              {
+                "type": "ByteArray",
+                "value": "00e1f505"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+Execute a contract invocation in read-only mode.
+
+### Input Arguments
+| Parameter | Type   | Description                                                                                              |
+|:--------- |:------ |:-------------------------------------------------------------------------------------------------------- |
+| txid      | String | The id of the transaction you would like to get the application logs for.                                |
+| network   | String | Network alias to submit this request to. If omitted, will default the network which the wallet is set to |
+
+### Success Response
+The wallet will return the direct response from the RPC node.
+
+### Error Response
+| Parameter   | Type    | Description                                  |
+|:----------- |:------- |:-------------------------------------------- |
+| type        | String  | The type of error which has occured          |
+| description | String? | A description of the error which has occured |
+| data        | String? | Any raw data associated with the error       |
