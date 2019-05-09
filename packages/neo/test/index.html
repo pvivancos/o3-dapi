@@ -13,7 +13,8 @@
   <link rel="stylesheet" href="https://cdn.o3.app/css/purpose2.0/assets/css/purpose-blue-light.css" id="stylesheet">
   <link rel="stylesheet" href="./docs.css" id="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/o3-dapi-core@0.3.0/lib/o3-dapi-core.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/o3-dapi-neo@0.4.2/lib/o3-dapi-neo.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/o3-dapi-neo@0.5.0/lib/o3-dapi-neo.min.js"></script>
+  <!-- <script type="text/javascript" src="../build/bundle.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <style type="text/css">
   .string {
@@ -383,8 +384,67 @@ a {
                 </div>
               </div>
 
+              <div id="collapse-getBlock" class="method">
+                <div class="card" id="getBlock">
+                  <div class="card-header py-4">
+                    <h3 class="mt-0">getBlock</h3>
+                    <p class="small mb-0">Get info about a given block.</p>
+                  </div>
+                  <div>
+                    <div class="card-body">
+                      <h6>Input</h6>
+                      <textarea class="form-control mb-2" id="getBlock-input" placeholder="getBlock input" rows="4">{{getBlockInput}}</textarea>
+                      <button class="btn btn-primary btn-sm" onclick="getBlock('getBlock-input','getBlock-result')">Run</button>
+                    </div>
+                    <div class="card-footer">
+                      <h6>Result</h6>
+                      <pre><div class="p-3 border rounded" id="getBlock-result"></div></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="collapse-getTransaction" class="method">
+                <div class="card" id="getTransaction">
+                  <div class="card-header py-4">
+                    <h3 class="mt-0">getTransaction</h3>
+                    <p class="small mb-0">Get info about a given transaction.</p>
+                  </div>
+                  <div>
+                    <div class="card-body">
+                      <h6>Input</h6>
+                      <textarea class="form-control mb-2" id="getTransaction-input" placeholder="getTransaction input" rows="4">{{getTransactionInput}}</textarea>
+                      <button class="btn btn-primary btn-sm" onclick="getTransaction('getTransaction-input','getTransaction-result')">Run</button>
+                    </div>
+                    <div class="card-footer">
+                      <h6>Result</h6>
+                      <pre><div class="p-3 border rounded" id="getTransaction-result"></div></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="collapse-getApplicationLog" class="method">
+                <div class="card" id="getApplicationLog">
+                  <div class="card-header py-4">
+                    <h3 class="mt-0">getApplicationLog</h3>
+                    <p class="small mb-0">Get info about a given transaction.</p>
+                  </div>
+                  <div>
+                    <div class="card-body">
+                      <h6>Input</h6>
+                      <textarea class="form-control mb-2" id="getApplicationLog-input" placeholder="getApplicationLog input" rows="4">{{getApplicationLogInput}}</textarea>
+                      <button class="btn btn-primary btn-sm" onclick="getApplicationLog('getApplicationLog-input','getApplicationLog-result')">Run</button>
+                    </div>
+                    <div class="card-footer">
+                      <h6>Result</h6>
+                      <pre><div class="p-3 border rounded" id="getApplicationLog-result"></div></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <h2 class="mb-3">Utilities</h2>
-              
 
               <div id="collapse-hex2str" class="method">
                 <div class="card">

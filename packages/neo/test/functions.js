@@ -44,6 +44,18 @@ var app = new Vue({
 			message: "Here is a message",
 			data: "",
 			publicKey: "",
+		},
+		getBlockInput:{
+			blockHeight: 2619690,
+			network: "TestNet",
+		},
+		getTransactionInput:{
+			txid: "",
+			network: "TestNet",
+		},
+		getApplicationLogInput:{
+			txid: "",
+			network: "TestNet",
 		}
 	},
 	watch: {
@@ -53,6 +65,9 @@ var app = new Vue({
 			this.invokeReadInput.network = value;
 			this.invokeInput.network = value;
 			this.sendInput.network = value;
+			this.getBlockInput.network = value;
+			this.getTransactionInput.network = value;
+			this.getApplicationLogInput.network = value;
 		}
 	},
 	methods: {
@@ -201,6 +216,51 @@ function signMessage(inputElement, resultElem) {
 function verifyMessage(inputElement, resultElem) {
 	try {
 		o3dapi.NEO.verifyMessage(JSON.parse(document.getElementById(inputElement).value))
+		.then(function(data){
+			const formatted = syntaxHighlight(data);
+			document.getElementById(resultElem).innerHTML = formatted;
+		})
+		.catch(function(error){
+			document.getElementById(resultElem).innerHTML = syntaxHighlight(error);
+		});
+	} catch (err) {
+		document.getElementById(resultElem).innerHTML = 'invalid JSON input';
+	}
+}
+
+function getBlock(inputElement, resultElem) {
+	try {
+		o3dapi.NEO.getBlock(JSON.parse(document.getElementById(inputElement).value))
+		.then(function(data){
+			const formatted = syntaxHighlight(data);
+			document.getElementById(resultElem).innerHTML = formatted;
+		})
+		.catch(function(error){
+			document.getElementById(resultElem).innerHTML = syntaxHighlight(error);
+		});
+	} catch (err) {
+		document.getElementById(resultElem).innerHTML = 'invalid JSON input';
+	}
+}
+
+function getTransaction(inputElement, resultElem) {
+	try {
+		o3dapi.NEO.getTransaction(JSON.parse(document.getElementById(inputElement).value))
+		.then(function(data){
+			const formatted = syntaxHighlight(data);
+			document.getElementById(resultElem).innerHTML = formatted;
+		})
+		.catch(function(error){
+			document.getElementById(resultElem).innerHTML = syntaxHighlight(error);
+		});
+	} catch (err) {
+		document.getElementById(resultElem).innerHTML = 'invalid JSON input';
+	}
+}
+
+function getApplicationLog(inputElement, resultElem) {
+	try {
+		o3dapi.NEO.getApplicationLog(JSON.parse(document.getElementById(inputElement).value))
 		.then(function(data){
 			const formatted = syntaxHighlight(data);
 			document.getElementById(resultElem).innerHTML = formatted;

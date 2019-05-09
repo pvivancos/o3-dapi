@@ -1,5 +1,5 @@
 export interface DeployArgs {
-    network: any;
+    network?: any;
     name: string;
     version: string;
     author: string;

@@ -21,6 +21,10 @@ export enum Command {
   getBalance = 'getBalance',
   getStorage = 'getStorage',
   invokeRead = 'invokeRead',
+  getBlock = 'getBlock',
+  getTransaction = 'getTransaction',
+  getApplicationLog = 'getApplicationLog',
+
   send = 'send',
   invoke = 'invoke',
   event = 'event',
@@ -39,6 +43,7 @@ export enum EventName {
   DISCONNECTED = 'DISCONNECTED',
   NETWORK_CHANGED = 'NETWORK_CHANGED',
   BLOCK_HEIGHT_CHANGED = 'BLOCK_HEIGHT_CHANGED',
+  TRANSACTION_CONFIRMED = 'TRANSACTION_CONFIRMED',
 }
 
 export enum Network {

@@ -9,6 +9,9 @@ import { getBalance, GetBalanceArgs, BalanceResults } from './modules/read/getBa
 import { getStorage, GetStorageArgs, GetStorageOutput } from './modules/read/getStorage';
 import { invokeRead, InvokeReadArgs } from './modules/read/invokeRead';
 import { verifyMessage, VerifyMessageInput, VerifyMessageOutput } from './modules/read/verifyMessage';
+import { getBlock, BlockDetails, GetBlockInputArgs } from './modules/read/getBlock';
+import { getTransaction, TransactionInputArgs, TransactionDetails } from './modules/read/getTransaction';
+import { getApplicationLog, ApplicationLog } from './modules/read/getApplicationLog';
 
 import { send, SendArgs, SendOutput } from './modules/write/send';
 import { invoke, InvokeArgs, InvokeOutput } from './modules/write/invoke';
@@ -36,6 +39,9 @@ class O3dapiNeo {
   getStorage: getStorage = methodSelector(this, 'getStorage', getStorage);
   invokeRead: invokeRead = methodSelector(this, 'invokeRead', invokeRead);
   verifyMessage: verifyMessage = methodSelector(this, 'verifyMessage', verifyMessage, false);
+  getBlock: getBlock = methodSelector(this, 'getBlock', getBlock);
+  getTransaction: getTransaction = methodSelector(this, 'getTransaction', getTransaction);
+  getApplicationLog: getApplicationLog = methodSelector(this, 'getApplicationLog', getApplicationLog);
 
   send = send;
   invoke = invoke;
@@ -72,6 +78,9 @@ export type getBalance = (data: GetBalanceArgs) => Promise<BalanceResults>;
 export type getStorage = (data: GetStorageArgs) => Promise<GetStorageOutput>;
 export type invokeRead = (data: InvokeReadArgs) => Promise<any>;
 export type verifyMessage = (data: VerifyMessageInput) => Promise<VerifyMessageOutput>;
+export type getBlock = (data: BlockDetails) => Promise<GetBlockInputArgs>;
+export type getTransaction = (data: TransactionInputArgs) => Promise<TransactionDetails>;
+export type getApplicationLog = (data: TransactionInputArgs) => Promise<ApplicationLog>;
 
 export type send = (data: SendArgs) => Promise<SendOutput>;
 export type invoke = (data: InvokeArgs) => Promise<InvokeOutput>;

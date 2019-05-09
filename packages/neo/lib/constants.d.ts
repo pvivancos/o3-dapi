@@ -19,20 +19,26 @@ export declare enum Command {
     getBalance = "getBalance",
     getStorage = "getStorage",
     invokeRead = "invokeRead",
+    getBlock = "getBlock",
+    getTransaction = "getTransaction",
+    getApplicationLog = "getApplicationLog",
     send = "send",
     invoke = "invoke",
     event = "event",
     disconnect = "disconnect",
     signMessage = "signMessage",
     verifyMessage = "verifyMessage",
-    deploy = "deploy"
+    deploy = "deploy",
+    RegisterBlockHeightListener = "RegisterBlockHeightListener"
 }
 export declare enum EventName {
     READY = "READY",
     ACCOUNT_CHANGED = "ACCOUNT_CHANGED",
     CONNECTED = "CONNECTED",
     DISCONNECTED = "DISCONNECTED",
-    NETWORK_CHANGED = "NETWORK_CHANGED"
+    NETWORK_CHANGED = "NETWORK_CHANGED",
+    BLOCK_HEIGHT_CHANGED = "BLOCK_HEIGHT_CHANGED",
+    TRANSACTION_CONFIRMED = "TRANSACTION_CONFIRMED"
 }
 export declare enum Network {
     MainNet = "MainNet",
