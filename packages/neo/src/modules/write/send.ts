@@ -9,6 +9,7 @@ export interface SendArgs {
   remark?: string;
   fee?: string;
   network?: string;
+  broadcastOverride?: boolean;
 }
 
 export interface SendOutput {

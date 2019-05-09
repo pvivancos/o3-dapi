@@ -15,6 +15,7 @@ export interface DeployArgs {
   returnType: string;
   code: string;
   networkFee?: string;
+  broadcastOverride?: boolean;
 }
 
 export interface DeployOutput {

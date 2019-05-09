@@ -12,7 +12,8 @@ o3dapi.NEO.send({
   amount: '0.0001',
   remark: 'Hash puppy clothing purchase. Invoice#abc123',
   fee: '0.0001',
-  network: 'MainNet'
+  network: 'MainNet',
+  broadcastOverride: false,
 })
 .then(({txid, nodeUrl}: SendOutput) => {
   console.log('Send transaction success!');
@@ -52,17 +53,20 @@ o3dapi.NEO.send({
 The send API can be used for accepting payments from the user in a cryptocurrency that is located on the NEO blockchain. It requires user authentication in order for the transaction to be relayed. The transaction will be relayed by the wallet.
 
 ### Input Arguments
-| Parameter   | Type    | Description                                                                                                                                        |
-|:----------- |:------- |:-------------------------------------------------------------------------------------------------------------------------------------------------- |
-| fromAddress | String  | The address from where the transaction is being sent. This will be the same value as the one received from the getAccount API                      |
-| toAddress   | String  | The address to where the user should send their funds                                                                                              |
-| asset       | String  | The asset which is being requested for payment...e.g NEP5 scripHash, GAS or CGAS                                                                   |
-| amount      | String  | The amount which is being requested for payment                                                                                                    |
-| remark      | String? | A transaction attribute remark which may be placed in the transaction, this data will appear in the transaction record on the blockchain           |
-| fee         | String? | If a fee is specified then the wallet SHOULD NOT override it, if a fee is not specified the wallet SHOULD allow the user to attach an optional fee |
-| network     | String  | Network alias to submit this request to.                                                                                                           |
+| Parameter         | Type     | Description                                                                                                                                        |
+|:----------------- |:-------- |:-------------------------------------------------------------------------------------------------------------------------------------------------- |
+| fromAddress       | String   | The address from where the transaction is being sent. This will be the same value as the one received from the getAccount API                      |
+| toAddress         | String   | The address to where the user should send their funds                                                                                              |
+| asset             | String   | The asset which is being requested for payment...e.g NEP5 scripHash, GAS or CGAS                                                                   |
+| amount            | String   | The amount which is being requested for payment                                                                                                    |
+| remark            | String?  | A transaction attribute remark which may be placed in the transaction, this data will appear in the transaction record on the blockchain           |
+| fee               | String?  | If a fee is specified then the wallet SHOULD NOT override it, if a fee is not specified the wallet SHOULD allow the user to attach an optional fee |
+| network           | String   | Network alias to submit this request to.                                                                                                           |
+| broadcastOverride | Boolean? | If this flag is set to True, the wallet provider will return the signed transaction rather than broadcasting to a node.                            |
 
 ### Success Response
+
+In the case where the "broadcastOverride" input argument is not set, or set to false.
 | Parameter | Type   | Description                                                                   |
 |:--------- |:------ |:----------------------------------------------------------------------------- |
 | txid      | String | The transaction id of the send request which can be queried on the blockchain |
@@ -71,6 +75,13 @@ The send API can be used for accepting payments from the user in a cryptocurrenc
 <aside class="warning">
 It is reccommended that the DAPP take appropriate levels of risk prevention when accepting transactions. The dapp can query the mempool of a known node to ensure that the transaction will indeed be broadcast on the network.
 </aside>
+
+In the case where the "broadcastOverride" input argument is set to True.
+| Parameter | Type   | Description                                                                   |
+|:--------- |:------ |:----------------------------------------------------------------------------- |
+| txid      | String | The transaction id of the send request which can be queried on the blockchain |
+| signedTx  | String | The serialized signed transaction                                             |
+
 
 ### Error Response
 | Parameter   | Type    | Description                                  |
@@ -96,6 +107,7 @@ o3dapi.NEO.invoke({
   },
   fee: '0.001',
   network: 'TestNet',
+  broadcastOverride: false,
 })
 .then(({txid, nodeUrl}: InvokeOutput) => {
   console.log('Invoke transaction success!');
@@ -139,6 +151,7 @@ Invoke allows for the generic execution of smart contracts on behalf of the user
 | attachedAssets              | AttachedAssets?      | Describes the assets to attach with the smart contract, e.g. attaching assets to mint tokens during a token sale                                   |
 | assetIntentOverrides        | AssetIntentOverrides | Used to specify the exact UTXO's to use for attached assets. If this is provided fee and attachedAssets will be ignored                            |
 | triggerContractVerification | Boolean?             | Adds the instruction to invoke the contract verifican trigger                                                                                      |
+| broadcastOverride           | Boolean?             | If this flag is set to True, the wallet provider will return the signed transaction rather than broadcasting to a node.                            |
 
 #### Argument
 | Parameter | Type   | Description                                               |
@@ -177,10 +190,22 @@ Available types are "String"|"Boolean"|"Hash160"|"Hash256"|"Integer"|"ByteArray"
 
 
 ### Success Response
-| Parameter | Type   | Description                                                             |
-|:--------- |:------ |:----------------------------------------------------------------------- |
-| txid      | String | The transaction id of the invoke which can be queried on the blockchain |
-| nodeURL   | String | The node to which the transaction was submitted to                      |
+
+In the case where the "broadcastOverride" input argument is not set, or set to false.
+| Parameter | Type   | Description                                                                   |
+|:--------- |:------ |:----------------------------------------------------------------------------- |
+| txid      | String | The transaction id of the send request which can be queried on the blockchain |
+| nodeURL   | String | The node to which the transaction was submitted to                            |
+
+<aside class="warning">
+It is reccommended that the DAPP take appropriate levels of risk prevention when accepting transactions. The dapp can query the mempool of a known node to ensure that the transaction will indeed be broadcast on the network.
+</aside>
+
+In the case where the "broadcastOverride" input argument is set to True.
+| Parameter | Type   | Description                                                                   |
+|:--------- |:------ |:----------------------------------------------------------------------------- |
+| txid      | String | The transaction id of the send request which can be queried on the blockchain |
+| signedTx  | String | The serialized signed transaction                                             |
 
 ### Error Response
 | Parameter   | Type    | Description                                  |
@@ -301,30 +326,41 @@ Will deploy a compiled smart contract to the blockchain with the provided input 
 
 ### Input Arguments
 
-| Parameter     | Type    | Description                                                                                                          |
-|:------------- |:------- |:-------------------------------------------------------------------------------------------------------------------- |
-| message       | String  | The message to sign                                                                                                  |
-| network       | String  | Network alias to submit this request to.                                                                             |
-| name          | String  | The name of the contract to be deployed                                                                              |
-| version       | String  | The version of the contract to be deployed                                                                           |
-| author        | String  | The author of the contract to be deployed                                                                            |
-| email         | String  | The email of the contract to be deployed                                                                             |
-| description   | String  | The description of the contract to be deployed                                                                       |
-| needsStorage  | Boolean | Whether or not the contract will use storage                                                                         |
-| dynamicInvoke | Boolean | Whether or not the contract will be performing dynamic invocations of other smart contracts                          |
-| isPayable     | Boolean | Whether or not the contract will be able to accept native assets                                                     |
-| parameterList | String  | The list of input argument types for the Main function on the contract. https://docs.neo.org/en-us/sc/Parameter.html |
-| returnType    | String  | The list of output returnType argument types. https://docs.neo.org/en-us/sc/Parameter.html                           |
-| code          | String  | The hex of the compiled smart contract avm                                                                           |
-| netowrkFee    | String  | The network fee to execute the transaction, in addition to the deploy fee which will be added automatically          |
-
+| Parameter         | Type     | Description                                                                                                             |
+|:----------------- |:-------- |:----------------------------------------------------------------------------------------------------------------------- |
+| message           | String   | The message to sign                                                                                                     |
+| network           | String   | Network alias to submit this request to.                                                                                |
+| name              | String   | The name of the contract to be deployed                                                                                 |
+| version           | String   | The version of the contract to be deployed                                                                              |
+| author            | String   | The author of the contract to be deployed                                                                               |
+| email             | String   | The email of the contract to be deployed                                                                                |
+| description       | String   | The description of the contract to be deployed                                                                          |
+| needsStorage      | Boolean  | Whether or not the contract will use storage                                                                            |
+| dynamicInvoke     | Boolean  | Whether or not the contract will be performing dynamic invocations of other smart contracts                             |
+| isPayable         | Boolean  | Whether or not the contract will be able to accept native assets                                                        |
+| parameterList     | String   | The list of input argument types for the Main function on the contract. https://docs.neo.org/en-us/sc/Parameter.html    |
+| returnType        | String   | The list of output returnType argument types. https://docs.neo.org/en-us/sc/Parameter.html                              |
+| code              | String   | The hex of the compiled smart contract avm                                                                              |
+| netowrkFee        | String   | The network fee to execute the transaction, in addition to the deploy fee which will be added automatically             |
+| broadcastOverride | Boolean? | If this flag is set to True, the wallet provider will return the signed transaction rather than broadcasting to a node. |
 
 ### Success Response
-| Parameter | Type   | Description                                                             |
-|:--------- |:------ |:----------------------------------------------------------------------- |
-| txid      | String | The transaction id of the deploy which can be queried on the blockchain |
-| nodeURL   | String | The node to which the transaction was submitted to                      |
 
+In the case where the "broadcastOverride" input argument is not set, or set to false.
+| Parameter | Type   | Description                                                                   |
+|:--------- |:------ |:----------------------------------------------------------------------------- |
+| txid      | String | The transaction id of the send request which can be queried on the blockchain |
+| nodeURL   | String | The node to which the transaction was submitted to                            |
+
+<aside class="warning">
+It is reccommended that the DAPP take appropriate levels of risk prevention when accepting transactions. The dapp can query the mempool of a known node to ensure that the transaction will indeed be broadcast on the network.
+</aside>
+
+In the case where the "broadcastOverride" input argument is set to True.
+| Parameter | Type   | Description                                                                   |
+|:--------- |:------ |:----------------------------------------------------------------------------- |
+| txid      | String | The transaction id of the send request which can be queried on the blockchain |
+| signedTx  | String | The serialized signed transaction                                             |
 
 ### Error Response
 

@@ -27,6 +27,7 @@ var app = new Vue({
 			fee: "0.11",
 			network: "TestNet",
 			triggerContractVerification: false,
+			broadcastOverride: false,
 		},
 		sendInput: {
 			fromAddress: "ANtdacYPFN6zkarDwVt5vH55FKsJU8SapW",
@@ -36,6 +37,7 @@ var app = new Vue({
 			remark: "TestRemark",
 			fee: "0.011",
 			network: "TestNet",
+			broadcastOverride: false,
 		},
 		signMessageInput:{
 			message: "Here is a message",

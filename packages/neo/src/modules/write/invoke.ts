@@ -10,6 +10,7 @@ export interface InvokeArgs {
   attachedAssets?: AttachedAssets;
   assetIntentOverrides?: AssetIntentOverrides;
   triggerContractVerification?: boolean;
+  broadcastOverride?: boolean;
 }
 
 interface Argument {

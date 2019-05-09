@@ -17,6 +17,7 @@ var app = new Vue({
       parameterList: "0710",
       code: "54c56b6c766b00527ac46c766b51527ac46c766b00c36c766b51c3936c766b52527ac46203006c766b52c3616c7566",
       networkFee: 0.11,
+      broadcastOverride: false,
     }
   },
   watch: {
@@ -55,7 +56,3 @@ var app = new Vue({
 
   }
 })
-
-
-
-
