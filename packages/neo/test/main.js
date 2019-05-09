@@ -36,6 +36,10 @@ const verifyMessageInputEle = document.getElementById("verifyMessageInput");
 const verifyMessageSignatureInputEle = document.getElementById("verifyMessageSignatureInput");
 const verifyMessagePiblicKeyInputEle = document.getElementById("verifyMessagePiblicKeyInput");
 
+const getBlockInputEle = document.getElementById("getBlockInput");
+const getTransactionInputEle = document.getElementById("getTransactionInput");
+const getApplicationLogInputEle = document.getElementById("getApplicationLogInput");
+
 const deployNameEle = document.getElementById("deployName");
 const deployVersionEle = document.getElementById("deployVersion");
 const deployAuthorEle = document.getElementById("deployAuthor");
@@ -205,6 +209,14 @@ o3dapi.NEO.addEventListener(o3dapi.NEO.Constants.EventName.DISCONNECTED, data =>
 });
 
 o3dapi.NEO.addEventListener(o3dapi.NEO.Constants.EventName.NETWORK_CHANGED, handleNewNetworks);
+
+o3dapi.NEO.addEventListener(o3dapi.NEO.Constants.EventName.BLOCK_HEIGHT_CHANGED, data => {
+  console.log('neo block height changed: ', JSON.stringify(data));
+});
+
+o3dapi.NEO.addEventListener(o3dapi.NEO.Constants.EventName.TRANSACTION_CONFIRMED, data => {
+  console.log('neo tx confirmed: ', JSON.stringify(data));
+});
 
 function handleNewNetworks({networks, defaultNetwork}) {
   const networksEle = document.getElementById("networks");

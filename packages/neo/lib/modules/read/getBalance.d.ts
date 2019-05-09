@@ -5,7 +5,7 @@ interface BalanceRequest {
 }
 export interface GetBalanceArgs {
     params: BalanceRequest | BalanceRequest[];
-    network: string;
+    network?: string;
 }
 export interface BalanceResults {
     [address: string]: Balance[];

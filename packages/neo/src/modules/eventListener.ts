@@ -2,7 +2,8 @@ declare const window: any;
 declare const global: any;
 const isBrowser = typeof window !== 'undefined';
 const safeWindow = isBrowser ? window : global;
-import { EventName } from '../constants';
+import { EventName, Command } from '../constants';
+import { sendMessage } from '../messaging';
 
 interface Listeners {
   [eventName: string]: Function[];
@@ -20,6 +21,12 @@ export function addEventListener(event: EventName, callback: Function): void {
   if (event === EventName.READY && isReady) {
     const readyListeners = listeners[EventName.READY];
     readyListeners && readyListeners.forEach(callback => callback(isReady));
+  }
+
+  if (event === EventName.BLOCK_HEIGHT_CHANGED) {
+    sendMessage({
+      command: Command.RegisterBlockHeightListener,
+    });
   }
 }
 

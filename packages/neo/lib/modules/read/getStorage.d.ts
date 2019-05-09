@@ -1,7 +1,7 @@
 export interface GetStorageArgs {
     scriptHash: string;
     key: string;
-    network: string;
+    network?: string;
 }
 export interface GetStorageOutput {
     result: string;
