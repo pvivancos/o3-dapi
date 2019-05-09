@@ -17,10 +17,10 @@
   <!-- <script type="text/javascript" src="../../core/lib/o3-dapi-core.min.js"></script>
   <script type="text/javascript" src="../lib/o3-dapi-ont.min.js"></script> -->
   <!-- <script type="text/javascript" src="../../core/build/bundle.js"></script> -->
-  <!-- <script type="text/javascript" src="../build/bundle.js"></script> -->
+  <script type="text/javascript" src="../build/bundle.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/o3-dapi-core@0.3.0/lib/o3-dapi-core.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/o3-dapi-ont@0.2.3/lib/o3-dapi-ont.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/o3-dapi-ont@0.2.3/lib/o3-dapi-ont.min.js"></script> -->
 </head>
 
 <body>
@@ -232,10 +232,13 @@
           <textarea id='invokeArgs'>[{"type":"Address","value":"AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ"},{"type":"Address","value":"AecaeSEBkt5GcBCxwz1F41TvdjX3dnKBkJ"},{"type":"ByteArray","value":"0600000000000000"}]</textarea>
           <br/>
           <p>Gas price override: (Optional)</p>
-          <input id='gasPrice' type="text" placeholder="500" value="500"/>
+          <input id='invokeGasPrice' type="text" placeholder="500" value="500"/>
           <br/>
           <p>Gas limit override: (Optional)</p>
-          <input id='gasLimit' type="text" placeholder="20000" value="20000"/>
+          <input id='invokeGasLimit' type="text" placeholder="20000" value="20000"/>
+          <br/>
+          <p>Broadcast override:</p>
+          <input id='invokeBroadcastOverride' type="checkbox"/>
           <br/>
           <button type="button" class="btn btn-primary" onclick="invoke()">Invoke</button>
         </div>
@@ -283,6 +286,10 @@
           <textarea id='deployCode'>0113c56b6a00527ac46a51527ac46a00c30551756572799c6416006a51c300c36a52527ac46a52c365f4026c7566616a00c30852656769737465729c6424006a51c300c36a52527ac46a51c351c36a53527ac46a52c36a53c37c6519026c7566616a00c3085472616e736665729c6424006a51c300c36a52527ac46a51c351c36a54527ac46a52c36a54c37c65f4006c7566616a00c30c44656c657465446f6d61696e9c6416006a51c300c36a52527ac46a52c3650b006c756661006c75665bc56b6a00527ac4681953797374656d2e53746f726167652e476574436f6e74657874616a51527ac46a51c36a00c37c681253797374656d2e53746f726167652e476574616a52527ac46a52c3681b53797374656d2e52756e74696d652e436865636b5769746e657373616a53527ac46a53c3630700006c7566616a51c36a00c37c681553797374656d2e53746f726167652e44656c657465610644656c6574656a00c37c681553797374656d2e52756e74696d652e4e6f7469667961516c75660112c56b6a00527ac46a51527ac46a51c3009c640700006c756661681953797374656d2e53746f726167652e476574436f6e74657874616a52527ac46a52c36a00c37c681253797374656d2e53746f726167652e476574616a53527ac46a53c3009c640700006c7566616a53c36a51c39c640700516c7566616a53c3681b53797374656d2e52756e74696d652e436865636b5769746e657373616a54527ac46a54c3630700006c7566616a52c36a00c36a51c35272681253797374656d2e53746f726167652e50757461085472616e736665726a00c37c681553797374656d2e52756e74696d652e4e6f7469667961516c75665bc56b6a00527ac46a51527ac4681953797374656d2e53746f726167652e476574436f6e74657874616a52527ac46a52c36a00c37c681253797374656d2e53746f726167652e476574616a53527ac46a53c3009e640700006c7566616a52c36a00c36a51c35272681253797374656d2e53746f726167652e507574610852656769737465726a00c36a51c35272681553797374656d2e52756e74696d652e4e6f7469667961516c756654c56b6a00527ac4681953797374656d2e53746f726167652e476574436f6e74657874616a00c37c681253797374656d2e53746f726167652e476574616c7566</textarea>
 
           <br/>
+          <p>Broadcast override:</p>
+          <input id='deployBroadcastOverride' type="checkbox"/>
+
+          <br/>
           <button type="button" class="btn btn-primary" onclick="deploy()">Deploy</button>
         </div>
 
@@ -300,6 +307,9 @@
           <br/>
           <p>Amount:</p>
           <input id='sendAmount' type="text" value="0.01"/>
+          <br/>
+          <p>Broadcast override:</p>
+          <input id='sendBroadcastOverride' type="checkbox"/>
           <br/>
           <button type="button" class="btn btn-primary" onclick="send()">Send</button>
         </div>

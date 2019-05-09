@@ -12,6 +12,7 @@ interface DeployInput {
   gasPrice?: string;
   gasLimit?: string;
   network: string;
+  broadcastOverride?: boolean;
 }
 
 export function deploy(data: DeployInput): Promise<void> {
