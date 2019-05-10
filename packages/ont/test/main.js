@@ -39,12 +39,12 @@ const deployNeedStorageEle = document.getElementById("deployNeedStorage");
 const deployGasPriceEle = document.getElementById("deployGasPrice");
 const deployGasLimitEle = document.getElementById("deployGasLimit");
 const deployCodeEle = document.getElementById("deployCode");
-const deployBroadcastOverrideEle = document.getElementById("invokeBroadcastOverride");
+const deployBroadcastOverrideEle = document.getElementById("deployBroadcastOverride");
 
 const sendToAddressEle = document.getElementById("sendToAddress");
 const sendAssetEle = document.getElementById("sendAsset");
 const sendAmountEle = document.getElementById("sendAmount");
-const sendBroadcastOverrideEle = document.getElementById("invokeBroadcastOverride");
+const sendBroadcastOverrideEle = document.getElementById("sendBroadcastOverride");
 
 const invokeScriptHashEle = document.getElementById("invokeScriptHash");
 const invokeOperationEle = document.getElementById("invokeOperation");

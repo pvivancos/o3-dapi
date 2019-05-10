@@ -4,6 +4,7 @@ interface RequestStakeWithdrawInput {
     amount: number;
     gasPrice?: number;
     gasLimit?: number;
+    broadcastOverride?: boolean;
 }
 interface RequestStakeWithdrawOutput {
     txid: string;

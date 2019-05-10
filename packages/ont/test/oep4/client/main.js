@@ -36,6 +36,13 @@ const transferMultiOutputsInputEle = document.getElementById("transferMultiOutpu
 const transferMultiGasPriceInputEle = document.getElementById("transferMultiGasPriceInput");
 const transferMultiGasLimitInputEle = document.getElementById("transferMultiGasLimitInput");
 
+const initBroadcastOverride = document.getElementById("initBroadcastOverride");
+const transferBroadcastOverride = document.getElementById("transferBroadcastOverride");
+const transferMultiBroadcastOverride = document.getElementById("transferMultiBroadcastOverride");
+const getAllowanceBroadcastOverride = document.getElementById("getAllowanceBroadcastOverride");
+const approveBroadcastOverride = document.getElementById("approveBroadcastOverride");
+const transferFromBroadcastOverride = document.getElementById("transferFromBroadcastOverride");
+
 function clearText() {
   resultEle.innerHTML = '';
   errorEle.innerHTML = '';
@@ -151,6 +158,7 @@ function init() {
     scriptHash: contractHashEle.value,
     gasPrice: initGasPriceInputEle.value,
     gasLimit: initGasLimitInputEle.value,
+    broadcastOverride: initBroadcastOverride.checked,
   })
   .then(handleSuccess)
   .catch(handleError);
@@ -167,6 +175,7 @@ function transfer() {
     amount: transferAmountInputEle.value,
     gasPrice: transferGasPriceInputEle.value,
     gasLimit: transferGasLimitInputEle.value,
+    broadcastOverride: transferBroadcastOverride.checked,
   })
   .then(handleSuccess)
   .catch(handleError);
@@ -183,6 +192,7 @@ function transferFrom() {
     amount: transferFromAmountInputEle.value,
     gasPrice: transferFromGasPriceInputEle.value,
     gasLimit: transferFromGasLimitInputEle.value,
+    broadcastOverride: transferFromeBroadcastOverride.checked,
   })
   .then(handleSuccess)
   .catch(handleError);
@@ -198,6 +208,7 @@ function transferMulti() {
       outputs: JSON.parse(transferMultiOutputsInputEle.value),
       gasPrice: transferMultiGasPriceInputEle.value,
       gasLimit: transferMultiGasLimitInputEle.value,
+      broadcastOverride: transferMultiBroadcastOverride.checked,
     })
     .then(handleSuccess)
     .catch(handleError);
@@ -217,6 +228,7 @@ function approve() {
     amount: approveAmountInputEle.value,
     gasPrice: approveGasPriceInputEle.value,
     gasLimit: approveGasLimitInputEle.value,
+    broadcastOverride: approveBroadcastOverride.checked,
   })
   .then(handleSuccess)
   .catch(handleError);

@@ -9,6 +9,7 @@ interface TransferMultiInput {
     outputs: Output[];
     gasPrice?: number;
     gasLimit?: number;
+    broadcastOverride?: boolean;
 }
 interface TransferMultiOutput {
     txid: string;

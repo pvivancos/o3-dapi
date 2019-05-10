@@ -18,6 +18,12 @@ const requestStakeWithdrawAmountInput = document.getElementById("requestStakeWit
 const withdrawStakeNodePublicKeyInput = document.getElementById("withdrawStakeNodePublicKeyInput");
 const withdrawStakeAmountInput = document.getElementById("withdrawStakeAmountInput");
 
+const claimStakedOngBroadcastOverride = document.getElementById("claimStakedOngBroadcastOverride");
+const claimStakedOngRewardsBroadcastOverride = document.getElementById("claimStakedOngRewardsBroadcastOverride");
+const addStakeBroadcastOverride = document.getElementById("addStakeBroadcastOverride");
+const requestStakeWithdrawBroadcastOverride = document.getElementById("requestStakeWithdrawBroadcastOverride");
+const withdrawStakeBroadcastOverride = document.getElementById("withdrawStakeBroadcastOverride");
+
 function clearText() {
   resultEle.innerHTML = '';
   errorEle.innerHTML = '';
@@ -116,6 +122,7 @@ function claimStakedOng() {
   startLoading();
   o3dapi.ONT.stake.claimStakedOng({
     network: networksEle.value,
+    broadcastOverride: claimStakedOngBroadcastOverride.checked,
   })
   .then(handleSuccess)
   .catch(handleError);
@@ -126,6 +133,7 @@ function claimStakedOngRewards() {
   startLoading();
   o3dapi.ONT.stake.claimStakedOngRewards({
     network: networksEle.value,
+    broadcastOverride: claimStakedOngRewardsBroadcastOverride.checked,
   })
   .then(handleSuccess)
   .catch(handleError);
@@ -138,6 +146,7 @@ function addStake() {
     network: networksEle.value,
     nodePublicKey: addStakeNodePublicKeyInput.value,
     amount: addStakeAmountInput.value,
+    broadcastOverride: addStakeBroadcastOverride.checked,
   })
   .then(handleSuccess)
   .catch(handleError);
@@ -150,6 +159,7 @@ function requestStakeWithdraw() {
     network: networksEle.value,
     nodePublicKey: requestStakeWithdrawNodePublicKeyInput.value,
     amount: requestStakeWithdrawAmountInput.value,
+    broadcastOverride: requestStakeWithdrawBroadcastOverride.checked,
   })
   .then(handleSuccess)
   .catch(handleError);
@@ -162,6 +172,7 @@ function withdrawStake() {
     network: networksEle.value,
     nodePublicKey: withdrawStakeNodePublicKeyInput.value,
     amount: withdrawStakeAmountInput.value,
+    broadcastOverride: withdrawStakeBroadcastOverride.checked,
   })
   .then(handleSuccess)
   .catch(handleError);

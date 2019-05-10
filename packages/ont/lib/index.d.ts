@@ -1,3 +1,4 @@
+import * as assets from './modules/assets';
 import * as message from './modules/message';
 import * as sc from './modules/sc';
 import * as stake from './modules/stake';
@@ -43,6 +44,7 @@ declare class O3dapiOnt {
         getBalance: (data: any) => any;
         getGrantOng: (data: any) => any;
         getUnboundOng: (data: any) => any;
+        send: typeof assets.send;
     };
     sc: {
         getContract: (data: any) => any;

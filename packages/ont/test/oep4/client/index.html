@@ -22,7 +22,7 @@
   <script type="text/javascript" src="../../../../ont-client/build/bundle.js"></script> -->
 
   <script src="https://cdn.jsdelivr.net/npm/o3-dapi-core@0.2.0/lib/o3-dapi-core.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/o3-dapi-ont@0.3.0/lib/o3-dapi-ont.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/o3-dapi-ont@0.4.0/lib/o3-dapi-ont.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/o3-dapi-ontclient@0.0.1/lib/o3-dapi-ontclient.min.js"></script>
 </head>
 
@@ -126,6 +126,11 @@
           <p>Gas limit override (optional):</p>
           <input id='transferGasLimitInput' type="text" placeholder="20000"/>
 
+          <br/>
+          <p>Broadcast override:</p>
+          <input id='transferBroadcastOverride' type="checkbox"/>
+          <br/>
+
           <button type="button" class="btn btn-primary" onclick="transfer()">Submit</button>
         </div>
 
@@ -147,6 +152,11 @@
           <p>Gas limit override (optional):</p>
           <input id='transferMultiGasLimitInput' type="text" placeholder="20000"/>
 
+          <br/>
+          <p>Broadcast override:</p>
+          <input id='transferMultiBroadcastOverride' type="checkbox"/>
+          <br/>
+
           <button type="button" class="btn btn-primary" onclick="transferMulti()">Submit</button>
         </div>
 
@@ -163,6 +173,12 @@
           <br/>
           <p>Spender address:</p>
           <input id='getAllowanceSpenderInput' type="text" placeholder="AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ"/>
+
+          <br/>
+          <p>Broadcast override:</p>
+          <input id='getAllowanceBroadcastOverride' type="checkbox"/>
+          <br/>
+
           <button type="button" class="btn btn-primary" onclick="getAllowance()">Get allowance</button>
         </div>
 
@@ -191,6 +207,11 @@
           <br/>
           <p>Gas limit override (optional):</p>
           <input id='approveGasLimitInput' type="text" placeholder="20000"/>
+
+          <br/>
+          <p>Broadcast override:</p>
+          <input id='approveBroadcastOverride' type="checkbox"/>
+          <br/>
 
           <button type="button" class="btn btn-primary" onclick="approve()">Submit</button>
         </div>
@@ -221,6 +242,11 @@
           <p>Gas limit override (optional):</p>
           <input id='transferFromGasLimitInput' type="text" placeholder="20000"/>
 
+          <br/>
+          <p>Broadcast override:</p>
+          <input id='transferFromBroadcastOverride' type="checkbox"/>
+          <br/>
+
           <button type="button" class="btn btn-primary" onclick="transferFrom()">Submit</button>
         </div>
 
@@ -237,6 +263,11 @@
           <br/>
           <p>Gas limit override (optional):</p>
           <input id='initGasLimitInput' type="text" placeholder="20000"/>
+
+          <br/>
+          <p>Broadcast override:</p>
+          <input id='initBroadcastOverride' type="checkbox"/>
+          <br/>
 
           <button type="button" class="btn btn-primary" onclick="init()">Init</button>
         </div>

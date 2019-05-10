@@ -101,6 +101,10 @@
           <p class="text">
             <p>Claim ONG attached to staked ONT (non-rewards).</p>
           </p>
+          <br/>
+          <p>Broadcast override:</p>
+          <input id='claimStakedOngBroadcastOverride' type="checkbox"/>
+          <br/>
           <button type="button" class="btn btn-primary" onclick="claimStakedOng()">Claim</button>
         </div>
 
@@ -109,6 +113,10 @@
           <p class="text">
             <p>Claim ONG rewards from staking.</p>
           </p>
+          <br/>
+          <p>Broadcast override:</p>
+          <input id='claimStakedOngRewardsBroadcastOverride' type="checkbox"/>
+          <br/>
           <button type="button" class="btn btn-primary" onclick="claimStakedOngRewards()">Claim</button>
         </div>
 
@@ -119,6 +127,10 @@
           </p>
           <input id='addStakeNodePublicKeyInput' type="text" value="03c8f63775536eb420c96228cdccc9de7d80e87f1b562a6eb93c0838064350aa53"/>
           <input id='addStakeAmountInput' type="text" value="500"/>
+          <br/>
+          <p>Broadcast override:</p>
+          <input id='addStakeBroadcastOverride' type="checkbox"/>
+          <br/>
           <button type="button" class="btn btn-primary" onclick="addStake()">Add</button>
         </div>
 
@@ -129,6 +141,10 @@
           </p>
           <input id='requestStakeWithdrawNodePublicKeyInput' type="text" value="03c8f63775536eb420c96228cdccc9de7d80e87f1b562a6eb93c0838064350aa53"/>
           <input id='requestStakeWithdrawAmountInput' type="text" value="500"/>
+          <br/>
+          <p>Broadcast override:</p>
+          <input id='requestStakeWithdrawBroadcastOverride' type="checkbox"/>
+          <br/>
           <button type="button" class="btn btn-primary" onclick="requestStakeWithdraw()">Request</button>
         </div>
 
@@ -139,6 +155,10 @@
           </p>
           <input id='withdrawStakeNodePublicKeyInput' type="text" value="03c8f63775536eb420c96228cdccc9de7d80e87f1b562a6eb93c0838064350aa53"/>
           <input id='withdrawStakeAmountInput' type="text" value="500"/>
+          <br/>
+          <p>Broadcast override:</p>
+          <input id='withdrawStakeBroadcastOverride' type="checkbox"/>
+          <br/>
           <button type="button" class="btn btn-primary" onclick="withdrawStake()">Withdraw</button>
         </div>
       </div>

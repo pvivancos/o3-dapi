@@ -4,6 +4,7 @@ interface AddStakeInput {
     amount: number;
     gasPrice?: number;
     gasLimit?: number;
+    broadcastOverride?: boolean;
 }
 interface AddStakeOutput {
     txid: string;

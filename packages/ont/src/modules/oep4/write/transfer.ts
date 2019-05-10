@@ -9,6 +9,7 @@ interface TransferInput {
   amount: string;
   gasPrice?: number;
   gasLimit?: number;
+  broadcastOverride?: boolean;
 }
 
 interface TransferOutput {

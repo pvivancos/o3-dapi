@@ -1,5 +1,6 @@
 interface ClaimStakedOngRewardsInput {
     network: string;
+    broadcastOverride?: boolean;
 }
 interface ClaimStakedOngRewardsOutput {
     txid: string;
