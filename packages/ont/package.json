@@ -1,6 +1,6 @@
 {
   "name": "o3-dapi-ont",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Ontology Plugin for o3-dapi",
   "main": "./lib/o3-dapi-ont.min.js",
   "types": "./lib/index.d.ts",

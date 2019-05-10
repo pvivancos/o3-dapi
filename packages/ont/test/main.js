@@ -39,16 +39,19 @@ const deployNeedStorageEle = document.getElementById("deployNeedStorage");
 const deployGasPriceEle = document.getElementById("deployGasPrice");
 const deployGasLimitEle = document.getElementById("deployGasLimit");
 const deployCodeEle = document.getElementById("deployCode");
+const deployBroadcastOverrideEle = document.getElementById("deployBroadcastOverride");
 
 const sendToAddressEle = document.getElementById("sendToAddress");
 const sendAssetEle = document.getElementById("sendAsset");
 const sendAmountEle = document.getElementById("sendAmount");
+const sendBroadcastOverrideEle = document.getElementById("sendBroadcastOverride");
 
 const invokeScriptHashEle = document.getElementById("invokeScriptHash");
 const invokeOperationEle = document.getElementById("invokeOperation");
 const invokeArgsEle = document.getElementById("invokeArgs");
-const gasPriceEle = document.getElementById("gasPrice");
-const gasLimitEle = document.getElementById("gasLimit");
+const invokeGasPriceEle = document.getElementById("invokeGasPrice");
+const invokeGasLimitEle = document.getElementById("invokeGasLimit");
+const invokeBroadcastOverrideEle = document.getElementById("invokeBroadcastOverride");
 
 const signMessageInputEle = document.getElementById("signMessageInput");
 
@@ -279,9 +282,10 @@ function invoke() {
       scriptHash: invokeScriptHashEle.value,
       operation: invokeOperationEle.value,
       args: invokeArgsEle.value && JSON.parse(invokeArgsEle.value),
-      gasPrice: gasPriceEle.value,
-      gasLimit: gasLimitEle.value,
+      gasPrice: invokeGasPriceEle.value,
+      gasLimit: invokeGasLimitEle.value,
       network: networksEle.value,
+      broadcastOverride: invokeBroadcastOverrideEle.checked,
     })
     .then(handleSuccess)
     .catch(handleError);
@@ -304,6 +308,7 @@ function deploy() {
       gasLimit: deployGasLimitEle.value,
       code: deployCodeEle.value,
       network: networksEle.value,
+      broadcastOverride: deployBroadcastOverrideEle.checked,
     })
     .then(handleSuccess)
     .catch(handleError);
@@ -320,6 +325,7 @@ function send() {
       amount: sendAmountEle.value,
       asset: sendAssetEle.value,
       network: networksEle.value,
+      broadcastOverride: sendBroadcastOverrideEle.checked,
     })
     .then(handleSuccess)
     .catch(handleError);

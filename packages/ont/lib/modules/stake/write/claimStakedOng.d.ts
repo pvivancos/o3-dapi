@@ -2,6 +2,7 @@ interface ClaimStakedOngInput {
     network: string;
     gasPrice?: number;
     gasLimit?: number;
+    broadcastOverride?: boolean;
 }
 interface ClaimStakedOngOutput {
     txid: string;

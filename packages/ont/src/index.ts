@@ -2,7 +2,7 @@ declare const global: any;
 const isBrowser = typeof window !== 'undefined';
 const safeWindow = isBrowser ? window : global;
 import * as assets from './modules/assets';
-import * as identity from './modules/identity';
+// import * as identity from './modules/identity';
 import * as message from './modules/message';
 import * as sc from './modules/sc';
 import * as tx from './modules/tx';
@@ -74,6 +74,7 @@ class O3dapiOnt {
     getBalance: methodSelector(this, 'assets', 'getBalance', assets.getBalance),
     getGrantOng: methodSelector(this, 'assets', 'getGrantOng', assets.getGrantOng),
     getUnboundOng: methodSelector(this, 'assets', 'getUnboundOng', assets.getUnboundOng),
+    send: assets.send,
   };
 
   sc = {

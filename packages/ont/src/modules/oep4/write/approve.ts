@@ -9,6 +9,7 @@ interface ApproveInput {
   amount: string;
   gasPrice?: number;
   gasLimit?: number;
+  broadcastOverride?: boolean;
 }
 
 interface ApproveOutput {

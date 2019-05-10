@@ -8,6 +8,7 @@ interface InvokeInput {
     requireIdentity?: boolean;
     payer?: string;
     network: string;
+    broadcastOverride?: boolean;
 }
 interface InvokeOutput {
     txid: string;

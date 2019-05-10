@@ -7,6 +7,7 @@ interface WithdrawStakeInput {
   amount: number;
   gasPrice?: number;
   gasLimit?: number;
+  broadcastOverride?: boolean;
 }
 
 interface WithdrawStakeOutput {

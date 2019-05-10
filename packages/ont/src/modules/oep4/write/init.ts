@@ -6,6 +6,7 @@ interface InitInput {
   scriptHash: string;
   gasPrice?: number;
   gasLimit?: number;
+  broadcastOverride?: boolean;
 }
 
 interface InitOutput {

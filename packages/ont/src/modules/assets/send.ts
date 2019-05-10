@@ -6,6 +6,7 @@ interface SendInput {
   asset: Asset;
   amount: string;
   network: string;
+  broadcastOverride?: boolean;
 }
 
 export function send(data: SendInput): Promise<string> {
