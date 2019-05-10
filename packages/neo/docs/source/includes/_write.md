@@ -67,6 +67,7 @@ The send API can be used for accepting payments from the user in a cryptocurrenc
 ### Success Response
 
 In the case where the "broadcastOverride" input argument is not set, or set to false.
+
 | Parameter | Type   | Description                                                                   |
 |:--------- |:------ |:----------------------------------------------------------------------------- |
 | txid      | String | The transaction id of the send request which can be queried on the blockchain |
@@ -77,6 +78,7 @@ It is reccommended that the DAPP take appropriate levels of risk prevention when
 </aside>
 
 In the case where the "broadcastOverride" input argument is set to True.
+
 | Parameter | Type   | Description                                                                   |
 |:--------- |:------ |:----------------------------------------------------------------------------- |
 | txid      | String | The transaction id of the send request which can be queried on the blockchain |
@@ -192,6 +194,7 @@ Available types are "String"|"Boolean"|"Hash160"|"Hash256"|"Integer"|"ByteArray"
 ### Success Response
 
 In the case where the "broadcastOverride" input argument is not set, or set to false.
+
 | Parameter | Type   | Description                                                                   |
 |:--------- |:------ |:----------------------------------------------------------------------------- |
 | txid      | String | The transaction id of the send request which can be queried on the blockchain |
@@ -202,6 +205,7 @@ It is reccommended that the DAPP take appropriate levels of risk prevention when
 </aside>
 
 In the case where the "broadcastOverride" input argument is set to True.
+
 | Parameter | Type   | Description                                                                   |
 |:--------- |:------ |:----------------------------------------------------------------------------- |
 | txid      | String | The transaction id of the send request which can be queried on the blockchain |
@@ -347,6 +351,7 @@ Will deploy a compiled smart contract to the blockchain with the provided input 
 ### Success Response
 
 In the case where the "broadcastOverride" input argument is not set, or set to false.
+
 | Parameter | Type   | Description                                                                   |
 |:--------- |:------ |:----------------------------------------------------------------------------- |
 | txid      | String | The transaction id of the send request which can be queried on the blockchain |
@@ -357,13 +362,13 @@ It is reccommended that the DAPP take appropriate levels of risk prevention when
 </aside>
 
 In the case where the "broadcastOverride" input argument is set to True.
+
 | Parameter | Type   | Description                                                                   |
 |:--------- |:------ |:----------------------------------------------------------------------------- |
 | txid      | String | The transaction id of the send request which can be queried on the blockchain |
 | signedTx  | String | The serialized signed transaction                                             |
 
 ### Error Response
-
 | Parameter   | Type    | Description                                   |
 |:----------- |:------- |:--------------------------------------------- |
 | type        | String  | The type of error which has occurred          |
