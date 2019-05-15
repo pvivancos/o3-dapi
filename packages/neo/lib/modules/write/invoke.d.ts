@@ -31,7 +31,7 @@ interface AssetInput {
 }
 interface AssetOutput {
     asset: string;
-    address: number;
+    address: string;
     value: string;
 }
 export interface InvokeOutput {
