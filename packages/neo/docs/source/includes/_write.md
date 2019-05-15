@@ -161,7 +161,7 @@ Invoke allows for the generic execution of smart contracts on behalf of the user
 | assetIntentOverrides        | AssetIntentOverrides | Used to specify the exact UTXO's to use for attached assets. If this is provided fee and attachedAssets will be ignored                            |
 | triggerContractVerification | Boolean?             | Adds the instruction to invoke the contract verifican trigger                                                                                      |
 | broadcastOverride           | Boolean?             | If this flag is set to True, the wallet provider will return the signed transaction rather than broadcasting to a node.                            |
-| txHashAttributes            | TxHashAttribute?     | Optional list of tx attribute hash values to be added                                                                                              |
+| txHashAttributes            | TxHashAttribute[]?   | Optional list of tx attribute hash values to be added                                                                                              |
 
 #### Argument
 | Parameter | Type   | Description                                               |
