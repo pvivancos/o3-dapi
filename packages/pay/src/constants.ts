@@ -12,10 +12,14 @@ export interface Asset {
 }
 
 export enum Blockchain {
-  ethereum = 'ethereum',
-  bitcoin = 'bitcoin',
-  neo = 'neo',
-  ontology = 'ontology',
+  ethereum = 'Ethereum',
+  bitcoin = 'Bitcoin',
+  bitcoinCash = 'Bitcoin Cash',
+  litecoin = 'Litecoin',
+  xrp = 'XRP',
+  xlm = 'XLM',
+  // neo = 'neo',
+  // ontology = 'ontology',
 }
 
 export const ASSETS = {
@@ -32,20 +36,36 @@ export const ASSETS = {
     blockchain: Blockchain.bitcoin,
     symbol: 'BTC',
   },
-  NEO: {
-    blockchain: Blockchain.neo,
-    symbol: 'NEO',
+  BCH: {
+    blockchain: Blockchain.bitcoinCash,
+    symbol: 'BCH',
   },
-  GAS: {
-    blockchain: Blockchain.neo,
-    symbol: 'GAS',
+  LTC: {
+    blockchain: Blockchain.litecoin,
+    symbol: 'LTC',
   },
-  ONT: {
-    blockchain: Blockchain.ontology,
-    symbol: 'ONT',
+  XRP: {
+    blockchain: Blockchain.xrp,
+    symbol: 'XRP',
   },
-  ONG: {
-    blockchain: Blockchain.ontology,
-    symbol: 'ONG',
+  XLM: {
+    blockchain: Blockchain.xlm,
+    symbol: 'XLM',
   },
+  // NEO: {
+  //   blockchain: Blockchain.neo,
+  //   symbol: 'NEO',
+  // },
+  // GAS: {
+  //   blockchain: Blockchain.neo,
+  //   symbol: 'GAS',
+  // },
+  // ONT: {
+  //   blockchain: Blockchain.ontology,
+  //   symbol: 'ONT',
+  // },
+  // ONG: {
+  //   blockchain: Blockchain.ontology,
+  //   symbol: 'ONG',
+  // },
 };

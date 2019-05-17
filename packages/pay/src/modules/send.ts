@@ -3,16 +3,15 @@ import { Command, Asset } from '../constants';
 
 export interface SendInputArgs {
   asset: Asset;
-  toAddress: string;
+  to: string;
   amount: string;
-  description: string;
+  description?: string;
+  uniqueId?: string;
 }
 
 export interface SendSuccessOutput {
-  asset: Asset;
-  toAddress: string;
-  amount: string;
-  txid: string;
+  result: boolean;
+  txid?: string; // depending on the account used to send, a txid may not always be available at time of user approval.
 }
 
 export default function send(data: SendInputArgs): Promise<SendSuccessOutput> {

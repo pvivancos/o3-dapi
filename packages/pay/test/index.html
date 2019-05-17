@@ -13,26 +13,27 @@
   </head>
   <body>
     <h1>Request Payment of Digital Assets</h1>
+    <div id="result"></div>
     <script type="text/javascript">
       o3dapi.initPlugins([o3dapiPay]);
+      const resultEle = document.getElementById('result');
 
       o3dapi.onReady(provider => {
         o3dapi.PAY.send({
           asset: o3dapi.PAY.assets.USDC,
-          toAddress: 'ATphdznMVmtdREtr3nWAq4C5H4A8ioV4Bd',
-          amount: '1'
+          // to: 'nick+coinbase@o3.network',
+          to: 'nickfujita@gmail.com',
+          // to: '0x2AaCbC32d6D69C9602434B2b8Be115B31C7941C0',
+          amount: '0.01'
         })
-        .then(result => {
-          const {
-            asset,
-            toAddress,
-            amount,
-            txid,
-          } = result;
-          console.log('sent: ', txid);
+        .then(({result, txid}) => {
+          console.log('result: ', result);
+          console.log('txid (optional): ', txid);
+          resultEle.innerHTML = 'Send successful!'
         })
         .catch(err => {
           console.error('failed or rejected', err);
+          resultEle.innerHTML = 'Send error: ' + JSON.stringify(err)
         });
       });
     </script>
