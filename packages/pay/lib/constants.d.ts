@@ -9,10 +9,12 @@ export interface Asset {
     id?: string;
 }
 export declare enum Blockchain {
-    ethereum = "ethereum",
-    bitcoin = "bitcoin",
-    neo = "neo",
-    ontology = "ontology"
+    ethereum = "Ethereum",
+    bitcoin = "Bitcoin",
+    bitcoinCash = "Bitcoin Cash",
+    litecoin = "Litecoin",
+    xrp = "XRP",
+    xlm = "XLM"
 }
 export declare const ASSETS: {
     USDC: {
@@ -28,19 +30,19 @@ export declare const ASSETS: {
         blockchain: Blockchain;
         symbol: string;
     };
-    NEO: {
+    BCH: {
         blockchain: Blockchain;
         symbol: string;
     };
-    GAS: {
+    LTC: {
         blockchain: Blockchain;
         symbol: string;
     };
-    ONT: {
+    XRP: {
         blockchain: Blockchain;
         symbol: string;
     };
-    ONG: {
+    XLM: {
         blockchain: Blockchain;
         symbol: string;
     };

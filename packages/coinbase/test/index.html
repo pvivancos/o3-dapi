@@ -5,20 +5,111 @@
     <script src="https://cdn.jsdelivr.net/npm/o3-dapi-core@0.3.4/lib/o3-dapi-core.min.js"></script>
     <!-- <script type="text/javascript" src="../build/bundle.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/o3-dapi-coinbase@0.0.2/lib/o3-dapi-coinbase.min.js"></script>
+    <style media="screen">
+      .hidden {
+        display: none;
+      }
+    </style>
   </head>
   <body>
-    <h1>Connecting your Coinbase account to your O3 wallet.</h1>
+
+    <div id='auth-splash' class='hidden'>
+      <img src='./assets/coinbaseConnectHero.png' />
+
+      <div class='instructions'>
+        You will soon be prompted to authorize the connection of your Coinbase account for use inside your O3 wallet. While reviewing the information about the authorization, please be sure to update the daily limit that you would like make available for payments via the O3 app.
+      </div>
+
+      <img src='./assets/screenshotCoinbaseAuth.png' />
+
+      <div class='instructions'>
+        This limit will determine the USD equivilant that you will be able to access each day. Please be sure to set this limit high enough to accomodate any purchases that you plan to make.
+      </div>
+
+      <img src='./assets/screenshotSpendingLimit.png' />
+
+      <div class='instructions'>
+        Please be sure to keep your O3 wallet open to facilitate this connection.
+      </div>
+
+      <div class='submit-btn' onclick='openOauth()'>
+        Connect
+      </div>
+    </div>
+
+    <div id='connecting' class='hidden'>
+      <h1>Connecting your Coinbase account to your O3 wallet.</h1>
+    </div>
+
+    <div id='success' class='hidden'>
+      <h1>Your Coinbase account has successfully be connected to your O3 wallet! You may now close this window.</h1>
+    </div>
+
+    <div id='error' class='hidden'>
+      <h1>There was an error connecting your account. Please be sure you O3 wallet is open, and try again.</h1>
+      <div class='submit-btn' onclick='handleRetry()'>
+        Connect
+      </div>
+    </div>
+
     <script type="text/javascript">
+      const elements = {
+        splashEle: document.getElementById('auth-splash'),
+        connectingEle: document.getElementById('connecting'),
+        successEle: document.getElementById('success'),
+        errorEle: document.getElementById('error'),
+      };
+
       o3dapi.initPlugins([o3dapiCoinbase]);
 
       const urlParams = new URLSearchParams(window.location.search);
       const token = urlParams.get('code');
+      const coinbaseurl = urlParams.get('coinbaseurl');
 
-      o3dapi.onReady(provider => {
-        o3dapi.COINBASE.connect({token})
-        .then(() => window.close())
-        .catch(err => console.error('something went wrong'))
-      });
+      if (token) {
+        handleConnect();
+      } else {
+        showOnly('splashEle');
+      }
+
+      function handleRetry() {
+        if (token) {
+          handleConnect();
+        } else if (coinbaseurl) {
+          openOauth();
+        }
+      }
+
+      function handleConnect() {
+        showOnly('connectingEle');
+        o3dapi.onReady(provider => {
+          o3dapi.COINBASE.connect({token})
+          .then(() => {
+            debugger;
+            showOnly('successEle');
+            window.close();
+          })
+          .catch(err => {
+            debugger;
+            showOnly('errorEle');
+          })
+        });
+      }
+
+      function openOauth() {
+        window.location = decodeURIComponent(coinbaseurl);
+      }
+
+      function showOnly(eleKey) {
+        Object.keys(elements).forEach(key => {
+          debugger;
+          const ele = elements[key];
+          if (!ele) {
+            return;
+          }
+          ele.style = `display: ${key === eleKey ? 'block' : 'none'}`;
+        });
+      }
     </script>
   </body>
 </html>

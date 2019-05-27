@@ -15,19 +15,19 @@ declare class O3dapiPay {
             blockchain: Blockchain;
             symbol: string;
         };
-        NEO: {
+        BCH: {
             blockchain: Blockchain;
             symbol: string;
         };
-        GAS: {
+        LTC: {
             blockchain: Blockchain;
             symbol: string;
         };
-        ONT: {
+        XRP: {
             blockchain: Blockchain;
             symbol: string;
         };
-        ONG: {
+        XLM: {
             blockchain: Blockchain;
             symbol: string;
         };
