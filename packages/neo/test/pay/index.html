@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta property="og:title" content="O3 Swap">
+    <meta property="og:type" content="website" >
+    <meta property="og:url" content="https://o3.network/swap" >
+    <meta property="og:image" content="https://cdn.o3.network/logo/o3swap.png" />
+    <meta property="og:description" content="Buy NEO, GAS, ONT and ONG with popular cryptocurrencies.">
+    <script src="https://cdn.jsdelivr.net/npm/o3-dapi-core@0.3.4/lib/o3-dapi-core.min.js"></script>
+    <!-- <script type="text/javascript" src="../build/bundle.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/o3-dapi-pay@0.0.1/lib/o3-dapi-pay.min.js"></script>
+    <style media="screen">
+      .row {
+        margin-bottom: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class='content-container'>
+      <h1>Request Payment of Digital Assets</h1>
+
+      <div class='row'>
+        <div class='description'>To address:</div>
+        <input id='to-address'/>
+      </div>
+
+      <div class='row'>
+        <div class='description'>Asset:</div>
+        <select id="assets" name="assets"></select>
+      </div>
+
+      <div class='row'>
+        <div class='description'>Amount:</div>
+        <input type='number' id='amount'/>
+      </div>
+
+      <div class='row'>
+        <div class='description'>Description (optional):</div>
+        <input id='description'/>
+      </div>
+
+      <div class='row'>
+        <div class='description'>UniqueTxId (optional):</div>
+        <input id='unique-id'/>
+      </div>
+
+      <button onclick='handleSend()'>Request</button>
+
+      <div id="result"></div>
+    </div>
+    <script type="text/javascript">
+      o3dapi.initPlugins([o3dapiPay]);
+      const resultEle = document.getElementById('result');
+      const toAddressEle = document.getElementById('to-address');
+      const assetsEle = document.getElementById('assets');
+      const amountEle = document.getElementById('amount');
+      const descriptionEle = document.getElementById('description');
+      const uniqueIdEle = document.getElementById('unique-id');
+
+      Object.keys(o3dapi.PAY.assets).forEach(symbol => {
+        const option = document.createElement('option');
+        option.value = symbol;
+        option.label = symbol;
+        option.innerHTML = symbol;
+        assetsEle.append(option);
+      });
+
+      function handleSend() {
+        const params = {
+          asset: o3dapi.PAY.assets[assetsEle.value],
+          to: toAddressEle.value,
+          amount: amountEle.value,
+        };
+        if (!!descriptionEle.value) {
+          params.description = descriptionEle.value;
+        }
+        if (!!uniqueIdEle.value) {
+          params.uniqueId = uniqueIdEle.value;
+        }
+        o3dapi.PAY.send(params)
+        .then(({result, txid}) => {
+          console.log('result: ', result);
+          console.log('txid (optional): ', txid);
+          resultEle.innerHTML = 'Send successful!'
+        })
+        .catch(err => {
+          console.error('failed or rejected', err);
+          resultEle.innerHTML = 'Send error: ' + JSON.stringify(err)
+        });
+      }
+    </script>
+  </body>
+</html>
