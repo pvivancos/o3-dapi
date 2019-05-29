@@ -21,6 +21,7 @@
         max-width: 36rem;
         margin: auto;
         padding-top: 2rem;
+        flex-direction: column;
       }
 
       .submit-btn {
@@ -84,17 +85,17 @@
       </div>
     </div>
 
-    <div id='connecting' class='hidden'>
+    <div id='connecting' class='hidden container'>
       <h1>Connecting your Coinbase account to your O3 wallet.</h1>
     </div>
 
-    <div id='success' class='hidden'>
+    <div id='success' class='hidden container'>
       <h1>Your Coinbase account has successfully be connected to your O3 wallet!</h1>
       <br/>
       <h1>You may now close this window.</h1>
     </div>
 
-    <div id='error' class='hidden'>
+    <div id='error' class='hidden container'>
       <h1>There was an error connecting your account.</h1>
       <h1>Please be sure you O3 wallet is open, and try again.</h1>
       <div class='submit-btn' onclick='handleRetry()'>
