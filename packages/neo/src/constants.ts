@@ -27,6 +27,7 @@ export enum Command {
 
   send = 'send',
   invoke = 'invoke',
+  invokeMulti = 'invokeMulti',
   event = 'event',
   disconnect = 'disconnect',
   signMessage = 'signMessage',

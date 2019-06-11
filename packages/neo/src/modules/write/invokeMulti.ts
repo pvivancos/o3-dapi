@@ -1,18 +1,21 @@
 import { sendMessage } from '../../messaging';
 import { ArgumentDataType, Command } from '../../constants';
 
-export interface InvokeArgs {
+export interface InvokeMultiArgs {
+  fee?: string;
+  network?: string;
+  assetIntentOverrides?: AssetIntentOverrides;
+  broadcastOverride?: boolean;
+  txHashAttributes?: TxHashAttribute[];
+  invokeArgs: Invoke[];
+}
+
+interface Invoke {
   scriptHash: string;
   operation: string;
   args?: Argument[];
-  fee?: string;
-  network?: string;
   attachedAssets?: AttachedAssets;
-  assetIntentOverrides?: AssetIntentOverrides;
   triggerContractVerification?: boolean;
-  broadcastOverride?: boolean;
-  txHashAttributes?: TxHashAttribute[];
-  remark?: string;
 }
 
 interface Argument {
@@ -49,9 +52,9 @@ export interface InvokeOutput {
   nodeUrl: string;
 }
 
-export function invoke(data: InvokeArgs): Promise<InvokeOutput> {
+export function invokeMulti(data: InvokeMultiArgs): Promise<InvokeOutput> {
   return sendMessage({
-    command: Command.invoke,
+    command: Command.invokeMulti,
     data,
   });
 }
