@@ -316,7 +316,7 @@ Invoke Multi functions the same as Invoke, but accepts inputs to execute multipl
 | fee                  | String?              | If a fee is specified then the wallet SHOULD NOT override it, if a fee is not specified the wallet SHOULD allow the user to attach an optional fee |
 | network              | String               | Network alias to submit this request to.                                                                                                           |
 | assetIntentOverrides | AssetIntentOverrides | Used to specify the exact UTXO's to use for attached assets. If this is provided fee and attachedAssets will be ignored                            |
-| invokeArgs           | InvokeArguments      | Array of contract invoke inputs                                                                                                                    |
+| invokeArgs           | InvokeArguments[]    | Array of contract invoke inputs                                                                                                                    |
 | broadcastOverride    | Boolean?             | If this flag is set to True, the wallet provider will return the signed transaction rather than broadcasting to a node.                            |
 | txHashAttributes     | TxHashAttribute[]?   | Optional list of tx attribute hash values to be added                                                                                              |
 
