@@ -92,7 +92,7 @@ In the case where the "broadcastOverride" input argument is set to True.
 | description | String? | A description of the error which has occured |
 | data        | String? | Any raw data associated with the error       |
 
-## Invoke
+## invoke
 ```typescript
 o3dapi.NEO.invoke({
   scriptHash: '505663a29d83663a838eee091249abd167e928f5',
@@ -221,6 +221,174 @@ In the case where the "broadcastOverride" input argument is not set, or set to f
 
 <aside class="warning">
 It is reccommended that the DAPP take appropriate levels of risk prevention when accepting transactions. The dapp can query the mempool of a known node to ensure that the transaction will indeed be broadcast on the network.
+</aside>
+
+In the case where the "broadcastOverride" input argument is set to True.
+
+| Parameter | Type   | Description                                                                   |
+|:--------- |:------ |:----------------------------------------------------------------------------- |
+| txid      | String | The transaction id of the send request which can be queried on the blockchain |
+| signedTx  | String | The serialized signed transaction                                             |
+
+### Error Response
+| Parameter   | Type    | Description                                  |
+|:----------- |:------- |:-------------------------------------------- |
+| type        | String  | The type of error which has occured          |
+| description | String? | A description of the error which has occured |
+| data        | String? | Any raw data associated with the error       |
+
+
+## invokeMulti
+```typescript
+o3dapi.NEO.invokeMulti({
+  invokeArgs: [
+    {
+      scriptHash: '505663a29d83663a838eee091249abd167e928f5',
+      operation: 'storeData',
+      arguments: [
+        {
+          type: 'string',
+          value: 'hello'
+        }
+      ],
+      attachedAssets: {
+        NEO: '100',
+        GAS: '0.0001',
+      },
+      triggerContractVerification: true,
+    },
+    {
+      scriptHash: '505663a29d83663a838eee091249abd167e928f5',
+      operation: 'purchaseTicket',
+      arguments: [
+        {
+          type: 'number',
+          value: '10'
+        }
+      ],
+    }
+  ],
+  fee: '0.001',
+  network: 'TestNet',
+  broadcastOverride: false,
+  txHashAttributes: [
+    {
+      type: 'Boolean',
+      value: true,
+      txAttrUsage: 'Hash1'
+    }
+  ]
+})
+.then(({txid, nodeUrl}: InvokeOutput) => {
+  console.log('Invoke transaction success!');
+  console.log('Transaction ID: ' + txid);
+  console.log('RPC node URL: ' + nodeUrl);
+})
+.catch(({type: string, description: string, data: any}) => {
+  switch(type) {
+    case NO_PROVIDER:
+      console.log('No provider available.');
+      break;
+    case RPC_ERROR:
+      console.log('There was an error when broadcasting this transaction to the network.');
+      break;
+    case CANCELED:
+      console.log('The user has canceled this transaction.');
+      break;
+  }
+});
+```
+
+> Example Response
+
+```typescript
+{
+  txid: 'ed54fb38dff371be6e3f96e4880405758c07fe6dd1295eb136fe15f311e9ff77',
+  nodeUrl: 'http://seed7.ngd.network:10332',
+}:
+```
+
+Invoke Multi functions the same as Invoke, but accepts inputs to execute multiple invokes in the same transaction.
+
+### Input arguments
+| Parameter            | Type                 | Description                                                                                                                                        |
+|:-------------------- |:-------------------- |:-------------------------------------------------------------------------------------------------------------------------------------------------- |
+| fee                  | String?              | If a fee is specified then the wallet SHOULD NOT override it, if a fee is not specified the wallet SHOULD allow the user to attach an optional fee |
+| network              | String               | Network alias to submit this request to.                                                                                                           |
+| assetIntentOverrides | AssetIntentOverrides | Used to specify the exact UTXO's to use for attached assets. If this is provided fee and attachedAssets will be ignored                            |
+| invokeArgs           | InvokeArguments      | Array of contract invoke inputs                                                                                                                    |
+| broadcastOverride    | Boolean?             | If this flag is set to True, the wallet provider will return the signed transaction rather than broadcasting to a node.                            |
+| txHashAttributes     | TxHashAttribute[]?   | Optional list of tx attribute hash values to be added                                                                                              |
+
+#### InvokeArguments
+| Parameter                   | Type            | Description                                                                                                      |
+|:--------------------------- |:--------------- |:---------------------------------------------------------------------------------------------------------------- |
+| scriptHash                  | String          | The script hash of the contract that you wish to invoke                                                          |
+| operation                   | String          | The operation on the smart contract that you wish to call. This can be fetched from the contract ABI             |
+| args                        | Argument[]      | A list of arguments necessary to perform on the operation you wish to call                                       |
+| attachedAssets              | AttachedAssets? | Describes the assets to attach with the smart contract, e.g. attaching assets to mint tokens during a token sale |
+| triggerContractVerification | Boolean?        | Adds the instruction to invoke the contract verifican trigger                                                    |
+
+#### Argument
+| Parameter | Type   | Description                                               |
+|:--------- |:------ |:--------------------------------------------------------- |
+| type      | String | The type of the argument with you are using               |
+| value     | String | String representation of the argument which you are using |
+
+<aside class =notice>
+Available types are "String"|"Boolean"|"Hash160"|"Hash256"|"Integer"|"ByteArray"|"Array"|"Address"
+</aside>
+
+#### TxHashAttribute
+| Parameter   | Type   | Description                                               |
+|:----------- |:------ |:--------------------------------------------------------- |
+| type        | String | The type of the argument with you are using               |
+| value       | String | String representation of the argument which you are using |
+| txAttrUsage | String | Attribute usage value                                     |
+
+<aside class =notice>
+Available txAttrUsages are Hash1'|'Hash2'|'Hash3'|'Hash4'|'Hash5'|'Hash6'|'Hash7'|'Hash8'|'Hash9'|'Hash10'|'Hash11'|'Hash12'|'Hash13'|'Hash14'|'Hash15'
+</aside>
+
+#### AttachedAssets
+| Parameter | Type    | Description                                            |
+|:--------- |:------- |:------------------------------------------------------ |
+| NEO       | String? | The amount of NEO to attach to the contract invocation |
+| GAS       | String? | The amount of GAS to attach to the contract invocation |
+
+#### AssetIntentOverrides
+| Parameter | Type          | Description                                        |
+|:--------- |:------------- |:-------------------------------------------------- |
+| inputs    | AssetInput[]  | A list of UTXO inputs to use for this transaction  |
+| outputs   | AssetOutput[] | A list of UTXO outputs to use for this transaction |
+
+#### AssetInput
+| Parameter | Type   | Description                                              |
+|:--------- |:------ |:-------------------------------------------------------- |
+| txid      | String | Transaction id to be used as input                       |
+| index     | String | Index of the UTXO, can be found from transaction details |
+
+#### AssetOutput
+| Parameter | Type   | Description                                                           |
+|:--------- |:------ |:--------------------------------------------------------------------- |
+| asset     | String | A list of UTXO inputs to use for this transaction                     |
+| address   | String | A list of UTXO outputs to use for this transaction                    |
+| value     | String | String representation of double or integer value to be used as output |
+
+
+### Success Response
+
+In the case where the "broadcastOverride" input argument is not set, or set to false.
+
+| Parameter | Type   | Description                                                                   |
+|:--------- |:------ |:----------------------------------------------------------------------------- |
+| txid      | String | The transaction id of the send request which can be queried on the blockchain |
+| nodeURL   | String | The node to which the transaction was submitted to                            |
+
+<aside class="warning">
+It is reccommended that the DAPP take appropriate levels of risk prevention when accepting transactions. The dapp can query the mempool of a known node to ensure that the transaction will indeed be broadcast on the network.
+
+dApp will be responsible for setting a network fee appropriate for the size of the transaction.
 </aside>
 
 In the case where the "broadcastOverride" input argument is set to True.
