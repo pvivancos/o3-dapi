@@ -1,6 +1,6 @@
 {
   "name": "neo-dapi",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "NEO dAPI",
   "main": "./lib/neo-dapi.min.js",
   "types": "./lib/index.d.ts",
