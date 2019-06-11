@@ -29,6 +29,31 @@ var app = new Vue({
 			triggerContractVerification: false,
 			broadcastOverride: false,
 		},
+		invokeMultiInput: {
+			invokeArgs: [
+				{
+					scriptHash: "c36aee199dbba6c3f439983657558cfb67629599",
+					operation: "transfer",
+					args: [{"type":"ByteArray","value":""},{"type":"ByteArray","value":""},{"type":"ByteArray","value":"0100000000000000"}],
+					triggerContractVerification: false,
+					attachedAssets: {
+						'NEO': 1,
+					}
+				},
+				{
+					scriptHash: "c36aee199dbba6c3f439983657558cfb67629599",
+					operation: "transfer",
+					args: [{"type":"ByteArray","value":""},{"type":"ByteArray","value":""},{"type":"ByteArray","value":"0100000000000000"}],
+					triggerContractVerification: true,
+					attachedAssets: {
+						'NEO': 2,
+					}
+				}
+			],
+			fee: "0.11",
+			network: "TestNet",
+			broadcastOverride: false,
+		},
 		sendInput: {
 			fromAddress: "ANtdacYPFN6zkarDwVt5vH55FKsJU8SapW",
 			toAddress: "ANtdacYPFN6zkarDwVt5vH55FKsJU8SapW",
@@ -66,6 +91,7 @@ var app = new Vue({
 			this.getBalanceInput.network = value;
 			this.invokeReadInput.network = value;
 			this.invokeInput.network = value;
+			this.invokeMultiInput.network = value;
 			this.sendInput.network = value;
 			this.getBlockInput.network = value;
 			this.getTransactionInput.network = value;
@@ -171,6 +197,21 @@ function invokeRead(inputElement, resultElem) {
 function invoke(inputElement, resultElem) {
 	try {
 		o3dapi.NEO.invoke(JSON.parse(document.getElementById(inputElement).value))
+		.then(function(data){
+			const formatted = syntaxHighlight(data);
+			document.getElementById(resultElem).innerHTML = formatted;
+		})
+		.catch(function(error){
+			document.getElementById(resultElem).innerHTML = syntaxHighlight(error);
+		});
+	} catch (err) {
+		document.getElementById(resultElem).innerHTML = 'invalid JSON input';
+	}
+}
+
+function invokeMulti(inputElement, resultElem) {
+	try {
+		o3dapi.NEO.invokeMulti(JSON.parse(document.getElementById(inputElement).value))
 		.then(function(data){
 			const formatted = syntaxHighlight(data);
 			document.getElementById(resultElem).innerHTML = formatted;

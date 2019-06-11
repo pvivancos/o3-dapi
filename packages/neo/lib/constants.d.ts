@@ -24,6 +24,7 @@ export declare enum Command {
     getApplicationLog = "getApplicationLog",
     send = "send",
     invoke = "invoke",
+    invokeMulti = "invokeMulti",
     event = "event",
     disconnect = "disconnect",
     signMessage = "signMessage",

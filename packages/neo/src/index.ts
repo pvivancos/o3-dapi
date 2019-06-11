@@ -15,6 +15,7 @@ import { getApplicationLog, ApplicationLog } from './modules/read/getApplication
 
 import { send, SendArgs, SendOutput } from './modules/write/send';
 import { invoke, InvokeArgs, InvokeOutput } from './modules/write/invoke';
+import { invokeMulti, InvokeMultiArgs } from './modules/write/invokeMulti';
 import { deploy, DeployArgs, DeployOutput } from './modules/write/deploy';
 import { signMessage, SignMessageInput, Signature } from './modules/write/signMessage';
 
@@ -45,6 +46,7 @@ class O3dapiNeo {
 
   send = send;
   invoke = invoke;
+  invokeMulti = invokeMulti;
   deploy = deploy;
   signMessage = signMessage;
 
@@ -84,6 +86,7 @@ export type getApplicationLog = (data: TransactionInputArgs) => Promise<Applicat
 
 export type send = (data: SendArgs) => Promise<SendOutput>;
 export type invoke = (data: InvokeArgs) => Promise<InvokeOutput>;
+export type invokeMulti = (data: InvokeMultiArgs) => Promise<InvokeOutput>;
 export type deploy = (data: DeployArgs) => Promise<DeployOutput>;
 export type signMessage = (data: SignMessageInput) => Promise<Signature>;
 

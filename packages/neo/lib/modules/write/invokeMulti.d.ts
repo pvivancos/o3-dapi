@@ -1,16 +1,18 @@
 import { ArgumentDataType } from '../../constants';
-export interface InvokeArgs {
+export interface InvokeMultiArgs {
+    fee?: string;
+    network?: string;
+    assetIntentOverrides?: AssetIntentOverrides;
+    broadcastOverride?: boolean;
+    txHashAttributes?: TxHashAttribute[];
+    invokeArgs: Invoke[];
+}
+interface Invoke {
     scriptHash: string;
     operation: string;
     args?: Argument[];
-    fee?: string;
-    network?: string;
     attachedAssets?: AttachedAssets;
-    assetIntentOverrides?: AssetIntentOverrides;
     triggerContractVerification?: boolean;
-    broadcastOverride?: boolean;
-    txHashAttributes?: TxHashAttribute[];
-    remark?: string;
 }
 interface Argument {
     type: ArgumentDataType;
@@ -39,6 +41,6 @@ export interface InvokeOutput {
     txid: string;
     nodeUrl: string;
 }
-export declare function invoke(data: InvokeArgs): Promise<InvokeOutput>;
+export declare function invokeMulti(data: InvokeMultiArgs): Promise<InvokeOutput>;
 export {};
-//# sourceMappingURL=invoke.d.ts.map
+//# sourceMappingURL=invokeMulti.d.ts.map

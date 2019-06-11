@@ -11,6 +11,7 @@ import { TransactionInputArgs, TransactionDetails } from './modules/read/getTran
 import { ApplicationLog } from './modules/read/getApplicationLog';
 import { send, SendArgs, SendOutput } from './modules/write/send';
 import { invoke, InvokeArgs, InvokeOutput } from './modules/write/invoke';
+import { invokeMulti, InvokeMultiArgs } from './modules/write/invokeMulti';
 import { deploy, DeployArgs, DeployOutput } from './modules/write/deploy';
 import { signMessage, SignMessageInput, Signature } from './modules/write/signMessage';
 import { disconnect } from './modules/disconnect';
@@ -32,6 +33,7 @@ declare class O3dapiNeo {
     getApplicationLog: getApplicationLog;
     send: typeof send;
     invoke: typeof invoke;
+    invokeMulti: typeof invokeMulti;
     deploy: typeof deploy;
     signMessage: typeof signMessage;
     addEventListener: typeof addEventListener;
@@ -59,6 +61,7 @@ export declare type getTransaction = (data: TransactionInputArgs) => Promise<Tra
 export declare type getApplicationLog = (data: TransactionInputArgs) => Promise<ApplicationLog>;
 export declare type send = (data: SendArgs) => Promise<SendOutput>;
 export declare type invoke = (data: InvokeArgs) => Promise<InvokeOutput>;
+export declare type invokeMulti = (data: InvokeMultiArgs) => Promise<InvokeOutput>;
 export declare type deploy = (data: DeployArgs) => Promise<DeployOutput>;
 export declare type signMessage = (data: SignMessageInput) => Promise<Signature>;
 export declare type disconnect = () => Promise<boolean>;
