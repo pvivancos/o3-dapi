@@ -503,11 +503,11 @@ o3dapi.NEO.invokeRead({
   operation: 'calculatorAdd',
   arguments: [
     {
-      type: 'integer',
+      type: o3dapi.NEO.Constants.ArgumentDataType.INTEGER,
       value: 2
     },
     {
-      type: 'integer',
+      type: o3dapi.NEO.Constants.ArgumentDataType.INTEGER,
       value: 10
     }
   ],

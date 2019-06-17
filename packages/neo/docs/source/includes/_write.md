@@ -99,7 +99,7 @@ o3dapi.NEO.invoke({
   operation: 'storeData',
   arguments: [
     {
-      type: 'string',
+      type: o3dapi.NEO.Constants.ArgumentDataType.STRING,
       value: 'hello'
     }
   ],
@@ -247,7 +247,7 @@ o3dapi.NEO.invokeMulti({
       operation: 'storeData',
       arguments: [
         {
-          type: 'string',
+          type: o3dapi.NEO.Constants.ArgumentDataType.STRING,
           value: 'hello'
         }
       ],
@@ -262,7 +262,7 @@ o3dapi.NEO.invokeMulti({
       operation: 'purchaseTicket',
       arguments: [
         {
-          type: 'number',
+          type: o3dapi.NEO.Constants.ArgumentDataType.INTEGER,
           value: '10'
         }
       ],
@@ -273,7 +273,7 @@ o3dapi.NEO.invokeMulti({
   broadcastOverride: false,
   txHashAttributes: [
     {
-      type: 'Boolean',
+      type: o3dapi.NEO.Constants.ArgumentDataType.BOOLEAN,
       value: true,
       txAttrUsage: 'Hash1'
     }
