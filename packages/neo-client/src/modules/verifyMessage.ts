@@ -20,7 +20,7 @@ export default function verifyMessage({
   return new Promise((resolve, reject) => {
     try {
       const parameterHexString = u.str2hexstring(message);
-      const lengthHex = ((parameterHexString.length / 2).toString(16) as any).padStart(2, '0');
+      const lengthHex = u.num2VarInt(parameterHexString.length / 2);
       const concatenatedString = lengthHex + parameterHexString;
       const messageHex = '010001f0' + concatenatedString + '0000';
       const result = wallet.verifyMessage(u.hexstring2str(messageHex), data, publicKey);
