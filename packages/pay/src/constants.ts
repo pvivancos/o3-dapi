@@ -3,6 +3,7 @@ export const VERSION = 'v1';
 
 export enum Command {
   send = 'send',
+  getAccount = 'getAccount',
 }
 
 export interface Asset {
@@ -16,22 +17,16 @@ export enum Blockchain {
   bitcoin = 'Bitcoin',
   bitcoinCash = 'Bitcoin Cash',
   litecoin = 'Litecoin',
-  xrp = 'XRP',
-  xlm = 'XLM',
+  ripple = 'ripple',
+  stellar = 'stellar',
   // neo = 'neo',
   // ontology = 'ontology',
+  zcash = 'zcash',
+  eosio = 'eosio',
+  ethereumClassic = 'ethereum_classic',
 }
 
 export const ASSETS = {
-  USDC: {
-    blockchain: Blockchain.ethereum,
-    symbol: 'USDC',
-    id: '0xb9e31a22e3a1c743c6720f3b723923e91f3c0f8b',
-  },
-  ETH: {
-    blockchain: Blockchain.ethereum,
-    symbol: 'ETH',
-  },
   BTC: {
     blockchain: Blockchain.bitcoin,
     symbol: 'BTC',
@@ -45,12 +40,48 @@ export const ASSETS = {
     symbol: 'LTC',
   },
   XRP: {
-    blockchain: Blockchain.xrp,
+    blockchain: Blockchain.ripple,
     symbol: 'XRP',
   },
   XLM: {
-    blockchain: Blockchain.xlm,
+    blockchain: Blockchain.stellar,
     symbol: 'XLM',
+  },
+  ZEC: {
+    blockchain: Blockchain.zcash,
+    symbol: 'ZEC',
+  },
+  EOS: {
+    blockchain: Blockchain.eosio,
+    symbol: 'EOS',
+  },
+  ETC: {
+    blockchain: Blockchain.ethereumClassic,
+    symbol: 'ETC',
+  },
+  ETH: {
+    blockchain: Blockchain.ethereum,
+    symbol: 'ETH',
+  },
+  USDC: {
+    blockchain: Blockchain.ethereum,
+    symbol: 'USDC',
+  },
+  DAI: {
+    blockchain: Blockchain.ethereum,
+    symbol: 'DAI',
+  },
+  ZRX: {
+    blockchain: Blockchain.ethereum,
+    symbol: 'ZRX',
+  },
+  BAT: {
+    blockchain: Blockchain.ethereum,
+    symbol: 'BAT',
+  },
+  REP: {
+    blockchain: Blockchain.ethereum,
+    symbol: 'REP',
   },
   // NEO: {
   //   blockchain: Blockchain.neo,

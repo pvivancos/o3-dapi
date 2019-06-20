@@ -1,7 +1,8 @@
 export declare const BLOCKCHAIN = "PAY";
 export declare const VERSION = "v1";
 export declare enum Command {
-    send = "send"
+    send = "send",
+    getAccount = "getAccount"
 }
 export interface Asset {
     blockchain: string;
@@ -13,19 +14,13 @@ export declare enum Blockchain {
     bitcoin = "Bitcoin",
     bitcoinCash = "Bitcoin Cash",
     litecoin = "Litecoin",
-    xrp = "XRP",
-    xlm = "XLM"
+    ripple = "ripple",
+    stellar = "stellar",
+    zcash = "zcash",
+    eosio = "eosio",
+    ethereumClassic = "ethereum_classic"
 }
 export declare const ASSETS: {
-    USDC: {
-        blockchain: Blockchain;
-        symbol: string;
-        id: string;
-    };
-    ETH: {
-        blockchain: Blockchain;
-        symbol: string;
-    };
     BTC: {
         blockchain: Blockchain;
         symbol: string;
@@ -43,6 +38,42 @@ export declare const ASSETS: {
         symbol: string;
     };
     XLM: {
+        blockchain: Blockchain;
+        symbol: string;
+    };
+    ZEC: {
+        blockchain: Blockchain;
+        symbol: string;
+    };
+    EOS: {
+        blockchain: Blockchain;
+        symbol: string;
+    };
+    ETC: {
+        blockchain: Blockchain;
+        symbol: string;
+    };
+    ETH: {
+        blockchain: Blockchain;
+        symbol: string;
+    };
+    USDC: {
+        blockchain: Blockchain;
+        symbol: string;
+    };
+    DAI: {
+        blockchain: Blockchain;
+        symbol: string;
+    };
+    ZRX: {
+        blockchain: Blockchain;
+        symbol: string;
+    };
+    BAT: {
+        blockchain: Blockchain;
+        symbol: string;
+    };
+    REP: {
         blockchain: Blockchain;
         symbol: string;
     };

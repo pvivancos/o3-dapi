@@ -8,8 +8,8 @@
     <meta property="og:image" content="https://cdn.o3.network/logo/o3swap.png" />
     <meta property="og:description" content="Buy NEO, GAS, ONT and ONG with popular cryptocurrencies.">
     <script src="https://cdn.jsdelivr.net/npm/o3-dapi-core@0.3.4/lib/o3-dapi-core.min.js"></script>
-    <!-- <script type="text/javascript" src="../build/bundle.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/o3-dapi-pay@0.0.1/lib/o3-dapi-pay.min.js"></script>
+    <script type="text/javascript" src="../../../pay/build/bundle.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/o3-dapi-pay@0.0.1/lib/o3-dapi-pay.min.js"></script> -->
     <style media="screen">
       .row {
         margin-bottom: 2rem;
@@ -48,23 +48,45 @@
       <button onclick='handleSend()'>Request</button>
 
       <div id="result"></div>
+
+      <br/>
+      <br/>
+      <h1>Get account to send assets to user</h1>
+
+      <select id="toAssets" name="toAssets"></select>
+
+      <button onclick='handleGetAccount()'>getAccount</button>
+
+      <div id="getAccountResult"></div>
+
+      <br/>
+
+      <div id="result"></div>
+
     </div>
     <script type="text/javascript">
       o3dapi.initPlugins([o3dapiPay]);
       const resultEle = document.getElementById('result');
+      const getAccountResultEle = document.getElementById('getAccountResult');
       const toAddressEle = document.getElementById('to-address');
       const assetsEle = document.getElementById('assets');
+      const toAssetsEle = document.getElementById('toAssets');
       const amountEle = document.getElementById('amount');
       const descriptionEle = document.getElementById('description');
       const uniqueIdEle = document.getElementById('unique-id');
 
       Object.keys(o3dapi.PAY.assets).forEach(symbol => {
-        const option = document.createElement('option');
-        option.value = symbol;
-        option.label = symbol;
-        option.innerHTML = symbol;
-        assetsEle.append(option);
+        appentOption(assetsEle, symbol, symbol, symbol);
+        appentOption(toAssetsEle, symbol, symbol, symbol);
       });
+
+      function appentOption(ele, value, label, innerHTML) {
+        const option = document.createElement('option');
+        option.value = value;
+        option.label = label;
+        option.innerHTML = innerHTML;
+        ele.append(option);
+      }
 
       function handleSend() {
         const params = {
@@ -87,6 +109,24 @@
         .catch(err => {
           console.error('failed or rejected', err);
           resultEle.innerHTML = 'Send error: ' + JSON.stringify(err)
+        });
+      }
+
+      function handleGetAccount() {
+        const params = {
+          asset: o3dapi.PAY.assets[toAssetsEle.value],
+        };
+
+        o3dapi.PAY.getAccount(params)
+        .then(res => {
+          const { address, tag } = res;
+          console.log('address: ', address);
+          console.log('tag (optional): ', tag);
+          getAccountResultEle.innerHTML = JSON.stringify(res);
+        })
+        .catch(err => {
+          console.error('failed or rejected', err);
+          getAccountResultEle.innerHTML = 'Send error: ' + JSON.stringify(err)
         });
       }
     </script>
