@@ -59,6 +59,22 @@ declare class O3dapiPay {
             blockchain: Blockchain;
             symbol: string;
         };
+        NEO: {
+            blockchain: Blockchain;
+            symbol: string;
+        };
+        GAS: {
+            blockchain: Blockchain;
+            symbol: string;
+        };
+        ONT: {
+            blockchain: Blockchain;
+            symbol: string;
+        };
+        ONG: {
+            blockchain: Blockchain;
+            symbol: string;
+        };
     };
     send: typeof send;
     getAccount: typeof getAccount;

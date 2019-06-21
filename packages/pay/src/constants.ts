@@ -18,8 +18,8 @@ export enum Blockchain {
   litecoin = 'Litecoin',
   ripple = 'ripple',
   stellar = 'stellar',
-  // neo = 'neo',
-  // ontology = 'ontology',
+  neo = 'neo',
+  ontology = 'ontology',
   zcash = 'zcash',
   eosio = 'eosio',
   ethereumClassic = 'ethereum_classic',
@@ -82,20 +82,20 @@ export const ASSETS = {
     blockchain: Blockchain.ethereum,
     symbol: 'REP',
   },
-  // NEO: {
-  //   blockchain: Blockchain.neo,
-  //   symbol: 'NEO',
-  // },
-  // GAS: {
-  //   blockchain: Blockchain.neo,
-  //   symbol: 'GAS',
-  // },
-  // ONT: {
-  //   blockchain: Blockchain.ontology,
-  //   symbol: 'ONT',
-  // },
-  // ONG: {
-  //   blockchain: Blockchain.ontology,
-  //   symbol: 'ONG',
-  // },
+  NEO: {
+    blockchain: Blockchain.neo,
+    symbol: 'NEO',
+  },
+  GAS: {
+    blockchain: Blockchain.neo,
+    symbol: 'GAS',
+  },
+  ONT: {
+    blockchain: Blockchain.ontology,
+    symbol: 'ONT',
+  },
+  ONG: {
+    blockchain: Blockchain.ontology,
+    symbol: 'ONG',
+  },
 };

@@ -15,6 +15,8 @@ export declare enum Blockchain {
     litecoin = "Litecoin",
     ripple = "ripple",
     stellar = "stellar",
+    neo = "neo",
+    ontology = "ontology",
     zcash = "zcash",
     eosio = "eosio",
     ethereumClassic = "ethereum_classic"
@@ -73,6 +75,22 @@ export declare const ASSETS: {
         symbol: string;
     };
     REP: {
+        blockchain: Blockchain;
+        symbol: string;
+    };
+    NEO: {
+        blockchain: Blockchain;
+        symbol: string;
+    };
+    GAS: {
+        blockchain: Blockchain;
+        symbol: string;
+    };
+    ONT: {
+        blockchain: Blockchain;
+        symbol: string;
+    };
+    ONG: {
         blockchain: Blockchain;
         symbol: string;
     };
