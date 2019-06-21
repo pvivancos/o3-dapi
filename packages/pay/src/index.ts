@@ -1,6 +1,6 @@
 import { initMessaging } from './messaging';
 import send, { SendInputArgs, SendSuccessOutput } from './modules/send';
-import getAccount, { GetAccountSuccessOutput } from './modules/getAccount';
+import getAccount, { GetAccountSuccessOutput, GetAccountArgs } from './modules/getAccount';
 import { BLOCKCHAIN, ASSETS, Asset } from './constants';
 
 class O3dapiPay {
@@ -18,4 +18,4 @@ class O3dapiPay {
 
 export default O3dapiPay;
 export type send = (args: SendInputArgs) => Promise<SendSuccessOutput>;
-export type getAccount = (asset: Asset) => Promise<GetAccountSuccessOutput>;
+export type getAccount = (args: GetAccountArgs) => Promise<GetAccountSuccessOutput>;

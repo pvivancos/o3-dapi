@@ -9,7 +9,6 @@ export enum Command {
 export interface Asset {
   blockchain: string;
   symbol: string;
-  id?: string;
 }
 
 export enum Blockchain {

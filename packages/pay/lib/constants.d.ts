@@ -7,7 +7,6 @@ export declare enum Command {
 export interface Asset {
     blockchain: string;
     symbol: string;
-    id?: string;
 }
 export declare enum Blockchain {
     ethereum = "Ethereum",

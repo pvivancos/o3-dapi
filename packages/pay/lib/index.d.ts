@@ -1,6 +1,5 @@
 import send, { SendInputArgs, SendSuccessOutput } from './modules/send';
-import getAccount, { GetAccountSuccessOutput } from './modules/getAccount';
-import { Asset } from './constants';
+import getAccount, { GetAccountSuccessOutput, GetAccountArgs } from './modules/getAccount';
 declare class O3dapiPay {
     static blockchain: string;
     assets: {
@@ -67,5 +66,5 @@ declare class O3dapiPay {
 }
 export default O3dapiPay;
 export declare type send = (args: SendInputArgs) => Promise<SendSuccessOutput>;
-export declare type getAccount = (asset: Asset) => Promise<GetAccountSuccessOutput>;
+export declare type getAccount = (args: GetAccountArgs) => Promise<GetAccountSuccessOutput>;
 //# sourceMappingURL=index.d.ts.map
