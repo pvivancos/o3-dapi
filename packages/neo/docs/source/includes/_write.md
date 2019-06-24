@@ -205,8 +205,8 @@ Available txAttrUsages are Hash1'|'Hash2'|'Hash3'|'Hash4'|'Hash5'|'Hash6'|'Hash7
 #### AssetOutput
 | Parameter | Type   | Description                                                           |
 |:--------- |:------ |:--------------------------------------------------------------------- |
-| asset     | String | A list of UTXO inputs to use for this transaction                     |
-| address   | String | A list of UTXO outputs to use for this transaction                    |
+| asset     | String | Asset of the UTXO                                                     |
+| address   | String | Address to receive the UTXO                                           |
 | value     | String | String representation of double or integer value to be used as output |
 
 
