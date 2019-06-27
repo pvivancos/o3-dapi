@@ -5,6 +5,7 @@ export interface SendInputArgs {
   asset: Asset;
   to: string;
   amount: string;
+  tag?: string; // if the blockchain requires a tag in addition to address this will be populated
   description?: string;
   uniqueId?: string;
 }

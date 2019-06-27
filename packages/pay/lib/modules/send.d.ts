@@ -3,6 +3,7 @@ export interface SendInputArgs {
     asset: Asset;
     to: string;
     amount: string;
+    tag?: string;
     description?: string;
     uniqueId?: string;
 }

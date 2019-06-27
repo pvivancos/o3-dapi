@@ -9,7 +9,7 @@
     <meta property="og:description" content="Buy NEO, GAS, ONT and ONG with popular cryptocurrencies.">
     <script src="https://cdn.jsdelivr.net/npm/o3-dapi-core@0.3.4/lib/o3-dapi-core.min.js"></script>
     <!-- <script type="text/javascript" src="../../../pay/build/bundle.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/o3-dapi-pay@0.1.1/lib/o3-dapi-pay.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/o3-dapi-pay@0.2.0/lib/o3-dapi-pay.min.js"></script>
     <style media="screen">
       .row {
         margin-bottom: 2rem;
@@ -23,6 +23,11 @@
       <div class='row'>
         <div class='description'>To address:</div>
         <input id='to-address'/>
+      </div>
+
+      <div class='row'>
+        <div class='description'>To tag (required for some chains):</div>
+        <input id='tag'/>
       </div>
 
       <div class='row'>
@@ -74,6 +79,7 @@
       const amountEle = document.getElementById('amount');
       const descriptionEle = document.getElementById('description');
       const uniqueIdEle = document.getElementById('unique-id');
+      const tagEle = document.getElementById('tag');
 
       Object.keys(o3dapi.PAY.assets).forEach(symbol => {
         appentOption(assetsEle, symbol, symbol, symbol);
@@ -94,6 +100,9 @@
           to: toAddressEle.value,
           amount: amountEle.value,
         };
+        if (!!tagEle.value) {
+          params.tag = tagEle.value;
+        }
         if (!!descriptionEle.value) {
           params.description = descriptionEle.value;
         }
@@ -121,7 +130,7 @@
         .then(res => {
           const { address, tag } = res;
           console.log('address: ', address);
-          console.log('tag (optional): ', tag);
+          console.log('tag (required for some chains): ', tag);
           getAccountResultEle.innerHTML = JSON.stringify(res);
         })
         .catch(err => {
