@@ -94,3 +94,11 @@ When to use:
 In a browser - cdn [![](https://data.jsdelivr.com/v1/package/npm/o3-dapi-ontclient/badge)](https://www.jsdelivr.com/package/npm/o3-dapi-ontclient)
 
 Install via npm [![npm version](https://badge.fury.io/js/o3-dapi-ontclient.svg)](https://badge.fury.io/js/o3-dapi-ontclient)
+
+### o3-dapi-pay
+
+In a browser - cdn [![](https://data.jsdelivr.com/v1/package/npm/o3-dapi-pay/badge)](https://www.jsdelivr.com/package/npm/o3-dapi-pay)
+
+### o3-dapi-coinbase
+
+In a browser - cdn [![](https://data.jsdelivr.com/v1/package/npm/o3-dapi-coinbase/badge)](https://www.jsdelivr.com/package/npm/o3-dapi-coinbase)
