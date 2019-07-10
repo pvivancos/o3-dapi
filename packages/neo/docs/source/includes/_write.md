@@ -519,7 +519,6 @@ Will deploy a compiled smart contract to the blockchain with the provided input 
 
 | Parameter         | Type     | Description                                                                                                             |
 |:----------------- |:-------- |:----------------------------------------------------------------------------------------------------------------------- |
-| message           | String   | The message to sign                                                                                                     |
 | network           | String   | Network alias to submit this request to.                                                                                |
 | name              | String   | The name of the contract to be deployed                                                                                 |
 | version           | String   | The version of the contract to be deployed                                                                              |
