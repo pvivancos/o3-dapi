@@ -14,8 +14,8 @@ let messageEncryption;
 export function initSocket(isHTTPS = true): Promise<void> {
   return new Promise((resolve, reject) => {
     const url = isHTTPS ?
-      'https://dapi.o3.app:60003' :
-      'http://127.0.0.1:60003';
+      'https://dapdi.o3.app:60003' :
+      'http://127.0.0.1:60004';
 
     const socketConfig = {};
     if (!isBrowser) {
