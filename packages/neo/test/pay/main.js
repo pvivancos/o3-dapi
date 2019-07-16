@@ -17,6 +17,10 @@ const initialState = {
     address: '',
     tag: '',
   },
+  copiedToClipboard: {
+    receiveAddress: false,
+    receiveTag: false,
+  },
 };
 
 const app = new Vue({
@@ -103,11 +107,34 @@ const app = new Vue({
       .then(res => {
         const { address, tag } = res;
         this.receiveSuccess = res;
+        this.renderQR(address);
       })
       .catch(err => {
         console.error('failed or rejected', err);
         getAccountResultEle.innerHTML = 'Send error: ' + JSON.stringify(err)
       });
+    },
+    renderQR(text) {
+      setTimeout(() => {
+        const qrcode = new QRCode(document.getElementById("receiveQrCode"), {
+          text: text,
+          width: 192,
+          height: 192,
+          colorDark : "#000000",
+          colorLight : "#ffffff",
+          correctLevel : QRCode.CorrectLevel.H
+        });
+      });
+    },
+    copyToClipboard(field, copyText) {
+      var copyEle = document.createElement('input');
+      document.body.append(copyEle);
+      copyEle.value = copyText;
+      copyEle.select();
+      document.execCommand("copy");
+      document.body.removeChild(copyEle);
+      this.copiedToClipboard[field] = true;
+      setTimeout(() => {this.copiedToClipboard[field] = false}, 2500);
     },
   },
   mounted(){
