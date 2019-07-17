@@ -124,8 +124,8 @@ const app = new Vue({
         parentEle.innerHTML = '';
         const qrcode = new QRCode(document.getElementById("receiveQrCode"), {
           text: text,
-          width: 192,
-          height: 192,
+          width: 150,
+          height: 150,
           colorDark : "#000000",
           colorLight : "#ffffff",
           correctLevel : QRCode.CorrectLevel.H
