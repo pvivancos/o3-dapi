@@ -168,9 +168,5 @@ const app = new Vue({
     o3dapi.initPlugins([o3dapiPay]);
     this.assets = o3dapi.PAY.assets;
     this.selectedTab = 'SEND';
-
-    setTimeout(() => {
-      this.sendSuccess = {result: true};
-    }, 1000);
   }
 });
