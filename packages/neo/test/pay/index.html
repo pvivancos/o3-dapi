@@ -27,12 +27,17 @@
         color: grey;
       }
 
+      .send-success {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
       .flex-grow-container {
         flex: 1;
       }
 
       .send-btn {
-        width: 100%;
         height: 3rem;
       }
 
@@ -46,6 +51,7 @@
         padding: 1rem 0;
         display: flex;
         flex-direction: column;
+        font-size: 0.75rem;
       }
 
       .bottom-nav {
@@ -104,6 +110,23 @@
         justify-content: center;
       }
 
+      #receiveAddress {
+        word-break: break-word;
+      }
+
+      .receive-info {
+        font-size: 0.75rem;
+      }
+
+      .link {
+        color: #007bff;
+        cursor: pointer;
+      }
+
+      .error {
+        color: red;
+      }
+
     </style>
   </head>
   <body>
@@ -117,7 +140,7 @@
         <form class='input-form' v-on:submit.prevent="send" v-if="!sendSuccess">
 
           <div class='flex-grow-container'>
-            <div class="form-group mb-4">
+            <div class="form-group mb-3">
               <label>Asset:</label>
               <select class="form-control" v-model="sendInput.asset">
                 <option value="default" disabled>Select asset...</option>
@@ -128,38 +151,43 @@
               </select>
             </div>
 
-            <div class="form-group mb-4" v-if="sendInput.asset !== 'default'">
+            <div class="form-group mb-3" v-if="sendInput.asset !== 'default'">
               <label>To address:</label>
               <input class="form-control" placeholder="To address" type="text" v-model="sendInput.toAddress">
             </div>
 
-            <div class="form-group mb-4" v-if="sendTagRequired">
+            <div class="form-group mb-3" v-if="sendTagRequired">
               <label>To tag (required for some chains):</label>
               <input class="form-control" placeholder="tag/memo" v-model="sendInput.tag">
             </div>
 
-            <div class="form-group mb-4" v-if="sendAmountShowing">
+            <div class="form-group mb-3" v-if="sendAmountShowing">
               <label>Amount:</label>
               <input class="form-control" placeholder="1.2" v-model="sendInput.amount">
             </div>
           </div>
+          <div class='error mb-3' v-if="sendError">{{sendError}}</div>
           <button v-bind:class="{ disabled: !canSend }" class="btn btn-primary send-btn" type="submit">Submit</button>
         </form>
 
         <div class="send-success pt-4" v-if="!!sendSuccess">
-          <div id="lottie" class="mb-3"></div>
-          <div class='success-title mb-4'>Success!</div>
+          <div class='flex-grow-container'>
+            <div id="lottie" class="mb-3"></div>
+            <div class='success-title mb-4'>Success!</div>
 
-          <div class='asset-details'>
-            <div class='asset-description mb-3'>
-              <div class='asset-description-text'>{{`${sendInput.amount} ${sendInput.asset}`}}</div>
-              <img class="asset-logo" v-bind:src="`https://cdn.o3.app/img/assets/${sendInput.asset}.png`" />
-            </div>
-            <img class="arrow-down mb-3" src='./assets/arrow-down.svg' />
-            <div class='to-description'>
-              {{sendInput.toAddress}}
+            <div class='asset-details'>
+              <div class='asset-description mb-3'>
+                <div class='asset-description-text'>{{`${sendInput.amount} ${sendInput.asset}`}}</div>
+                <img class="asset-logo" v-bind:src="`https://cdn.o3.app/img/assets/${sendInput.asset}.png`" />
+              </div>
+              <img class="arrow-down mb-3" src='./assets/arrow-down.svg' />
+              <div class='to-description'>
+                {{sendInput.toAddress}}
+              </div>
             </div>
           </div>
+
+          <button class="btn btn-primary mb-3 send-btn" v-on:click="resetSend()">Send More</button>
         </div>
       </div>
 
@@ -175,16 +203,18 @@
             </select>
           </div>
 
-          <div id="receiveQrCode"></div>
+          <div class='error mb-3' v-if="receiveError">{{receiveError}}</div>
 
-          <div v-if="receiveSuccess.address">
-            <div id="receiveAddress">{{receiveSuccess.address}}</div>
-            <div v-on:click="copyToClipboard('receiveAddress', receiveSuccess.address)">{{copiedToClipboard.receiveAddress ? 'Copied to clipboard' : 'Copy Text Address'}}</div>
+          <div id="receiveQrCode" class="mb-4"></div>
+
+          <div v-if="receiveSuccess.address" class="mb-3 receive-info">
+            <div id="receiveAddress" class="mb-2">{{receiveSuccess.address}}</div>
+            <div v-on:click="copyToClipboard('receiveAddress', receiveSuccess.address)" class="link">{{copiedToClipboard.receiveAddress ? 'Copied to clipboard' : 'Copy Text Address'}}</div>
           </div>
 
-          <div v-if="receiveSuccess.tag">
-            <div id="receiveTag">{{receiveSuccess.tag}}</div>
-            <div v-on:click="copyToClipboard('receiveTag', receiveSuccess.tag)">{{copiedToClipboard.receiveTag ? 'Copied to clipboard' : 'Copy Tag'}}</div>
+          <div v-if="receiveSuccess.tag" class="receive-info">
+            <div id="receiveTag" class="mb-2">{{receiveSuccess.tag}}</div>
+            <div v-on:click="copyToClipboard('receiveTag', receiveSuccess.tag)" class="link">{{copiedToClipboard.receiveTag ? 'Copied to clipboard' : 'Copy Tag'}}</div>
           </div>
         </form>
       </div>

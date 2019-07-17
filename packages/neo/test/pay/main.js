@@ -17,6 +17,7 @@ const initialState = {
     address: '',
     tag: '',
   },
+  receiveError: null,
   copiedToClipboard: {
     receiveAddress: false,
     receiveTag: false,
@@ -25,7 +26,7 @@ const initialState = {
 
 const app = new Vue({
   el: '#app',
-  data: initialState,
+  data: {...initialState},
   computed: {
     sendAmountShowing() {
       return this.sendInput && this.sendInput.asset !== 'default' && this.sendInput.toAddress && this.sendInput.toAddress.length > 5
@@ -63,10 +64,13 @@ const app = new Vue({
           });
         });
       }
+
+      if (value === 'RECEIVE' && !!this.receiveSuccess.address) {
+        this.renderQR(this.receiveSuccess.address);
+      }
     },
     receiveInput: {
       handler(val){
-        console.log('hello');
         this.getAccount();
       },
       deep: true,
@@ -84,18 +88,17 @@ const app = new Vue({
         amount: amount,
       };
       if (!!tag) {
-        params.tag = tagEle.value;
+        params.tag = tag;
       }
 
+      this.sendError = null;
       o3dapi.PAY.send(params)
-      .then(({result, txid}) => {
-        console.log('result: ', result);
-        console.log('txid (optional): ', txid);
-        // resultEle.innerHTML = 'Send successful!'
+      .then(res => {
+        const {result, txid} = res;
+        this.sendSuccess = res;
       })
       .catch(err => {
-        console.error('failed or rejected', err);
-        // resultEle.innerHTML = 'Send error: ' + JSON.stringify(err)
+        this.sendError = err && err.description ? err.description : JSON.stringify(err);
       });
     },
     getAccount() {
@@ -103,6 +106,8 @@ const app = new Vue({
         asset: o3dapi.PAY.assets[this.receiveInput.asset],
       };
 
+      this.receiveSuccess = initialState.receiveSuccess;
+      this.receiveError = null;
       o3dapi.PAY.getAccount(params)
       .then(res => {
         const { address, tag } = res;
@@ -110,12 +115,13 @@ const app = new Vue({
         this.renderQR(address);
       })
       .catch(err => {
-        console.error('failed or rejected', err);
-        getAccountResultEle.innerHTML = 'Send error: ' + JSON.stringify(err)
+        this.receiveError = err && err.description ? err.description : JSON.stringify(err);
       });
     },
     renderQR(text) {
       setTimeout(() => {
+        const parentEle = document.getElementById("receiveQrCode");
+        parentEle.innerHTML = '';
         const qrcode = new QRCode(document.getElementById("receiveQrCode"), {
           text: text,
           width: 192,
@@ -127,23 +133,44 @@ const app = new Vue({
       });
     },
     copyToClipboard(field, copyText) {
-      var copyEle = document.createElement('input');
-      document.body.append(copyEle);
-      copyEle.value = copyText;
-      copyEle.select();
-      document.execCommand("copy");
-      document.body.removeChild(copyEle);
+      if (navigator.userAgent.match(/ipad|iphone/i)) {
+        var textArea = document.createElement('textArea');
+        textArea.value = copyText;
+        document.body.appendChild(textArea);
+        var range = document.createRange();
+        range.selectNodeContents(textArea);
+        selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        textArea.setSelectionRange(0, 999999);
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+      } else {
+        var copyEle = document.createElement('input');
+        copyEle.contentEditable = true;
+        document.body.append(copyEle);
+        copyEle.value = copyText;
+        copyEle.select();
+        document.execCommand("copy");
+        document.body.removeChild(copyEle);
+      }
+
       this.copiedToClipboard[field] = true;
       setTimeout(() => {this.copiedToClipboard[field] = false}, 2500);
+    },
+    resetSend() {
+      this.sendInput = initialState.sendInput;
+      this.sendSuccess = initialState.sendSuccess;
+      this.sendError = initialState.sendError;
     },
   },
   mounted(){
     o3dapi.initPlugins([o3dapiPay]);
     this.assets = o3dapi.PAY.assets;
     this.selectedTab = 'SEND';
-    //
-    // setTimeout(() => {
-    //   this.sendSuccess = {result: true};
-    // }, 1000);
+
+    setTimeout(() => {
+      this.sendSuccess = {result: true};
+    }, 1000);
   }
 });
