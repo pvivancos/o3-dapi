@@ -2092,10 +2092,10 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-o3-dapi-core@^0.3.2:
-  version "0.3.6"
-  resolved "https://registry.yarnpkg.com/o3-dapi-core/-/o3-dapi-core-0.3.6.tgz#d3f3a9b705e0f249be9bbf2af84c9a64ac9018b8"
-  integrity sha512-XbO3nFbznBkTB0pA5hsq+cgL7wy04i+TeGtrHOqvps1I/HlSyOFvS9TpSAm9t/BjVXMzbU4BKtUW96DzvOn2/A==
+o3-dapi-core@^0.3.7:
+  version "0.3.7"
+  resolved "https://registry.yarnpkg.com/o3-dapi-core/-/o3-dapi-core-0.3.7.tgz#3c142b705d494cfa0ac2eb9d02a63f2165a25c38"
+  integrity sha512-kMtJOa60fz2rWM75cqWqgX5AxXnzSCfC/SWiP9EAyERieCQslnW6kxYIWqZv+XRzEQJwz7EovmxbYSST63wzjA==
   dependencies:
     browserify-cipher "~1.0.1"
     bs58 "^4.0.1"

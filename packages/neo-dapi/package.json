@@ -1,6 +1,6 @@
 {
   "name": "neo-dapi",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "NEO dAPI",
   "main": "./lib/neo-dapi.min.js",
   "types": "./lib/index.d.ts",
@@ -33,7 +33,7 @@
     "web3"
   ],
   "dependencies": {
-    "o3-dapi-core": "^0.3.2",
+    "o3-dapi-core": "^0.3.7",
     "o3-dapi-neo": "^0.4.2",
     "o3-dapi-neoclient": "^0.0.3"
   }
