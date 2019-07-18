@@ -38,6 +38,6 @@
     "web3"
   ],
   "dependencies": {
-    "ontology-ts-sdk": "1.0.11"
+    "ontology-ts-sdk": "1.0.18"
   }
 }
