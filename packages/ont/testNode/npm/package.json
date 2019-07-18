@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "o3-dapi-core": "^0.2.0",
+    "o3-dapi-core": "^0.3.6",
     "o3-dapi-ont": "^0.2.0"
   }
 }
