@@ -230,6 +230,11 @@ In the case where the "broadcastOverride" input argument is set to True.
 | txid      | String | The transaction id of the send request which can be queried on the blockchain |
 | signedTx  | String | The serialized signed transaction                                             |
 
+#### Set script transaction attribute 0x20 according to the following conditions:
+- If triggerContractVerification is set to true, set 0x20 to scriptHash of the contract being invoked
+- If there is no fee, attachedAssets, or 'assetIntentOverrides', set 0x20 to the users address
+- If there are assetIntentOverrides but none of the inputs belong to the user address, set 0x20 to user address
+
 ### Error Response
 | Parameter   | Type    | Description                                  |
 |:----------- |:------- |:-------------------------------------------- |
@@ -397,6 +402,11 @@ In the case where the "broadcastOverride" input argument is set to True.
 |:--------- |:------ |:----------------------------------------------------------------------------- |
 | txid      | String | The transaction id of the send request which can be queried on the blockchain |
 | signedTx  | String | The serialized signed transaction                                             |
+
+#### Set script transaction attribute 0x20 according to the following conditions:
+- If triggerContractVerification is set to true, set 0x20 to scriptHash of the contract being invoked
+- If there is no fee, attachedAssets, or 'assetIntentOverrides', set 0x20 to the users address
+- If there are assetIntentOverrides but none of the inputs belong to the user address, set 0x20 to user address
 
 ### Error Response
 | Parameter   | Type    | Description                                  |

@@ -352,7 +352,7 @@ o3dapi.NEO.getBalance({
     },
     {
       address: 'AbKNY45nRDy6B65YPVz1B6YXiTnzRqU2uQ',
-      asset: 'PHX',
+      assets: ['PHX'],
     },
   ],
   network: 'MainNet',
