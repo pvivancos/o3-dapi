@@ -4,7 +4,13 @@ import {
   sendMessage,
   addEventsListener,
   onReady,
+  // setMessageHandlerOverride,
+  // handleEvent,
 } from './messages';
+
+import {
+  setEncryptionOverride,
+} from './messageEncryption';
 
 import { initSocket } from './socket';
 
@@ -25,7 +31,10 @@ if (isBrowser) {
 
 if (!o3dapiCore.isAvailable) {
   initSocket()
-  .catch(() => {});
+  .then(res => {
+    console.log('initSocket', res);
+  })
+  .catch(err => console.log(err));
 }
 
 o3dapiCore.openO3 = () => window.location.replace('o3network://deep');
@@ -33,5 +42,21 @@ o3dapiCore.openO3 = () => window.location.replace('o3network://deep');
 o3dapiCore.utils = utils;
 
 o3dapiCore.onReady = onReady;
+
+// o3dapiCore.setMessageHandlerOverride = setMessageHandlerOverride;
+//
+// o3dapiCore.handleEvent = handleEvent;
+
+// o3dapiCore.setReactNativeOverrides = ({
+//   sendMessage,
+//   setEventHandler,
+// }) => {
+//   setMessageHandlerOverride(sendMessage);
+//   setEventHandler(handleEvent);
+// };
+
+o3dapiCore.setNodeJSOverrides = ({crypto}) => {
+  setEncryptionOverride(crypto);
+};
 
 export default o3dapiCore;

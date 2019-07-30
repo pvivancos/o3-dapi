@@ -1,5 +1,6 @@
 declare const window: any;
 declare const global: any;
+declare const require: any;
 declare const _o3dapi: any;
 import { get } from 'lodash-es';
 import {
@@ -22,6 +23,11 @@ const safeWindow = isBrowser ? window : global;
 
 safeWindow._o3dapi = safeWindow._o3dapi ? safeWindow._o3dapi : {};
 _o3dapi.receiveMessage = receiveMessage;
+
+const isReactNative = typeof navigator !== 'undefined' && navigator.product === 'ReactNative';
+const ReactNative = isReactNative ? require('react-native') : {};
+const { NativeModules, DeviceEventEmitter } = ReactNative;
+isReactNative && DeviceEventEmitter.addListener('o3dapiEvent', handleEvent);
 
 let localReadyCallback;
 export function onReady(callback) {
@@ -47,13 +53,7 @@ export function receiveMessage(message: IncomingMessage) {
     }
 
     if (command === 'event') {
-      if (eventName === 'READY') {
-        safeWindow._o3dapi.isReady = data;
-        localReadyCallback && localReadyCallback(data);
-      }
-      Object.keys(eventsListeners)
-      .map(key => eventsListeners[key]) // Object.values
-      .forEach(handler => handler(eventName, data));
+      handleEvent(eventName, data);
       return;
     }
 
@@ -64,6 +64,16 @@ export function receiveMessage(message: IncomingMessage) {
       error ? reject(error) : resolve(data);
     }
   } catch (err) {}
+}
+
+export function handleEvent(eventName: string, data: any) {
+  if (eventName === 'READY') {
+    safeWindow._o3dapi.isReady = data;
+    localReadyCallback && localReadyCallback(data);
+  }
+  Object.keys(eventsListeners)
+  .map(key => eventsListeners[key]) // Object.values
+  .forEach(handler => handler(eventName, data));
 }
 
 export function addEventsListener({blockchain, callback}: AddEventsListenerArgs) {
@@ -98,7 +108,12 @@ export function sendMessage({
 
     const isIOS = Boolean(webkitPostMessage) && typeof webkitPostMessage === 'function';
 
-    if (isSocketConnected()) {
+    if (isReactNative) {
+      NativeModules.DapiBridge(message, resolve, reject);
+      timeout && setTimeout(() => {
+        reject(REQUEST_TIMEOUT);
+      }, timeout);
+    } else if (isSocketConnected()) {
       sendSocketMessage(message);
     } else if (messageHandler) {
       try {

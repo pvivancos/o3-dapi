@@ -30,15 +30,11 @@ module.exports = (env) => {
     devtool: !DISTRIBUTION && 'inline-source-map',
     output: {
       path: path.join(__dirname, DISTRIBUTION ? 'lib' : 'build'),
-      filename: DISTRIBUTION ? 'o3-dapi-core.min.js' : 'bundle.js',
+      filename: DISTRIBUTION ? 'o3-dapi-nodejs.min.js' : 'bundle.js',
       libraryTarget: "umd",
-      library: 'o3dapi',
+      library: 'o3dapiNodeJS',
       libraryExport: 'default',
       globalObject: 'typeof self !== \'undefined\' ? self : this',
     },
-    externals: [
-      {'socket.io-client-node': 'socket.io-client'},
-      'react-native',
-    ],
   };
 };

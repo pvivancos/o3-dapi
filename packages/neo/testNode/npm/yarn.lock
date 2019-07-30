@@ -314,10 +314,10 @@ ms@2.0.0:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
   integrity sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=
 
-o3-dapi-core@^0.3.6:
-  version "0.3.6"
-  resolved "https://registry.yarnpkg.com/o3-dapi-core/-/o3-dapi-core-0.3.6.tgz#d3f3a9b705e0f249be9bbf2af84c9a64ac9018b8"
-  integrity sha512-XbO3nFbznBkTB0pA5hsq+cgL7wy04i+TeGtrHOqvps1I/HlSyOFvS9TpSAm9t/BjVXMzbU4BKtUW96DzvOn2/A==
+o3-dapi-core@0.3.11:
+  version "0.3.11"
+  resolved "https://registry.yarnpkg.com/o3-dapi-core/-/o3-dapi-core-0.3.11.tgz#a392a4c8c6bb905c576c08ff25a91d14a7760b1c"
+  integrity sha512-zUMnbXzuOEJaY8jW+woxSini46uEqXj8M/sSPtfWKlOQvf3ldzUD3HflrZKurBPFCLo7o07PwWAGv4AGis4xiw==
   dependencies:
     browserify-cipher "~1.0.1"
     bs58 "^4.0.1"
@@ -332,6 +332,11 @@ o3-dapi-neo@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/o3-dapi-neo/-/o3-dapi-neo-0.2.0.tgz#74ce1f3b1847f82d709b701a373deb5171756186"
   integrity sha512-vYM3wGIJhSXGCCohrmItxI0cEZ3NsEgQ7Usp+1vMOvYih4yXEDf+M+VCk7ZfYhRPFW5cpu6v54jqhdPUFTQbuQ==
+
+o3-dapi-nodejs@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/o3-dapi-nodejs/-/o3-dapi-nodejs-0.0.1.tgz#4d45c37c167fe3c339bae8c172c7a7d66e5bca05"
+  integrity sha512-qA89EWc6ZlXgyrttJWoiQRPByI9FojSff+N0HkPmKj9E8ttYVWxv4592rU9PIEqa+jSJlgRpdk+3Jsf0mkvfDg==
 
 object-component@0.0.3:
   version "0.0.3"
