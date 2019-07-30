@@ -24,10 +24,11 @@ const safeWindow = isBrowser ? window : global;
 safeWindow._o3dapi = safeWindow._o3dapi ? safeWindow._o3dapi : {};
 _o3dapi.receiveMessage = receiveMessage;
 
-const isReactNative = typeof navigator !== 'undefined' && navigator.product === 'ReactNative';
-const ReactNative = isReactNative ? require('react-native') : {};
-const { NativeModules, DeviceEventEmitter } = ReactNative;
-isReactNative && DeviceEventEmitter.addListener('o3dapiEvent', handleEvent);
+let reactNativeSendMessage;
+export function setReactNativeOverrides({ NativeModules, DeviceEventEmitter }) {
+  reactNativeSendMessage = NativeModules.DapiBridge;
+  DeviceEventEmitter.addListener('o3dapiEvent', handleEvent);
+}
 
 let localReadyCallback;
 export function onReady(callback) {
@@ -108,8 +109,10 @@ export function sendMessage({
 
     const isIOS = Boolean(webkitPostMessage) && typeof webkitPostMessage === 'function';
 
+    const isReactNative = typeof navigator !== 'undefined' && navigator.product === 'ReactNative';
+
     if (isReactNative) {
-      NativeModules.DapiBridge(message, resolve, reject);
+      reactNativeSendMessage(message, resolve, reject);
       timeout && setTimeout(() => {
         reject(REQUEST_TIMEOUT);
       }, timeout);
