@@ -16,4 +16,10 @@ export default class MessageEncryption {
     setCipherAlgorithOverride(algorithm: string): void;
     private _getSharedKey;
 }
+export declare function setEncryptionOverride({ randomFillSync, createCipheriv, createDecipheriv, createECDH, }: {
+    randomFillSync: any;
+    createCipheriv: any;
+    createDecipheriv: any;
+    createECDH: any;
+}): void;
 //# sourceMappingURL=messageEncryption.d.ts.map

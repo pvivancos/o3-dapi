@@ -29,7 +29,6 @@ export function initSocket(isHTTPS = true): Promise<void> {
 
     socket.on('event', res => {
       if (res && res.eventName === 'READY' && !messageEncryption && res.key) {
-        resolve();
         messageEncryption = new MessageEncryption();
         messageEncryption.setSharedKey(res.key);
         let registerMessage = messageEncryption.getPublicKey();
@@ -42,6 +41,7 @@ export function initSocket(isHTTPS = true): Promise<void> {
         }
         socket.emit('register', registerMessage);
         receiveMessage(res);
+        resolve();
       } else {
         const data = messageEncryption.decrypt(res);
         if (!data.error) {

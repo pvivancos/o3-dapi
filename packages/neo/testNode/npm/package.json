@@ -9,7 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "o3-dapi-core": "^0.3.6",
+    "o3-dapi-core": "0.3.11",
+    "o3-dapi-nodejs": "0.0.1",
     "o3-dapi-neo": "^0.2.0"
   }
 }

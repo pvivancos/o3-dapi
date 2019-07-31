@@ -1,7 +1,4 @@
-declare const require: any;
-const isBrowser = typeof window !== 'undefined';
 import { Buffer } from 'buffer';
-const crypto = require('node-crypto');
 import { randomFillSync } from 'randomfill';
 import { createCipheriv, createDecipheriv } from 'browserify-cipher';
 import createECDH from 'create-ecdh';
@@ -10,10 +7,10 @@ const UTF8 = 'utf8';
 const HEX = 'hex';
 export const AES128GCM = 'aes-128-gcm';
 
-const safeRandomFillSync = isBrowser ? randomFillSync : crypto.randomFillSync;
-const safeCreateCipheriv = isBrowser ? createCipheriv : crypto.createCipheriv;
-const safeCreateDecipheriv = isBrowser ? createDecipheriv : crypto.createDecipheriv;
-const safeCreateECDH = isBrowser ? createECDH : crypto.createECDH;
+let safeRandomFillSync = randomFillSync;
+let safeCreateCipheriv = createCipheriv;
+let safeCreateDecipheriv = createDecipheriv;
+let safeCreateECDH = createECDH;
 
 export default class MessageEncryption {
 
@@ -101,4 +98,16 @@ export default class MessageEncryption {
     }
     return this.shared;
   }
+}
+
+export function setEncryptionOverride({
+  randomFillSync,
+  createCipheriv,
+  createDecipheriv,
+  createECDH,
+}) {
+  safeRandomFillSync = randomFillSync;
+  safeCreateCipheriv = createCipheriv;
+  safeCreateDecipheriv = createDecipheriv;
+  safeCreateECDH = createECDH;
 }
