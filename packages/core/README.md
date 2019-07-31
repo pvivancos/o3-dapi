@@ -39,7 +39,7 @@ o3dapi.initPlugins([<neo_plugin>, <ont_plugin>]);
 
 For use with React Native, please pass in the ReactNative module into the `setReactNativeOverrides` method.
 
-This will broadcast any dapi messages from the client to the `DapiBridge` method in your native mobile app.
+This will broadcast any dapi messages from the client to the `DapiBridge.handleMessage` method in your native mobile app.
 
 The client app will also listen to the `o3dapiEvent` event from the DeviceEventEmitter. Events should be passed with the format:
 

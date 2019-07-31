@@ -26,7 +26,7 @@ _o3dapi.receiveMessage = receiveMessage;
 
 let reactNativeSendMessage;
 export function setReactNativeOverrides({ NativeModules, DeviceEventEmitter }) {
-  reactNativeSendMessage = NativeModules.DapiBridge;
+  reactNativeSendMessage = NativeModules.DapiBridge.handleMessage;
   DeviceEventEmitter.addListener('o3dapiEvent', handleEvent);
 }
 

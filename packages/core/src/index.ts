@@ -4,8 +4,6 @@ import {
   sendMessage,
   addEventsListener,
   onReady,
-  // setMessageHandlerOverride,
-  // handleEvent,
   setReactNativeOverrides,
 } from './messages';
 
@@ -45,18 +43,6 @@ o3dapiCore.utils = utils;
 o3dapiCore.onReady = onReady;
 
 o3dapiCore.setReactNativeOverrides = setReactNativeOverrides;
-
-// o3dapiCore.setMessageHandlerOverride = setMessageHandlerOverride;
-//
-// o3dapiCore.handleEvent = handleEvent;
-
-// o3dapiCore.setReactNativeOverrides = ({
-//   sendMessage,
-//   setEventHandler,
-// }) => {
-//   setMessageHandlerOverride(sendMessage);
-//   setEventHandler(handleEvent);
-// };
 
 o3dapiCore.setNodeJSOverrides = ({crypto}) => {
   setEncryptionOverride(crypto);
