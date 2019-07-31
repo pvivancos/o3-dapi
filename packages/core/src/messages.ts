@@ -54,7 +54,7 @@ export function receiveMessage(message: IncomingMessage) {
     }
 
     if (command === 'event') {
-      handleEvent(eventName, data);
+      handleEvent({eventName, data});
       return;
     }
 
@@ -67,7 +67,7 @@ export function receiveMessage(message: IncomingMessage) {
   } catch (err) {}
 }
 
-export function handleEvent(eventName: string, data: any) {
+export function handleEvent({eventName, data}) {
   if (eventName === 'READY') {
     safeWindow._o3dapi.isReady = data;
     localReadyCallback && localReadyCallback(data);

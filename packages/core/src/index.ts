@@ -6,6 +6,7 @@ import {
   onReady,
   // setMessageHandlerOverride,
   // handleEvent,
+  setReactNativeOverrides,
 } from './messages';
 
 import {
@@ -42,6 +43,8 @@ o3dapiCore.openO3 = () => window.location.replace('o3network://deep');
 o3dapiCore.utils = utils;
 
 o3dapiCore.onReady = onReady;
+
+o3dapiCore.setReactNativeOverrides = setReactNativeOverrides;
 
 // o3dapiCore.setMessageHandlerOverride = setMessageHandlerOverride;
 //
