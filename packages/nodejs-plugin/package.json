@@ -1,6 +1,6 @@
 {
   "name": "o3-dapi-nodejs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "NodeJS plugin for o3-dapi-core",
   "main": "./lib/o3-dapi-nodejs.min.js",
   "types": "./lib/index.d.ts",

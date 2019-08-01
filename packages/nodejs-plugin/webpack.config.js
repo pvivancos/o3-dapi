@@ -36,5 +36,8 @@ module.exports = (env) => {
       libraryExport: 'default',
       globalObject: 'typeof self !== \'undefined\' ? self : this',
     },
+    externals: [
+      'crypto',
+    ],
   };
 };

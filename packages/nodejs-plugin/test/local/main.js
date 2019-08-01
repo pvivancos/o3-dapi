@@ -1,8 +1,8 @@
-// const o3dapi = require('../../../core/lib/o3-dapi-core.min.js');
-const o3dapi = require('../../../core/build/bundle.js');
-const o3dapiNeo = require('../../lib/o3-dapi-neo.min.js');
+const o3dapi = require('../../../core/lib/o3-dapi-core.min.js');
+// const o3dapi = require('../../../core/build/bundle.js');
+const o3dapiNeo = require('../../../neo/lib/o3-dapi-neo.min.js');
 // const o3dapiNeo = require('../../build/bundle.js');
-const o3dapiNodeJS = require('../../../nodejs-plugin/build/bundle.js');
+const o3dapiNodeJS = require('../../build/bundle.js');
 
 // const o3dapi = require('o3-dapi-core');
 // const o3dapiNodeJS = require('o3-dapi-nodejs');
