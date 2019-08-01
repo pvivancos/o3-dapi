@@ -30,10 +30,7 @@ if (isBrowser) {
 
 if (!o3dapiCore.isAvailable) {
   initSocket()
-  .then(res => {
-    console.log('initSocket', res);
-  })
-  .catch(err => console.log(err));
+  .catch(err => {});
 }
 
 o3dapiCore.openO3 = () => window.location.replace('o3network://deep');
