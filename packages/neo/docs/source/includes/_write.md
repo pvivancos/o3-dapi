@@ -5,7 +5,7 @@ Write methods will alter the state on the blockchain, and require a user signatu
 ## send
 
 ```typescript
-o3dapi.NEO.send({
+neoDapi.send({
   fromAddress: 'ATaWxfUAiBcQixNPq6TvKHEHPQum9bx79d',
   toAddress: 'ATaWxfUAiBcQixNPq6TvKHEHPQum9bx79d',
   asset: 'GAS',
@@ -94,12 +94,12 @@ In the case where the "broadcastOverride" input argument is set to True.
 
 ## invoke
 ```typescript
-o3dapi.NEO.invoke({
+neoDapi.invoke({
   scriptHash: '505663a29d83663a838eee091249abd167e928f5',
   operation: 'storeData',
   arguments: [
     {
-      type: o3dapi.NEO.Constants.ArgumentDataType.STRING,
+      type: neoDapi.Constants.ArgumentDataType.STRING,
       value: 'hello'
     }
   ],
@@ -245,14 +245,14 @@ In the case where the "broadcastOverride" input argument is set to True.
 
 ## invokeMulti
 ```typescript
-o3dapi.NEO.invokeMulti({
+neoDapi.invokeMulti({
   invokeArgs: [
     {
       scriptHash: '505663a29d83663a838eee091249abd167e928f5',
       operation: 'storeData',
       arguments: [
         {
-          type: o3dapi.NEO.Constants.ArgumentDataType.STRING,
+          type: neoDapi.Constants.ArgumentDataType.STRING,
           value: 'hello'
         }
       ],
@@ -267,7 +267,7 @@ o3dapi.NEO.invokeMulti({
       operation: 'purchaseTicket',
       arguments: [
         {
-          type: o3dapi.NEO.Constants.ArgumentDataType.INTEGER,
+          type: neoDapi.Constants.ArgumentDataType.INTEGER,
           value: '10'
         }
       ],
@@ -278,7 +278,7 @@ o3dapi.NEO.invokeMulti({
   broadcastOverride: false,
   txHashAttributes: [
     {
-      type: o3dapi.NEO.Constants.ArgumentDataType.BOOLEAN,
+      type: neoDapi.Constants.ArgumentDataType.BOOLEAN,
       value: true,
       txAttrUsage: 'Hash1'
     }
@@ -419,7 +419,7 @@ In the case where the "broadcastOverride" input argument is set to True.
 ## signMessage
 
 ```typescript
-o3dapi.NEO.signMessage({
+neoDapi.signMessage({
   message: 'Hello World!',
 })
 .then((signedMessage: SignedMessage) => {
@@ -485,7 +485,7 @@ Signs a provided messaged with an account selected by user. A salt prefix is add
 ## deploy
 
 ```typescript
-o3dapi.NEO.deploy({
+neoDapi.deploy({
   network: 'PrivateNet',
   name: 'Hello world!',
   version: 'v0.0.1',

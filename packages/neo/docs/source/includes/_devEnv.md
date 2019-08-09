@@ -60,60 +60,41 @@ From here that you can test out your application with the O3 Wallet. Just instal
 
 # Getting Started w/ Development
 
-The o3-dapi requires 2 packages to operate, `o3-dapi-core` and `o3-dapi-neo`.
+The NEO dAPI requires a single JS package to interface with a wallet provider.
 
-You can install via CDN in a browser application or via NPM for bundled apps.
+It can be installed via CDN in a browser application or via NPM for bundled apps.
 
-## In a browser - cdn
+## In a browser via CDN [![](https://data.jsdelivr.com/v1/package/npm/neo-dapi/badge)](https://www.jsdelivr.com/package/npm/neo-dapi)
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/o3-dapi-core/lib/o3-dapi-core.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/o3-dapi-neo/lib/o3-dapi-neo.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/neo-dapi@2.0.3/lib/neo-dapi.min.js"></script>
 ```
 ```typescript
-window.o3dapi
-window.o3dapiNeo
+window.neoDapi
 ```
 
-o3-dapi-core [![](https://data.jsdelivr.com/v1/package/npm/o3-dapi-core/badge)](https://www.jsdelivr.com/package/npm/o3-dapi-core)
-
-o3-dapi-neo [![](https://data.jsdelivr.com/v1/package/npm/o3-dapi-neo/badge)](https://www.jsdelivr.com/package/npm/o3-dapi-neo)
-
-
-## Install via npm
+## Install via npm [![npm version](https://badge.fury.io/js/neo-dapi.svg)](https://badge.fury.io/js/neo-dapi)
 
 ```typescript
-npm i --save o3-dapi-core o3-dapi-neo
+npm i --save neo-dapi
 
 or
 
-yarn add o3-dapi-core o3-dapi-neo
+yarn add neo-dapi
 ```
 
 ```typescript
-var o3dapi = require('o3-dapi-core');
-var o3dapiNeo = require('o3-dapi-neo');
+var neoDapi = require('neo-dapi');
 
 or
 
-import o3dapi from 'o3-dapi-core';
-import o3dapiNeo from 'o3-dapi-neo';
+import neoDapi from 'neo-dapi';
 ```
-
-o3-dapi-core [![npm version](https://badge.fury.io/js/o3-dapi-neo.svg)](https://badge.fury.io/js/o3-dapi-neo)
-
-o3-dapi-neo [![npm version](https://badge.fury.io/js/o3-dapi-core.svg)](https://badge.fury.io/js/o3-dapi-core)
-
 
 ## Example
 ```typescript
-import o3dapi from 'o3-dapi-core';
-import o3dapiNeo from 'o3-dapi-neo';
+import neoDapi from 'neo-dapi';
 
-// Init the NEO plugin into the core dapi provider package
-o3dapi.initPlugins([o3dapiNeo]);
-
-
-o3dapi.NEO.getNetworks()
+neoDapi.getNetworks()
 .then(networks => console.log(networks));
 ```

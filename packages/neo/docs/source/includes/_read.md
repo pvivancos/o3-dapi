@@ -5,7 +5,7 @@ Read methods do not alter the state of the blockchain. It can help you query inf
 ## getProvider
 
 ```typescript
-o3dapi.NEO.getProvider()
+neoDapi.getProvider()
 .then((provider: Provider) => {
   const {
     name,
@@ -147,7 +147,7 @@ None
 ## getAccount
 
 ```typescript
-o3dapi.NEO.getAccount()
+neoDapi.getAccount()
 .then((account: Account) => {
   const {
     address,
@@ -197,7 +197,7 @@ Return the Account that is currently connected to the dApp.
 ## getPublicKey
 
 ```typescript
-o3dapi.NEO.getPublicKey()
+neoDapi.getPublicKey()
 .then((publicKeyData: PublicKeyData) => {
   const {
     address,
@@ -247,7 +247,7 @@ Return the public key of the Account that is currently connected to the dApp.
 ## getBalance
 
 ```typescript
-o3dapi.NEO.getBalance({
+neoDapi.getBalance({
   params: {
     address: 'AeysVbKWiLSuSDhg7DTzUdDyYYKfgjojru',
     assets: ['NKN']
@@ -441,7 +441,7 @@ The amount of addresses is n where n is the number of addresses specified in you
 ## getStorage
 
 ```typescript
-o3dapi.NEO.getStorage({
+neoDapi.getStorage({
   scriptHash: '505663a29d83663a838eee091249abd167e928f5',
   key: 'game.status',
   network: 'TestNet'
@@ -498,16 +498,16 @@ Returns the raw value located in contract storage
 ## invokeRead
 
 ```typescript
-o3dapi.NEO.invokeRead({
+neoDapi.invokeRead({
   scriptHash: '505663a29d83663a838eee091249abd167e928f5',
   operation: 'calculatorAdd',
   arguments: [
     {
-      type: o3dapi.NEO.Constants.ArgumentDataType.INTEGER,
+      type: neoDapi.Constants.ArgumentDataType.INTEGER,
       value: 2
     },
     {
-      type: o3dapi.NEO.Constants.ArgumentDataType.INTEGER,
+      type: neoDapi.Constants.ArgumentDataType.INTEGER,
       value: 10
     }
   ],
@@ -588,7 +588,7 @@ The wallet will return the direct response from the RPC node.
 ## verifyMessage
 
 ```typescript
-o3dapi.NEO.verifyMessage({
+neoDapi.verifyMessage({
   message: '058b9e03e7154e4db1e489c99256b7faHello World!',
   data: '0147fb89d0999e9d8a90edacfa26152fe695ec8b3770dcad522048297ab903822e12472364e254ff2e088fc3ebb641cc24722c563ff679bb1d1623d08bd5863d0d',
   publicKey: '0241392007396d6ef96159f047967c5a61f1af0871ecf9dc82afbedb68afbb949a',
@@ -642,7 +642,7 @@ Returns whether the provided signature data matches the provided message and was
 ## getBlock
 
 ```typescript
-o3dapi.NEO.getBlock({
+neoDapi.getBlock({
   blockHeight: 2619690,
   network: 'TestNet'
 })
@@ -722,7 +722,7 @@ The wallet will return the direct response from the RPC node.
 ## getBlockHeight
 
 ```typescript
-o3dapi.NEO.getBlockHeight({
+neoDapi.getBlockHeight({
   network: 'TestNet'
 })
 .then((res: {result: numnber}) => {
@@ -773,7 +773,7 @@ Execute a contract invocation in read-only mode.
 ## getTransaction
 
 ```typescript
-o3dapi.NEO.getTransaction({
+neoDapi.getTransaction({
   txid: '7e049fd7c253dabf38e4156df30c78b30d49f307196aa89b99a47d2330789bf2',
   network: 'TestNet'
 })
@@ -851,7 +851,7 @@ The wallet will return the direct response from the RPC node.
 ## getApplicationLog
 
 ```typescript
-o3dapi.NEO.getApplicationLog({
+neoDapi.getApplicationLog({
   txid: '7e049fd7c253dabf38e4156df30c78b30d49f307196aa89b99a47d2330789bf2',
   network: 'TestNet'
 })

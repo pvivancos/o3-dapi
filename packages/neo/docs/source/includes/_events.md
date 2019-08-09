@@ -78,7 +78,7 @@ On a TRANSACTION_CONFIRMED event, a previously broadcast transaction via the dap
 ## addEventListener
 
 ```typescript
-o3dapi.NEO.addEventListener(o3dapi.NEO.Constants.EventName.ACCOUNT_CHANGED, data => {
+neoDapi.addEventListener(neoDapi.Constants.EventName.ACCOUNT_CHANGED, data => {
   console.log(`Connected Account: ${data.address}`);
 });
 ```
@@ -88,7 +88,7 @@ Method is used to add a callback method to be triggered on a specified event.
 ## removeEventListener
 
 ```typescript
-o3dapi.NEO.removeEventListener(o3dapi.NEO.Constants.EventName.ACCOUNT_CHANGED);
+neoDapi.removeEventListener(neoDapi.Constants.EventName.ACCOUNT_CHANGED);
 ```
 
 Method is to remove existing callback event listeners.
