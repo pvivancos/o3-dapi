@@ -37,6 +37,7 @@ const verifyMessageSignatureInputEle = document.getElementById("verifyMessageSig
 const verifyMessagePiblicKeyInputEle = document.getElementById("verifyMessagePiblicKeyInput");
 
 const getBlockInputEle = document.getElementById("getBlockInput");
+const getBlockheightInputEle = document.getElementById("getBlockheightInput");
 const getTransactionInputEle = document.getElementById("getTransactionInput");
 const getApplicationLogInputEle = document.getElementById("getApplicationLogInput");
 

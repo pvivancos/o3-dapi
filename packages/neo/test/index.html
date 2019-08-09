@@ -14,8 +14,8 @@
   <link rel="stylesheet" href="./docs.css" id="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/o3-dapi-core@0.3.12/lib/o3-dapi-core.min.js"></script>
   <!-- <script type="text/javascript" src="../../core/build/bundle.js"></script> -->
-  <script src="https://cdn.jsdelivr.net/npm/o3-dapi-neo@0.6.0/lib/o3-dapi-neo.min.js"></script>
-  <!-- <script type="text/javascript" src="../build/bundle.js"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/o3-dapi-neo@0.6.0/lib/o3-dapi-neo.min.js"></script> -->
+  <script type="text/javascript" src="../build/bundle.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <style type="text/css">
   .string {
@@ -421,6 +421,26 @@ a {
                     <div class="card-footer">
                       <h6>Result</h6>
                       <pre><div class="p-3 border rounded" id="getBlock-result"></div></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="collapse-getBlockHeight" class="method">
+                <div class="card" id="getBlockHeight">
+                  <div class="card-header py-4">
+                    <h3 class="mt-0">getBlockHeight</h3>
+                    <p class="small mb-0">Height of the current block.</p>
+                  </div>
+                  <div>
+                    <div class="card-body">
+                      <h6>Input</h6>
+                      <textarea class="form-control mb-2" id="getBlockHeight-input" placeholder="getBlockHeight input" rows="4">{{getBlockHeightInput}}</textarea>
+                      <button class="btn btn-primary btn-sm" onclick="getBlockHeight('getBlockHeight-input','getBlockHeight-result')">Run</button>
+                    </div>
+                    <div class="card-footer">
+                      <h6>Result</h6>
+                      <pre><div class="p-3 border rounded" id="getBlockHeight-result"></div></pre>
                     </div>
                   </div>
                 </div>

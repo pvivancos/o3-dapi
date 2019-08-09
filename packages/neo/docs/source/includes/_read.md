@@ -718,6 +718,58 @@ The wallet will return the direct response from the RPC node.
 | description | String? | A description of the error which has occured |
 | data        | String? | Any raw data associated with the error       |
 
+
+## getBlockHeight
+
+```typescript
+o3dapi.NEO.getBlockHeight({
+  network: 'TestNet'
+})
+.then((res: {result: numnber}) => {
+  console.log('Block height: ' + res.result);
+})
+.catch(({type: string, description: string, data: any}) => {
+  switch(type) {
+    case NO_PROVIDER:
+      console.log('No provider available.');
+      break;
+   case RPC_ERROR:
+    console.log('There was an error when broadcasting this transaction to the network.');
+    break;
+  }
+});
+```
+
+Get the height of the current block.
+
+> Example Response
+
+```typescript
+{
+  "result": 2619690
+}
+```
+
+Execute a contract invocation in read-only mode.
+
+### Input Arguments
+| Parameter | Type   | Description                                                                                              |
+|:--------- |:------ |:-------------------------------------------------------------------------------------------------------- |
+| network   | String | Network alias to submit this request to. If omitted, will default the network which the wallet is set to |
+
+### Success Response
+| Parameter | Type   | Description                 |
+|:--------- |:------ |:--------------------------- |
+| result    | Number | Height of the current block |
+
+### Error Response
+| Parameter   | Type    | Description                                  |
+|:----------- |:------- |:-------------------------------------------- |
+| type        | String  | The type of error which has occured          |
+| description | String? | A description of the error which has occured |
+| data        | String? | Any raw data associated with the error       |
+
+
 ## getTransaction
 
 ```typescript

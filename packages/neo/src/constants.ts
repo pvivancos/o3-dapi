@@ -22,6 +22,7 @@ export enum Command {
   getStorage = 'getStorage',
   invokeRead = 'invokeRead',
   getBlock = 'getBlock',
+  getBlockHeight = 'getBlockHeight',
   getTransaction = 'getTransaction',
   getApplicationLog = 'getApplicationLog',
 

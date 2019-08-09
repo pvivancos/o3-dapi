@@ -76,6 +76,9 @@ var app = new Vue({
 			blockHeight: 2619690,
 			network: "TestNet",
 		},
+		getBlockHeightInput:{
+			network: "TestNet",
+		},
 		getTransactionInput:{
 			txid: "",
 			network: "TestNet",
@@ -94,6 +97,7 @@ var app = new Vue({
 			this.invokeMultiInput.network = value;
 			this.sendInput.network = value;
 			this.getBlockInput.network = value;
+			this.getBlockHeightInput.network = value;
 			this.getTransactionInput.network = value;
 			this.getApplicationLogInput.network = value;
 		}
@@ -274,6 +278,21 @@ function verifyMessage(inputElement, resultElem) {
 function getBlock(inputElement, resultElem) {
 	try {
 		o3dapi.NEO.getBlock(JSON.parse(document.getElementById(inputElement).value))
+		.then(function(data){
+			const formatted = syntaxHighlight(data);
+			document.getElementById(resultElem).innerHTML = formatted;
+		})
+		.catch(function(error){
+			document.getElementById(resultElem).innerHTML = syntaxHighlight(error);
+		});
+	} catch (err) {
+		document.getElementById(resultElem).innerHTML = 'invalid JSON input';
+	}
+}
+
+function getBlockHeight(inputElement, resultElem) {
+	try {
+		o3dapi.NEO.getBlockHeight(JSON.parse(document.getElementById(inputElement).value))
 		.then(function(data){
 			const formatted = syntaxHighlight(data);
 			document.getElementById(resultElem).innerHTML = formatted;

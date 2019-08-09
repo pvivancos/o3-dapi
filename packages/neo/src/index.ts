@@ -10,6 +10,7 @@ import { getStorage, GetStorageArgs, GetStorageOutput } from './modules/read/get
 import { invokeRead, InvokeReadArgs } from './modules/read/invokeRead';
 import { verifyMessage, VerifyMessageInput, VerifyMessageOutput } from './modules/read/verifyMessage';
 import { getBlock, BlockDetails, GetBlockInputArgs } from './modules/read/getBlock';
+import { getBlockHeight, GetBlockHeightInputArgs } from './modules/read/getBlockHeight';
 import { getTransaction, TransactionInputArgs, TransactionDetails } from './modules/read/getTransaction';
 import { getApplicationLog, ApplicationLog } from './modules/read/getApplicationLog';
 
@@ -41,6 +42,7 @@ class O3dapiNeo {
   invokeRead: invokeRead = methodSelector(this, 'invokeRead', invokeRead);
   verifyMessage: verifyMessage = methodSelector(this, 'verifyMessage', verifyMessage, false);
   getBlock: getBlock = methodSelector(this, 'getBlock', getBlock);
+  getBlockHeight: getBlockHeight = methodSelector(this, 'getBlockHeight', getBlockHeight);
   getTransaction: getTransaction = methodSelector(this, 'getTransaction', getTransaction);
   getApplicationLog: getApplicationLog = methodSelector(this, 'getApplicationLog', getApplicationLog);
 
@@ -80,7 +82,8 @@ export type getBalance = (data: GetBalanceArgs) => Promise<BalanceResults>;
 export type getStorage = (data: GetStorageArgs) => Promise<GetStorageOutput>;
 export type invokeRead = (data: InvokeReadArgs) => Promise<any>;
 export type verifyMessage = (data: VerifyMessageInput) => Promise<VerifyMessageOutput>;
-export type getBlock = (data: BlockDetails) => Promise<GetBlockInputArgs>;
+export type getBlock = (data: GetBlockInputArgs) => Promise<BlockDetails>;
+export type getBlockHeight = (data: GetBlockHeightInputArgs) => Promise<any>;
 export type getTransaction = (data: TransactionInputArgs) => Promise<TransactionDetails>;
 export type getApplicationLog = (data: TransactionInputArgs) => Promise<ApplicationLog>;
 

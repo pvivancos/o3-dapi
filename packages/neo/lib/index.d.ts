@@ -7,6 +7,7 @@ import { GetStorageArgs, GetStorageOutput } from './modules/read/getStorage';
 import { InvokeReadArgs } from './modules/read/invokeRead';
 import { VerifyMessageInput, VerifyMessageOutput } from './modules/read/verifyMessage';
 import { BlockDetails, GetBlockInputArgs } from './modules/read/getBlock';
+import { GetBlockHeightInputArgs } from './modules/read/getBlockHeight';
 import { TransactionInputArgs, TransactionDetails } from './modules/read/getTransaction';
 import { ApplicationLog } from './modules/read/getApplicationLog';
 import { send, SendArgs, SendOutput } from './modules/write/send';
@@ -29,6 +30,7 @@ declare class O3dapiNeo {
     invokeRead: invokeRead;
     verifyMessage: verifyMessage;
     getBlock: getBlock;
+    getBlockHeight: getBlockHeight;
     getTransaction: getTransaction;
     getApplicationLog: getApplicationLog;
     send: typeof send;
@@ -56,7 +58,8 @@ export declare type getBalance = (data: GetBalanceArgs) => Promise<BalanceResult
 export declare type getStorage = (data: GetStorageArgs) => Promise<GetStorageOutput>;
 export declare type invokeRead = (data: InvokeReadArgs) => Promise<any>;
 export declare type verifyMessage = (data: VerifyMessageInput) => Promise<VerifyMessageOutput>;
-export declare type getBlock = (data: BlockDetails) => Promise<GetBlockInputArgs>;
+export declare type getBlock = (data: GetBlockInputArgs) => Promise<BlockDetails>;
+export declare type getBlockHeight = (data: GetBlockHeightInputArgs) => Promise<any>;
 export declare type getTransaction = (data: TransactionInputArgs) => Promise<TransactionDetails>;
 export declare type getApplicationLog = (data: TransactionInputArgs) => Promise<ApplicationLog>;
 export declare type send = (data: SendArgs) => Promise<SendOutput>;
