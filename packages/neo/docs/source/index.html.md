@@ -10,7 +10,8 @@ toc_footers:
   # - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
 includes:
-  - devEnv
+  - gettingStarted
+  # - devEnv
   - read
   - write
   - events

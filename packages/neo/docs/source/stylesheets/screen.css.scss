@@ -679,6 +679,10 @@ main {
     tr:nth-child(even)>td {
       background-color: lighten($main-bg,2.4%);
     }
+
+    &:last-of-type {
+      margin-bottom: 10em;
+    }
   }
 
   dt {
