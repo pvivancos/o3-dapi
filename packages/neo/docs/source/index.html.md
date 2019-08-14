@@ -12,11 +12,11 @@ toc_footers:
 includes:
   - gettingStarted
   # - devEnv
-  - read
-  - write
-  - events
-  - errors
-  - utils
+  - apiMethods
+  # - write
+  # - events
+  # - errors
+  # - utils
 
 search: false
 ---
