@@ -55,6 +55,13 @@ The client JS package will help to facilitate all communications with the provid
 
 As long as you have the O3 desktop application open in the background. You can open your dApp in any web browser, and the JS package will automatically communicate with the background wallet.
 
+### Private Net
+
+If you are looking to develop your own smart contracts, or would like to test sending assets without having to worry about requesting assets on testnet, O3 has made a private net available for you to run on your local computer. This locally hosted private net will provide you will full controll over all the NEO and GAS in your network, and it can be reset at anytime.
+
+For more information please see the private net repo:
+[https://github.com/O3Labs/neo-privatenet-docker](https://github.com/O3Labs/neo-privatenet-docker)
+
 ## Mobile Compatability
 
 We suggest doing the majority of your development using O3 desktop and using the mobile device simulator in the Chrome debugger. Once your app has been tested and fully functional, the JS package should automatically connect when running in the O3 mobile wallet with no additional changes.

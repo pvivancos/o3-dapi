@@ -16,6 +16,7 @@ includes:
   - getAccountTutorial
   - getBalanceTutorial
   - sendAssetsTutorial
+  - privateNetSetupTutorial
   - apiMethods
   # - write
   # - events
