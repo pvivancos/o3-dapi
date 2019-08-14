@@ -12,6 +12,10 @@ toc_footers:
 includes:
   - gettingStarted
   # - devEnv
+  - tutorials
+  - getAccountTutorial
+  - getBalanceTutorial
+  - sendAssetsTutorial
   - apiMethods
   # - write
   # - events
