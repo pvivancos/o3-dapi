@@ -75,7 +75,7 @@ None
 | compatibility | String[] | A list of all applicable NEPs which the wallet provider supports |
 | extra         | Object   | Provider specific attributes                                     |
 
-####### extra
+###### extra
 | Parameter | Type   | Description               |
 | --------- | ------ | ------------------------- |
 | theme     | string | UI theme of the provider  |

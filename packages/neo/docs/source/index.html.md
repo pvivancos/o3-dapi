@@ -17,6 +17,7 @@ includes:
   - getBalanceTutorial
   - sendAssetsTutorial
   - privateNetSetupTutorial
+  - helloWorldTutorial
   - apiMethods
   # - write
   # - events
