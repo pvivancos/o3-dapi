@@ -516,7 +516,7 @@ neoDapi.invokeRead({
   network: 'PrivNet'
 })
 .then((result: Object) => {
-  console.log('Read invocation result: ' + JSON.stringigy(result));
+  console.log('Read invocation result: ' + JSON.stringify(result));
 })
 .catch(({type: string, description: string, data: any}) => {
   switch(type) {
@@ -649,7 +649,7 @@ neoDapi.getBlock({
   network: 'TestNet'
 })
 .then((result: Object) => {
-  console.log('Block information: ' + JSON.stringigy(result));
+  console.log('Block information: ' + JSON.stringify(result));
 })
 .catch(({type: string, description: string, data: any}) => {
   switch(type) {
@@ -727,7 +727,7 @@ The wallet will return the direct response from the RPC node.
 neoDapi.getBlockHeight({
   network: 'TestNet'
 })
-.then((res: {result: numnber}) => {
+.then((res: {result: number}) => {
   console.log('Block height: ' + res.result);
 })
 .catch(({type: string, description: string, data: any}) => {
@@ -780,7 +780,7 @@ neoDapi.getTransaction({
   network: 'TestNet'
 })
 .then((result: Object) => {
-  console.log('Transaction details: ' + JSON.stringigy(result));
+  console.log('Transaction details: ' + JSON.stringify(result));
 })
 .catch(({type: string, description: string, data: any}) => {
   switch(type) {
@@ -858,7 +858,7 @@ neoDapi.getApplicationLog({
   network: 'TestNet'
 })
 .then((result: Object) => {
-  console.log('Application log of transaction execution: ' + JSON.stringigy(result));
+  console.log('Application log of transaction execution: ' + JSON.stringify(result));
 })
 .catch(({type: string, description: string, data: any}) => {
   switch(type) {
