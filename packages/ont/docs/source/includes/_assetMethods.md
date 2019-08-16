@@ -254,7 +254,7 @@ The send API can be used for accepting payments from the user in a cryptocurrenc
 | nodeURL   | String | The node to which the transaction was submitted to.                           |
 
 <aside class="warning">
-It is reccommended that the DAPP take appropriate levels of risk prevention when accepting transactions. The dapp can query the mempool of a known node to ensure that the transaction will indeed be broadcast on the network.
+It is recommended that the DAPP take appropriate levels of risk prevention when accepting transactions. The dapp can query the mempool of a known node to ensure that the transaction will indeed be broadcast on the network.
 </aside>
 
 ### Error Response
