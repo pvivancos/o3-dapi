@@ -111,7 +111,7 @@ var app = new Vue({
 
 
 function getProvider(elem) {
-	o3dapi.NEO.getProvider()
+	neoDapi.getProvider()
 	.then(function(data){
 		const formatted = syntaxHighlight(data);
 		document.getElementById(elem).innerHTML = formatted;
@@ -122,7 +122,7 @@ function getProvider(elem) {
 }
 
 function getNetworks(elem) {
-	o3dapi.NEO.getNetworks()
+	neoDapi.getNetworks()
 	.then(function(data){
 		const formatted = syntaxHighlight(data);
 		document.getElementById(elem).innerHTML = formatted;
@@ -133,7 +133,7 @@ function getNetworks(elem) {
 }
 
 function getAccount(elem) {
-	o3dapi.NEO.getAccount()
+	neoDapi.getAccount()
 	.then(accountData => {
 		const formatted = syntaxHighlight(accountData);
 		document.getElementById(elem).innerHTML = formatted;
@@ -145,7 +145,7 @@ function getAccount(elem) {
 
 
 function getPublicKey(elem) {
-	o3dapi.NEO.getPublicKey()
+	neoDapi.getPublicKey()
 	.then(function(data){
 		const formatted = syntaxHighlight(data);
 		document.getElementById(elem).innerHTML = formatted;
@@ -158,7 +158,7 @@ function getPublicKey(elem) {
 
 function getBalance(inputElement, resultElem) {
 	try {
-		o3dapi.NEO.getBalance(JSON.parse(document.getElementById(inputElement).value))
+		neoDapi.getBalance(JSON.parse(document.getElementById(inputElement).value))
 		.then(function(data){
 			const formatted = syntaxHighlight(data);
 			document.getElementById(resultElem).innerHTML = formatted;
@@ -172,7 +172,7 @@ function getBalance(inputElement, resultElem) {
 }
 
 function getStorage(inputElement, resultElem) {
-	o3dapi.NEO.getStorage(JSON.parse(document.getElementById(inputElement).value))
+	neoDapi.getStorage(JSON.parse(document.getElementById(inputElement).value))
 	.then(function(data){
 		const formatted = syntaxHighlight(data);
 		document.getElementById(resultElem).innerHTML = formatted;
@@ -185,7 +185,7 @@ function getStorage(inputElement, resultElem) {
 
 function invokeRead(inputElement, resultElem) {
 	try {
-		o3dapi.NEO.invokeRead(JSON.parse(document.getElementById(inputElement).value))
+		neoDapi.invokeRead(JSON.parse(document.getElementById(inputElement).value))
 		.then(function(data){
 			const formatted = syntaxHighlight(data);
 			document.getElementById(resultElem).innerHTML = formatted;
@@ -200,7 +200,7 @@ function invokeRead(inputElement, resultElem) {
 
 function invoke(inputElement, resultElem) {
 	try {
-		o3dapi.NEO.invoke(JSON.parse(document.getElementById(inputElement).value))
+		neoDapi.invoke(JSON.parse(document.getElementById(inputElement).value))
 		.then(function(data){
 			const formatted = syntaxHighlight(data);
 			document.getElementById(resultElem).innerHTML = formatted;
@@ -215,7 +215,7 @@ function invoke(inputElement, resultElem) {
 
 function invokeMulti(inputElement, resultElem) {
 	try {
-		o3dapi.NEO.invokeMulti(JSON.parse(document.getElementById(inputElement).value))
+		neoDapi.invokeMulti(JSON.parse(document.getElementById(inputElement).value))
 		.then(function(data){
 			const formatted = syntaxHighlight(data);
 			document.getElementById(resultElem).innerHTML = formatted;
@@ -231,7 +231,7 @@ function invokeMulti(inputElement, resultElem) {
 
 function send(inputElement, resultElem) {
 	try {
-		o3dapi.NEO.send(JSON.parse(document.getElementById(inputElement).value))
+		neoDapi.send(JSON.parse(document.getElementById(inputElement).value))
 		.then(function(data){
 			const formatted = syntaxHighlight(data);
 			document.getElementById(resultElem).innerHTML = formatted;
@@ -246,7 +246,7 @@ function send(inputElement, resultElem) {
 
 function signMessage(inputElement, resultElem) {
 	try {
-		o3dapi.NEO.signMessage(JSON.parse(document.getElementById(inputElement).value))
+		neoDapi.signMessage(JSON.parse(document.getElementById(inputElement).value))
 		.then(function(data){
 			const formatted = syntaxHighlight(data);
 			document.getElementById(resultElem).innerHTML = formatted;
@@ -262,7 +262,7 @@ function signMessage(inputElement, resultElem) {
 
 function verifyMessage(inputElement, resultElem) {
 	try {
-		o3dapi.NEO.verifyMessage(JSON.parse(document.getElementById(inputElement).value))
+		neoDapi.verifyMessage(JSON.parse(document.getElementById(inputElement).value))
 		.then(function(data){
 			const formatted = syntaxHighlight(data);
 			document.getElementById(resultElem).innerHTML = formatted;
@@ -277,7 +277,7 @@ function verifyMessage(inputElement, resultElem) {
 
 function getBlock(inputElement, resultElem) {
 	try {
-		o3dapi.NEO.getBlock(JSON.parse(document.getElementById(inputElement).value))
+		neoDapi.getBlock(JSON.parse(document.getElementById(inputElement).value))
 		.then(function(data){
 			const formatted = syntaxHighlight(data);
 			document.getElementById(resultElem).innerHTML = formatted;
@@ -292,7 +292,7 @@ function getBlock(inputElement, resultElem) {
 
 function getBlockHeight(inputElement, resultElem) {
 	try {
-		o3dapi.NEO.getBlockHeight(JSON.parse(document.getElementById(inputElement).value))
+		neoDapi.getBlockHeight(JSON.parse(document.getElementById(inputElement).value))
 		.then(function(data){
 			const formatted = syntaxHighlight(data);
 			document.getElementById(resultElem).innerHTML = formatted;
@@ -307,7 +307,7 @@ function getBlockHeight(inputElement, resultElem) {
 
 function getTransaction(inputElement, resultElem) {
 	try {
-		o3dapi.NEO.getTransaction(JSON.parse(document.getElementById(inputElement).value))
+		neoDapi.getTransaction(JSON.parse(document.getElementById(inputElement).value))
 		.then(function(data){
 			const formatted = syntaxHighlight(data);
 			document.getElementById(resultElem).innerHTML = formatted;
@@ -322,7 +322,7 @@ function getTransaction(inputElement, resultElem) {
 
 function getApplicationLog(inputElement, resultElem) {
 	try {
-		o3dapi.NEO.getApplicationLog(JSON.parse(document.getElementById(inputElement).value))
+		neoDapi.getApplicationLog(JSON.parse(document.getElementById(inputElement).value))
 		.then(function(data){
 			const formatted = syntaxHighlight(data);
 			document.getElementById(resultElem).innerHTML = formatted;
