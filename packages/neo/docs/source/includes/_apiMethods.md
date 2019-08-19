@@ -503,7 +503,7 @@ Returns the raw value located in contract storage
 neoDapi.invokeRead({
   scriptHash: '505663a29d83663a838eee091249abd167e928f5',
   operation: 'calculatorAdd',
-  arguments: [
+  args: [
     {
       type: neoDapi.Constants.ArgumentDataType.INTEGER,
       value: 2
@@ -516,7 +516,7 @@ neoDapi.invokeRead({
   network: 'PrivNet'
 })
 .then((result: Object) => {
-  console.log('Read invocation result: ' + JSON.stringigy(result));
+  console.log('Read invocation result: ' + JSON.stringify(result));
 })
 .catch(({type: string, description: string, data: any}) => {
   switch(type) {
@@ -649,7 +649,7 @@ neoDapi.getBlock({
   network: 'TestNet'
 })
 .then((result: Object) => {
-  console.log('Block information: ' + JSON.stringigy(result));
+  console.log('Block information: ' + JSON.stringify(result));
 })
 .catch(({type: string, description: string, data: any}) => {
   switch(type) {
@@ -727,7 +727,7 @@ The wallet will return the direct response from the RPC node.
 neoDapi.getBlockHeight({
   network: 'TestNet'
 })
-.then((res: {result: numnber}) => {
+.then((res: {result: number}) => {
   console.log('Block height: ' + res.result);
 })
 .catch(({type: string, description: string, data: any}) => {
@@ -780,7 +780,7 @@ neoDapi.getTransaction({
   network: 'TestNet'
 })
 .then((result: Object) => {
-  console.log('Transaction details: ' + JSON.stringigy(result));
+  console.log('Transaction details: ' + JSON.stringify(result));
 })
 .catch(({type: string, description: string, data: any}) => {
   switch(type) {
@@ -858,7 +858,7 @@ neoDapi.getApplicationLog({
   network: 'TestNet'
 })
 .then((result: Object) => {
-  console.log('Application log of transaction execution: ' + JSON.stringigy(result));
+  console.log('Application log of transaction execution: ' + JSON.stringify(result));
 })
 .catch(({type: string, description: string, data: any}) => {
   switch(type) {
@@ -1035,7 +1035,7 @@ In the case where the "broadcastOverride" input argument is not set, or set to f
 | nodeURL   | String | The node to which the transaction was submitted to                            |
 
 <aside class="warning">
-It is reccommended that the DAPP take appropriate levels of risk prevention when accepting transactions. The dapp can query the mempool of a known node to ensure that the transaction will indeed be broadcast on the network.
+It is recommended that the DAPP take appropriate levels of risk prevention when accepting transactions. The dapp can query the mempool of a known node to ensure that the transaction will indeed be broadcast on the network.
 </aside>
 
 In the case where the "broadcastOverride" input argument is set to True.
@@ -1058,7 +1058,7 @@ In the case where the "broadcastOverride" input argument is set to True.
 neoDapi.invoke({
   scriptHash: '505663a29d83663a838eee091249abd167e928f5',
   operation: 'storeData',
-  arguments: [
+  args: [
     {
       type: neoDapi.Constants.ArgumentDataType.STRING,
       value: 'hello'
@@ -1108,7 +1108,7 @@ neoDapi.invoke({
 }:
 ```
 
-Invoke allows for the generic execution of smart contracts on behalf of the user. It is reccommended to have a general understanding of the NEO blockchain, and to be able successfully use all other commands listed previously in this document before attempting a generic contract execution.
+Invoke allows for the generic execution of smart contracts on behalf of the user. It is recommended to have a general understanding of the NEO blockchain, and to be able successfully use all other commands listed previously in this document before attempting a generic contract execution.
 
 ##### Input arguments
 | Parameter                   | Type                 | Description                                                                                                                                        |
@@ -1181,7 +1181,7 @@ In the case where the "broadcastOverride" input argument is not set, or set to f
 | nodeURL   | String | The node to which the transaction was submitted to                            |
 
 <aside class="warning">
-It is reccommended that the DAPP take appropriate levels of risk prevention when accepting transactions. The dapp can query the mempool of a known node to ensure that the transaction will indeed be broadcast on the network.
+It is recommended that the DAPP take appropriate levels of risk prevention when accepting transactions. The dapp can query the mempool of a known node to ensure that the transaction will indeed be broadcast on the network.
 </aside>
 
 In the case where the "broadcastOverride" input argument is set to True.
@@ -1211,7 +1211,7 @@ neoDapi.invokeMulti({
     {
       scriptHash: '505663a29d83663a838eee091249abd167e928f5',
       operation: 'storeData',
-      arguments: [
+      args: [
         {
           type: neoDapi.Constants.ArgumentDataType.STRING,
           value: 'hello'
@@ -1226,7 +1226,7 @@ neoDapi.invokeMulti({
     {
       scriptHash: '505663a29d83663a838eee091249abd167e928f5',
       operation: 'purchaseTicket',
-      arguments: [
+      args: [
         {
           type: neoDapi.Constants.ArgumentDataType.INTEGER,
           value: '10'
@@ -1352,7 +1352,7 @@ In the case where the "broadcastOverride" input argument is not set, or set to f
 | nodeURL   | String | The node to which the transaction was submitted to                            |
 
 <aside class="warning">
-It is reccommended that the DAPP take appropriate levels of risk prevention when accepting transactions. The dapp can query the mempool of a known node to ensure that the transaction will indeed be broadcast on the network.
+It is recommended that the DAPP take appropriate levels of risk prevention when accepting transactions. The dapp can query the mempool of a known node to ensure that the transaction will indeed be broadcast on the network.
 
 dApp will be responsible for setting a network fee appropriate for the size of the transaction.
 </aside>
@@ -1515,7 +1515,7 @@ In the case where the "broadcastOverride" input argument is not set, or set to f
 | nodeURL   | String | The node to which the transaction was submitted to                            |
 
 <aside class="warning">
-It is reccommended that the DAPP take appropriate levels of risk prevention when accepting transactions. The dapp can query the mempool of a known node to ensure that the transaction will indeed be broadcast on the network.
+It is recommended that the DAPP take appropriate levels of risk prevention when accepting transactions. The dapp can query the mempool of a known node to ensure that the transaction will indeed be broadcast on the network.
 </aside>
 
 In the case where the "broadcastOverride" input argument is set to True.
