@@ -19,7 +19,7 @@ includes:
   - privateNetSetupTutorial
   - helloWorldTutorial
   - dapiTestbed
-
+  - nep5Contract
   - apiMethods
   # - write
   # - events

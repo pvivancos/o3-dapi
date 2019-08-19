@@ -62,7 +62,7 @@ Upon clicking `Run`, a notification should pop up from the O3 wallet. Select an 
 
 You will now be presented with the standard notification for accepting or rejecting a transaction. You can click the `Show transaction details` dropdown to see a breakdown of the details included in the transaction that you will be signing with you selected wallet. By clicking `Approve`, the transaction will then be signed and broadcast to the network for processing.
 
-![](/images/tutorials/testbed/dapiTxApproval.png)
+![](/images/tutorials/testbed/dapiTxApprove.png)
 
 The testbed will show you the transaction id that was sent to the network.
 
