@@ -114,7 +114,7 @@ function stopLoading() {
 stopLoading();
 
 function isReady() {
-  o3dapi.NEO.isReady()
+  neoDapi.isReady()
   .then(handleSuccess)
   .catch(handleError);
 }
@@ -124,7 +124,7 @@ function isReady() {
 function deploy() {
   try {
     startLoading();
-    o3dapi.NEO.deploy({
+    neoDapi.deploy({
       network: networksEle.value,
       name: deployNameEle.value,
       version: deployVersionEle.value,
@@ -147,7 +147,7 @@ function deploy() {
 }
 
 function disconnect() {
-  o3dapi.NEO.disconnect()
+  neoDapi.disconnect()
   .then(data => {
     accountEle.innerHTML = '';
     disconnectEle.innerHTML = '';
@@ -159,8 +159,8 @@ function disconnect() {
 
 
 function utilsAddress() {
-  const address2scriptHashResult = utilsAddress2scriptHashInputEle.value ? o3dapi.utils.address2scriptHash(utilsAddress2scriptHashInputEle.value) : '';
-  const scriptHash2addressResult = utilsScriptHash2addressInputEle.value ? o3dapi.utils.scriptHash2address(utilsScriptHash2addressInputEle.value) : '';
+  const address2scriptHashResult = utilsAddress2scriptHashInputEle.value ? neoDapi.utils.address2scriptHash(utilsAddress2scriptHashInputEle.value) : '';
+  const scriptHash2addressResult = utilsScriptHash2addressInputEle.value ? neoDapi.utils.scriptHash2address(utilsScriptHash2addressInputEle.value) : '';
 
   utilsAddress2scriptHashOutputEle.innerHTML = address2scriptHashResult;
   utilsScriptHash2addressOutputEle.innerHTML = scriptHash2addressResult;
@@ -185,37 +185,35 @@ function readSingleFile(evt) {
 
 // deployAvmFileEle.addEventListener('change', readSingleFile, false);
 
-o3dapi.initPlugins([o3dapiNeo]);
-
-if (o3dapi.NEO.isAvailable) {
+if (neoDapi.isAvailable) {
   console.log('in o3 dapp browser')
 }
 
-o3dapi.NEO.addEventListener(o3dapi.NEO.Constants.EventName.READY, onReady);
+neoDapi.addEventListener(neoDapi.Constants.EventName.READY, onReady);
 
-o3dapi.NEO.addEventListener(o3dapi.NEO.Constants.EventName.CONNECTED, data => {
+neoDapi.addEventListener(neoDapi.Constants.EventName.CONNECTED, data => {
   accountEle.innerHTML = `Connected Account: ${data.address}`;
   disconnectEle.innerHTML = 'disconnect';
 });
 
-o3dapi.NEO.addEventListener(o3dapi.NEO.Constants.EventName.ACCOUNT_CHANGED, data => {
+neoDapi.addEventListener(neoDapi.Constants.EventName.ACCOUNT_CHANGED, data => {
   accountEle.innerHTML = `Connected Account: ${data.address}`;
   disconnectEle.innerHTML = 'disconnect';
 });
 
-o3dapi.NEO.addEventListener(o3dapi.NEO.Constants.EventName.DISCONNECTED, data => {
+neoDapi.addEventListener(neoDapi.Constants.EventName.DISCONNECTED, data => {
   accountEle.innerHTML = '';
   disconnectEle.innerHTML = '';
   clearText();
 });
 
-o3dapi.NEO.addEventListener(o3dapi.NEO.Constants.EventName.NETWORK_CHANGED, handleNewNetworks);
+neoDapi.addEventListener(neoDapi.Constants.EventName.NETWORK_CHANGED, handleNewNetworks);
 
-o3dapi.NEO.addEventListener(o3dapi.NEO.Constants.EventName.BLOCK_HEIGHT_CHANGED, data => {
+neoDapi.addEventListener(neoDapi.Constants.EventName.BLOCK_HEIGHT_CHANGED, data => {
   console.log('neo block height changed: ', JSON.stringify(data));
 });
 
-o3dapi.NEO.addEventListener(o3dapi.NEO.Constants.EventName.TRANSACTION_CONFIRMED, data => {
+neoDapi.addEventListener(neoDapi.Constants.EventName.TRANSACTION_CONFIRMED, data => {
   console.log('neo tx confirmed: ', JSON.stringify(data));
 });
 
@@ -235,6 +233,6 @@ function handleNewNetworks({networks, defaultNetwork}) {
 }
 
 function onReady() {
-  o3dapi.NEO.getNetworks()
+  neoDapi.getNetworks()
   .then(handleNewNetworks);
 };

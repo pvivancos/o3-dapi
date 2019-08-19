@@ -27,7 +27,7 @@ var app = new Vue({
   },
   methods: {
     deploy(resultElem){
-      o3dapi.NEO.deploy(this.deployInput)
+      neoDapi.deploy(this.deployInput)
       .then(function(data){
         const formatted = syntaxHighlight(data);
         document.getElementById(resultElem).innerHTML = formatted;
