@@ -18,6 +18,8 @@ includes:
   - sendAssetsTutorial
   - privateNetSetupTutorial
   - helloWorldTutorial
+  - dapiTestbed
+
   - apiMethods
   # - write
   # - events
