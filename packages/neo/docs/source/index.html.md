@@ -20,6 +20,7 @@ includes:
   - helloWorldTutorial
   - dapiTestbed
   - nep5Contract
+  - sampleDapp
   - apiMethods
   # - write
   # - events
