@@ -194,4 +194,4 @@ Since the contract provides a method to get the number of decimal places the tok
 
 ### Full Sample dApp
 
-Once you have completed implementing all of the methods into your sample dApp, you can check your implementation here. It has automatic parsing for the read methods, but we have left the auto conversion of the user input for the `transfer` method as a challenge.
+Once you have completed implementing all of the methods into your sample dApp, you can check your implementation [here](https://github.com/O3Labs/o3-dapi/blob/master/packages/neo/docs/source/files/test.html). It has automatic parsing for the read methods, but we have left the auto conversion of the user input for the `transfer` method as a challenge.
