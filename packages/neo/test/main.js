@@ -209,10 +209,6 @@ neoDapi.addEventListener(neoDapi.Constants.EventName.DISCONNECTED, data => {
 
 neoDapi.addEventListener(neoDapi.Constants.EventName.NETWORK_CHANGED, handleNewNetworks);
 
-neoDapi.addEventListener(neoDapi.Constants.EventName.BLOCK_HEIGHT_CHANGED, data => {
-  console.log('neo block height changed: ', JSON.stringify(data));
-});
-
 neoDapi.addEventListener(neoDapi.Constants.EventName.TRANSACTION_CONFIRMED, data => {
   console.log('neo tx confirmed: ', JSON.stringify(data));
 });
@@ -235,4 +231,7 @@ function handleNewNetworks({networks, defaultNetwork}) {
 function onReady() {
   neoDapi.getNetworks()
   .then(handleNewNetworks);
+  neoDapi.addEventListener(neoDapi.Constants.EventName.BLOCK_HEIGHT_CHANGED, data => {
+    console.log('neo block height changed: ', JSON.stringify(data));
+  });
 };
