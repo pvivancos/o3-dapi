@@ -1,0 +1,50 @@
+version: 0.2
+
+run-as: root
+
+env:
+  variables:
+    NEO_DOCS_BUCKET_NAME: "neodapidocs.o3.network"
+    NEO_DOCS_DISTRIBUTION_ID: "E3CQNZ1J4IL4TV"
+    ONT_DOCS_BUCKET_NAME: "ontdapidocs.o3.network"
+    ONT_DOCS_DISTRIBUTION_ID: "E10VCM31O60EZA"
+    DOCS_DISTRIBUTION_ID: "E1ZUG2HQGNQL79"
+    ONT_TESTBED_BUCKET_NAME: "ontdapitestbed.o3.app"
+    ONT_TESTBED_DISTRIBUTION_ID: "E2NTR0OI6DBUX4"
+    NEO_TESTBED_BUCKET_NAME: "neodapitestbed.o3.app"
+    NEO_TESTBED_DISTRIBUTION_ID: "E3CQNZ1J4IL4TV"
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+    commands:
+      - gem install bundler
+      - curl -sL https://deb.nodesource.com/setup_10.x | bash -
+      - apt-get install -y nodejs
+  pre_build:
+    commands:
+      - cd packages/neo/docs
+      - bundle install
+      - cd ../../ont/docs
+      - bundle install
+  build:
+    commands:
+      - bundle exec middleman build --clean
+      - cd ../../neo/docs
+      - bundle exec middleman build --clean
+  post_build:
+    commands:
+      - cd build
+      - aws s3 sync . "s3://${NEO_DOCS_BUCKET_NAME}" --delete
+      - aws cloudfront create-invalidation --distribution-id "${NEO_DOCS_DISTRIBUTION_ID}" --paths "/*"
+      - cd ../../../ont/docs/build
+      - aws s3 sync . "s3://${ONT_DOCS_BUCKET_NAME}" --delete
+      - aws cloudfront create-invalidation --distribution-id "${ONT_DOCS_DISTRIBUTION_ID}" --paths "/*"
+      - aws cloudfront create-invalidation --distribution-id "${DOCS_DISTRIBUTION_ID}" --paths "/*"
+      - cd ../../test
+      - aws s3 sync . "s3://${ONT_TESTBED_BUCKET_NAME}" --delete
+      - aws cloudfront create-invalidation --distribution-id "${ONT_TESTBED_DISTRIBUTION_ID}" --paths "/*"
+      - cd ../../neo/test
+      - aws s3 sync . "s3://${NEO_TESTBED_BUCKET_NAME}" --delete
+      - aws cloudfront create-invalidation --distribution-id "${NEO_TESTBED_DISTRIBUTION_ID}" --paths "/*"
