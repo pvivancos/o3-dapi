@@ -14,5 +14,11 @@
   "keywords": [
     "neo",
     "web3"
-  ]
+  ],
+  "devDependencies": {
+    "lerna": "^3.20.2"
+  },
+  "scripts": {
+    "bootstrap": "lerna bootstrap"
+  }
 }
