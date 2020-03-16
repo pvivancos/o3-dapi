@@ -29,6 +29,6 @@
     "webpack-cli": "3.1.2"
   },
   "peerDependencies": {
-    "o3-dapi-core": "0.3.0"
+    "@morgandream/o3-dapi-core": "0.3.0"
   }
 }

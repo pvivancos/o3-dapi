@@ -29,8 +29,8 @@
     "webpack-cli": "3.1.2"
   },
   "peerDependencies": {
-    "o3-dapi-core": "0.3.6",
-    "o3-dapi-neo": "0.4.1"
+    "@morgandream/o3-dapi-core": "0.3.6",
+    "@morgandream/o3-dapi-neo": "0.4.1"
   },
   "keywords": [
     "neo",
