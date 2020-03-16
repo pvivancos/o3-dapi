@@ -1,5 +1,5 @@
 {
-  "name": "o3-dapi",
+  "name": "@morgandream/o3-dapi",
   "description": "Decentralized API messaging protocol with blockchain plugins",
   "repository": {
     "type": "git",

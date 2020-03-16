@@ -1,5 +1,5 @@
 {
-  "name": "ont-dapi",
+  "name": "@morgandream/ont-dapi",
   "version": "1.0.3",
   "description": "Ontology dAPI",
   "main": "./lib/ont-dapi.min.js",
@@ -7,7 +7,8 @@
   "scripts": {
     "start": "webpack --mode development --watch",
     "build": "webpack --mode development",
-    "dist": "webpack --mode production --env.DISTRIBUTION=true"
+    "dist": "webpack --mode production --env.DISTRIBUTION=true",
+    "prepublish": "npm run dist"
   },
   "repository": {
     "type": "git",

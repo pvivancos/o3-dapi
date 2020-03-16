@@ -1,5 +1,5 @@
 {
-  "name": "o3-dapi-ont",
+  "name": "@morgandream/o3-dapi-ont",
   "version": "0.4.0",
   "description": "Ontology Plugin for o3-dapi",
   "main": "./lib/o3-dapi-ont.min.js",
@@ -7,7 +7,8 @@
   "scripts": {
     "start": "webpack --mode development --watch",
     "build": "webpack --mode development",
-    "dist": "webpack --mode production --env.DISTRIBUTION=true"
+    "dist": "webpack --mode production --env.DISTRIBUTION=true",
+    "prepublish": "npm run dist"
   },
   "repository": {
     "type": "git",

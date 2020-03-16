@@ -1,5 +1,5 @@
 {
-  "name": "o3-dapi-ontclient",
+  "name": "@morgandream/o3-dapi-ontclient",
   "version": "0.0.4",
   "description": "Client plugin for o3-dapi-ont",
   "main": "./lib/o3-dapi-ontclient.min.js",
@@ -7,7 +7,8 @@
   "scripts": {
     "start": "webpack --mode development --watch",
     "build": "webpack --mode development",
-    "dist": "webpack --mode production --env.DISTRIBUTION=true"
+    "dist": "webpack --mode production --env.DISTRIBUTION=true",
+    "prepublish": "npm run dist"
   },
   "repository": {
     "type": "git",
