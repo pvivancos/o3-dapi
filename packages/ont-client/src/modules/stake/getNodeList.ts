@@ -51,7 +51,7 @@ export function getNodeList({network}: GetNodeListArgs): Promise<NodeListOutput>
       .then(([peerPoolRes, metadataRes]) => {
         peerPoolMap = peerPoolRes;
         metadataMap = metadataRes.reduce((accum, item: any) => {
-          accum[item.PublicKey] = item;
+          accum[item['public_key']] = item;
           return accum;
         }, {});
         return Promise.all(Object.keys(peerPoolMap).map(peerPubkey => (
@@ -81,10 +81,10 @@ export function getNodeList({network}: GetNodeListArgs): Promise<NodeListOutput>
           } = nodeDetailsMap[peerPubkey];
 
           const {
-            Introduce,
-            Logo,
-            Name,
-            Region,
+            introduction: Introduce,
+            logo_url: Logo,
+            name: Name,
+            region: Region,
           } = metadataMap[peerPubkey] || {
             Introduce: '',
             Logo: '',
@@ -148,7 +148,15 @@ export function getNodeList({network}: GetNodeListArgs): Promise<NodeListOutput>
 }
 
 function getNodeMetadata() {
-  return fetch('https://ont.io/api/v1/candidate/info/All')
-  .then(res => res.json())
-  .then(res => res.Result);
+  return Promise.all([fetch('https://explorer.ont.io/v2/nodes/off-chain-infos'), fetch('https://explorer.ont.io/v2/nodes/current-stakes')])
+  .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
+  .then(([offChainInfosRes, onStakeRes]) => {
+    if (offChainInfosRes.msg !== 'SUCCESS') {
+      throw new Error(`Error while getting off chain infos: ${offChainInfosRes.msg}`);
+    }
+    if (onStakeRes.msg !== 'SUCCESS') {
+      throw new Error(`Error while getting off on stake nodes info: ${offChainInfosRes.msg}`);
+    }
+    return offChainInfosRes.result.filter(nodeInfo => onStakeRes.result.some(onStakeNode => onStakeNode.address === nodeInfo.address));
+  });
 }
