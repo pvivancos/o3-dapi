@@ -1,6 +1,6 @@
 {
   "name": "@morgandream/ont-dapi",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Ontology dAPI",
   "main": "./lib/ont-dapi.min.js",
   "types": "./lib/index.d.ts",
@@ -35,7 +35,7 @@
     "web3"
   ],
   "dependencies": {
-    "@morgandream/o3-dapi-core": "^0.3.7",
+    "@morgandream/o3-dapi-core": "^0.3.14",
     "@morgandream/o3-dapi-ont": "^0.3.0",
     "@morgandream/o3-dapi-ontclient": "^0.0.3"
   }

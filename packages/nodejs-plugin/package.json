@@ -1,6 +1,6 @@
 {
   "name": "@morgandream/o3-dapi-nodejs",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "NodeJS plugin for o3-dapi-core",
   "main": "./lib/o3-dapi-nodejs.min.js",
   "types": "./lib/index.d.ts",

@@ -1,6 +1,6 @@
 {
   "name": "@morgandream/o3-dapi-ontclient",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Client plugin for o3-dapi-ont",
   "main": "./lib/o3-dapi-ontclient.min.js",
   "types": "./lib/index.d.ts",
